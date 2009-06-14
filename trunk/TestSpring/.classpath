@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/Desktop/spring-framework-3.0.0.M3/dist/org.springframework.web-3.0.0.M3.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Administrator/Desktop/commons-logging-1.0.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
