@@ -7,7 +7,7 @@
 
   <!-- the application context definition for the springapp DispatcherServlet -->
 
-  <bean name="/hello.htm" class="springapp.web.HelloController"/>
+  <bean name="/hello.form" class="src.springapp.web.HelloController"/>
 
 </beans>
 
