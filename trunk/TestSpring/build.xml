@@ -3,9 +3,9 @@
 	<property file="build.properties"/>
 
     <property name="src.dir" value="src"/>
-    <property name="web.dir" value="war"/>
+    <property name="web.dir" value="."/>
     <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
-    <property name="name" value="springapp"/>
+    <property name="name" value="TestSpring"/>
 
     <path id="master-classpath">
         <fileset dir="${web.dir}/WEB-INF/lib">
