@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Client/appClientModule"/>
+	<classpathentry kind="src" path="ejb2/ejbModule"/>
+	<classpathentry kind="lib" path="Client/ejb2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="ejb2/build/classes"/>
+</classpath>

@@ -1,0 +1,31 @@
+import headfirst.Advice;
+import headfirst.AdviceHome;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.rmi.PortableRemoteObject;
+
+
+public class Main {
+	public static void main(String[] args) {
+		new Main().go();		
+		
+	}
+	
+	public void go(){
+		try{
+			Context ic = new InitialContext();
+			Object o = ic.lookup("Advisor");
+			
+			AdviceHome home = (AdviceHome)PortableRemoteObject.narrow(o, AdviceHome.class);
+			
+			Advice advice = home.create(); 
+			System.out.println(advice.getAdvice());
+		}catch(Exception e){
+			System.out.println(e);
+			
+		}
+	}
+	
+
+}
