@@ -7,6 +7,7 @@
 
  <persistence-unit name="FirstEjb3Tutorial">
  <jta-data-source>java:/OraclePool</jta-data-source>
+ <!-- Here OraclePool is jndi-name (in Oracle-ds.xml) -->
  <properties>
  <property name="hibernate.hbm2ddl.auto"
  value="create-drop"/>
