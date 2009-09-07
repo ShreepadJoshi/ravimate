@@ -35,5 +35,6 @@ public class Advise implements AdviseRemote {
     	em.persist(book);
     	return flag;
     }
+    
 
 }
