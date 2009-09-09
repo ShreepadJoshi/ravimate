@@ -1,6 +1,9 @@
 package com;
 
+import interceptors.ShreeInterceptor;
+
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,6 +13,7 @@ import pojo.Book;
  * Session Bean implementation class Advise
  */
 @Stateless
+@Interceptors( { ShreeInterceptor.class })
 public class Advise implements AdviseRemote {
 
 	
@@ -22,6 +26,7 @@ public class Advise implements AdviseRemote {
         // TODO Auto-generated constructor stub
     }
     
+    @Interceptors( { ShreeInterceptor.class })
     public String getAdvise(){
     	saveBook();
     	return "Inserted data in table";
