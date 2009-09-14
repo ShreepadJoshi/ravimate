@@ -1,7 +1,0 @@
-package headfirst;
-
-import javax.ejb.EJBObject;
-
-public interface Advice extends EJBObject {
-
-}
