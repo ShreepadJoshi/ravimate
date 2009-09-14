@@ -1,7 +1,0 @@
-package headfirst;
-
-import javax.ejb.EJBHome;
-
-public interface AdviceHome extends EJBHome {
-
-}

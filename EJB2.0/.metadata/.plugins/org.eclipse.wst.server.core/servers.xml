@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<servers>
-  <server auto-publish-setting="1" hostname="localhost" id="JBoss v4.2 at localhost" name="JBoss v4.2 at localhost" runtime-id="JBoss v4.2" server-type="org.eclipse.jst.server.generic.jboss42" server-type-id="org.eclipse.jst.server.generic.jboss42" start-timeout="100" stop-timeout="15" timestamp="3">
-    <list key="Generic_Server_Modules_List" value0="org.eclipse.jst.j2ee.server:ejb2"/>
-    <map jndiPort="1099" key="generic_server_instance_properties" port="8080" serverAddress="127.0.0.1" serverConfig="default"/>
-    <list key="modules" value0="ejb2::org.eclipse.jst.j2ee.server:ejb2::jst.ejb::2.0"/>
-  </server>
-</servers>
