@@ -1,6 +1,7 @@
 package headfirst;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 import javax.ejb.EJBObject;
 
