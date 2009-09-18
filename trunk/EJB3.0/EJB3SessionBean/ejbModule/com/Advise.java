@@ -2,7 +2,10 @@ package com;
 
 import interceptors.ShreeInterceptor;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.ejb.TimedObject;
+import javax.ejb.Timer;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,10 +15,14 @@ import pojo.Book;
 /**
  * Session Bean implementation class Advise
  */
+
+@Remote(AdviseRemote.class)
 @Stateless
 @Interceptors( { ShreeInterceptor.class })
-public class Advise implements AdviseRemote {
 
+public class Advise implements TimedObject{
+
+	
 	
 	@PersistenceContext	EntityManager em;
 	
@@ -40,6 +47,12 @@ public class Advise implements AdviseRemote {
     	em.persist(book);
     	return flag;
     }
+
+	@Override
+	public void ejbTimeout(Timer arg0) {
+		System.out.println("Timer Working");
+		
+	}
     
 
 }
