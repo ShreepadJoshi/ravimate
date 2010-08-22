@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+    <property name="mappingResources">
+		<list>
+			<value>com/education/transferobj/TSchool.hbm.xml</value>
+		</list>
+	</property>
+	<property name="hibernateProperties">
+		<value>
+			hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+			hibernate.jdbc.batch_size=1000
+		</value>
+	</property>	
+</bean>
+
+<bean id="propertyPlaceHolder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location" value="classpath:app.properties"/>
+</bean>
+
+
+<bean id="abstractDao" class="com.education.dao.AbstractDAO" >
+	<property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+
+<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
+	<property name="driverClassName"  value="${driverClassName}"/>
+	<property name="password" value="${password}"/>
+	<property name="username" value="${userName}"/>
+	<property name="url" value="${connstring}"/>
+</bean>
+
+<bean id="contextAware" class="com.education.util.SpringApplicationContext"/>
+
+<bean id="schoolContentUploadDao" class="com.education.dao.SchoolContentUploadDao">
+	<property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+
+
+<bean id="schoolContentSerivce" class="com.education.services.SchoolContentUploadService">
+	<property name="schoolContentUploadDao" ref="schoolContentUploadDao"/>
+</bean>
+
+
+<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+
+
+
+</beans>
