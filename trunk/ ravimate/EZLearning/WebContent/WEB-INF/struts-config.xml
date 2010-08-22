@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<!--
+     This is a blank Struts configuration file with an example
+     welcome action/page and other commented sample elements.
+
+     Struts Validator is configured using the factory defaults
+     and is ready-to-use.
+
+     NOTE: If you have a generator tool to create the corresponding Java classes
+     for you, you could include the details in the "form-bean" declarations.
+     Otherwise, you would only define the "form-bean" element itself, with the
+     corresponding "name" and "type" attributes, as shown here.
+-->
+
+
+<struts-config>
+
+
+<!-- ============================= Form Bean Definitions ==================== -->
+
+    <form-beans>
+		<form-bean name="TestBean" type="com.education.formbeans.TestActionForm"/>
+		<form-bean name="ManageQuestionBean" type="com.education.formbeans.AddQuestionForm"/>
+		<form-bean name="FullRegistrationBean" type="com.education.formbeans.FullRegActionForm" />
+		<form-bean name="AgentFullRegistrationBean" type="com.education.formbeans.AgentFullRegActionForm" />
+		<form-bean name="LoginBean" type="com.education.formbeans.LoginActionForm" />
+		<form-bean name="QuestionListBean" type="com.education.formbeans.QuestionListActionForm" />
+		<form-bean name="AdminQuestionListBean" type="com.education.formbeans.AdminQuestionListActionForm" />
+		<form-bean name="LinkQtoClassBean" type="com.education.formbeans.LinkQuestiontoClassActionForm" />
+		<form-bean name="DropDownValueBean" type="com.education.formbeans.DropDownValueByAjaxActionForm" />
+		<form-bean name="ContentUploadBean" type="com.education.formbeans.ContentUploadActionForm" />
+		<form-bean name="ExceptionHandlerBean" type="com.education.formbeans.ExceptionHandlerActionForm" />
+		<form-bean name="TestQuestionBean" type="com.education.formbeans.TestQuestionBeanActionForm" />
+		<form-bean name="TestSelectionCriteriaBean" type="com.education.formbeans.TestSelectionCriteriaActionForm" />
+		<form-bean name="AdvertisementForm" type="com.education.formbeans.AdvertisementForm" />
+		
+		<form-bean name="StudentRegistrationBean" type="com.education.formbeans.StudentRegistrationBeanActionForm" />
+		<form-bean name="FullTestForm" type="com.education.formbeans.FullTestForm" />
+		
+		<!-- For Admin -->
+		<form-bean name="NewUserBean" type="com.education.formbeans.NewUserActionForm" />
+		<form-bean name="ManageTopicBean" type="com.education.formbeans.ManageTopicsActionForm" />
+		<form-bean name="AffiliateBean" type="com.education.formbeans.AffiliateForm"/>
+		<form-bean name="CourseCatalogueBean" type="com.education.formbeans.CourseCatalogueForm"></form-bean>
+		<form-bean name="findSchool" type="com.education.formbeans.FindSchool"></form-bean>	
+   
+    </form-beans>
+
+
+<!-- ========= Global Exception Definitions ========================-->
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+
+
+<!-- ========================== Global Forward Definitions =========================== -->
+
+    <global-forwards>        
+        <forward name="welcome" path="/Welcome.do"/>
+		<forward name="manageQuestionLink" path="/addQuestion.do"/>
+		<forward name="registrationLink" path="/fullRegistration.do" />		
+		<forward name="userHomePage" path="/TilesTest.jsp" />		
+		<forward name="servicePage" path="pages/service.jsp" />	
+		<forward name="aboutus" path="/pages/aboutUs.jsp" />
+		<forward name="contactus" path="/pages/contactUs.jsp" />
+		<forward name="faq" path="/pages/faq.jsp" />
+		<forward name="home" path="/index.jsp" />	
+		<forward name="teacherpage" path="/teacher.do" />
+		<forward name="reviewerpage" path="/reviewer.do" />
+		<forward name="myPageLink" path="/myPage.do" />
+		<forward name="study_material" path="/pages/studyMaterial.jsp" />
+		<forward name="mgmtDetails" path="/pages/mgmtDetails.jsp" />
+		
+		
+		<forward name="mind_mapping" path="/pages/mindMapping.jsp" />
+		<forward name="assessment" path="/pages/assessment.jsp" />
+		<forward name="parents_section" path="/pages/parents.jsp" />
+		<forward name="virtual_classrooms" path="/pages/virtualClassrooms.jsp" />
+		<forward name="find_schools" path="/findSchool.do" />
+		<forward name="ContentRenderer" path="/contentRenderAction.do" />		
+		<forward name="takeSampleTestLink" path="/sampleTest.do" />
+		<forward name="takeTestLink" path="/takeTest.do" />
+		<forward name="studentRegistration" path="/studentRegistration.do?mode=create" />
+		<forward name="takeFullTest" path="/takeFullTest.do" />
+		
+		<!-- Admin Links -->
+		<forward name="adminQuestionList" path="/adminQuestionList.do" />
+		<forward name="newUserTeacherList" path="/newUserTeacherListAction.do" />
+		<forward name="newUserReviewerList" path="/newUserReviewerListAction.do" />
+		<forward name="newUserAgentList" path="/newUserAgentListAction.do" />
+		<forward name="newUserAffiliateList" path="/newUserAffiliateListAction.do" />
+		<forward name="manageTopicsPage" path="/manageTopics.do" />
+		<forward name="contentUploadPage" path="/contentUpload.do" />
+		<forward name="adminHomePage" path="/admin.do"/>
+		<forward name="affiliatePage" path="/affiliateRegistration.do"/>
+		<forward name="courseCatalogue" path="/courseCatalogue.do"></forward>
+		<forward name="schoolContentUploadPage" path="/schoolContentUpload.do"/>
+    </global-forwards>
+
+
+<!-- ================== Action Mapping Definitions ================== -->
+	
+
+    <action-mappings>           
+        <action
+            path="/Welcome"
+            forward="/pages/Welcome.jsp"/>
+			
+		<action path="/login"
+				type="com.education.actions.LoginAction"
+				name="LoginBean"
+				scope="request">
+		</action>
+		
+		<action path="/sendMailofforgotPassword"
+				type="com.education.actions.ForgotPasswordAction"
+				name="LoginBean"
+				scope="request">
+		</action>
+		
+		<action path="/sessionFaliure"
+				type="com.education.actions.SessionFaliureAction"
+				name="LoginBean"
+				scope="request">
+				<forward name="displayPage" path="/pages/sessionExpried.jsp" />
+				<forward name="loginSuccess" path="/homepage.jsp"/>
+		</action>
+		
+		<action path="/signOut"
+				type="com.education.actions.SignOutAction">
+				<forward name="success" path="/index.jsp" />
+		</action>
+		
+		<action path="/affiliate"
+				type="com.education.actions.AffiliateAction"
+				name="AffiliateBean"
+				scope="request">	
+				<forward name="displayPage" path="tiles.affiliatePage"/>
+				<forward name="success" path="/pages/affiliates.jsp" />				
+		</action>
+		
+		<action path="/agent"
+				type="com.education.actions.AgentAction">				
+				<forward name="success" path="/pages/agent.jsp" />				
+		</action>
+		
+		<action path="/admin"
+				type="com.education.actions.AdminAction">				
+				<forward name="success" path="/pages/amdinPage.jsp" />				
+		</action>
+		
+		<action path="/adminQuestionList"
+				type="com.education.actions.AdminQuestionListAction"
+				name="AdminQuestionListBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/adminQuestionlist.jsp" />
+				<forward name="actionSuccess" path="/adminQuestionList.do" />
+				<forward name="linkQtoClassAction" path="/linkQtoClass.do" />
+								
+		</action>
+		
+		<action path="/newUserTeacherListAction"
+				type="com.education.actions.NewUserTeacherListAction"
+				name="NewUserBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/newUserTeacherList.jsp" />
+				<forward name="actionSuccess" path="/newUserTeacherListAction.do" />				
+		</action>
+		
+		<action path="/newUserReviewerListAction"
+				type="com.education.actions.NewUserReviewerListAction"
+				name="NewUserBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/newUserReviewerList.jsp" />
+				<forward name="actionSuccess" path="/newUserReviewerListAction.do" />				
+		</action>
+		
+		<action path="/newUserAgentListAction"
+				type="com.education.actions.NewUserAgentListAction"
+				name="NewUserBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/newUseragentList.jsp" />
+				<forward name="actionSuccess" path="/newUserAgentListAction.do" />				
+		</action>
+		
+		<action path="/newUserAffiliateListAction"
+				type="com.education.actions.NewUserAffiliateListAction"
+				name="NewUserBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/newUserAffiliateList.jsp" />
+				<forward name="actionSuccess" path="/newUserAffiliateListAction.do" />				
+		</action>		
+		
+		<action path="/teacher"
+				type="com.education.actions.TeacherAction"
+				name="QuestionListBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/teacher.jsp" />
+				<forward name="actionSuccess" path="/teacher.do" />				
+		</action>
+		
+		<action path="/reviewer"
+				type="com.education.actions.ReviewerAction"
+				name="QuestionListBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/reviewer.jsp" />
+				<forward name="actionSuccess" path="/reviewer.do" />
+				<forward name="linkQtoClassAction" path="/linkQtoClass.do" />				
+		</action>
+			
+		<action	path="/manageQuestion"
+					type="com.education.actions.ManageQuestionAction"
+					name="ManageQuestionBean"
+					scope="request">					
+					<forward name="viewMode" path="/pages/manageQuestionViewMode.jsp" />
+					<forward name="editMode" path="/pages/manageQuestionEditMode.jsp" />
+					<forward name="AdminPage" path="/pages/manageQuestionAdmin.jsp" />
+					<forward name="grd_nav_admin_QuestionList" path="/adminQuestionList.do" />
+					<forward name="grd_nav_teacher_QuestionList" path="/teacher.do" />
+					<forward name="grd_nav_reviewer_QuestionList" path="/reviewer.do" />
+					<forward name="nav_linkQtoClass_page" path="/linkQtoClass.do" />
+					<forward name="onError" path="/manageQuestion.do" />
+		</action>
+		
+		<action	path="/addQuestion"
+					type="com.education.actions.AddQuestionAction"
+					name="ManageQuestionBean"
+					scope="request">
+					<forward name="saveClose" path="/teacher.do" />
+					<forward name="saveInsertQ" path="/addQuestion.do" />					
+					<forward name="createMode" path="/pages/manageQuestionCreateMode.jsp" />
+		</action>
+		
+		<action path="/linkQtoClass"
+				type="com.education.actions.LinkQToClassAction"
+				name="LinkQtoClassBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/linkQtoClass.jsp" />
+				<forward name="actionSuccess" path="/linkQtoClass.do" />
+				<forward name="manageQ_viewMode" path="/manageQuestion.do" />
+				<forward name="reviewer_page" path="/reviewer.do" />
+				<forward name="adminQuestionList_page" path="/adminQuestionList.do" />				
+		</action>
+			
+		<action	path="/fullRegistration"
+					type="com.education.actions.FullRegistrationAction"
+					name="FullRegistrationBean"
+					scope="request"
+					input="/registration.jsp">
+					<forward name="viewMode" path="/pages/fullReg_viewMode.jsp"/>
+					<forward name="createMode" path="/pages/fullReg.jsp"/>
+					<forward name="success" path="/pages/RegSuccess.jsp"/>
+					<forward name="affiliateUserListPage" path="/newUserAffiliateListAction.do"/>
+					<forward name="teacherUserListPage" path="/newUserTeacherListAction.do"/>
+					<forward name="agentUserListPage" path="/newUserAgentListAction.do"/>
+					<forward name="reviewerUserListPage" path="/newUserReviewerListAction.do"/>
+					<!--<forward name="agentRegFormCreateMode" path="/pages/agentRegFrm.jsp"/>-->
+					<forward name="agentRegFormCreateMode" path="tiles.fullRegPage.agentRegFormCreateMode"/>
+					<forward name="onError" path="/fullRegistration.do"/>
+					
+		</action>
+		
+		
+		<action path="/affiliateRegistration"
+				type="com.education.actions.AffiliateAction"
+				name="AffiliateBean"
+				scope="request"
+				input="/affiliate.jsp">
+				<forward name="displayPage" path="tiles.affiliatePage.login"/>
+				<forward name="searchPage" path="tiles.affiliate.search"/>
+				<forward name="success" path="/newUserAffiliateListAction.do"/>
+		</action>
+		
+		<action path="/manageTopics"
+				type="com.education.actions.ManageTopicsAction"
+				name="ManageTopicBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/manageTopics.jsp" />
+				<forward name="actionSuccess" path="/manageTopics.do" />
+				<forward name="close" path="/admin.do" />				
+		</action>
+		
+		<action path="/populateDropdownByAjax"
+				type="com.education.actions.PopulateDropDownByAjaxAction"
+				name="DropDownValueBean"
+				scope="request">				
+		</action>
+		
+		<action path="/imageRender"
+				type="com.education.actions.ImageRenderAction"/>
+		
+			<action path="/contentUpload"
+				type="com.education.actions.ContentUploadAction"
+				name="ContentUploadBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/contentUpload.jsp" />
+				<forward name="actionSuccess" path="/contentUpload.do" />				
+				<forward name="close" path="/admin.do" />
+				<forward name="addContent" path="/pages/contentUploadAdd.jsp" />
+				<forward name="updateContent" path="/pages/contentUploadUpdate.jsp" />				
+		</action>
+		
+		<action path="/myPage"
+				type="com.education.actions.MyPageAction">
+			<forward name="teacherHomePage" path="/teacher.do" />
+			<forward name="reviewerHomePage" path="/reviewer.do" />
+			<forward name="agentHomePage" path="/agent.do" />
+			<forward name="affiliateHomePage" path="/affilate.do" />
+			<forward name="guestHomePage" path="/guest.do" />
+			<forward name="adminHomePage" path="/admin.do" />
+			<forward name="homePage" path="/index.jsp" />
+		</action>
+		
+		<action path="/guest"
+				type="com.education.actions.GuestAction">
+			<forward name="displayPage" path="/pages/guest.jsp" />		
+		</action>
+		
+		<action path="/contentRenderAction"
+				type="com.education.actions.ContentRenderAction">
+				<forward name="video" path="/pages/showVideo.jsp"/>
+		</action>
+		
+		<action path="/exceptionHandler"
+				type="com.education.actions.ExceptionHandlerAction"
+				name="ExceptionHandlerBean">
+				<forward name="UserResponseExceptionPage" path="/pages/UserRuntimeExceptionPageResponse.jsp"/>
+				<forward name="AdminResponseExceptionPage" path="/pages/AdminRuntimeExceptionPageResponse.jsp"/>
+		</action>
+		
+		<action path="/sampleTest"
+				type="com.education.actions.SampleTestAction"
+				name="TestSelectionCriteriaBean">
+				<forward name="displayPage" path="/pages/sampleTest.jsp"/>
+				<forward name="onError" path="/sampleTest.do"/>
+				<forward name="takeTestPage" path="/takeTest.do"/>
+		</action>
+		
+		<action path="/takeTest"
+				type="com.education.actions.TakeTestAction"
+				name="TestQuestionBean">
+				<forward name="testMainPage" path="/pages/testMainPage.jsp"/>
+				<forward name="testQuestionPage" path="/pages/testQuestionPage.jsp"/>
+				<forward name="myPage" path="/myPage.do"/>
+				<forward name="onError" path="/sampleTest.do"/>
+		</action>
+		
+		<action path="/downloadFile"
+				type="com.education.actions.DownloadFileAction">
+				<forward name="success" path="/index.jsp" />
+		</action>
+
+		<action	path="/agentFullRegistration"
+					type="com.education.actions.AgentFullRegistrationAction"
+					name="AgentFullRegistrationBean"
+					scope="request"
+					input="/bodycontent_agentFullReg_createMode.jsp">
+					<forward name="success" path="/newUserAgentListAction.do" redirect="false" />
+					<forward name="onError" path="tiles.fullRegPage.agentRegFormModifyMode"/>
+					<forward name="agentViewModifyMode" path="tiles.fullRegPage.agentRegFormModifyMode"/>
+		</action>
+		
+		<action path="/studentRegistration" 
+				type="com.education.actions.StudentRegistrationAction" 
+				name="StudentRegistrationBean" 
+				input="bodycontent_studentFullReg_createMode.jsp">
+			<forward name="success" path="/newUserAgentListAction.do" redirect="false" />
+			<forward name="onError" path="tiles.fullRegPage.agentRegFormModifyMode"/>
+			<forward name="agentViewModifyMode" path="tiles.fullRegPage.agentRegFormModifyMode"/>
+			<forward name="createStudentReg" path="/pages/studentRegistration.jsp" />
+		</action>
+
+		<action path="/takeFullTest" 
+				type="com.education.actions.TakeFullTest"
+				name="FullTestForm">
+				<forward name="displayInputPage" path="tiles.fullTest.indexPage" />
+		</action>
+
+		<action	path="/agentFullRegistration"
+					type="com.education.actions.AgentFullRegistrationAction"
+					name="AgentFullRegistrationBean"
+					scope="request"
+					input="/bodycontent_agentFullReg_createMode.jsp">
+					<forward name="success" path="/newUserAgentListAction.do" redirect="false" />
+					<forward name="onError" path="tiles.fullRegPage.agentRegFormModifyMode"/>
+					<forward name="agentViewModifyMode" path="tiles.fullRegPage.agentRegFormModifyMode"/>
+		</action>
+		
+		<action path="/studentRegistration" 
+				type="com.education.actions.StudentRegistrationAction" 
+				name="StudentRegistrationBean" 
+				input="bodycontent_studentFullReg_createMode.jsp">
+			<forward name="success" path="/newUserAgentListAction.do" redirect="false" />
+			<forward name="onError" path="tiles.fullRegPage.agentRegFormModifyMode"/>
+			<forward name="agentViewModifyMode" path="tiles.fullRegPage.agentRegFormModifyMode"/>
+			<forward name="createStudentReg" path="/pages/studentRegistration.jsp" />
+		</action>
+		
+		<action path="/courseCatalogue" 
+				type="com.education.actions.CourseCatalogueAction"
+				name="CourseCatalogueBean">
+				<forward name="displayCatlog" path="tiles.courseCat.CourseCatalogueDisplay" />
+		</action>
+		
+		<action path="/schoolContentUpload"
+			type="com.education.actions.SchoolContentUploadAction" name="ContentUploadBean"
+			scope="request">
+			<forward name="displayPage" path="tiles.schoolContentUpload" />
+			
+		</action>
+
+		<action path="/findSchool"
+			type="com.education.actions.FindSchoolAction"
+			name="findSchool"
+			scope="request">
+			<forward name="displayPage" path="tiles.findSchoolsPage" />
+			<forward name="success" path="tiles.findSchoolsResultPage" />
+		</action>
+		
+
+    </action-mappings>
+
+
+<!-- ======================================== Message Resources Definitions -->
+    <message-resources parameter="java.MessageResources" />
+
+<!-- =================================== Tiles plugin ======================= -->  
+
+   <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+
+      <set-property property="definitions-config"
+                       value="/WEB-INF/tiles-defs.xml" />
+	 <set-property property="definitions-parser-validate" value="true" />
+    </plug-in> 
+
+  <!-- ================ Validator plugin ============================ -->
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property
+        property="pathnames"
+        value="/org/apache/struts/validator/validator-rules.xml,
+               /WEB-INF/validation.xml"/>
+  </plug-in>
+
+</struts-config>
+

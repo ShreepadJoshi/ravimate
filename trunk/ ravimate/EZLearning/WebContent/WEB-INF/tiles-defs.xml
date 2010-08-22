@@ -1,0 +1,693 @@
+ <!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<!-- Definitions for Tiles documentation   -->
+
+<tiles-definitions>
+	
+  <!--############# LAYOUTS #################### -->
+   <!-- Main page layout used as a root for other pages defintion. -->
+  <definition name="tiles.mainLayout" path="/layouts/mainLayout.jsp">
+	  <put name="title"  value="" />
+	  <put name="includes"  value="" />	  
+	  <put name="header" value="" />
+	  <put name="footer" value="" />
+	  <put name="bodyContentHeading" value="" />
+	  <put name="bodyContentExtraInfo" value="" />
+	  <put name="bodyContent" value="" />
+	  <put name="topMenu" value="" />
+	  <put name="leftMenu" value="" />
+	  <put name="leftNavigation" value="" />
+	  <put name="rightNavigation" value="" />
+  </definition>	
+  <!-- Home page Layout for all user After login -->
+	<definition name="tiles.userHomePage" extends="tiles.indexPage" 
+		controllerClass="com.education.tiles.actions.UserHomePageRender" >
+			  
+	  <put name="bodyContentExtraInfo" value="" />
+	  <put name="leftNavigation" value="tiles.leftNavigationPanel.default" />
+	  <put name="rightNavigation" value="tiles.rightNavigationPanel.deafult" />	  
+  </definition>
+ <!-- Admin page Layout -->
+	<definition name="tiles.adminHomePage" extends="tiles.indexPage" >
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="title"  value="Ez-Learning->Administrator" />
+	<put name="bodyContentHeading" value="Adminstrator" />
+	<put name="topMenu" value="/WEB-INF/jspf/topmenu_admin.jsp" />
+	<put name="bodyContent" value="tiles.bodyPanel.admin" />
+	<put name="leftMenu" value="/WEB-INF/jspf/leftMenu_admin.jsp" />
+	<put name="leftNavigation" value="tiles.leftNavigationPanel.admin" />
+	<put name="rightNavigation" value="tiles.rightNavigationPanel.admin" />
+  </definition>
+  
+  <!--############# TOP LFET NAVIGATION PANEL  #################### -->
+   <!-- Main Page LeftMenu NavigationPanel Layout-->
+  <definition name="tiles.leftMenuNavigationPanel"  path="/layouts/leftMenuNavigationPanelLayout.jsp" >
+	<put name="leftMenucontent" value="" />
+  </definition>
+  <!--Default User Left Menu Nav Panel -->
+  <definition name="tiles.leftMenuNavigationPanel.default" extends="tiles.leftMenuNavigationPanel">
+	<put name="leftMenucontent" value="/WEB-INF/jspf/leftMenu_default.jsp" />
+  </definition>
+  <!--Teacher Left Menu Nav Panel -->
+  <definition name="tiles.leftMenuNavigationPanel.teacher" extends="tiles.leftMenuNavigationPanel">
+	<put name="leftMenucontent" value="/WEB-INF/jspf/leftMenu_teacher.jsp" />
+  </definition>
+    <!--Affiliate Left Menu Nav Panel -->
+  <definition name="tiles.leftMenuNavigationPanel.affiliate" extends="tiles.leftMenuNavigationPanel">
+	<put name="leftMenucontent" value="/WEB-INF/jspf/leftMenu_affiliate.jsp" />
+  </definition>
+      <!--Agent Left Menu Nav Panel -->
+  <definition name="tiles.leftMenuNavigationPanel.agent" extends="tiles.leftMenuNavigationPanel">
+	<put name="leftMenucontent" value="/WEB-INF/jspf/leftMenu_agent.jsp" />
+  </definition>
+  <!--Guest Left Menu Nav Panel -->
+  <definition name="tiles.leftMenuNavigationPanel.guest" extends="tiles.leftMenuNavigationPanel">
+	<put name="leftMenucontent" value="/WEB-INF/jspf/leftMenu_guest.jsp" />
+  </definition>
+   <!--Reviewer Left Menu Nav Panel -->
+  <definition name="tiles.leftMenuNavigationPanel.reviewer" extends="tiles.leftMenuNavigationPanel">
+	<put name="leftMenucontent" value="/WEB-INF/jspf/leftMenu_reviewer.jsp" />
+  </definition>
+  
+  
+  <!--############# LFET NAVIGATION PANEL  #################### -->
+  <!-- Main Page LeftNavigationPanel Layout-->
+  <definition name="tiles.leftNavigationPanel"  path="/layouts/leftNavigationPanelLayout.jsp" >
+	<put name="leftNavPanelcontent" value="" />
+  </definition>    
+  <!--Teacher Page Left Nav Panel -->
+  <definition name="tiles.leftNavigationPanel.teacher" extends="tiles.leftNavigationPanel">
+	<put name="leftNavPanelcontent" value="/WEB-INF/jspf/leftNavPanel_teacher.jsp" />
+  </definition>
+  <!--Default Left Nav Panel -->
+  <definition name="tiles.leftNavigationPanel.default" extends="tiles.leftNavigationPanel">
+	<put name="leftNavPanelcontent" value="/WEB-INF/jspf/leftNavPanel_default1.jsp" />
+  </definition>
+  <!--Guest Page Left Nav Panel -->
+  <definition name="tiles.leftNavigationPanel.guest" extends="tiles.leftNavigationPanel">
+	<put name="leftNavPanelcontent" value="/WEB-INF/jspf/leftNavPanel_guest.jsp" />
+  </definition>
+  <!--Agent Page Left Nav Panel -->
+  <definition name="tiles.leftNavigationPanel.agent" extends="tiles.leftNavigationPanel">
+	<put name="leftNavPanelcontent" value="/WEB-INF/jspf/leftNavPanel_agent.jsp" />
+  </definition>
+  <!--Reviewer Page Left Nav Panel -->
+  <definition name="tiles.leftNavigationPanel.reviewer" extends="tiles.leftNavigationPanel">
+	<put name="leftNavPanelcontent" value="/WEB-INF/jspf/leftNavPanel_reviewer.jsp" />
+  </definition>
+  <!--Admin Page Left Nav Panel -->
+  <definition name="tiles.leftNavigationPanel.admin" extends="tiles.leftNavigationPanel">
+	<put name="leftNavPanelcontent" value="/WEB-INF/jspf/leftNavPanel_admin.jsp" />
+  </definition>
+  
+  <!--############# RIGHT NAVIGATION PANEL #################### -->
+	<!-- Main Page RightNavigationPanel Layout-->
+  <definition name="tiles.rightNavigationPanel"  path="/layouts/rightNavigationPanelLayout.jsp" >
+	<put name="rightNavPanelcontent" value="" />
+  </definition>  
+  <!--Teacher Page Right Nav Panel -->
+  <definition name="tiles.rightNavigationPanel.teacher" extends="tiles.rightNavigationPanel">
+	<put name="rightNavPanelcontent" value="/WEB-INF/jspf/rightNavPanel_teacher.jsp" />
+  </definition>
+  <!--Default Right Nav Panel -->
+  <definition name="tiles.rightNavigationPanel.deafult" extends="tiles.rightNavigationPanel">
+	<put name="rightNavPanelcontent" value="/WEB-INF/jspf/rightNavPanel_default.jsp" />
+  </definition>
+  <!--Guest Page Right Nav Panel -->
+  <definition name="tiles.rightNavigationPanel.guest" extends="tiles.rightNavigationPanel">
+	<put name="rightNavPanelcontent" value="/WEB-INF/jspf/rightNavPanel_guest.jsp" />
+  </definition>
+  <!--Agent Page Right Nav Panel -->
+  <definition name="tiles.rightNavigationPanel.agent" extends="tiles.rightNavigationPanel">
+	<put name="rightNavPanelcontent" value="/WEB-INF/jspf/rightNavPanel_agent.jsp" />
+  </definition>
+  <!--Reviewer Page Right Nav Panel -->
+  <definition name="tiles.rightNavigationPanel.reviewer" extends="tiles.rightNavigationPanel">
+	<put name="rightNavPanelcontent" value="/WEB-INF/jspf/rightNavPanel_reviewer.jsp" />
+  </definition>
+   <!--Admin Page Right Nav Panel -->
+  <definition name="tiles.rightNavigationPanel.admin" extends="tiles.rightNavigationPanel">
+	<put name="rightNavPanelcontent" value="/WEB-INF/jspf/rightNavPanel_admin.jsp" />
+  </definition>
+  
+  <!--############# BODYCONTENT LAYOUT #################### -->
+  <!-- Main Page BodyContent Layout-->
+  <definition name="tiles.bodyPanel"  path="/layouts/bodyContentLayout.jsp" >
+	<put name="content" value="" />
+  </definition>  
+  <!--After Login Teacher Page BodyContent -->
+  <definition name="tiles.bodyPanel.teacher.login" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_teacher_login.jsp" />
+  </definition>
+   <!--Teacher Page BodyContent -->
+  <definition name="tiles.bodyPanel.teacher" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_teacher.jsp" />
+  </definition>
+  <!-- Guest Page BodyContent -->
+  <definition name="tiles.bodyPanel.guest" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodyContent_guestUser.jsp" />
+  </definition>
+    <!--After Login Guest Page BodyContent -->
+  <definition name="tiles.bodyPanel.guest.login" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_guest_login.jsp" />
+  </definition>
+  <!-- Affiliate Page BodyContent -->
+  <definition name="tiles.bodyPanel.affiliate" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodyContent_affiliate.jsp" />
+  </definition>
+    <!--After Login Affiliate Page BodyContent -->
+  <definition name="tiles.bodyPanel.affiliate.login" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodyContent_affiliate_login.jsp" />
+  </definition>
+  <!-- Agent Page BodyContent -->
+  <definition name="tiles.bodyPanel.agent" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodyContent_agent.jsp" />
+  </definition>
+    <!--After Login Agent Page BodyContent -->
+  <definition name="tiles.bodyPanel.agent.login" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodyContent_agent_login.jsp" />
+  </definition>
+  <!-- Reviewer Page BodyContent -->
+  <definition name="tiles.bodyPanel.reviewer" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodyContent_reviewer.jsp" />
+  </definition>
+    <!--After Login Reviewer Page BodyContent -->
+  <definition name="tiles.bodyPanel.reviewer.login" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodyContent_reviewer_login.jsp" />
+  </definition>
+  <!--ContactUs Page BodyContent -->
+  <definition name="tiles.bodyPanel.contactUs" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_contactUs.jsp" />
+  </definition>
+ 
+  
+  <!--FAQ Page BodyContent -->
+  <definition name="tiles.bodyPanel.faq" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_faq.jsp" />
+  </definition>
+   <definition name="tiles.bodyPanel.faq" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_faq.jsp" />
+  </definition>
+  <!--AboutUs Page BodyContent -->
+  <definition name="tiles.bodyPanel.aboutUs" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_aboutUs.jsp" />
+  </definition>
+  <!--Fullregistration Edit Mode Page BodyContent -->
+  <definition name="tiles.bodyPanel.fullRegistration.editMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_fullReg_createMode.jsp" />
+  </definition>
+  <!--Fullregistration Success Page BodyContent -->
+  <definition name="tiles.bodyPanel.fullRegistration.success" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_fullReg_success.jsp" />
+  </definition>
+  <!--Session Failure Page BodyContent -->
+  <definition name="tiles.bodyPanel.sessionExpiredPage" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_session_expired.jsp" />
+  </definition>
+  <!--No Vaid Permission Page BodyContent -->
+  <definition name="tiles.bodyPanel.noValidPermissionPage" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_noValidPermission.jsp" />
+  </definition>
+  <!--Fullregistration View Mode Page BodyContent -->
+  <definition name="tiles.bodyPanel.fullRegistration.viewMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_fullReg_viewMode.jsp" />
+  </definition>
+  <!-- ManageQuestion Page BodyContent For Create mode -->
+  <definition name="tiles.bodyPanel.manageQuestion.createMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_manageQ_createMode.jsp" />
+  </definition>
+  <!-- ManageQuestion Page BodyContent For Edit mode -->
+  <definition name="tiles.bodyPanel.manageQuestion.editMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_manageQ_editMode.jsp" />
+  </definition>
+  <!-- ManageQuestion Page BodyContent For View mode -->
+  <definition name="tiles.bodyPanel.manageQuestion.ViewMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_manageQ_ViewMode.jsp" />
+  </definition>
+  <!--Default Page BodyContent -->
+  <definition name="tiles.bodyPanel.default" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_default.jsp" />
+  </definition>
+   <!--Admin Page BodyContent -->
+  <definition name="tiles.bodyPanel.admin" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_admin.jsp" />
+  </definition>
+  <!--Admin Question List Page BodyContent -->
+  <definition name="tiles.bodyPanel.adminQuestionList" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_adminQuestionList.jsp" />
+  </definition>
+  <!--Admin ManageQuestion Page BodyContent -->
+  <definition name="tiles.bodyPanel.adminManageQuestion" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_manageQuestion_admin.jsp" />
+  </definition>
+  <!--NewUserAgentList Page BodyContent -->
+  <definition name="tiles.bodyPanel.newUserAgentList" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_NewUserAgentList.jsp" />
+  </definition>
+  <!--NewUser AffiliateList Page BodyContent -->
+  <definition name="tiles.bodyPanel.newUserAffiliateList" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_NewUserAffiliateList.jsp" />
+  </definition>
+  <!--Admin Manage Topic and Subtopics Page BodyContent -->
+  <definition name="tiles.bodyPanel.adminManageTopicSubTopic" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_adminManageTopics.jsp" />
+  </definition>
+ <!--NewUser Teacher List Page BodyContent -->
+  <definition name="tiles.bodyPanel.newUserTeacherList" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_NewUserTeacherList.jsp" />
+  </definition>
+  <definition name="tiles.bodyPanel.affiliate.search" extends="tiles.bodyPanel">
+  	<put name="content" value="/pages/bodycontent_newAffilite_SearchCriteria.jsp"/>
+  </definition>
+  <definition name="tiles.bodyPanel.newUserReviewerList" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_NewUserReviewerList.jsp" />
+  </definition>
+  <!--Link Question to class Page BodyContent -->
+  <definition name="tiles.bodyPanel.linkQtoClass" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_linkQtoClass.jsp" />
+  </definition>
+  <!--content Upload Page BodyContent -->
+  <definition name="tiles.bodyPanel.contentUpload" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_contentUpload.jsp" />
+  </definition>
+  <!--content Upload Add Page BodyContent -->
+  <definition name="tiles.bodyPanel.contentUpload.addContent" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_contentUpload_addContent.jsp" />
+  </definition>
+  <!--content Upload Update Page BodyContent -->
+  <definition name="tiles.bodyPanel.contentUpload.updateContent" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_contentUpload_updateContent.jsp" />
+  </definition>
+  
+  <!--User Rumtime Exception Page BodyContent -->
+  <definition name="tiles.bodyPanel.user.runtimeException" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_exception_UserRuntimeException.jsp" />
+  </definition>
+
+<!--Admin Rumtime Exception Page BodyContent -->
+  <definition name="tiles.bodyPanel.admin.runtimeException" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_exception_AdminRuntimeException.jsp" />
+  </definition>
+  
+  <!--Rumtime Exception Response Page BodyContent -->
+  <definition name="tiles.bodyPanel.runtimeExceptionResponsePage" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_exception_response.jsp" />
+  </definition>
+  
+  <!--TestMain Page BodyContent -->
+  <definition name="tiles.bodyPanel.testMainPage" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_testMainPage.jsp" />
+  </definition>
+  
+  <!--TestQuestion Page BodyContent -->
+  <definition name="tiles.bodyPanel.testQuestionPage" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_testQuestionPage.jsp" />
+  </definition>
+  <definition name="tiles.bodyPanel.sampleTestCriteria" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_sampleTestCriteriaPage.jsp" />
+  </definition>
+  	
+  <!--############# PAGES #################### -->
+  <!-- Site Index page -->
+  <definition name="tiles.indexPage" extends="tiles.mainLayout">
+	  <put name="title"  value="Ez-Learning" />
+	  <put name="includes" value="/WEB-INF/jspf/includes.jsp" />
+	  <put name="header" value="/WEB-INF/jspf/header.jsp" />	  
+	  <put name="footer" value="/WEB-INF/jspf/footer.jsp" />
+	  <put name="bodyContentExtraInfo" value="/WEB-INF/jspf/bodyConentExtraInfo.jsp" />
+	  <put name="bodyContentHeading" value="Service Overview" />
+	  <put name="bodyContent" value="tiles.bodyPanel.default" />
+	  <put name="topMenu" value="/WEB-INF/jspf/topmenu.jsp" />
+	  <put name="leftMenu" value="tiles.leftMenuNavigationPanel.default" />
+	  <put name="leftNavigation" value="tiles.leftNavigationPanel.default" />
+	  <put name="rightNavigation" value="tiles.rightNavigationPanel.deafult" />
+  </definition>  
+  <!-- Study Material Page -->
+    <definition name="tiles.StudyMaterialPage" extends="tiles.indexPage">
+	<put name="title"  value="Ez-Learning->Study Material" />
+	<put name="bodyContentHeading" value="Study Material" />
+	<put name="bodyContent" value="/WEB-INF/jspf/bodycontent_studyMaterial.jsp" />
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="leftNavigation" value="/pages/indexPage_services.jsp" />	
+  </definition>
+  
+   <definition name="tiles.mgmtDetailPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->mgmtDetailPage" />
+	<put name="bodyContentHeading" value="Management details" />
+	<put name="bodyContent" value="/WEB-INF/jspf/bodycontent_mgmtDetails.jsp" />
+	<put name="bodyContentExtraInfo" value="" />
+   </definition>
+  
+  
+  <!-- MindMapping Page -->
+    <definition name="tiles.mindMappingPage" extends="tiles.indexPage">
+	<put name="title"  value="Ez-Learning->Mind Mapping" />
+	<put name="bodyContentHeading" value="Mind Mapping" />
+	<put name="bodyContent" value="/WEB-INF/jspf/bodycontent_minMapping.jsp" />
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="leftNavigation" value="/pages/indexPage_services.jsp" />	
+  </definition>
+  
+  <!-- Amit Service Page Page -->
+    <definition name="tiles.sevicePage" extends="tiles.indexPage">
+	<put name="title"  value="Ez-Learning->Services" />
+	<put name="bodyContentHeading" value="Services" />
+	<put name="bodyContent" value="/WEB-INF/jspf/bodyContent_services.jsp" />
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="leftNavigation" value="/pages/indexPage_services.jsp" />	
+  </definition>
+  
+  <!-- Personnal Assessment Page -->
+    <definition name="tiles.assessmentPage" extends="tiles.indexPage">
+	<put name="title"  value="Ez-Learning->Assessment" />
+	<put name="bodyContentHeading" value="Assessment" />
+	<put name="bodyContent" value="/WEB-INF/jspf/bodycontent_personnalAssessment.jsp" />
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="leftNavigation" value="/pages/indexPage_services.jsp" />	
+  </definition>
+  <!-- Parent Section Page -->
+    <definition name="tiles.parentSectionPage" extends="tiles.indexPage">
+	<put name="title"  value="Ez-Learning->Parent Section" />
+	<put name="bodyContentHeading" value="Parent Section" />
+	<put name="bodyContent" value="/WEB-INF/jspf/bodycontent_parentSection.jsp" />
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="leftNavigation" value="/pages/indexPage_services.jsp" />	
+  </definition>
+  <!-- Virtual ClassroomsPage -->
+    <definition name="tiles.virtualClassroomPage" extends="tiles.indexPage">
+	<put name="title"  value="Ez-Learning->Virtual Classrooms" />
+	<put name="bodyContentHeading" value="Virtual Classrooms" />
+	<put name="bodyContent" value="/WEB-INF/jspf/bodycontent_virtualClassroom.jsp" />
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="leftNavigation" value="/pages/indexPage_services.jsp" />	
+  </definition>
+  <!-- Find Schools Page -->
+    <definition name="tiles.findSchoolsPage" extends="tiles.indexPage">
+	<put name="title"  value="Ez-Learning->Find Schools" />
+	<put name="bodyContentHeading" value="Find Schools" />
+	<put name="bodyContent" value="/WEB-INF/jspf/bodycontent_findSchools.jsp" />
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="leftNavigation" value="/pages/indexPage_services.jsp" />	
+  </definition>
+  <!--Teacher User Home Page -->
+  <definition name="tiles.teacherPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Teacher" />
+	<put name="bodyContentHeading" value="Teacher" />
+	<put name="bodyContent" value="tiles.bodyPanel.teacher" />	
+	<put name="definition"  value="2"/>
+  </definition>  
+  <!--Affiliate User Home Page -->
+  <definition name="tiles.affiliatePage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Affiliates" />
+	<put name="bodyContentHeading" value="Affiliates" />
+	<put name="bodyContent" value="tiles.bodyPanel.affiliate" />	
+	<put name="definition"  value="3"/>
+  </definition>
+  <definition name="tiles.affiliatePage.login" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Affiliates" />
+	<put name="bodyContentHeading" value="Affiliates" />
+	<put name="bodyContent" value="tiles.bodyPanel.affiliate.login" />	
+	<put name="definition"  value="3"/>
+  </definition>
+  <definition name="tiles.affiliate.search" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Affiliates" />
+	<put name="bodyContentHeading" value="Affiliate Seach Criteria" />
+	<put name="bodyContent" value="tiles.bodyPanel.affiliate.search" />	
+	<put name="definition"  value="3"/>
+  </definition>
+  <!--Agent User Home Page -->
+  <definition name="tiles.agentPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Agents" />
+	<put name="bodyContentHeading" value="Agents" />
+	<put name="bodyContent" value="tiles.bodyPanel.agent" />	
+	<put name="definition"  value="4"/>
+  </definition>
+  <!--Guest User Home Page -->
+  <definition name="tiles.guestPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Guest" />
+	<put name="bodyContentHeading" value="Guest" />
+	<put name="bodyContent" value="tiles.bodyPanel.guest" />		
+	<put name="definition"  value="1"/>
+  </definition>
+  <!--Reviewer User Home Page -->
+  <definition name="tiles.reviewerPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Reviewer" />
+	<put name="bodyContentHeading" value="Reviewer" />
+	<put name="bodyContent" value="tiles.bodyPanel.reviewer" />	
+	<put name="definition"  value="6"/>
+  </definition>
+  <!--ContactUs Page -->
+  <definition name="tiles.contactUsPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->ContactUs" />
+	<put name="bodyContentHeading" value="ContactUs" />
+	<put name="bodyContent" value="tiles.bodyPanel.contactUs" />		
+  </definition>
+  <!--FAQ Page -->
+  <definition name="tiles.faqPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->FAQ's" />
+	<put name="bodyContentHeading" value="FAQ's" />
+	<put name="bodyContent" value="tiles.bodyPanel.faq" />
+  </definition>
+  <!--AboutUs Page -->
+  <definition name="tiles.aboutUsPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->AboutUs" />
+	<put name="bodyContentHeading" value="AboutUs" />
+	<put name="bodyContent" value="tiles.bodyPanel.aboutUs" />
+  </definition>
+  <!-- ManageQuestion Page in Create mode -->
+  <definition name="tiles.manageQuestionPage_createMode" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->ManageQuestion" />
+	<put name="bodyContentHeading" value="ManageQuestion" />
+	<put name="bodyContent" value="tiles.bodyPanel.manageQuestion.createMode" />
+  </definition>	  	
+<!-- ManageQuestion Page in view mode -->
+  <definition name="tiles.manageQuestionPage_viewMode" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->ManageQuestion" />
+	<put name="bodyContentHeading" value="ManageQuestion" />
+	<put name="bodyContent" value="tiles.bodyPanel.manageQuestion.ViewMode" />	
+  </definition>
+  <!-- ManageQuestion Page in edit mode -->
+  <definition name="tiles.manageQuestionPage_editMode" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->ManageQuestion" />
+	<put name="bodyContentHeading" value="ManageQuestion" />
+	<put name="bodyContent" value="tiles.bodyPanel.manageQuestion.editMode" />	
+  </definition>
+  <!--Admin Question List Page -->
+  <definition name="tiles.adminQuestionListPage" extends="tiles.adminHomePage">	
+	<put name="title"  value="Ez-Learning->QuestionList" />
+	<put name="bodyContentHeading" value="Question List" />
+	<put name="bodyContent" value="tiles.bodyPanel.adminQuestionList" />
+  </definition>
+  <!--Admin ManageQuestion Page -->
+  <definition name="tiles.adminManageQuestionPage" extends="tiles.adminHomePage">	
+	<put name="title"  value="Ez-Learning->AddQuestion" />
+	<put name="bodyContentHeading" value="Add Question" />
+	<put name="bodyContent" value="tiles.bodyPanel.adminManageQuestion" />
+  </definition>
+  <!--Admin Manage Topic subTopic Page -->
+  <definition name="tiles.AdminManageTopicSubTopicPage" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->ManageTopic-SubTopic" />
+	<put name="bodyContentHeading" value="Manage Topic and SubTopics" />	
+	<put name="bodyContent" value="tiles.bodyPanel.adminManageTopicSubTopic" />
+  </definition>
+  <!--Admin NewUser Agent List Page -->
+  <definition name="tiles.AdminNewUserAgentListPage" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->AgentList" />
+	<put name="bodyContentHeading" value="Agent List" />	
+	<put name="bodyContent" value="tiles.bodyPanel.newUserAgentList" />
+  </definition>
+  <!--Admin NewUser Affiliates List Page -->
+  <definition name="tiles.AdminNewUserAffiliatesListPage" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->AffiliateList" />
+	<put name="bodyContentHeading" value="Affiliate List" />	
+	<put name="bodyContent" value="tiles.bodyPanel.newUserAffiliateList" />
+  </definition>
+  <!--Admin NewUser Teacher List Page -->
+  <definition name="tiles.AdminNewUserTeacherListPage" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->TeacherList" />
+	<put name="bodyContentHeading" value="Teacher List" />	
+	<put name="bodyContent" value="tiles.bodyPanel.newUserTeacherList" />
+  </definition>
+  <!--Admin NewUser Reviewer List Page -->
+  <definition name="tiles.AdminNewUserReviewerListPage" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->ReviewerList" />
+	<put name="bodyContentHeading" value="Reviewer List" />	
+	<put name="bodyContent" value="tiles.bodyPanel.newUserReviewerList" />
+  </definition>
+  <!--FullRegistration Edit Mode Page -->
+  <definition name="tiles.fullRegPage.createMode" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->FullRegistration" />
+	<put name="bodyContentHeading" value="FullRegistration" />
+	<put name="bodyContent" value="tiles.bodyPanel.fullRegistration.editMode" />
+  </definition>
+  <!--FullRegistration View Mode Page -->
+  <definition name="tiles.fullRegPage.viewMode" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->FullRegistration" />
+	<put name="bodyContentHeading" value="FullRegistration" />
+	<put name="bodyContent" value="tiles.bodyPanel.fullRegistration.viewMode" />
+  </definition>
+  <!--FullRegistration Success Page -->
+  <definition name="tiles.fullRegSuccessPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->FullRegistration" />
+	<put name="bodyContentHeading" value="FullRegistration" />
+	<put name="bodyContent" value="tiles.bodyPanel.fullRegistration.success" />
+  </definition>
+  <!-- Session Expire/faliure page -->
+  <definition name="tiles.sessionExipredPage" extends="tiles.indexPage">
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="title"  value="Ez-Learning->Session Faliure" />
+	<put name="bodyContentHeading" value="Re-Login" />
+	<put name="bodyContent" value="tiles.bodyPanel.sessionExpiredPage" />
+  </definition>
+  <!-- Authorization faliure page -->
+  <definition name="tiles.noValidPermissionPage" extends="tiles.indexPage">
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="title"  value="Ez-Learning->Authorization Error" />	
+	<put name="bodyContentHeading" value="Authorization Error" />
+	<put name="bodyContent" value="tiles.bodyPanel.noValidPermissionPage" />
+  </definition>
+  <!-- Link Question to class page -->
+  <definition name="tiles.linkQtoClassPage" extends="tiles.userHomePage">
+	<put name="bodyContentExtraInfo" value="" />
+	<put name="title"  value="Ez-Learning->LinkQ-Class" />	
+	<put name="bodyContentHeading" value="Link Question-Class " />
+	<put name="bodyContent" value="tiles.bodyPanel.linkQtoClass" />
+  </definition>
+  <!--ContentUpload Page -->
+  <definition name="tiles.contentUploadPage" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->ContentUpload" />
+	<put name="bodyContentHeading" value="Content Upload" />
+	<put name="bodyContent" value="tiles.bodyPanel.contentUpload" />
+  </definition>
+  <!--ContentUpload Add Page -->
+  <definition name="tiles.contentUploadPage.addContent" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->Add Content" />
+	<put name="bodyContentHeading" value="Add Content" />
+	<put name="bodyContent" value="tiles.bodyPanel.contentUpload.addContent" />
+  </definition>
+  <!--ContentUpload Update Page -->
+  <definition name="tiles.contentUploadPage.updateContent" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->Update Content" />
+	<put name="bodyContentHeading" value="Update Content" />
+	<put name="bodyContent" value="tiles.bodyPanel.contentUpload.updateContent" />
+  </definition>
+  
+  <!-- User RumtimeException Page -->
+  <definition name="tiles.user.RuntimeExceptionPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Error" />
+	<put name="bodyContentHeading" value="Error" />
+	<put name="bodyContent" value="tiles.bodyPanel.user.runtimeException" />	
+  </definition>
+  
+  <!-- Admin RumtimeException Page -->
+  <definition name="tiles.admin.RuntimeExceptionPage" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->Error" />
+	<put name="bodyContentHeading" value="Error" />
+	<put name="bodyContent" value="tiles.bodyPanel.admin.runtimeException" />	
+  </definition>
+
+  <!-- User RumtimeException Response Page -->
+  <definition name="tiles.user.RuntimeExceptionResponsePage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Error" />
+	<put name="bodyContentHeading" value="Error" />
+	<put name="bodyContent" value="tiles.bodyPanel.runtimeExceptionResponsePage" />	
+  </definition>
+  
+  <!-- Admin RumtimeException Response Page -->
+  <definition name="tiles.admin.RuntimeExceptionResponsePage" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->Error" />
+	<put name="bodyContentHeading" value="Error" />
+	<put name="bodyContent" value="tiles.bodyPanel.runtimeExceptionResponsePage" />	
+  </definition>
+  
+  <!-- TestMain Page -->
+   <definition name="tiles.testMainPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Test Question Status" />
+	<put name="bodyContentHeading" value="Test Question Status" />
+	<put name="bodyContent" value="tiles.bodyPanel.testMainPage" />		
+	<put name="definition"  value="5"/>
+  </definition>
+  <!-- TestQuestion Page -->
+   <definition name="tiles.testQuestionPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Test Question " />
+	<put name="bodyContentHeading" value="Test Question " />
+	<put name="bodyContent" value="tiles.bodyPanel.testQuestionPage" />		
+	<put name="definition"  value="5"/>
+  </definition>
+  <!-- TestQuestion Page -->
+   <definition name="tiles.sampleTestCriteriaPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->SampleTest" />
+	<put name="bodyContentHeading" value="SampleTest" />
+	<put name="bodyContent" value="tiles.bodyPanel.sampleTestCriteria" />		
+	<put name="definition"  value="5"/>
+  </definition>
+  <!--Agent FullRegistration Edit Mode Page -->
+  <definition name="tiles.fullRegPage.agentRegFormCreateMode" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Agent FullRegistration" />
+	<put name="bodyContentHeading" value="Agent FullRegistration" />
+	<put name="bodyContent" value="tiles.bodyPanel.agentFullRegistration.editMode" />
+  </definition>
+  <!--Fullregistration Edit Mode Page BodyContent -->
+  <definition name="tiles.bodyPanel.agentFullRegistration.editMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_agentFullReg_createMode.jsp" />
+  </definition>  
+ <!--Agent FullRegistration Create Mode Page -->
+  <definition name="tiles.fullRegPage.agentRegFormCreateMode" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Agent FullRegistration" />
+	<put name="bodyContentHeading" value="Agent FullRegistration" />
+	<put name="bodyContent" value="tiles.bodyPanel.agentFullRegistration.createMode" />
+  </definition>
+  <!--Fullregistration Edit Create Page BodyContent -->
+  <definition name="tiles.bodyPanel.agentFullRegistration.createMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_agentFullReg_createMode.jsp" />
+  </definition>
+  <!--Agent FullRegistration Modify Mode Page -->
+  <definition name="tiles.fullRegPage.agentRegFormModifyMode" extends="tiles.adminHomePage">
+	<put name="title"  value="Ez-Learning->Agent Registration Modify" />
+	<put name="bodyContentHeading" value="Agent Registration Modify" />
+	<put name="bodyContent" value="tiles.bodyPanel.agentFullRegistration.modifyMode" />
+  </definition>
+  <!--Fullregistration Edit Modify Page BodyContent -->
+  <definition name="tiles.bodyPanel.agentFullRegistration.modifyMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_agentFullReg_modifyMode.jsp" />
+  </definition>  
+  <!--Student FullRegistration Modify Mode Page -->
+  <definition name="tiles.fullRegPage.studentRegistration.createMode" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Student Registration" />
+	<put name="bodyContentHeading" value="Student Registration" />
+	<put name="bodyContent" value="tiles.bodyPanel.studentRegistration.createMode" />
+  </definition>
+  <definition name="tiles.bodyPanel.studentRegistration.createMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_studentFullReg_createMode.jsp" />
+  </definition>
+  <!-- Course Catalogue -->
+  <definition name="tiles.courseCat.CourseCatalogueDisplay" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Course Catalouge" />
+	<put name="bodyContentHeading" value="Course Catalouge" />
+	<put name="bodyContent" value="tiles.courseCat.CourseCatalogueDisplay.displayMode" />
+  </definition>
+  <definition name="tiles.courseCat.CourseCatalogueDisplay.displayMode" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_CourseCatalogue_displayMode.jsp" />
+  </definition>
+   <!--School content Upload  Page BodyContent -->
+ <definition name="tiles.bodyPanel.schoolContentUpload" extends="tiles.bodyPanel">
+       <put name="content" value="/WEB-INF/jspf/bodycontent_schoolContentUpload.jsp" />
+ </definition>
+
+ <!--School ContentUpload Page -->
+
+ <definition name="tiles.schoolContentUpload" extends="tiles.adminHomePage">
+       <put name="title"  value="Ez-Learning->ContentUpload" />
+       <put name="bodyContentHeading" value="Content Upload" />
+       <put name="bodyContent" value="tiles.bodyPanel.schoolContentUpload" />
+ </definition>
+
+  <definition name="tiles.findSchoolsResultPage" extends="tiles.adminHomePage">
+       <put name="title"  value="Ez-Learning->Find School" />
+       <put name="bodyContentHeading" value="Find School" />
+       <put name="bodyContent" value="/WEB-INF/jspf/findSchoolResult.jsp" />
+ </definition>
+  
+</tiles-definitions>
