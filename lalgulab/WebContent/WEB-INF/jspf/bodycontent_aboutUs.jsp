@@ -1,6 +1,6 @@
 
 <link rel="shortcut icon" href="../images/favicon1.gif"/>
-<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 <tr>
 	<td align="left"><font size="2" style="font-family:Arial">
 EZ-learning is the brainchild of a young team of professionals from different service industry which is very passionate about education. Through EZ-learning we wish to provide high quality and measurable learning experience to K-12 students not only to privileged class but also to the remote part of our country utilizing technological advancements.
