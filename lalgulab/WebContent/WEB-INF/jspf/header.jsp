@@ -1,8 +1,7 @@
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <link rel="shortcut icon" href="images/favicon1.gif"/>
 
-<%String userAgent = request.getHeader("User-Agent"); 
-System.out.println("userAgent===="+userAgent);
+<%String userAgent = request.getHeader("User-Agent");
 	if(userAgent.indexOf("MSIE") != -1) {%>
 	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="791" height="211" id="FlashID" title="banner" >
 	 <param name="movie" value="images/flash1.swf" />

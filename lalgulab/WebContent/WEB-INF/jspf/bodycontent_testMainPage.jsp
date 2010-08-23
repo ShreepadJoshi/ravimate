@@ -84,9 +84,6 @@
 				TestQuestion question = (TestQuestion)testQuestions.get(key);
 				if(newRow == noOfQuestion_perLine ){
 					newRow = 1;
-						System.out.println("-firstLine--------"+newRow);
-					
-						System.out.println("------noOfQuestion_perLine------"+noOfQuestion_perLine);
 					%>							
 						<tr>
 							<td colspan="1" class="<%=getClass(question.getQuestionStatus()) %>">								
