@@ -94,7 +94,7 @@
 	 decorator="com.education.displaytag.ReviewerQuestionListTableDecorator" style="width:100%">
 	
 	<display:column property="questionId" title="<input type='checkbox' id='allchkBoxID' onclick='checkAll(this.id,\"hiddenIdList\")'/>" />
-	<display:column title="Question Description" property="question" maxLength="50"/>
+	<display:column title="Question Description" property="question" maxLength="50" style="text-align:left;"/>
 	<display:column property="questionStatusId" title="Status" />
 	<display:column property="createdOn" title="Creation Date" decorator="com.education.displaytag.DateColumnDecorator"/>
 	<display:setProperty name="basic.empty.showtable" value="true"/>	

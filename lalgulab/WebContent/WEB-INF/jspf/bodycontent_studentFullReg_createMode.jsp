@@ -8,7 +8,7 @@
 		<html:form action="/studentRegistration" method="post" styleId="registrationpage_formID" 
 		onsubmit="return validateAgentFullReg()">
 		First Name :<span style="color: red">&#42;</span></td>
-		<td width="71%">
+		<td colspan="1" align="left">
 			<html:hidden property="userId" />
 			<html:text property="firstName" styleClass="input_field" styleId="firstName" maxlength="50"></html:text>
 			<div id="firstName_ErrMsg" style="display: none;color: red"> FirstName is Required </div>
@@ -16,30 +16,30 @@
 	</tr>
 	<tr>
 		<td class="input_label">Last Name:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="lastName" styleClass="input_field" styleId="lastName" maxlength="50"/>
 			<div id="lastName_ErrMsg" style="display: none;color: red">LastName is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Sex:</td>
-		<td>
+		<td colspan="1" align="left">
 		 <html:radio property="sex" value="male"></html:radio> Male
 		  <html:radio property="sex" value="female" ></html:radio> Female</td>
 	</tr>	
-	<tr>
+	<tr align="left">
 		<td colspan="2"><strong>Contact Information: </strong></td>
 	</tr>
 	<tr>
 		<td class="input_label">Address:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:textarea property="address" styleClass="input_field" styleId="address" rows="2" cols="50" />
 			<div id="address_ErrMsg" style="display: none;color: red">Address is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Region:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<select onchange="set_country(this,country,state)" size="1" name="region" id="region" class="input_field">
 				<option value="" selected="selected">SELECT REGION</option>
 				<script type="text/javascript">
@@ -51,7 +51,7 @@
 	</tr>
 	<tr>
 		<td class="input_label">Country:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:select property="country" styleClass="input_field" 
 				onchange="set_city_state(this,state)" styleId="country">
 			</html:select>				
@@ -60,7 +60,7 @@
 	</tr>
 	<tr>
 		<td class="input_label">State:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<!-- <html:text property="country" styleClass="input_field" styleId="country"/> -->
 			<html:select property="state" styleClass="input_field" styleId="state">
 			</html:select>				
@@ -69,21 +69,21 @@
 	</tr>
 	<tr>
 		<td class="input_label">City:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="city" styleClass="input_field" styleId="city"/>
 			<div id="city_ErrMsg" style="display: none;color: red">City is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">PIN:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="pin" styleClass="input_field" size="8" maxlength="6" styleId="pin"/>
 			<div id="pin_ErrMsg" style="display: none;color: red">Pin is Required </div>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Mobile No.:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="mobNoPart1" styleClass="input_field"
 				 size="5" maxlength="4" styleId="mobNoPart1" value="+91"/>-
 			<html:text property="mobNoPart2" styleClass="input_field" value="NUMBER"
@@ -95,7 +95,7 @@
 	</tr>
 	<tr>
 		<td class="input_label">Land LineNo:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text  property="isdCode" styleId="isd" styleClass="input_field" value="ISD"
 				onfocus="javascript:if(this.value=='ISD'){this.value=''};"
 				onblur="javascript:if(this.value==''){this.value='ISD';}"
@@ -113,35 +113,35 @@
 	</tr>
 	<tr>
 		<td class="input_label">Alternate Email:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="alternateEmailID" styleClass="input_field" styleId="alternateEmailID" maxlength="50"/>
 			<div id="alternateEmailID_ErrMsg" style="display: none;color: red">Invalid EmailID </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Hobbies:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:textarea property="hobbies" styleClass="input_field" styleId="hobbies" rows="2" cols="50" />
 			<div id="hobbies_ErrMsg" style="display: none;color: red">Hobbies is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Date Of Birth:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="dob" styleClass="input_field" styleId="dob" maxlength="50"/>
 			<div id="dob_ErrMsg" style="display: none;color: red">Invalid Date Of Birth </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">School:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="schoolName" styleClass="input_field" styleId="schoolName" maxlength="50"/>
 			<div id="schoolName_ErrMsg" style="display: none;color: red">Invalid School Name </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Class / Certificate:</td>
-		<td>
+		<td colspan="1" align="left">
 			<%
 				session.setAttribute("CertList",((StudentRegistrationBeanActionForm)session.getAttribute("StudentRegistrationBean")).getCertificateList());				
 			%>

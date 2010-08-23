@@ -73,7 +73,7 @@
 	 requestURI="/agentFullRegistration.do"
 	 decorator="com.education.displaytag.AgentListTableDecorator" style="width:100%">	
 	<display:column property="userId" title="<input type='checkbox' id='allchkBoxID' onclick='checkAll(this.id,\"hiddenIdList\")'/>" />
-	<display:column property="firstName" title="Name" maxLength="48"/>	
+	<display:column property="firstName" title="Name" maxLength="48" style="text-align:left;"/>	
 	<display:column property="isApproved" title="Reg Status" 
 			decorator="com.education.displaytag.RegistrationStatusColumnDecorator" />
 	<display:column property="registrationDate" title="Reg Date" decorator="com.education.displaytag.DateColumnDecorator"/>

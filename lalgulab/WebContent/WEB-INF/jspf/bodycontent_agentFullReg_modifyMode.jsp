@@ -9,7 +9,7 @@ onsubmit="return validateAgentFullReg()">
 	<tr>
 		<td width="29%" class="input_label">
 		First Name :<span style="color: red">&#42;</span></td>
-		<td width="71%">
+		<td colspan="1" align="left">
 			<html:hidden property="userId" />
 			<input type="hidden" name="action" value="<%=EducationConstant.PAGE_EDIT_MODE%>">
 			<html:text property="firstName" styleClass="input_field" styleId="firstName" maxlength="50"></html:text>
@@ -18,35 +18,35 @@ onsubmit="return validateAgentFullReg()">
 	</tr>
 	<tr>
 		<td class="input_label">Last Name:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="lastName" styleClass="input_field" styleId="lastName" maxlength="50"/>
 			<div id="lastName_ErrMsg" style="display: none;color: red">LastName is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Email:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="emailID" styleClass="input_field" styleId="emailID" maxlength="50" readonly="true"/>
 			<div id="emailID_ErrMsg" style="display: none;color: red">Invalid EmailID</div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Sex:</td>
-		<td>
+		<td colspan="1" align="left">
 		 <html:radio property="sex" value="male"></html:radio> Male
 		  <html:radio property="sex" value="female" ></html:radio> Female</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Registration Date:</td>
-		<td><html:text property="registrationDate" styleClass="input_field" styleId="emailID" maxlength="50" readonly="true" />
+		<td colspan="1" align="left"><html:text property="registrationDate" styleClass="input_field" styleId="emailID" maxlength="50" readonly="true" />
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2"><strong>Contact Information: </strong></td>
+		<td colspan="1" align="left"><strong>Contact Information: </strong></td>
 	</tr>
 	<tr>
 		<td class="input_label">Address:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:textarea property="address1" styleClass="input_field" styleId="address" rows="2" cols="50" />
 			<div id="address_ErrMsg" style="display: none;color: red">Address is Required </div>
 		</td>
@@ -85,35 +85,35 @@ onsubmit="return validateAgentFullReg()">
 	-->
 	<tr>
 		<td class="input_label">Country:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="country" styleClass="input_field" styleId="country" />
 			<div id="country_ErrMsg" style="display: none;color: red">Country is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">State:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="state" styleClass="input_field" styleId="state" />
 			<div id="state_ErrMsg" style="display: none;color: red">State is Required</div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">City:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="city" styleClass="input_field" styleId="city"/>
 			<div id="city_ErrMsg" style="display: none;color: red">City is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">PIN:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="pin" styleClass="input_field" size="8" maxlength="6" styleId="pin"/>
 			<div id="pin_ErrMsg" style="display: none;color: red">Pin is Required </div>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Mobile No.:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="mobNoPart1" styleClass="input_field"
 				 size="5" maxlength="4" styleId="mobNoPart1" value="+91"/>-
 			<html:text property="mobNoPart2" styleClass="input_field" 
@@ -125,7 +125,7 @@ onsubmit="return validateAgentFullReg()">
 	</tr>
 	<tr>
 		<td class="input_label">Land LineNo:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text  property="isdCode" styleId="isd" styleClass="input_field" 
 				onfocus="javascript:if(this.value=='ISD'){this.value=''};"
 				onblur="javascript:if(this.value==''){this.value='ISD';}"
@@ -143,50 +143,50 @@ onsubmit="return validateAgentFullReg()">
 	</tr>
 	<tr>
 		<td class="input_label">Alternate Email:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="alternateEmailID" styleClass="input_field" styleId="alternateEmailID" maxlength="50"/>
 			<div id="alternateEmailID_ErrMsg" style="display: none;color: red">Invalid EmailID </div>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Qualification:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="qualification" styleClass="input_field" styleId="qualification" maxlength="50"/>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Bank Details:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="bankName" styleClass="input_field" styleId="bankName" maxlength="50"/>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Bank Account No:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="accountNo" styleClass="input_field" styleId="accountNo" maxlength="50"/>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Fixed Monthly Fees:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="fixedMonthlyFee" styleClass="input_field" styleId="fixedMonthlyFee" maxlength="50"/>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Percentage On Sale:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="percentageOnSale" styleClass="input_field" styleId="percentageOnSale" maxlength="50"/>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Minimum Sale For Bonus:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="minSaleForBonus" styleClass="input_field" styleId="minSaleForBonus" maxlength="50"/>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Percentage On Bonus:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="percentageOnBonus" styleClass="input_field" styleId="percentageOnBonus" maxlength="50"/>
 		</td>
 	</tr>	

@@ -6,11 +6,11 @@
 <center><span style="color: red;background-color:#F0F0FF "><html:errors/></span></center>
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="10" bgcolor="#F0F0FF">	
 	<tr>
-		<td width="29%" class="input_label">
+		<td class="input_label">
 		<html:form action="/fullRegistration" method="post" styleId="registrationpage_formID" 
 		onsubmit="return validateFullReg()">
 		First Name :<span style="color: red">&#42;</span></td>
-		<td width="71%">
+		<td colspan="1" align="left">
 			<html:hidden property="roleType"></html:hidden>			
 			<html:text property="firstName" styleClass="input_field" styleId="firstName" maxlength="50"></html:text>
 			<div id="firstName_ErrMsg" style="display: none;color: red"> FirstName is Required </div>
@@ -18,41 +18,41 @@
 	</tr>
 	<tr>
 		<td class="input_label">Last Name:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="lastName" styleClass="input_field" styleId="lastName" maxlength="50"/>
 			<div id="lastName_ErrMsg" style="display: none;color: red">LastName is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Email:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="emailID" styleClass="input_field" styleId="emailID" maxlength="50" />
 			<div id="emailID_ErrMsg" style="display: none;color: red">Invalid EmailID</div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Password:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:password property="password" styleClass="input_field" styleId="password" maxlength="50" />
 			<div id="password_ErrMsg" style="display: none;color: red">Password is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">ReType Password:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:password property="repassword" styleClass="input_field" styleId="repassword" maxlength="50" />
 			<div id="repassword_ErrMsg" style="display: none;color: red">ReType Password is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Sex:</td>
-		<td>
+		<td align="left">
 		 <html:radio property="sex" value="male"></html:radio> Male
 		  <html:radio property="sex" value="female" ></html:radio> Female</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Registration Date:</td>
-		<td>
+		<td align="left">
 		<%
 			out.print(Utilities.getDate_displayFormat(new Date()));
 		%>
@@ -60,21 +60,21 @@
 	</tr>
 	<tr>
 		<td class="input_label">Role:</td>
-		<td><bean:write name="FullRegistrationBean" property="roleName" /></td>
+		<td colspan="1" align="left"><bean:write name="FullRegistrationBean" property="roleName" /></td>
 	</tr>
 	<tr>
-		<td colspan="2"><strong>Contact Information: </strong></td>
+		<td colspan="2" align="left"><strong>Contact Information: </strong></td>
 	</tr>
 	<tr>
 		<td class="input_label">Address:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:textarea property="address" styleClass="input_field" styleId="address" rows="2" cols="50" />
 			<div id="address_ErrMsg" style="display: none;color: red">Address is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Region:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<select onchange="set_country(this,country,state)" size="1" name="region" id="region" class="input_field">
 				<option value="" selected="selected">SELECT REGION</option>
 				<script type="text/javascript">
@@ -86,7 +86,7 @@
 	</tr>
 	<tr>
 		<td class="input_label">Country:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:select property="country" styleClass="input_field" 
 				onchange="set_city_state(this,state)" styleId="country">
 			</html:select>				
@@ -95,7 +95,7 @@
 	</tr>
 	<tr>
 		<td class="input_label">State:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<!-- <html:text property="country" styleClass="input_field" styleId="country"/> -->
 			<html:select property="state" styleClass="input_field" styleId="state">
 			</html:select>				
@@ -104,21 +104,21 @@
 	</tr>
 	<tr>
 		<td class="input_label">City:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="city" styleClass="input_field" styleId="city"/>
 			<div id="city_ErrMsg" style="display: none;color: red">City is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">PIN:<span style="color: red">&#42;</span></td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="pin" styleClass="input_field" size="8" maxlength="6" styleId="pin"/>
 			<div id="pin_ErrMsg" style="display: none;color: red">Pin is Required </div>
 		</td>
 	</tr>	
 	<tr>
 		<td class="input_label">Mobile No.:<span style="color: red">&#42;</span></td>
-		<td>
+		<td align="left">
 			<html:text property="mobNoPart1" styleClass="input_field"
 				 size="5" maxlength="4" styleId="mobNoPart1" value="+91"/>-
 			<html:text property="mobNoPart2" styleClass="input_field" value="NUMBER"
@@ -130,7 +130,7 @@
 	</tr>
 	<tr>
 		<td class="input_label">Land LineNo:</td>
-		<td>
+		<td align="left">
 			<html:text  property="isdCode" styleId="isd" styleClass="input_field" value="ISD"
 				onfocus="javascript:if(this.value=='ISD'){this.value=''};"
 				onblur="javascript:if(this.value==''){this.value='ISD';}"
@@ -148,16 +148,16 @@
 	</tr>
 	<tr>
 		<td class="input_label">Alternate Email:</td>
-		<td>
+		<td colspan="1" align="left">
 			<html:text property="alternateEmailID" styleClass="input_field" styleId="alternateEmailID" maxlength="50"/>
 			<div id="alternateEmailID_ErrMsg" style="display: none;color: red">Invalid EmailID </div>
 		</td>
 	</tr>	
 	<tr>
-		<td colspan="2"><strong>Hobbies:</strong></td>
+		<td colspan="2" align="left"><strong>Hobbies:</strong></td>
 	</tr>
 	<tr>
-		<td colspan="2">
+		<td colspan="2" align="left">
 			<html:textarea property="hobbies" cols="50" rows="3" styleClass="input_field" styleId="hobbies"/>
 			<div id="hobbies_ErrMsg" style="display: none;color: red">Invalid Entry </div>
 		</td>

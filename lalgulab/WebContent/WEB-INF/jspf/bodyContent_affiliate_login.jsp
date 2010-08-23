@@ -60,7 +60,7 @@
 		<td><bean:write name="FullRegistrationBean" property="roleName" /></td>
 	</tr>
 	<tr>
-		<td colspan="2" width="5"><strong>Contact Information: </strong></td>
+		<td colspan="2" align="left"><strong>Contact Information: </strong></td>
 	</tr>
 	<tr>
 		<td class="input_label">Address:<span style="color: red">&#42;</span></td>

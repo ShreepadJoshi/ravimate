@@ -1,1 +1,0 @@
-Agent right nav panel

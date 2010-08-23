@@ -6,11 +6,11 @@
 <center><span style="color: red;background-color:#F0F0FF "><html:errors/></span></center>
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="10" bgcolor="#F0F0FF">	
 	<tr>
-		<td width="29%" class="input_label">
+		<td  class="input_label">
 		<html:form action="/agentFullRegistration" method="post" styleId="registrationpage_formID" 
 		onsubmit="return validateAgentFullReg()">
 		First Name :<span style="color: red">&#42;</span></td>
-		<td width="10">
+		<td colspan="1" width="10">
 			<html:hidden property="roleId" value="4" />
 			<html:hidden property="isApproved" value="2" />
 			<html:hidden property="isFullregistration" value="1" />

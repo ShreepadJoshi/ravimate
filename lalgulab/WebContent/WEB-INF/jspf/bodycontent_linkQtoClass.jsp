@@ -11,13 +11,13 @@
 	
 	<tr>
 		<td width="35%" class="input_label">Question Id:</td>
-		<td colspan="3" align="left">
+		<td colspan="1" align="left">
 			<html:form action="/linkQtoClass" method="post">
 			 <html:text property="link_questionID" name="LinkQtoClassBean" styleClass = "input_field" maxlength="5" size="5" readonly="true"/>
 		</td>
 	</tr>
 	<tr>
-		<td class="input_label">Subject:</td><td colspan="3">
+		<td class="input_label" >Subject:</td><td colspan="3" align="left">
 			<!-- <html:text property="link_subject" name="LinkQtoClassBean" styleClass = "input_field" maxlength="50" size="35" readonly="true"/> -->
 			<html:select property="link_subject" name="LinkQtoClassBean" styleClass="input_field" disabled="disabled">
 				<html:optionsCollection property="subjectOptions" label="label" value="value"/>
@@ -26,18 +26,18 @@
 	</tr>
 	<tr>
 		<td class="input_label">Sub Topic:</td>
-		<td colspan="3">		
+		<td colspan="3" align="left">		
 			<html:text property="link_subtopic"  styleClass = "input_field"  maxlength="50" size="35" name="LinkQtoClassBean" readonly="true" />
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Question:</td>
-		<td colspan="3" >
+		<td colspan="3" align="left" >
 			<html:textarea property="link_question" rows="4" cols="50" styleClass = "input_field"  readonly="true" name="LinkQtoClassBean"/>			
 		</td>
 	</tr>
 	<tr>
-		<td colspan="5" align="right">		 
+		<td colspan="3" align="right">		 
 			<html:submit property="action" value="QuestionDetails" styleClass="url"/>
 		</td>
 	</tr>
