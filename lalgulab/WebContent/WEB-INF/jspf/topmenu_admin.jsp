@@ -8,15 +8,13 @@
 		UserSessionInfo  objUserinfo = 
 			(UserSessionInfo)( session.getAttribute(SessionConstants.user_info) == null ?
 									null : session.getAttribute(SessionConstants.user_info) );
-	   
-	   
-	   
-      	if( objUserinfo != null){%>
-      		<span class="input_field"><font size="2" color="red" style="font-family:Arial"><b><i>Welcome
-      		<%
-      			out.print(objUserinfo.getUserloginName());
-      		}%></i></b></font></span>&nbsp;
-      
+	   if( objUserinfo != null){%>
+	      	<table align="center" > <tr ><td colspan="1" align="center">
+				<span style="text-align:center;"><font size="4" color="red" style="font-family:Times New Roman"><b><i>Welcome
+	      		<%=objUserinfo.getUserloginName()%></i></b></font></span></td>
+	      	</tr></table>
+	      	&nbsp;<br>
+  		<%} %>    
       	<html:link styleClass="nav" action="/signOut">Home</html:link>
 		|
 		<html:link styleClass="nav" forward="aboutus">About Us</html:link>
@@ -34,8 +32,7 @@
 		<html:link styleClass="nav" forward="contactus">Contact Us</html:link>	
 		|
 		<html:link action="/signOut" >SignOut</html:link>
-      	<% if(objUserinfo == null) { 
-	System.out.println("----33333333333333333333----------------"+objUserinfo);%>
+      	<% if(objUserinfo == null) { %>
 		<html:link styleClass="nav" action="/signOut">Home</html:link>
 		|
 		<html:link styleClass="nav" forward="aboutus">About Us</html:link>
