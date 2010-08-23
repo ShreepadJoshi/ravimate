@@ -15,7 +15,8 @@
 <body>
 
 <!-- GLOBAL CONSTANTS USED IN JAVASCRIPT START HERE -->
-<input type="hidden" value="<html:rewrite page='/'/>" id="DOMAIN_NAME" />
+<input type="hidden" value="" id="DOMAIN_NAME" />
+<!--<input type="hidden" value="<html:rewrite page='/'/>" id="DOMAIN_NAME" /> -->
 
 <script type="text/javascript">
 	var DOMAIN_NAME = document.getElementById('DOMAIN_NAME').value;
