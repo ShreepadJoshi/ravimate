@@ -444,6 +444,12 @@
 			<forward name="success" path="tiles.findSchoolsResultPage" />
 		</action>
 		
+		<action path="/showStaticContent"
+			type="com.education.actions.ShowStaticContentAction" 
+			scope="request">
+			<forward name="faqPage" path="tiles.faqPage" />
+		</action>
+		
 
     </action-mappings>
 
