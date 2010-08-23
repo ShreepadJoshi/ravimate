@@ -1,0 +1,236 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color:#F0F0FF;
+	
+	background-repeat:no-repeat;
+	background-position:top right; 
+	margin-left:1px;
+}
+
+.bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+}
+.text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+.blue_bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #157fa2;
+	text-decoration: none;
+}
+.heading {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 15px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color:#157fa2;
+	text-decoration: none;
+}
+
+.white {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding:5px;
+}
+
+
+
+.url {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color: #16698b;
+    text-decoration:none;
+}
+
+.url:hover
+{   
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color:#000000;
+	text-decoration: underline;
+}
+#nav {
+	padding:10px;
+	}
+.nav {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration:none;
+	color: #000;
+}
+
+.nav:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration:none;
+	color: #1a7aa1;
+}
+
+.leftnavbg {
+	background-image:url(../images/left-navbg.jpg);
+	background-repeat:no-repeat;
+	background-position:left top;
+	padding-left:35px;
+}
+
+.servbg {
+	background-image:url(../images/service_bg.png); 
+	background-repeat:no-repeat;
+	background-position:left top;
+}
+
+.servbg:hover {
+	background-color:#C2E0FF;
+  	border:1px solid #0000ff;
+}
+
+.serv_heading {
+                  font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration:none;
+	color: #1a7aa1;
+}
+
+.servoverviewbg{
+	background-image:url(../images/serviceoverview_bg.png);
+	background-repeat:no-repeat;
+	background-position:left top;
+}
+
+.tborder {
+	border:1px solid #b9b9b9;
+
+}
+
+.input_label {
+	background-color:#C2E0FF;
+	text-align:right;
+	nowrap:nowrap;
+}
+
+.input_field {
+	background-color:#C2E0FF;
+	text-align:left;
+	cell-align:left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+}
+
+
+#table_style {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:70%;
+	text-align:center;
+	border-collapse:collapse;
+ }
+
+#table_style td, #table_style th {
+		font-size:1em;
+		border:1px solid #1A42D6;
+		padding:3px 7px 2px 7px;
+		background-color: #C2E0FF;
+		}
+
+#table_style th {
+		font-size:1.1em;
+		text-align:center;
+		padding-top:5px;
+		padding-bottom:4px;
+		background-color: #606DF2;
+		color:#ffffff;
+	}
+
+#table_style tr.alt td {
+		color:#000000;
+		background-color:#A0A0FF;
+	               }
+.button {
+		font-size:20px;
+		text-align:center;
+	}
+.RedBox {
+		background-color:#FF0000;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		text-align:center;
+		font-size:.8em;
+		font-weight: bold;
+		height:20px;
+		cursor:pointer;
+}
+
+.YellowBox {
+		background-color:#FFFF00;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		text-align:center;
+		font-size:.8em;
+		font-weight: bold;
+		height:20px;
+		cursor:pointer;
+}
+
+.GreenBox {
+		background-color:#00FF00 ;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		text-align:center;
+		font-size:.8em;
+		font-weight: bold;
+		height:20px;
+		cursor:pointer;
+}
