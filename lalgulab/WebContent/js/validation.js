@@ -150,11 +150,11 @@ function validateManageQ(){
 		var option4 = document.getElementById('option4').value;
 		var option5 = document.getElementById('option5').value;
 		var answer = document.getElementById('answer').value;
-		var explanation = document.getElementById('answerDiscription').value;
+		//var explanation = document.getElementById('answerDiscription').value;
 		var cert = document.getElementById('cert').value;
 		
-		//var questionComplexity = document.getElementById('complexity').value;
-		//alert("----questionComplexity-------"+questionComplexity);
+		var questionComplexity = document.getElementById('complexity').value;
+		
 		
 		// Handle Image Details
 		var question_Img = document.getElementById('questionImage').value;		
@@ -243,19 +243,19 @@ function validateManageQ(){
 			document.getElementById('cert_ErrMsg').style.display="none";
 		}
 		
-		//if(questionComplexity == null || questionComplexity == ""){
-			//document.getElementById('complexity_ErrMsg').style.display="";
-			//valResult = false;
-		//}else{
-			//document.getElementById('complexity_ErrMsg').style.display="none";
-		//}
-		
-		if(explanation == null || explanation == ""){
-			document.getElementById('explanation_ErrMsg').style.display="";
+		if(questionComplexity == null || questionComplexity == ""){
+			document.getElementById('complexity_ErrMsg').style.display="";
 			valResult = false;
 		}else{
-			document.getElementById('explanation_ErrMsg').style.display="none";
+			document.getElementById('complexity_ErrMsg').style.display="none";
 		}
+		
+		//if(explanation == null || explanation == ""){
+			//document.getElementById('explanation_ErrMsg').style.display="";
+		//	valResult = false;
+		//}else{
+			//document.getElementById('explanation_ErrMsg').style.display="none";
+		//}
 		// alert('valResult: '+valResult);
 		
 		return valResult;
