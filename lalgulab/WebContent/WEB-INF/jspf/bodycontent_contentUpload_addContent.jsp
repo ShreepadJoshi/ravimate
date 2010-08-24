@@ -33,7 +33,13 @@
 						<tr>
 							<td class="input_label">Class/Certificate<span
 								style="color: red">&#42;</span></td>
-								<td > <input type ="text" name= "uptClassId" value="<%=Class%>">
+								<td >
+							<html:select
+								styleId="uptClassId" property="uptClassId"
+								name="ContentUploadBean" styleClass="input_field"
+								onchange="populateDropdown('uptsubjectId','classId='+this.value,'subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
+								<html:optionsCollection property="classTypeOptions" label="label" value="value" />
+							</html:select>
 							
 							<div id="uptClassId_ErrMsg" style="display: none; color: red">Class
 							is Required</div>
@@ -117,7 +123,10 @@
 	<tr>
 		<td></html:form></td>
 	</tr>
-	
+	<script type="text/javascript">		
+			var varUptsubjectId = document.getElementById("uptsubjectId");			
+			populateDropdown('uptTopicId','subjectId='+varUptsubjectId.value,'topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD);
+	</script>
 </table>
 
 
