@@ -67,7 +67,7 @@
 			<tr>
 				<td class="input_label">Complexity:<span style="color: red">&#42;</span></td>
 				<td colspan="3">
-				<html:select styleClass="input_field" styleId="complexity" property="complexity" value="defaultComplexity">
+				<html:select styleClass="input_field" styleId="complexity" property="complexity" >
 					<html:optionsCollection property="complexityOptions" />
 				</html:select>	
 				<div id="complexity_ErrMsg" style="display:none;color: red" >Question complexity is Required</div>	
