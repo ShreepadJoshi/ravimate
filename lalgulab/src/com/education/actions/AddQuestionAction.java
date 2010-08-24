@@ -38,6 +38,12 @@ import org.expframework.data.ExceptionDisplayDTO;
  */
 public class AddQuestionAction extends EducationBaseAction{
 
+    /** 
+     * 
+     * @Updated on 24 Aug.
+     * now setting "Medium" as default complexity.
+     * @author Shree
+     */
     @Override
     public ActionForward displayAction(ActionMapping mapping, ActionForm aForm, HttpServletRequest request, HttpServletResponse response) throws Exception {
         
@@ -54,9 +60,10 @@ public class AddQuestionAction extends EducationBaseAction{
         addQuestionForm.setQuestionId(count);            
         UserSessionInfo objUserInfo =  (UserSessionInfo)request.getSession().getAttribute(SessionConstants.user_info);
     	addQuestionForm.setCreatedBy(objUserInfo.getUserloginName());
+    	if(addQuestionForm.getComplexity().equals(""))
+    		addQuestionForm.setComplexity("2");//setting default :D.
     	
-    	
-      //set drop down values
+        //set drop down values
         Utilities util =   new Utilities();
         addQuestionForm.setSubjectOptions(util.getDropdownValue(EducationConstant.SUBJECT_DROPDOWN_VALUE));
         addQuestionForm.setTopicOptions(util.getDropdownValue(EducationConstant.TOPICS_DROPDOWN_VALUE));
