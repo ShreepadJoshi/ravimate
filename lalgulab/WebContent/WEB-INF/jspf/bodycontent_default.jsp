@@ -3,7 +3,7 @@
 	cellspacing="0">
 	<tr>
 		<td width="33%" height="100" align="center" valign="middle" class="servbg">
-			<html:link forward="study_material" >
+			<html:link action="/showStudyMaterialStaticContent" >
 				<div style="padding: 12px;">
 					<span class="serv_heading">Study Material</span><br /><br />
 					<img src="<html:rewrite page='/images/study_material.jpg'/>"
@@ -13,7 +13,7 @@
 		<td align="left" valign="top"></td>
 		
 		<td width="33%" align="center" valign="middle" class="servbg">
-			<html:link forward="mind_mapping" >
+			<html:link action="/showMindMappingStaticContent">
 				<div style="padding: 12px;"><span class="serv_heading">	Mind Mapping </span><br /><br />
 					<img src="<html:rewrite page='/images/mind_map.jpg'/>" width="100"
 							 height="50" hspace="15" border="0" />
@@ -32,7 +32,7 @@
 
 	<tr>
 		<td width="31%" height="100" align="center" valign="middle" class="servbg">
-			<html:link forward="assessment" >
+			<html:link action="/showMindMappingStaticContent">
 				<div style="padding: 12px;"><span class="serv_heading">Assessment</span><br /><br />
 					<img src="<html:rewrite page='/images/Self_assessment.jpg'/>"
 							width="100" height="50" hspace="15" border="0" />
@@ -41,7 +41,7 @@
 		<td align="left" valign="top"></td>
 		
 		<td width="31%" align="center" valign="middle" class="servbg">
-			<html:link forward="parents_section" >
+			<html:link action="/showParentsSectionStaticContent">
 				<div style="padding: 12px;"><span class="serv_heading">Parent Section</span><br /><br />
 					<img src="<html:rewrite page='/images/parent_section.jpg'/>"
 					     width="100" height="50" hspace="15" border="0" />
@@ -50,7 +50,7 @@
 		<td align="left" valign="top"></td>
 		
 		<td width="31%" align="center" valign="middle" class="servbg">
-			<html:link forward="virtual_classrooms" >
+			<html:link action="/showVirtualClassroomStaticContent">
 				<div style="padding: 12px;"><span class="serv_heading">Virtual Classroom </span><br />
 					<img src="<html:rewrite page='/images/virtual_classroom.jpg'/>"
 							width="100" height="50" hspace="15" border="0" />
