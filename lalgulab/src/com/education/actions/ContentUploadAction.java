@@ -272,6 +272,9 @@ public class ContentUploadAction extends EducationBaseAction{
 	private void setAddPanelDropDowns(ContentUploadActionForm contentUploadBean)throws BaseAppException{
 		//set Topic and subTopic drop down value
 		Utilities util = new Utilities();
+		contentUploadBean.setUptsubjectId(contentUploadBean.getSch_subject());
+		contentUploadBean.setUptClassId(contentUploadBean.getSch_classType());
+		// ^ added this line to carry data to next page.
 		contentUploadBean.setTopicOptions(util.getDropdownValue(EducationConstant.TOPICS_DROPDOWN_VALUE));
 		contentUploadBean.setSubTopicOptions(util.getDropdownValue(EducationConstant.SUBTOPICS_DROPDOWN_VALUE));
 		//set class and subject drop down values
