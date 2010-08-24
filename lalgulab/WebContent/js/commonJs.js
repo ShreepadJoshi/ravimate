@@ -104,12 +104,7 @@ var xmlHttp;
 	/**
 	 * Functions populates the drop down value
 	 */
-	function populateDropdown(dropDownName,nameValuePair,listType,divID,onChangeEvent){
-		alert('In populateDropdown() nameValuePair: '+ nameValuePair);
-		alert('onChangeEvent: '+ onChangeEvent);
-		alert('divID: '+ divID);
-		alert('listType: '+ listType);
-		alert('dropDownName: '+ dropDownName);
+	function populateDropdown(dropDownName,nameValuePair,listType,divID,onChangeEvent){		
 		var splitVlaues = nameValuePair.split(",");
 		var values = "";
 		var optionList = "<option value=\"Mat\">Maths</option>"+
