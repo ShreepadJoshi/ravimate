@@ -11,7 +11,7 @@
 			</label>
 		</td>
 		<td colspan="1" height="30" align="right" valign="middle">
-			<a onclick="javascript:alert('do submit');document.getElementById('userListFormID').submit();">
+			<a onclick="javascript:document.getElementById('userListFormID').submit();">
 				<img border="0" src="<html:rewrite page="/images/search.jpg"/>"
 					valign="middle" alt="Search" width="20" height="20" />
 			</a>
