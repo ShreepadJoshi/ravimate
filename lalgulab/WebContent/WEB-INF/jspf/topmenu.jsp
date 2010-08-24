@@ -15,9 +15,9 @@ UserSessionInfo  objUserinfo =
       	&nbsp;<br>
 		<html:link styleClass="nav" forward="home">Home</html:link>
 		|
-		<html:link styleClass="nav" forward="aboutus">About Us</html:link>
+		<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
 		|
-		<html:link styleClass="nav" forward="contactus">Contact Us</html:link>
+		<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>
 		|
 		<html:link action="/signOut" >SignOut</html:link>
 	<% } else if(objUserinfo == null) {
@@ -25,7 +25,7 @@ UserSessionInfo  objUserinfo =
 
 		<html:link styleClass="nav" forward="home">Home</html:link>
 		|
-		<html:link styleClass="nav" forward="aboutus">About Us</html:link>
+		<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
 		|
 		<html:link styleClass="nav" action="/affiliate">Affiliates</html:link>
 		|
@@ -35,9 +35,9 @@ UserSessionInfo  objUserinfo =
 		|
 		<html:link styleClass="nav" action="/reviewer">Reviewer</html:link>
 		|
-		<html:link styleClass="nav" forward="faq">FAQ</html:link>
+		<html:link styleClass="nav" action="/showFaqStaticContent">FAQ</html:link>
 		|
-		<html:link styleClass="nav" forward="contactus">Contact Us</html:link>
+		<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>
 	
 <%} else if((objUserinfo != null) && (!objUserinfo.getFirstName().equals("")) && (objUserinfo.getRoleId().equals(EducationConstant.ADMIN_USER_ROLE)) || (objUserinfo.getRoleId().equals(EducationConstant.GUEST_USER_ROLE))) {%>
 	<table align="center"  > <tr ><td colspan="4" align="right">
@@ -52,7 +52,7 @@ UserSessionInfo  objUserinfo =
 	<html:link styleClass="nav" forward="home">Home</html:link>
 	|
 	<%}%>
-	<html:link styleClass="nav" forward="aboutus">About Us</html:link>
+	<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
 	|
 	<html:link styleClass="nav" action="/affiliate">Affiliates</html:link>
 	|
@@ -62,15 +62,15 @@ UserSessionInfo  objUserinfo =
 	|
 	<html:link styleClass="nav" action="/reviewer">Reviewer</html:link>
 	|
-	<html:link styleClass="nav" forward="faq">FAQ</html:link>
+	<html:link styleClass="nav" action="/showFaqStaticContent">FAQ</html:link>
 	|
-	<html:link styleClass="nav" forward="contactus">Contact Us</html:link>
+	<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>
 	|
 		<html:link action="/signOut" >SignOut</html:link>
 <%} else {%>
 	<html:link styleClass="nav" forward="home">Home</html:link>
 	|
-	<html:link styleClass="nav" forward="aboutus">About Us</html:link>
+	<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
 	|
 	<html:link styleClass="nav" action="/affiliate">Affiliates</html:link>
 	|
@@ -80,9 +80,9 @@ UserSessionInfo  objUserinfo =
 	|
 	<html:link styleClass="nav" action="/reviewer">Reviewer</html:link>
 	|
-	<html:link styleClass="nav" forward="faq">FAQ</html:link>
+	<html:link styleClass="nav" action="/showFaqStaticContent">FAQ</html:link>
 	|
-	<html:link styleClass="nav" forward="contactus">Contact Us</html:link>
+	<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>
 <%}%>
 
 
