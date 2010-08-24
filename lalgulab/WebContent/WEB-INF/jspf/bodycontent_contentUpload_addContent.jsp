@@ -22,8 +22,7 @@
 					<display:table id="row" name="contentUpload.pgSearchResults" requestURI="/contentUpload.do">
 				<display:column style="width:50" title="Class">
 					<html:select property="classList" name="ContentUploadBean" styleClass="input_field"
-							value="<%=((ContentUploadTO)row).getClassId()%>">
-							<%System.out.println("Class Id--------------"+((ContentUploadTO)row).getClassId()); %>
+							value="<%=((ContentUploadTO)row).getClassId()%>">							
 						<html:optionsCollection property="classTypeOptions" label="label" value="value"/>
 					</html:select>					
 				</display:column>
