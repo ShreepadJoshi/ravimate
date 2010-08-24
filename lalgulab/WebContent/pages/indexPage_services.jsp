@@ -11,7 +11,7 @@
 	<tr><td>&nbsp;</td></tr>	
 	<tr>
 		<td width="192" height="22" align="left" valign="middle">
-			<html:link forward="study_material" styleClass="url" >Study Material</html:link>
+			<html:link action="/showStudyMaterialStaticContent" styleClass="url" >Study Material</html:link>
 		</td>
 	</tr>
 	<tr>
@@ -19,7 +19,7 @@
 	</tr>
 	<tr>
 		<td width="192" height="22" align="left" valign="middle">			
-			 <html:link forward="mind_mapping" styleClass="url" >Mind Mapping</html:link>
+			 <html:link action="/showMindMappingStaticContent"  styleClass="url" >Mind Mapping</html:link>
 		</td>
 	</tr>
 	<tr>
@@ -35,7 +35,7 @@
 	</tr>
 	<tr>
 		<td width="192" height="22" align="left" valign="middle" >
-			 <html:link forward="assessment" styleClass="url" >Assessment</html:link>
+			 <html:link action="/showAssessmentStaticContent" styleClass="url" >Assessment</html:link>
 		</td>
 	</tr>
 	<tr>
@@ -43,7 +43,7 @@
 	</tr>
 	<tr>
 		<td width="192" height="22" align="left" valign="middle" >
-			<html:link forward="parents_section" styleClass="url" >Parent Section</html:link>
+			<html:link action="/showParentsSectionStaticContent" styleClass="url" >Parent Section</html:link>
 		</td>
 	</tr>
 	<tr>
@@ -51,7 +51,7 @@
 	</tr>
 	<tr>
 		<td width="192" height="22" align="left" valign="middle" >			
-			<html:link forward="virtual_classrooms" styleClass="url" >Virtual Classrooms</html:link>
+			<html:link action="/showVirtualClassroomStaticContent" styleClass="url" >Virtual Classrooms</html:link>
 		</td>
 	</tr>
 	<tr>
