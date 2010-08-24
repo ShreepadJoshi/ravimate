@@ -1,3 +1,7 @@
+
+<%@page import="com.education.Session.UserSessionInfo"%>
+<%@page import="com.education.Session.SessionConstants"%>
+<%@page import="com.education.util.EducationConstant"%>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@page import="com.education.util.EducationConstant"%>
@@ -62,4 +66,13 @@
 	
 	</html:form>
 	</table>
-	
+	<%
+UserSessionInfo  objUserinfo = 
+	(UserSessionInfo)( session.getAttribute(SessionConstants.user_info) == null ?
+							null : session.getAttribute(SessionConstants.user_info) );
+if(objUserinfo != null) {
+	objUserinfo.setRoleId(EducationConstant.GUEST_USER_ROLE);
+} else if(objUserinfo == null) {
+	objUserinfo = new UserSessionInfo();
+	objUserinfo.setRoleId(EducationConstant.GUEST_USER_ROLE);
+}%>

@@ -1,3 +1,7 @@
+
+<%@page import="com.education.Session.UserSessionInfo"%>
+<%@page import="com.education.Session.SessionConstants"%>
+<%@page import="com.education.util.EducationConstant"%>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@taglib uri="http://displaytag.sf.net" prefix="display" %>    
 <%@page import="java.util.List"%>
@@ -7,7 +11,7 @@
 %>
 <display:table name="findSchool.pgSearchResults" id="row" requestURI="/findSchool.do" pagesize="10" decorator="org.displaytag.decorator.TotalTableDecorator">
 <%a = ((TSchool)row).getSchoolId(); %>
-	<display:column property="schoolName" title="School Name"  href="javascript:display_schoolDetails(2)"/> 
+	<display:column property="schoolName" decorator="com.education.displaytag.SchoolLinkWrapper" title="School Name" />
 	<display:column property="schoolBoard" title="Board" />
 	<display:column property="schoolId" title="ID" />
 	<display:column property="schoolDistrict" title="District"/>
