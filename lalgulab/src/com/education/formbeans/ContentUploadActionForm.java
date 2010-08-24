@@ -53,8 +53,16 @@ public class ContentUploadActionForm extends ActionForm {
     private FormFile contentFileStream = null;
     private FormFile suppFileStream = null;
     
+    private String selectedClass = ""; 
+    
 	
-    public String getSch_subject() {
+    public String getSelectedClass() {
+		return selectedClass;
+	}
+	public void setSelectedClass(String selectedClass) {
+		this.selectedClass = selectedClass;
+	}
+	public String getSch_subject() {
 		return sch_subject;
 	}
 	public void setSch_subject(String sch_subject) {
