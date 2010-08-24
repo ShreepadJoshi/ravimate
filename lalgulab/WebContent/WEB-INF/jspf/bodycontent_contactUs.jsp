@@ -17,7 +17,7 @@
 <tr height="20"><td style="color:#2B476E; font-size: medium;" style="padding-left:20px;">Email: ghaziabad@ezeelearning.com</td></tr>   
 <tr height="30"><td></td></tr>
 <tr><td width="192" height="22" align="left" valign="middle"  style="color:#F62B41; font-size: medium;" style="padding-left:20px;">
-			 <html:link forward="mgmtDetails" styleClass="url" ><b>Management Team</b></html:link>
+			 <html:link action="/showMgmtDetailsStaticContent" styleClass="url" ><b>Management Team</b></html:link>
 		</td></tr>
 
 
