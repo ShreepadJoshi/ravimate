@@ -165,8 +165,20 @@ function login() {
     );            
     ModalPopups.GetCustomControl("login_username").focus(); 
 }
-function display_schoolDetails(list) {
-	
+function display_schoolDetails() {
+	 var table = document.getElementById("row");
+	    var rows = table.getElementsByTagName("tr");
+	    "<table align='left'>"
+	    for (i = 1; i < rows.length; i++) {
+	       var column =  rows[i].getElementsByTagName("td");
+	       "<tr>"
+	       for(j=1;j<column.length;j++) {
+	    	   "<td>"+column[j].value+"</td>";
+	       }
+	       "</tr>" 
+	    }
+	    "</table>"
+
 	
 	setPopupDefaults();
 	ModalPopups.Custom("popup_SchoolDetails",
