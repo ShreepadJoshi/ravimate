@@ -89,7 +89,11 @@ public class FullRegistrationAction extends EducationBaseAction{
     		
     	/*	if (registrationForm!=null && registrationForm.equals(EducationConstant.AGENT_REG_FORM))
     			return mapping.findForward("agentRegFormCreateMode");*/
-    		if(registrationForm != null && registrationForm.length() > 0) {
+    		if(registrationForm != null && objUserinfo.getFirstName().equals("")){
+    			//Here user going for FullRegistration    			
+    			actionPage = "createMode";
+    			//TODO testing of this block is not done.
+    		}else if(registrationForm != null && registrationForm.length() > 0) {
 	    		switch(Integer.parseInt(registrationForm))
 	    		{
 	    		case 2: actionPage = "teacherUserListPage";break;
