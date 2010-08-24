@@ -444,10 +444,59 @@
 			<forward name="success" path="tiles.findSchoolsResultPage" />
 		</action>
 		
-		<action path="/showStaticContent"
-			type="com.education.actions.ShowStaticContentAction" 
+		
+		
+		
+		<action path="/showContactUsStaticContent"
+			type="com.education.actions.ShowContactUsStaticContentAction" 
+			scope="request">
+			<forward name="contactus" path="tiles.contactUsPage" />
+		</action>
+		
+		<action path="/showFaqStaticContent"
+			type="com.education.actions.ShowFaqStaticContentAction" 
 			scope="request">
 			<forward name="faqPage" path="tiles.faqPage" />
+		</action>
+		
+		<action path="/showMgmtDetailsStaticContent"
+			type="com.education.actions.ShowMgmtDetailsStaticContentAction" 
+			scope="request">
+			<forward name="mgmtDetailPage" path="tiles.mgmtDetailPage" />
+		</action>
+		
+		<action path="/showMindMappingStaticContent"
+			type="com.education.actions.ShowMindMappingStaticContentAction" 
+			scope="request">
+			<forward name="mindMappingPage" path="tiles.mindMappingPage" />
+		</action>
+		<action path="/showAssessmentStaticContent"
+			type="com.education.actions.ShowAssessmentStaticContentAction" 
+			scope="request">
+			<forward name="assessmentPage" path="tiles.assessmentPage" />
+		</action>
+		
+		<action path="/showParentsSectionStaticContent"
+			type="com.education.actions.ShowParentsSectionStaticContentAction" 
+			scope="request">
+			<forward name="parentSectionPage" path="tiles.parentSectionPage" />
+		</action>
+		
+		<action path="/showVirtualClassroomStaticContent"
+			type="com.education.actions.ShowVirtualClassroomStaticContentAction" 
+			scope="request">
+			<forward name="virtualClassroomPage" path="tiles.virtualClassroomPage" />
+		</action>
+		<action path="/showAboutUsStaticContent"
+			type="com.education.actions.ShowAboutUsStaticContentAction" 
+			scope="request">
+			<forward name="aboutUsPage" path="tiles.aboutUsPage" />
+		</action>
+		
+		<action path="/showStudyMaterialStaticContent"
+			type="com.education.actions.ShowStudyMaterialStaticContentAction" 
+			scope="request">
+			<forward name="StudyMaterialPage" path="tiles.StudyMaterialPage" />
 		</action>
 		
 
