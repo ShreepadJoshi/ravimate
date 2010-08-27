@@ -66,13 +66,69 @@ public class QuestionBankService {
 		return oracleQuestionbankDAO.getQuestionsCount(classID, subject,
 				status, topic,frmDate,toDate,isGraphics);
 	}
+	
+	
+	/**
+	 * for TEACHER
+	 * @param classID
+	 * @param subject
+	 * @param status
+	 * @param topic
+	 * @param frmDate
+	 * @param toDate
+	 * @param isGraphics
+	 * @return
+	 * @throws BaseAppException
+	 */
+	public int getQuestionsCount(String classID, String subject, String status,
+			String topic,String frmDate,String toDate,Integer isGraphics, int userId) throws BaseAppException{
 
+		OracleQuestionbankDAO oracleQuestionbankDAO = new OracleQuestionbankDAO();
+		return oracleQuestionbankDAO.getQuestionsCount(classID, subject,
+				status, topic,frmDate,toDate,isGraphics,userId);
+	}
+
+	/** for Admin
+	 * @param classID
+	 * @param subject
+	 * @param status
+	 * @param topic
+	 * @param frmDate
+	 * @param toDate
+	 * @param isGraphics
+	 * @param frmRecord
+	 * @param noOfRecords
+	 * @return
+	 * @throws BaseAppException
+	 */
 	public ArrayList getQuestions(String classID, String subject,
 			String status, String topic,String frmDate,String toDate,
 			Integer isGraphics,int frmRecord, int noOfRecords) throws BaseAppException{
 		OracleQuestionbankDAO oracleQuestionbankDAO = new OracleQuestionbankDAO();
 		return oracleQuestionbankDAO.getQuestions(classID, subject, status,
 				topic,frmDate,toDate,isGraphics, frmRecord, noOfRecords);
+	}
+	
+	/**
+	 * for TEACHER
+	 * @param classID
+	 * @param subject
+	 * @param status
+	 * @param topic
+	 * @param frmDate
+	 * @param toDate
+	 * @param isGraphics
+	 * @param frmRecord
+	 * @param noOfRecords
+	 * @return
+	 * @throws BaseAppException
+	 */
+	public ArrayList getQuestions(String classID, String subject,
+			String status, String topic,String frmDate,String toDate,
+			Integer isGraphics,int frmRecord, int noOfRecords, int userId) throws BaseAppException{
+		OracleQuestionbankDAO oracleQuestionbankDAO = new OracleQuestionbankDAO();
+		return oracleQuestionbankDAO.getQuestions(classID, subject, status,
+				topic,frmDate,toDate,isGraphics, frmRecord, noOfRecords, userId);
 	}
 
 	public int deleteQuestionbyId(String[] qIds)throws BaseAppException {
