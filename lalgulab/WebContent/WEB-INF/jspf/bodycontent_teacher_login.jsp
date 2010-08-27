@@ -12,9 +12,16 @@
 <tr>
 	<td width="192" height="22" align="left" valign="middle"
 		class="">		
-		<html:link forward="manageQuestionLink" styleClass="url">Manage Question</html:link>
+		<html:link forward="manageQuestionLink" styleClass="url">add Question</html:link>		
  	</td>
 </tr>
+<tr>
+	<td width="192" height="22" align="left" valign="middle"
+		class="">		
+		<html:link forward="adminQuestionList" styleClass="url">Manage Question</html:link>		
+ 	</td>
+</tr>
+
 </table>
 
 
