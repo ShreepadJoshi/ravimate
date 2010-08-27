@@ -18,6 +18,7 @@ import org.expframework.data.ExceptionDisplayDTO;
 import org.expframework.exceptions.BaseAppException;
 
 import com.education.Session.SessionConstants;
+import com.education.Session.UserSessionInfo;
 import com.education.formbeans.AdminQuestionListActionForm;
 import com.education.services.QuestionBankService;
 import com.education.transferobj.QuestionBankTO;
@@ -170,19 +171,41 @@ public class AdminQuestionListAction extends EducationBaseAction {
 				IExtendedPaginatedList thePage) throws BaseAppException{
 		thePage = thePage == null ? getPaginatedListFromRequest(request) : thePage ;
 		
+		UserSessionInfo  userSessionInfo = getUserInfoObject_FromSession(request);
+		int userId = userSessionInfo.getUserId();
+		String roleId = userSessionInfo.getRoleId();
+		
 		//call DAO service
+		
 		QuestionBankService service = new QuestionBankService();
-		int totalNoOfRecords = service.getQuestionsCount(questionBean.getSch_classType(),questionBean.getSch_subject(),
+		int totalNoOfRecords = 0;
+		if (roleId.equals(EducationConstant.TEACHER_USER_ROLE)){
+				totalNoOfRecords = service.getQuestionsCount(questionBean.getSch_classType(),questionBean.getSch_subject(),
 				questionBean.getSch_questionStatus(),questionBean.getSch_topic(),
-				questionBean.getSch_fromDate(),questionBean.getSch_toDate(),questionBean.getSch_isGraphics());		
+				questionBean.getSch_fromDate(),questionBean.getSch_toDate(),questionBean.getSch_isGraphics(),userId);		
+		}else{		
+			//must be in adimin role
+			totalNoOfRecords = service.getQuestionsCount(questionBean.getSch_classType(),questionBean.getSch_subject(),
+				questionBean.getSch_questionStatus(),questionBean.getSch_topic(),
+				questionBean.getSch_fromDate(),questionBean.getSch_toDate(),questionBean.getSch_isGraphics());
+		}
 		int frmRecord = thePage.getFirstRecordIndex();
 		int noOfRecords = thePage.getPageSize();		
 		thePage.setTotalNumberOfRows(totalNoOfRecords);
 		
-		ArrayList searchResults = service.getQuestions(questionBean.getSch_classType(),
+		ArrayList searchResults = new ArrayList();
+		if (roleId.equals(EducationConstant.TEACHER_USER_ROLE)){
+		       searchResults = service.getQuestions(questionBean.getSch_classType(),
 				questionBean.getSch_subject(),questionBean.getSch_questionStatus(),
 				questionBean.getSch_topic(),questionBean.getSch_fromDate(),questionBean.getSch_toDate(),
-				questionBean.getSch_isGraphics(), frmRecord,noOfRecords);
+				questionBean.getSch_isGraphics(), frmRecord,noOfRecords, userId);
+		}else{
+			searchResults = service.getQuestions(questionBean.getSch_classType(),
+					questionBean.getSch_subject(),questionBean.getSch_questionStatus(),
+					questionBean.getSch_topic(),questionBean.getSch_fromDate(),questionBean.getSch_toDate(),
+					questionBean.getSch_isGraphics(), frmRecord,noOfRecords);
+		}
+		
 		thePage.setList(searchResults);
 		questionBean.setPgSearchResults(thePage);
 		
@@ -200,11 +223,14 @@ public class AdminQuestionListAction extends EducationBaseAction {
      * Return true for user as Admin Role
      */
     protected boolean hasValidPermission(HttpServletRequest request) {    	
-    	String strRole = getUserRoleFromSession(request);    	
-    	if(strRole==null || !strRole.equals(EducationConstant.ADMIN_USER_ROLE))
-    		return false;
-    	else
+    	String strRole = getUserRoleFromSession(request);
+    	boolean result = false;
+    	if(strRole==null ){
+    	}
+    	else if (strRole.equals(EducationConstant.ADMIN_USER_ROLE) || strRole.equals(EducationConstant.TEACHER_USER_ROLE)){
     		return true;
+    	}
+    	return result;
     }
 
 	private void restoreSearchCriteria(HttpServletRequest request, AdminQuestionListActionForm adminQBean){
