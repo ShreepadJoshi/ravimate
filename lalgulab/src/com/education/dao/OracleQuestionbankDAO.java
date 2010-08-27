@@ -400,6 +400,141 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 		}
 		return questionList;
 	}
+	
+	
+	/** for TEACHER
+	 * @param classID
+	 * @param subject
+	 * @param statusId
+	 * @param topic
+	 * @param frmDate
+	 * @param toDate
+	 * @param isGraphics
+	 * @param frmRecord
+	 * @param totalNoOfRecords
+	 * @return
+	 * @throws BaseAppException
+	 */
+	public ArrayList getQuestions(String classID, String subject,
+			String statusId, String topic, String frmDate, String toDate,
+			Integer isGraphics, int frmRecord, int totalNoOfRecords, int userID) throws BaseAppException {
+
+		String where = "";
+		String where1 = " where a.questionid=b.questionid "
+				+ " and a.topicId=topic.topicId "
+				+ " and a.subTopicId=subTopic.subTopicId ";
+		String where2 = " where a.questionid=d.questionid "
+				+ " and a.topicId=topic.topicId "
+				+ " and a.subTopicId=subTopic.subTopicId ";
+
+		String fromClause1 = " From t_question_bank a ,t_text_question b,"
+				+ " t_topics topic,t_subtopics subTopic ";
+		String fromClause2 = " From t_question_bank a ,t_picture_question d,"
+				+ " t_topics topic,t_subtopics subTopic ";
+
+		String limit = " Limit " + frmRecord + "," + totalNoOfRecords + " ";
+
+		if (null != classID && !classID.equalsIgnoreCase("")) {
+
+			fromClause1 += ",t_class_question_link c ";
+			fromClause2 += ",t_class_question_link c ";
+			where1 += " and c.questionid=a.questionid "
+					+ " and c.classcertid='" + classID + "' ";
+			where2 += " and c.questionid=a.questionid "
+					+ " and c.classcertid='" + classID + "' ";
+		}
+		if (null != subject && !subject.equalsIgnoreCase("")) {
+			where = where + " and a.subject='" + subject + "'";
+		}
+		if (null != statusId && !statusId.equalsIgnoreCase("")) {
+			where = where + " and a.QuestionStatusId=" + statusId;
+		}
+		if (null != topic && !topic.equalsIgnoreCase("")) {
+			where = where + " and a.topicId='" + topic + "'";
+		}
+		if (null != frmDate && !frmDate.equalsIgnoreCase("")) {
+			where = where
+					+ " and a.createdOn >= '"
+					+ Utilities.getDate_DBFormat(frmDate,
+							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
+		}
+		if (null != toDate && !toDate.equalsIgnoreCase("")) {
+			where = where
+					+ " and a.createdOn <= '"
+					+ Utilities.getDate_DBFormat(toDate,
+							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
+		}
+		if (null != isGraphics && isGraphics != 0) {
+			where = where + " and a.IsGraphics = " + isGraphics.intValue();
+		}
+		where = where  + " and a.CreatedBy='" + userID + "' "; 
+		where1 = where1 + where + limit;
+		where2 = where2 + where + limit;
+
+		String sql = "select a.QuestionId,a.Subject,topic.topicId,topic.topicValue,subTopic.subTopicId,subTopic.subTopicValue,a.IsGraphics,"
+				+ "a.Answer,a.QuestionStatusId,a.IsVerified,a.CreatedBy,a.CreatedOn,a.VerifiedBy,a.VerificationRemark,"
+				+ "b.Description,b.Option_1,b.Option_2,b.Option_3,b.Option_4,b.Option_5,b.AnswerExplanation "
+				+ fromClause1
+				+ " "
+				+ where1
+				+ " UNION ALL "
+				+ "select a.QuestionId,a.Subject,topic.topicId,topic.topicValue,subTopic.subTopicId,subTopic.subTopicValue,a.IsGraphics,"
+				+ "a.Answer,a.QuestionStatusId,a.IsVerified,a.CreatedBy,a.CreatedOn,a.VerifiedBy,a.VerificationRemark,"
+				+ "d.Description,d.Option_1,d.Option_2,d.Option_3,d.Option_4,d.Option_5,d.AnswerExplanation "
+				+ fromClause2 + " " + where2;
+
+		Connection con = null;
+		PreparedStatement psmt;
+		ResultSet rs;
+		ArrayList questionList = new ArrayList();
+
+		try {
+			con = GetConnection.getSimpleConnection();
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			int i = 0;
+			while (rs.next()) {
+
+				QuestionBankTO questionBankTO = new QuestionBankTO();
+				questionBankTO.setAnswer(rs.getString("answer"));
+				questionBankTO.setAnswerDiscription(rs
+						.getString("AnswerExplanation"));
+				questionBankTO.setCreatedBy(rs.getString("createdBy"));
+				questionBankTO.setIsGraphics(rs.getInt("isGraphics"));
+				questionBankTO.setIsVerified(rs.getInt("isVerified"));
+				questionBankTO.setOption1(rs.getString("option_1"));
+				questionBankTO.setOption2(rs.getString("option_2"));
+				questionBankTO.setOption3(rs.getString("option_3"));
+				questionBankTO.setOption4(rs.getString("option_4"));
+				questionBankTO.setOption5(rs.getString("option_5"));
+				questionBankTO.setQuestion(rs.getString("Description"));
+				questionBankTO.setQuestionId(rs.getInt("questionId"));
+				questionBankTO.setQuestionStatusId(rs
+						.getInt("QuestionStatusId"));
+				questionBankTO.setSubject(rs.getString("subject"));
+				questionBankTO.setSubTopic(rs.getString("subTopicValue"));
+				questionBankTO.setTopic(rs.getString("topicValue"));
+				questionBankTO.setVerificationRemark(rs
+						.getString("verificationRemark"));
+				questionBankTO.setVerifiedBy(rs.getString("verifiedBy"));
+				questionBankTO.setCreatedOn(rs.getString("CreatedOn"));
+				questionBankTO.setTopicId(rs.getString("topicId"));
+				questionBankTO.setSubTopicId(rs.getString("subTopicId"));
+				questionList.add(questionBankTO);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				if(con != null)
+					con.close();
+			} catch (SQLException e) {
+				throw new DBDataSourceException(e.getMessage());
+			}
+		}
+		return questionList;
+	}
 
 	// method to get question list
 	public int getQuestionsCount(String classID, String subject,
@@ -442,6 +577,96 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 		if (null != isGraphics && isGraphics != 0) {
 			where = where + " and a.IsGraphics = " + isGraphics.intValue();
 		}
+		where1 = where1 + where;
+		where2 = where2 + where;
+		String sql = "select count(temp.questionid) as rowcount from "
+				+ "( select a.questionid from t_question_bank a , t_text_question b "
+				+ where1
+				+ " union all "
+				+ "select a.questionid from t_question_bank a ,t_picture_question d "
+				+ where2 + " ) " + "as temp";
+
+		Connection con = null;
+		PreparedStatement psmt = null;
+		ResultSet rs;
+		int rowcount = 0;
+
+		try {
+			con = GetConnection.getSimpleConnection();
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				rowcount = rs.getInt("rowcount");
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				if(con != null)
+					con.close();
+			} catch (SQLException e) {
+				throw new DBDataSourceException(e.getMessage());
+			}
+		}
+		return rowcount;
+	}
+	
+	
+	/**
+	 *  for TEACHER
+	 * @param classID
+	 * @param subject
+	 * @param statusId
+	 * @param topic
+	 * @param frmDate
+	 * @param toDate
+	 * @param isGraphics
+	 * @param userId
+	 * @return
+	 * @throws BaseAppException
+	 */
+	public int getQuestionsCount(String classID, String subject,
+			String statusId, String topic, String frmDate, String toDate,
+			Integer isGraphics, int userId) throws BaseAppException {
+
+		String where = "";
+		String where1 = " where a.questionid=b.questionid ";
+		String where2 = " where a.questionid=d.questionid ";
+		if (null != classID && !classID.equalsIgnoreCase("")) {
+
+			where1 = ",t_class_question_link c where c.questionid=a.questionid"
+					+ " and c.questionid=b.questionid "
+					+ " and c.classcertid='" + classID + "'";
+			where2 = ",t_class_question_link c where c.questionid=a.questionid"
+					+ " and c.questionid=d.questionid "
+					+ " and c.classcertid='" + classID + "'";
+		}
+		if (null != subject && !subject.equalsIgnoreCase("")) {
+			where = where + " and a.subject='" + subject + "'";
+		}
+		if (null != statusId && !statusId.equalsIgnoreCase("")) {
+			where = where + " and a.QuestionStatusId=" + statusId;
+		}
+		if (null != topic && !topic.equalsIgnoreCase("")) {
+			where = where + " and a.topicId='" + topic + "'";
+		}
+		if (null != frmDate && !frmDate.equalsIgnoreCase("")) {
+			where = where
+					+ " and a.createdOn >= '"
+					+ Utilities.getDate_DBFormat(frmDate,
+							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
+		}
+		if (null != toDate && !toDate.equalsIgnoreCase("")) {
+			where = where
+					+ " and a.createdOn <= '"
+					+ Utilities.getDate_DBFormat(toDate,
+							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
+		}
+		if (null != isGraphics && isGraphics != 0) {
+			where = where + " and a.IsGraphics = " + isGraphics.intValue();
+		}
+		where = where + " and a.CreatedBy='" + userId + "' ";
 		where1 = where1 + where;
 		where2 = where2 + where;
 		String sql = "select count(temp.questionid) as rowcount from "
