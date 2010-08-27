@@ -12,8 +12,7 @@
 <display:table name="findSchool.pgSearchResults" id="row" requestURI="/findSchool.do" pagesize="10" decorator="org.displaytag.decorator.TotalTableDecorator">
 <%a = ((TSchool)row).getSchoolId(); %>
 	<display:column property="schoolName" decorator="com.education.displaytag.SchoolLinkWrapper" title="School Name" />
-	<display:column property="schoolBoard" title="Board" />
-	<display:column property="schoolId" title="ID" />
+	<display:column property="schoolBoard" title="Board" />	
 	<display:column property="schoolDistrict" title="District"/>
 	<display:column property="schoolState" title="State"/>
 	<display:column property="schoolPostalAddr" title="Postal Addr"/>
