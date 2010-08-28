@@ -17,14 +17,12 @@ public class TestGenerationService {
 	 * Checks Question bank DB if it has Questions count required to sample Test
 	 * @param classID - classId for which SampleTest needs to be generated
 	 * @param sampleTestPaperQCount - Sample Test papaer question count
-	 * @return boolean true /false
+	 * @return boolean true /false 
 	 */
 	public boolean isSampleTestValid_forClassId(int classID,int subjectId,int sampleTestPaperQCount)throws BaseAppException{
 		boolean isQuestionBank_shortOfQeustions = false;
 		OracleTestDAO dao = new OracleTestDAO();
 		int questionCount = dao.getSampleTestQuestionCount_ByClassID(classID,subjectId);
-		System.out.println("sampleTestPaperQCount----------------"+sampleTestPaperQCount);
-		System.out.println("questionCount----------------"+questionCount);
 		if(questionCount < sampleTestPaperQCount)
 			isQuestionBank_shortOfQeustions = false;
 		else
