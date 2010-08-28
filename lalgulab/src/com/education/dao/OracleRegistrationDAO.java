@@ -64,6 +64,7 @@ public class OracleRegistrationDAO extends AbstractDAO{
 		// TODO : Make it update query for full registration .
 		UserTO userTo = new UserTO();
 		Connection con = null;
+		String password = getPassword(rto.getEmailID());
 		String fullReg_Q = " insert into t_user (EmailId, RoleId, Password, Address1,PIN,"
 				+ " Country,PhoneSTD,PhoneISD,Landline,"
 				+ " MobileNumber,AlternateEmailId, FirstName, "
@@ -81,7 +82,7 @@ public class OracleRegistrationDAO extends AbstractDAO{
 				psmt = con.prepareStatement(fullReg_Q);
 				psmt.setString(1, rto.getEmailID());
 				psmt.setInt(2, rto.getRoleId());
-				psmt.setString(3, rto.getPassword());
+				psmt.setString(3, password);
 				psmt.setString(4, rto.getAddress1());
 				psmt.setString(5, rto.getPin());
 				psmt.setString(6, rto.getCountry());
@@ -114,7 +115,7 @@ public class OracleRegistrationDAO extends AbstractDAO{
 			//}
 			
 			//Get Logged In user Details For Application to use
-			userTo = getloginDetails(rto.getEmailID(),rto.getPassword());			
+			userTo = getloginDetails(rto.getEmailID(),password);			
 			
 		}catch (MySQLIntegrityConstraintViolationException e) {
 			throw new DBIntegrityViolationException(e.getMessage());
@@ -716,6 +717,34 @@ public class OracleRegistrationDAO extends AbstractDAO{
 		}
 		return password;
 	}
-
 	
+	private String getPassword(String EmailId)throws BaseAppException {
+        boolean flag = false;        
+        Connection con;
+        PreparedStatement psmt = null;
+        ResultSet rs;
+        String sql = "SELECT Password FROM t_user"+
+        			 " WHERE EmailId='" + EmailId +"'";
+        try {
+            con = GetConnection.getSimpleConnection();
+            psmt = con.prepareStatement(sql);
+            rs = psmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("password");                
+            }
+
+        } catch (SQLException sqld) {
+            throw new RuntimeException(sqld);
+        } finally {
+            try {
+                if (null != psmt) {
+                    psmt.close();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return "";
+
+	}
 }
