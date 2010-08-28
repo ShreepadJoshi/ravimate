@@ -70,9 +70,9 @@ public final class GetConnection {
     //See your driver documentation for the proper format of this string :
     DB_CONN_STRING = config.get("connstring");
     //Provided by your driver documentation. In this case, a MySql driver is used : 
-    DRIVER_CLASS_NAME = config.get("driverClassName");
-     USER_NAME = config.get("userName");
-     PASSWORD = config.get("password");
+    DRIVER_CLASS_NAME = config.get("driverClassName").trim();
+     USER_NAME = config.get("userName").trim();
+     PASSWORD = config.get("password").trim();
 	 }
 	 catch (Exception e) {
 		// TODO: handle exception
