@@ -45,7 +45,6 @@ public class TakeTestAction  extends EducationBaseAction {
 			throw new BussTestCannotGeneratedException("SampleTest Cannot Generated due to Less Question in QuestionBank");
 		}
 		TreeMap testQuestionList = service.getSampleTestQuestions_byClassId(Integer.parseInt(classID),Integer.parseInt(subjectID),sampleTestQuestionCount);	
-		System.out.println("------------display action---------TreeMap()========="+testQuestionList.size());
 		request.getSession(false).setAttribute(SessionConstants.TEST_SAMPLETEST_QUESTIONS,testQuestionList);
 		updateQuestionSummary(request,0,sampleTestQuestionCount,0);
 		return mapping.findForward(actionFwdName);
