@@ -166,37 +166,48 @@ function login() {
     ModalPopups.GetCustomControl("login_username").focus(); 
 }
 function display_schoolDetails(count) {
+	 var schoolName= "" ;
+	 var board= "" ;
+	 var district= "" ;
+	 var state= "" ;
+	 var postalAddr= "" ;
+	 var pinCode= "" ;
+	 var yearOfFoundation= "" ;
+	 var status= "" ;
+	 var mediumOdIntroduction= "" ;
+	 
 	 var table = document.getElementById("row");
+	 	table
 	    var rows = table.getElementsByTagName("tr");
-	    "<table align='left'>"
-	    for (i = 1; i < rows.length; i++) {
+	   
+	    for (i = 0; i < rows.length; i++) {
 	       if(count == i){
-	    	   //alert(i);
 	    	   var column =  rows[i].getElementsByTagName("td");
-	    	   "<tr>"
-	    	   for(j=1;j<column.length;j++) {
-	    		   "<td>"+column[j].value+"</td>";
-	    	   }
-	    	   "</tr>"
+	    	       schoolName =column[0].innerHTML; 
+	    		     board = column[1].innerHTML;
+	    		     district = column[2].innerHTML;
+	    		     state = column[3].innerHTML;
+	    		     postalAddr = column[4].innerHTML;
+	    		     pinCode = column[5].innerHTML;
+	    		     yearOfFoundation = column[6].innerHTML;
+	    		     status = column[7].innerHTML;
+	    		     mediumOdIntroduction = column[8].innerHTML;
 	       } 
 	    }
-	    "</table>"
-
-	
 	setPopupDefaults();
 	ModalPopups.Custom("popup_SchoolDetails",
 	"School Details",
     "<div style='padding: 25px;'>" +
     "<table align='left'> " +
-    "<tr><td style='padding-left:10px'>School Name</td></td></tr>"+
-    "<tr><td style='padding-left:10px'>Board</td></tr>"+
-    "<tr><td style='padding-left:10px'>District</td></tr>"+
-    "<tr><td style='padding-left:10px'>State</td></tr>"+
-    "<tr><td style='padding-left:10px'>Postal Address</td></tr>"+
-    "<tr><td style='padding-left:10px'>Pin Code</td></tr>"+
-    "<tr><td style='padding-left:10px'>Year Of Foundation</td></tr>"+
-    "<tr><td style='padding-left:10px'>Status</td></tr>"+
-    "<tr><td style='padding-left:10px'>Medium Of Instaruction</td></tr>"+
+    "<tr><td style='padding-left:10px'>School Name : "+ schoolName +"</td></td></tr> "+
+    "<tr><td style='padding-left:10px'>Board : "+ board +" </td></tr>"+
+    "<tr><td style='padding-left:10px'>District : "+ district +" </td></tr>"+
+    "<tr><td style='padding-left:10px'>State: "+ state +" </td></tr>"+
+    "<tr><td style='padding-left:10px'>Postal Address: "+ postalAddr +" </td></tr>"+
+    "<tr><td style='padding-left:10px'>Pin Code: "+ pinCode +" </td></tr>"+
+    "<tr><td style='padding-left:10px'>Year Of Foundation : "+ yearOfFoundation +"</td></tr>"+
+    "<tr><td style='padding-left:10px'>Status: "+ status +" </td></tr>"+
+    "<tr><td style='padding-left:10px'>Medium Of Instaruction: "+ mediumOdIntroduction +" </td></tr>"+
     "<tr><td><img src='images/School.jpg' width='150' height='113' align='absbottom'/></td> "+
     "<td align='right' style='padding-left:60px'><iframe width='250' height='250' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='http://maps.google.co.in/maps?hl=en&amp;q=adding+google+map+to+website&amp;ie=UTF8&amp;showlabs=1&amp;ll=18.516825,73.842092&amp;spn=0.043989,0.063605&amp;output=embed'></iframe></td>" +
     "</tr>" +
