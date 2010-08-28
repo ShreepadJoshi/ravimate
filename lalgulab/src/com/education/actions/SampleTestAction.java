@@ -30,16 +30,13 @@ public class SampleTestAction  extends EducationBaseAction {
 		TestSelectionCriteriaActionForm bean = (TestSelectionCriteriaActionForm)form; 
 		/**set drop down values */
         Utilities util =   new Utilities();
-        System.out.println("---------------------------"+objUserInfo);
         if(objUserInfo!= null) {
         	bean.setClassTypeOptions(util.getDropdownValue(EducationConstant.CLASS_DROPDOWN_VALUE,objUserInfo.getUserId()));
         	bean.setSubjectTypeOptions(util.getDropdownValue(EducationConstant.SUBJECT_DROPDOWN_VALUE,objUserInfo.getUserId()));
-        	System.out.println("-----------in if--------------"+objUserInfo.getUserId());
         } else {
         	bean.setClassTypeOptions(util.getDropdownValue(EducationConstant.CLASS_DROPDOWN_VALUE));
 			bean.setSubjectTypeOptions(util.getDropdownValue(EducationConstant.SUBJECT_DROPDOWN_VALUE));
-			System.out.println("-----------else---EducationConstant.CLASS_DROPDOWN_VALUE------------"+EducationConstant.CLASS_DROPDOWN_VALUE);
-        }
+	    }
 		return mapping.findForward(actionFwdName);
 	}
 
