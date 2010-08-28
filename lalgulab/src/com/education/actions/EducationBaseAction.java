@@ -404,6 +404,14 @@ public abstract class EducationBaseAction extends Action {
 	protected void dispRecordAdditionMessage(HttpServletRequest request,int nRecUpdateCount){
 		addError(request, "", new ActionMessage("message.record.added",nRecUpdateCount));
 	}
+	/**
+	 * 
+	 * @param requet - HttpServlet Request
+	 * @param totalNoOfRecords - No of record in List
+	 */
+	protected void dispRefineSearchMessage(HttpServletRequest request,int totalNoOfRecords){
+		addError(request, "", new ActionMessage("message.refine.search",totalNoOfRecords));
+	}
 	
 	/**
 	 * Stores record updation message to actionMessage property of bean 
@@ -492,7 +500,7 @@ public abstract class EducationBaseAction extends Action {
 				throw new IllegalStateException("The only two HTTP methods supported are GET and POST");
 			}
 		
-		}catch(RuntimeException ex){
+		} catch(RuntimeException ex){
 			ExceptionUtil.logException(this.getClass(), ex, userLoginName);
 			expDisplayDetails.set(null); 
 			String msg =ExceptionUtil.getDetailedMessage(ex);
@@ -500,7 +508,7 @@ public abstract class EducationBaseAction extends Action {
 			request.setAttribute("errorId",Utilities.getApplicationProperty("expError.runtimeException") );			
 			return getRuntimeException_ActionForward(request);
 			
-		}catch (BaseAppException Ex) {
+		} catch (BaseAppException Ex) {
 			//Exception Handler For Application
             ExceptionDisplayDTO expDTO = (ExceptionDisplayDTO) expDisplayDetails.get();
 		    IExceptionHandler expHandler = ExceptionHandlerFactory.getInstance().create();
