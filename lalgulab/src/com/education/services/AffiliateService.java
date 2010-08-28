@@ -28,7 +28,6 @@ public class AffiliateService {
 		AffiliateDao affDao = new AffiliateDao();
 		UserRegistrationService service = new UserRegistrationService();
 		UserTO userTo = service.registerUser(affTo);
-		System.out.println("===========addAffiliate========================"+userTo.getUserId());
 		if(userTo == null) 
 			throw new BaseAppException("Cannot Insert Data into User table."); 
 		affTo.setAffiliateId(String.valueOf(userTo.getUserId()));
