@@ -684,7 +684,7 @@
        <put name="bodyContent" value="tiles.bodyPanel.schoolContentUpload" />
  </definition>
 
-  <definition name="tiles.findSchoolsResultPage" extends="tiles.adminHomePage">
+  <definition name="tiles.findSchoolsResultPage" extends="tiles.indexPage">
        <put name="title"  value="Ez-Learning->Find School" />
        <put name="bodyContentHeading" value="Find School" />
        <put name="bodyContent" value="/WEB-INF/jspf/findSchoolResult.jsp" />
