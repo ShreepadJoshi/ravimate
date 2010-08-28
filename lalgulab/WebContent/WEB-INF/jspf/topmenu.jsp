@@ -8,7 +8,7 @@ UserSessionInfo  objUserinfo =
 							null : session.getAttribute(SessionConstants.user_info) );
 	if((objUserinfo != null) && (!objUserinfo.getFirstName().equals(""))){
 		%>	
-		<table align="center" > <tr ><td colspan="4" align="right">
+		<table> <tr ><td colspan="4" align="right">
 			<span style="text-align:center;"><font size="4" color="red" style="font-family:Times New Roman; padding-right:10px;"><b><i>Welcome
       		<%=objUserinfo.getUserloginName()%></i></b></font></span></td>
       	</tr></table>
@@ -40,7 +40,7 @@ UserSessionInfo  objUserinfo =
 		<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>
 	
 <%} else if((objUserinfo != null) && (!objUserinfo.getFirstName().equals("")) && (objUserinfo.getRoleId().equals(EducationConstant.ADMIN_USER_ROLE)) || (objUserinfo.getRoleId().equals(EducationConstant.GUEST_USER_ROLE))) {%>
-	<table align="center"  > <tr ><td colspan="4" align="right">
+	<table> <tr ><td colspan="4" align="right">
 			<span style="text-align:center;"><font size="4" color="red" style="font-family:Times New Roman"><b><i>Welcome
       		<%=objUserinfo.getUserloginName()%></i></b></font></span></td>
       	</tr></table>

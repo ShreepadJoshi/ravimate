@@ -9,7 +9,7 @@
 			(UserSessionInfo)( session.getAttribute(SessionConstants.user_info) == null ?
 									null : session.getAttribute(SessionConstants.user_info) );
 	   if( objUserinfo != null && objUserinfo.getUserloginName()  != null){%>
-	      	<table > <tr><td colspan="15" width="10">
+	      	<table><tr><td colspan="15" width="10">
 				<span style="text-align:center;"><font size="4" color="red" style="font-family:Times New Roman"><b><i>Welcome
 	      		<%=objUserinfo.getUserloginName()%></i></b></font></span></td>
 	      	</tr></table>
