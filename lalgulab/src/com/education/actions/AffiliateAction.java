@@ -14,6 +14,7 @@ import org.expframework.data.ExceptionDisplayDTO;
 import org.expframework.exceptions.BaseAppException;
 
 import com.education.Session.SessionConstants;
+import com.education.Session.UserSessionInfo;
 import com.education.actions.ManageTopicsAction.ManageTopicsSearchCriteria;
 import com.education.displaytag.IExtendedPaginatedList;
 import com.education.displaytag.PaginatedListImpl;
@@ -31,7 +32,12 @@ public class AffiliateAction extends EducationBaseAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		AffiliateForm affiliateBean = (AffiliateForm) form;
+		AffiliateForm affiliateBean = (AffiliateForm) form;		
+		UserSessionInfo objUserInfo = (UserSessionInfo) request.getSession()
+				.getAttribute(SessionConstants.user_info);
+		affiliateBean.setEmailID(objUserInfo.getEmailId());
+		affiliateBean.setPassword("********");
+		affiliateBean.setRepassword("********");
 	
 		if(isBackNavigation(request)){
 			IExtendedPaginatedList cachedPage =  getPaginatedListFromSession(request,
@@ -234,9 +240,16 @@ public class AffiliateAction extends EducationBaseAction {
 		cacheSearchResult(req,SessionConstants.SCH_RESULTS_MANAGE_TOPICS_LIST,cachedPage);	
 	}
 	
-	//@Override - Until login Session tracking is suspended 
+	
+	/** (non-Javadoc)
+	 * return false as login is needed for this action.
+	 * 
+	 * --Shripad
+	 * 
+	 * @see com.education.actions.EducationBaseAction#byPassSessionTracking_BeforeLogin()
+	 */
 	protected boolean byPassSessionTracking_BeforeLogin() {		
-		return true;
+		return false;
 	}
 	
 	private void restoreSearchCriteria(HttpServletRequest request, IExtendedPaginatedList cachedPage){
@@ -247,7 +260,7 @@ public class AffiliateAction extends EducationBaseAction {
 				SessionConstants.SCH_RESULTS_MANAGE_TOPICS_LIST);
 		if(searchCriteria != null)
 			((PaginatedListImpl)cachedPage).setSearchCriteria(searchCriteria);
-	} 
+	}
 
 	
 	class ManageAffiliatesSearchCriteria{
