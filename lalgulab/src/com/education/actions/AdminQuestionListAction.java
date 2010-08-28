@@ -192,7 +192,9 @@ public class AdminQuestionListAction extends EducationBaseAction {
 		int frmRecord = thePage.getFirstRecordIndex();
 		int noOfRecords = thePage.getPageSize();		
 		thePage.setTotalNumberOfRows(totalNoOfRecords);
-		
+		if(totalNoOfRecords > 200) {
+			dispRefineSearchMessage(request, totalNoOfRecords);
+		}
 		ArrayList searchResults = new ArrayList();
 		if (roleId.equals(EducationConstant.TEACHER_USER_ROLE)){
 		       searchResults = service.getQuestions(questionBean.getSch_classType(),
