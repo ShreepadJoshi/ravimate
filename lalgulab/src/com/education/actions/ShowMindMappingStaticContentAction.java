@@ -50,6 +50,19 @@ public class ShowMindMappingStaticContentAction extends EducationBaseAction{
     	
         return mapping.findForward(strActionForward);
     }
+    
+    /** (non-Javadoc)
+	 * return false as login is needed for this action.
+	 * 
+	 * --Shripad
+	 * 
+	 * @see com.education.actions.EducationBaseAction#byPassSessionTracking_BeforeLogin()
+	 */
+	protected boolean byPassSessionTracking_BeforeLogin() {		
+		return true;
+	}
+	
+
 
 	
    }
