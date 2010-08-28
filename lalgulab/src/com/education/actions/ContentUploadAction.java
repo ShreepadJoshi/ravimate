@@ -267,11 +267,19 @@ public class ContentUploadAction extends EducationBaseAction{
 		
 		//Sets all the drop downs in Add Panel
 		setAddPanelDropDowns(contentUploadBean);
-		if(request.getSession().getAttribute("searchResults")!=null){
+		if(request.getSession().getAttribute("searchResults")!=null){			
 			ArrayList searchResults = (ArrayList) request.getSession().getAttribute("searchResults");
-			//contentUploadBean.setUptTopicId("");
-			//contentUploadBean.setUptsubTopicId("");
-			//contentUploadBean.setUptContentTypeID(1);
+			for(int i=0;i<searchResults.size(); i++){
+				ContentUploadTO contentUploadTO =  (ContentUploadTO) searchResults.get(i);
+				if(contentUploadBean.getCheckbox_id().equals(contentUploadTO.getContentId())){
+					contentUploadBean.setUptTopicId(contentUploadTO.getTopicId());
+					contentUploadBean.setUptsubTopicId(contentUploadTO.getSubTopicId());
+					contentUploadBean.setUptContentTypeID(contentUploadTO.getContentTypeID());
+					request.getSession().removeAttribute("searchResults");
+					break;
+				}
+			}
+			
 		}
 	}
 	
