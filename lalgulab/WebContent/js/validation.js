@@ -260,6 +260,28 @@ function validateManageQ(){
 		
 		return valResult;
 }
+		
+function validateInputFields() {
+	var valResult = true;
+	var classId = document.getElementById('sch_classID').value;
+	var subject = document.getElementById('subjectID').value;
+	
+	if(classId == null || classId == ""){
+		document.getElementById('sch_classType_ErrMsg').style.display="";
+		valResult = false;
+	
+	}else{
+		document.getElementById('sch_classType_ErrMsg').style.display="none";
+	}
+	if(subject == null || subject == ""){
+		document.getElementById('sch_subject_ErrMsg').style.display="";
+		valResult = false;
+	
+	}else{
+		document.getElementById('sch_subject_ErrMsg').style.display="none";
+	}
+	return valResult;
+}
 
 // Function removes if error messages displayed for
 // controls on form
