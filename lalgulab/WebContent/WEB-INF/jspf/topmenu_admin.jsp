@@ -28,9 +28,9 @@
 		|
 		<html:link styleClass="nav" action="/reviewer">Reviewer</html:link>
 		|
-		<html:link styleClass="nav" action="/showStaticContent">FAQ</html:link>
+		<html:link styleClass="nav" action="/showFaqStaticContent">FAQ</html:link>
 		|
-		<html:link styleClass="nav" action="/showStaticContent">Contact Us</html:link>	
+		<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>	
 		|
 		<html:link action="/signOut" >SignOut</html:link>
       	<% } else if(objUserinfo == null) { %>
