@@ -44,7 +44,7 @@ public class OracleTestDAO extends AbstractDAO{
 			if (isGraphics) {				
 				sql = " SELECT * FROM t_picture_question " +
 					  " WHERE questionId="+questionID;
-				System.out.println("-----------------if--------------"+sql);
+				
 				psmt = con.prepareStatement(sql);
 				rs = psmt.executeQuery();
 				if (rs.next()) {
@@ -92,7 +92,7 @@ public class OracleTestDAO extends AbstractDAO{
 			} else {				
 				sql = " SELECT * FROM t_text_question " +
 					  " WHERE questionId="+questionID;
-				System.out.println("-----------------else--------------"+sql);
+				
 				psmt = con.prepareStatement(sql);
 				rs = psmt.executeQuery();
 				if (rs.next()) {
@@ -127,20 +127,22 @@ public class OracleTestDAO extends AbstractDAO{
 	}
 	
 	public ArrayList getSampleTestQuestion_ByclassID(int classID,String questionID_delimitedString)throws BaseAppException{
-		/*String sql = " SELECT a.QuestionId,a.Answer,b.Description, "+
+		String sql = " SELECT a.QuestionId,a.Answer,b.Description, "+
 					 " b.Option_1,b.Option_2,b.Option_3,b.Option_4,b.Option_5 "+
-					 " FROM t_question_bank a ,t_text_question b "+
-					 " WHERE a.questionid=b.questionid "+
+					 " FROM t_question_bank a ,t_text_question b ,t_sampletest_questions c"+
+					 " WHERE a.questionid=b.questionid and a.isgraphics='0' and a.questionid=c.questionid"+
 					 " AND a.questionId IN ("+ questionID_delimitedString +") "+
 					 " UNION ALL "+
-					 " SELECT a.QuestionId,a.IsGraphics,a.Answer,d.Description, "+
+					 " SELECT a.QuestionId,a.Answer,d.Description, "+
 					 " d.Option_1,d.Option_2,d.Option_3,d.Option_4,d.Option_5 "+
-					 " FROM t_question_bank a ,t_picture_question d "+
-					 " WHERE a.questionid=d.questionid "+
-					 " AND a.questionId IN ("+ questionID_delimitedString +")";*/
+					 " FROM t_question_bank a , t_sampletest_questions c,t_picture_question d "+
+					 " WHERE a.questionid=d.questionid and a.questionid=c.questionid  and a.isgraphics='1'"+
+					 " AND a.questionId IN ("+ questionID_delimitedString +")";
 		
-		String sql = "SELECT a.QuestionId,a.Answer,b.Description,  b.Option_1,b.Option_2,b.Option_3,b.Option_4,b.Option_5 FROM t_sampletest_questions a ,t_text_question b  WHERE a.questionid=b.questionid  AND a.questionId IN ("
-				+ questionID_delimitedString + ")"; 
+		
+		
+		//String sql = "SELECT a.QuestionId,a.Answer,b.Description,  b.Option_1,b.Option_2,b.Option_3,b.Option_4,b.Option_5 FROM t_sampletest_questions a ,t_text_question b  WHERE a.questionid=b.questionid  AND a.questionId IN ("
+			//	+ questionID_delimitedString + ")"; 
 		
 		Connection con = null;
 		PreparedStatement psmt =null;
@@ -150,10 +152,9 @@ public class OracleTestDAO extends AbstractDAO{
 			con = GetConnection.getSimpleConnection();
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
-			System.out.println("questionID_delimitedString---------"+questionID_delimitedString);
+			
 			while (rs.next()) {				
 				QuestionBankTO questionBankTO = new QuestionBankTO();
-				System.out.println("questionId----OracletestDao----------"+rs.getInt("questionId"));
 				questionBankTO.setQuestionId(rs.getInt("questionId"));
 				//questionBankTO.setIsGraphics(rs.getInt("IsGraphics"));
 				//questionBankTO.setAnswer(rs.getString("Answer"));
@@ -176,17 +177,15 @@ public class OracleTestDAO extends AbstractDAO{
 				throw new DBDataSourceException(e.getMessage());
 			}
 		}
-		System.out.println("questionList--------"+questionList.size());
 		return questionList;
 	}
 	
 	public ArrayList getSampleTestQuestionID_byClassID(int classID,int subjectId, int size) throws BaseAppException{
 		
 		int count = 0;
-		String sql = "select a.questionid from t_sampletest_questions a , t_class_question_link b"
-				+ " where  a.questionid=b.classquestionid and a.classcertid='"
+		String sql = "select a.questionid from t_sampletest_questions a , t_class_question_link b,t_question_bank c"
+				+ " where  a.questionid=b.classquestionid and a.questionid=c.questionid and a.classcertid='"
 				+ classID + "' and a.subject = '" + subjectId + "' ORDER BY RAND() ";
-		
 		
 		Connection con = null;
 		ResultSet rs;
@@ -220,11 +219,8 @@ public class OracleTestDAO extends AbstractDAO{
 	public int getSampleTestQuestionCount_ByClassID(int classID, int subjectId)throws BaseAppException{
 		int count = 0;
 		String sql = " SELECT count(*) AS questionCount "+
-					 " FROM t_sampletest_questions a , t_class_question_link b "+
-					 " where a.questionid=b.classquestionid and a.ClassCertID = "+classID + " and a.subject = " + subjectId;
-		System.out.println("sql-------------"+sql);
-		System.out.println("classID-------------"+classID);
-		System.out.println("subjectId------------"+subjectId);
+					 " FROM t_sampletest_questions a , t_class_question_link b ,t_question_bank c "+
+					 " where a.questionid=b.classquestionid and a.questionid=c.questionid and a.ClassCertID = "+classID + " and a.subject = " + subjectId;
 				
 		Connection con = null;
 		PreparedStatement psmt =null;
