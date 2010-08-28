@@ -70,37 +70,24 @@ public class FullRegistrationAction extends EducationBaseAction{
         	registrationBean.setClassTypeOptions(new Utilities().getDropdownValue(EducationConstant.CLASS_DROPDOWN_VALUE));
     		
     		//Get Registration Is for - default id Guest User
-    			String strRegroleType  = (String)(request.getParameter("registrationFor") != null ?
+    		String strRegroleType  = (String)(request.getParameter("registrationFor") != null ?
     									 request.getParameter("registrationFor") : EducationConstant.GUEST_USER_ROLE);
     		registrationBean.setRoleType(strRegroleType);
     		registrationBean.setRoleName(Utilities.getRoleNameByID(strRegroleType));
     		
     		String registrationForm = request.getParameter("registrationFor");
     		
-    		HttpSession sess = request.getSession();
-    		UserSessionInfo objUserinfo = (UserSessionInfo)( sess.getAttribute(SessionConstants.user_info) == null ?
-					null : sess.getAttribute(SessionConstants.user_info) );
-    		if(objUserinfo == null)
-    		{
-    			objUserinfo = new UserSessionInfo();
-    			objUserinfo.setRoleId(strRegroleType);
-    		}
-    		sess.setAttribute(SessionConstants.user_info, objUserinfo);
-    		
+  		
     	/*	if (registrationForm!=null && registrationForm.equals(EducationConstant.AGENT_REG_FORM))
     			return mapping.findForward("agentRegFormCreateMode");*/
-    		if(registrationForm != null && objUserinfo.getFirstName().equals("")){
-    			//Here user going for FullRegistration    			
-    			actionPage = "createMode";
-    			//TODO testing of this block is not done.
-    		}else if(registrationForm != null && registrationForm.length() > 0) {
+    		if(registrationForm != null && registrationForm.length() > 0) {
 	    		switch(Integer.parseInt(registrationForm))
 	    		{
-	    		case 2: actionPage = "teacherUserListPage";break;
-	    		case 3: actionPage = "affiliateUserListPage";break;
-	    		case 4: actionPage = "agentRegFormCreateMode";break;
+	    		case 2: actionPage = "createMode";break;  					//teacherUserListPage
+	    		case 3: actionPage = "createMode";break; 					///affiliateUserListPage
+	    		case 4: actionPage = "createMode";break;					//agentRegFormCreateMode
 	//    		case 5: actionPage = "";break;
-	    		case 6: actionPage = "reviewerUserListPage";break;
+	    		case 6: actionPage = "createMode";break;					//reviewerUserListPage
 	    		default : actionPage = "createMode"; break;
 	    		}
     		} 
