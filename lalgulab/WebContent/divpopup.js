@@ -199,9 +199,9 @@ function display_schoolDetails(count) {
 	"School Details",
     "<div style='padding: 25px;'>" +
     "<table align='left'> " +
-    "<tr><td style='padding-left:10px'>School Name : "+ schoolName +"</td></td></tr> "+
-    "<tr><td style='padding-left:10px'>Board : "+ board +" </td></tr>"+
-    "<tr><td style='padding-left:10px'>District : "+ district +" </td></tr>"+
+    "<tr><td style='padding-left:25px'>School Name : "+ schoolName +"</td></td></tr> "+
+    "<tr ><td style='padding-left:25px'>Board : "+ board +" </td></tr>"+
+    "<tr ><td style='padding-left:10px'>District : "+ district +" </td></tr>"+
     "<tr><td style='padding-left:10px'>State: "+ state +" </td></tr>"+
     "<tr><td style='padding-left:10px'>Postal Address: "+ postalAddr +" </td></tr>"+
     "<tr><td style='padding-left:10px'>Pin Code: "+ pinCode +" </td></tr>"+
