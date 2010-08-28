@@ -58,6 +58,18 @@ public class CourseCatalogueAction extends EducationBaseAction {
 		courseCatform.setCourseCatalogueTOList(toList);
 		return mapping.findForward(actionFwdString);
 	}
+	
+	/** (non-Javadoc)
+	 * return false as login is needed for this action.
+	 * 
+	 * --Shripad
+	 * 
+	 * @see com.education.actions.EducationBaseAction#byPassSessionTracking_BeforeLogin()
+	 */
+	protected boolean byPassSessionTracking_BeforeLogin() {		
+		return true;
+	}
+	
 
 	
 }
