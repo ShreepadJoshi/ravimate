@@ -191,7 +191,7 @@ public class ContentUploadAction extends EducationBaseAction{
 		ContentUploadTO objTo = new ContentUploadTO();
 		copyDetailsFromBeanTO_TransferObj(contentuploadBean, objTo);
 		ArrayList searchResults = service.getContentUploadDetails(objTo, frmRecNo,noOfRecords);
-		
+		request.getSession().setAttribute("searchResults",searchResults);
 		thePage.setList(searchResults);
 		contentuploadBean.setPgSearchResults(thePage);
 		
@@ -267,6 +267,12 @@ public class ContentUploadAction extends EducationBaseAction{
 		
 		//Sets all the drop downs in Add Panel
 		setAddPanelDropDowns(contentUploadBean);
+		if(request.getSession().getAttribute("searchResults")!=null){
+			ArrayList searchResults = (ArrayList) request.getSession().getAttribute("searchResults");
+			//contentUploadBean.setUptTopicId("");
+			//contentUploadBean.setUptsubTopicId("");
+			//contentUploadBean.setUptContentTypeID(1);
+		}
 	}
 	
 	private void setAddPanelDropDowns(ContentUploadActionForm contentUploadBean)throws BaseAppException{
