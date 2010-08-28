@@ -48,8 +48,22 @@ public class ContentUploadActionForm extends ActionForm {
     private int uptContentStreamLength;
     private int uptSupportStreamLength;
     private String uptClassId = "";
+    private String checkbox_id;
     
-    /** Add/update content stream **/
+    
+    /**
+	 * @return the checkbox_id
+	 */
+	public String getCheckbox_id() {
+		return checkbox_id;
+	}
+	/**
+	 * @param checkbox_id the checkbox_id to set
+	 */
+	public void setCheckbox_id(String checkbox_id) {
+		this.checkbox_id = checkbox_id;
+	}
+	/** Add/update content stream **/
     private FormFile contentFileStream = null;
     private FormFile suppFileStream = null;
     
