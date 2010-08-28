@@ -12,7 +12,7 @@ public class SchoolLinkWrapper implements DisplaytagColumnDecorator
 	@Override
 	public Object decorate(Object obj, PageContext page, MediaTypeEnum media)
 			throws DecoratorException {
-		int count = -1;
+		int count = 0;
 		if(page.getRequest().getAttribute("schoolListCount")!=null){
 			count = (Integer)page.getRequest().getAttribute("schoolListCount");			
 			page.getRequest().setAttribute("schoolListCount",count);
