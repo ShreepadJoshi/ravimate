@@ -28,6 +28,13 @@ public class FullRegistrationAction extends EducationBaseAction{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		FullRegActionForm registrationBean = (FullRegActionForm)form;
+		UserSessionInfo objUserInfo = (UserSessionInfo) request.getSession()
+		.getAttribute(SessionConstants.user_info);
+		if(objUserInfo != null) {
+			registrationBean.setEmailID(objUserInfo.getEmailId());
+			registrationBean.setPassword("********");
+			registrationBean.setRepassword("********");
+		}
 		String mode = request.getParameter("mode");
 		RegistrationTo regTOData = null;
 		String actionPage = null;
