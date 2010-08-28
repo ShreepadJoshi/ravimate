@@ -477,9 +477,10 @@ public abstract class EducationBaseAction extends Action {
 			userLoginName = getUserInfoObject_FromSession(request) != null ? getUserInfoObject_FromSession(request).getUserloginName() : ""; 
 			//Session Tracking code - Session handling starts once user logs in
 			//Else he will be able to access default pages
-	       /* if(!sessionExists(request) && !isSessionValid(request) && !byPassSessionTracking_BeforeLogin() ){        	
+			
+	       if(!sessionExists(request) && !isSessionValid(request) && !byPassSessionTracking_BeforeLogin() ){        	
 	        	return getSession_Failure_ActionForward();
-	        }*/
+	       }
 	        
 	        //validate Permission to access particular action
 	        if(!hasValidPermission(request)){
@@ -500,7 +501,7 @@ public abstract class EducationBaseAction extends Action {
 				throw new IllegalStateException("The only two HTTP methods supported are GET and POST");
 			}
 		
-		} catch(RuntimeException ex){
+		}catch(RuntimeException ex){
 			ExceptionUtil.logException(this.getClass(), ex, userLoginName);
 			expDisplayDetails.set(null); 
 			String msg =ExceptionUtil.getDetailedMessage(ex);
@@ -508,7 +509,7 @@ public abstract class EducationBaseAction extends Action {
 			request.setAttribute("errorId",Utilities.getApplicationProperty("expError.runtimeException") );			
 			return getRuntimeException_ActionForward(request);
 			
-		} catch (BaseAppException Ex) {
+		}catch (BaseAppException Ex) {
 			//Exception Handler For Application
             ExceptionDisplayDTO expDTO = (ExceptionDisplayDTO) expDisplayDetails.get();
 		    IExceptionHandler expHandler = ExceptionHandlerFactory.getInstance().create();
