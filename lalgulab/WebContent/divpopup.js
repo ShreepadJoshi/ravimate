@@ -237,10 +237,7 @@ function okbutton_EventHandler() {
     if(username.value == "") {
         alert("Please Enter Username");
         username.focus();
-    } else if(emailcheck(username.value) == false) {
-		ModalPopups.GetCustomControl("login_username").focus();
-		return false;
-    } else if(password.value == ""){
+    }  else if(password.value == ""){
         alert("Please Enter Password");
         password.focus();  
         return false;
