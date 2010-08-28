@@ -26,21 +26,21 @@
 	<tr>
 		<td class="input_label">Email:<span style="color: red">&#42;</span></td>
 		<td colspan="1" align="left">
-			<html:text property="emailID" styleClass="input_field" styleId="emailID" maxlength="50" />
+			<html:text property="emailID" styleClass="input_field" styleId="emailID" maxlength="50" disabled="true"/>
 			<div id="emailID_ErrMsg" style="display: none;color: red">Invalid EmailID</div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">Password:<span style="color: red">&#42;</span></td>
 		<td colspan="1" align="left">
-			<html:password property="password" styleClass="input_field" styleId="password" maxlength="50" />
+			<html:password property="password" styleClass="input_field" styleId="password" maxlength="50" disabled="true"/>
 			<div id="password_ErrMsg" style="display: none;color: red">Password is Required </div>
 		</td>
 	</tr>
 	<tr>
 		<td class="input_label">ReType Password:<span style="color: red">&#42;</span></td>
 		<td colspan="1" align="left">
-			<html:password property="repassword" styleClass="input_field" styleId="repassword" maxlength="50" />
+			<html:password property="repassword" styleClass="input_field" styleId="repassword" maxlength="50" disabled="true"/>
 			<div id="repassword_ErrMsg" style="display: none;color: red">ReType Password is Required </div>
 		</td>
 	</tr>
