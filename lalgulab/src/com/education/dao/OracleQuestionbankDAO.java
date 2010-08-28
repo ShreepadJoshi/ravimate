@@ -420,7 +420,7 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 			Integer isGraphics, int frmRecord, int totalNoOfRecords, int userID) throws BaseAppException {
 
 		String where = "";
-		String where1 = " where a.questionid=b.questionid "
+		String where1 = "where a.questionid=b.questionid "
 				+ " and a.topicId=topic.topicId "
 				+ " and a.subTopicId=subTopic.subTopicId ";
 		String where2 = " where a.questionid=d.questionid "
@@ -465,7 +465,11 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
 		}
 		if (null != isGraphics && isGraphics != 0) {
-			where = where + " and a.IsGraphics = " + isGraphics.intValue();
+			where2 = where2 + " and a.IsGraphics = " + isGraphics.intValue();
+			where1 = where1 + "and a.IsGraphics = '0' ";
+		} else if (isGraphics == 0 || isGraphics == null) {
+			where1 = where1 + "and a.IsGraphics = '0' ";
+			where2 = where2 + "and a.IsGraphics = '1' ";
 		}
 		where = where  + " and a.CreatedBy='" + userID + "' "; 
 		where1 = where1 + where + limit;
@@ -482,6 +486,9 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 				+ "a.Answer,a.QuestionStatusId,a.IsVerified,a.CreatedBy,a.CreatedOn,a.VerifiedBy,a.VerificationRemark,"
 				+ "d.Description,d.Option_1,d.Option_2,d.Option_3,d.Option_4,d.Option_5,d.AnswerExplanation "
 				+ fromClause2 + " " + where2;
+		
+		
+		
 
 		Connection con = null;
 		PreparedStatement psmt;
