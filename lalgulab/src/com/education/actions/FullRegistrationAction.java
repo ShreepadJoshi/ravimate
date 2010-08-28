@@ -189,7 +189,7 @@ public class FullRegistrationAction extends EducationBaseAction{
 
 	@Override
 	protected boolean byPassSessionTracking_BeforeLogin() {
-		return true;
+		return false;
 	}
 
 	 /**
