@@ -430,11 +430,9 @@
 		</action>
 		
 		<action path="/schoolContentUpload"
-			type="com.education.actions.SchoolContentUploadAction" name="ContentUploadBean"
-			scope="request">
+			type="com.education.actions.SchoolContentUploadAction" scope="request">
 			<forward name="displayPage" path="tiles.schoolContentUpload" />
-			
-		</action>
+			</action>
 
 		<action path="/findSchool"
 			type="com.education.actions.FindSchoolAction"
