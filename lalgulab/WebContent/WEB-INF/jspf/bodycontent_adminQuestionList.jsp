@@ -13,7 +13,8 @@
 		<td colspan="2"  align ="left" width="10"> 
 			
 			<label>
-				<html:select property="sch_classType" styleClass="input_field">
+				<html:select property="sch_classType" styleClass="input_field"
+				onchange="populateDropdown('sch_subject','classId='+this.value,'subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
 					<html:optionsCollection property="classTypeOptions"/>
 				</html:select>
 				
@@ -32,9 +33,12 @@
 		<td class="input_label">Subject:</td>
 		<td colspan="1" align ="left" width="10">
 			<label>
-			<html:select property="sch_subject" styleClass="input_field">
+			<div id="subjectDropdown">
+				<html:select property="sch_subject" styleClass="input_field"
+					onchange="populateDropdown('sch_topic','subjectId='+this.value,'topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)">
 					<html:optionsCollection property="subjectOptions"/>
 				</html:select>
+			</div>	
 			</label>
 		</td>
 
@@ -43,9 +47,11 @@
 		<td colspan="5" width="15" align="left">
 			<label>
 				<!-- <html:text property="sch_topic" styleClass="input_field" maxlength="20" size="20" /> -->
-				<html:select property="sch_topic" styleClass="input_field">
-					<html:optionsCollection property="topicOptions"/>
-				</html:select>
+				<div id="topicDropdown">
+					<html:select property="sch_topic" styleClass="input_field">
+						<html:optionsCollection property="topicOptions"/>
+					</html:select>
+				</div>
 			 </label>
 		</td>
 	</tr>
