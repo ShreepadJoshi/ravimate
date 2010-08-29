@@ -62,7 +62,7 @@
 							<div id="topicDropdown"><html:select styleId="uptTopicId"
 								property="uptTopicId" name="ContentUploadBean"
 								styleClass="input_field"
-								onchange="populateDropdown('uptsubTopicId','subjectId='+document.getElementById('uptsubjectId').value+',topicValue='+this.value,'subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBTOPICDD)">
+								onchange="populateDropdown('uptsubTopicId','topicId='+document.getElementById('uptsubjectId').value+',topicValue='+this.value,'subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBTOPICDD)">
 								<html:optionsCollection property="topicOptions" label="label"
 									value="value" />
 							</html:select></div>
@@ -120,9 +120,17 @@
 	<tr>
 		<td></html:form></td>
 	</tr>
-	<script type="text/javascript">		
-			var varUptsubjectId = document.getElementById("uptsubjectId");			
+	<script type="text/javascript">
+	<%if(request.getAttribute("contentUploadBean") != null){
+		ContentUploadActionForm contentUploadBean = (ContentUploadActionForm) request.getAttribute("contentUploadBean");
+		if(contentUploadBean.getUptsubTopicId().equals("")){
+		%>
+			var varUptsubjectId = document.getElementById("uptsubjectId");
 			populateDropdown('uptTopicId','subjectId='+varUptsubjectId.value,'topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD);
+		<%	
+		}
+	}
+	%>
 	</script>
 </table>
 
