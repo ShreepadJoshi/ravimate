@@ -11,7 +11,8 @@
 			Class/Cert:
 		</td>
 		<td colspan="2" width="10">			
-			<html:select property="sch_classType" styleId="sch_classType" styleClass="input_field">
+			<html:select property="sch_classType" styleId="sch_classType" styleClass="input_field"
+					onchange="populateDropdown('sch_subject','classId='+this.value,'subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
 					<html:optionsCollection property="classOptions"/>
 			</html:select>
 			<div id="sch_classType_ErrMsg" style="display: none;color: red"> Class is Required </div>	
@@ -23,9 +24,11 @@
 		</td>
 		<td colspan="2" width="10">
 			<html:hidden property="newRecordIndex"/>
-			<html:select property="sch_subject" styleId="sch_subject" styleClass="input_field">
-					<html:optionsCollection property="subjectOptions"/>
-			</html:select>
+			<div id="subjectDropdown">
+				<html:select property="sch_subject" styleId="sch_subject" styleClass="input_field">
+						<html:optionsCollection property="subjectOptions"/>
+				</html:select>
+			</div>
 			<div id="sch_subject_ErrMsg" style="display: none;color: red"> Subject is Required </div>
 		</td>
 
