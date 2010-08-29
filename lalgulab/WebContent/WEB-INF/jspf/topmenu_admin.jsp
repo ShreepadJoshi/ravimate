@@ -16,7 +16,7 @@
 	      	
   		<%} %>   
   		<% if( objUserinfo != null && objUserinfo.getUserloginName()  != null){%> 
-      	<html:link styleClass="nav" forward="home">Home</html:link>
+      	<html:link styleClass="nav" action="/admin">Home</html:link>
 		|
 		<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
 		|
@@ -34,7 +34,7 @@
 		|
 		<html:link action="/signOut" >SignOut</html:link>
       	<% } else if(objUserinfo == null) { %>
-		<html:link styleClass="nav" forward="home">Home</html:link>
+		<html:link styleClass="nav" action="/admin">Home</html:link>
 		|
 		<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
 		|
