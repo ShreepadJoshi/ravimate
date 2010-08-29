@@ -276,6 +276,7 @@ public class ContentUploadAction extends EducationBaseAction{
 					contentUploadBean.setUptsubTopicId(contentUploadTO.getSubTopicId());
 					contentUploadBean.setUptContentTypeID(contentUploadTO.getContentTypeID());
 					request.getSession().removeAttribute("searchResults");
+					request.setAttribute("contentUploadBean", contentUploadBean);
 					break;
 				}
 			}
