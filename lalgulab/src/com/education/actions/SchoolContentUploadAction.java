@@ -90,7 +90,7 @@ public class SchoolContentUploadAction extends EducationBaseAction{
 					if (slash > 0)
 						fileName = fileName.substring(slash + 1);
 					
-					if(!fileName.endsWith("xls") || !fileName.endsWith("XLS"))
+					if(!(fileName.endsWith(".xls") || fileName.endsWith(".XLS")))
 					{
 							dispInvalid_contentUpload_ErrMsg(request);
 							return mapping.findForward("displayPage");
