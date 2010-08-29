@@ -1,51 +1,35 @@
 package com.education.actions;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUpload;
-import org.apache.commons.fileupload.RequestContext;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFObjectData;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.DirectoryNode;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
-import org.apache.struts.upload.FormFile;
 import org.expframework.data.ExceptionDisplayDTO;
 import org.expframework.exceptions.BaseAppException;
 import org.springframework.context.ApplicationContext;
 
 import com.education.Session.SessionConstants;
-import com.education.actions.TeacherAction.TeacherListPageSchCriteria;
 import com.education.displaytag.IExtendedPaginatedList;
 import com.education.displaytag.PaginatedListImpl;
 import com.education.formbeans.ContentUploadActionForm;
-import com.education.formbeans.ManageTopicsActionForm;
 import com.education.services.ContentUploadService;
-import com.education.services.EZBusinessServices;
 import com.education.services.QuestionBankService;
 import com.education.services.SchoolContentUploadService;
 import com.education.transferobj.ContentUploadTO;
@@ -60,15 +44,15 @@ public class SchoolContentUploadAction extends EducationBaseAction{
 	public ActionForward displayAction(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 		throws BaseAppException {
-		ContentUploadActionForm bean = (ContentUploadActionForm)form;
+//		ContentUploadActionForm bean = (ContentUploadActionForm)form;
 		//Set the Exception Handling details ActionForward, Context Senstive Exception detail
 		ExceptionDisplayDTO expDTO = new ExceptionDisplayDTO("displayPage","");
 		expDisplayDetails.set(expDTO);
 		
 		//condition to not display search results by default
-		if(isNavigationDone(request)){
+		/*if(isNavigationDone(request)){
 			getPaginatedSearchResults(request,bean,null);
-		}
+		}*/
 		
 		return mapping.findForward("displayPage");
 	}
@@ -76,20 +60,20 @@ public class SchoolContentUploadAction extends EducationBaseAction{
 	@Override
 	public ActionForward performAction(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {	
-		ContentUploadActionForm bean = (ContentUploadActionForm)form;
-	ContentUploadActionForm contentUploadBean = (ContentUploadActionForm)form;
+			throws Exception {		
+//		ContentUploadActionForm contentUploadBean = (ContentUploadActionForm)form;
 		QuestionBankService service = new QuestionBankService();
 		String strActionFwd = "actionSuccess";
 		//Set the Exception Handling details ActionForward, Context Senstive Exception detail
 		ExceptionDisplayDTO expDTO = new ExceptionDisplayDTO("actionSuccess","");
 		expDisplayDetails.set(expDTO);
-		System.out.println("----------------------"+request.getAttribute("contentFileStream"));
+		
 		
 		if(FileUpload.isMultipartContent(request))
 		{
 			
 			ServletFileUpload upload = new ServletFileUpload();
+			String value= upload.CONTENT_TYPE;
 			FileItemIterator itr = upload.getItemIterator(request);
 			//List item = upload.parseRequest(request);
 			
@@ -99,6 +83,19 @@ public class SchoolContentUploadAction extends EducationBaseAction{
 				InputStream stream = item.openStream();
 				if(!item.isFormField())
 				{
+					String fileName = item.getName();
+					int slash = fileName.lastIndexOf("/");
+					if (slash < 0)
+						slash = fileName.lastIndexOf("\\");
+					if (slash > 0)
+						fileName = fileName.substring(slash + 1);
+					
+					if(!fileName.endsWith("xls") || !fileName.endsWith("XLS"))
+					{
+							dispInvalid_contentUpload_ErrMsg(request);
+							return mapping.findForward("displayPage");
+					}
+					
 					if(stream != null)
 					{
 						
@@ -114,9 +111,10 @@ public class SchoolContentUploadAction extends EducationBaseAction{
 				}
 			}
 		}
-		
+		request.setAttribute("action","display");
+		return mapping.findForward("displayPage");
 		//Check if User Performed Action
-		String strPerformedAction = getAction(request); 
+/*		String strPerformedAction = getAction(request); 
 		if( strPerformedAction != null ){			
 			IExtendedPaginatedList cachedPage =  getPaginatedListFromSession(request,
 					SessionConstants.SCH_RESULTS_CONTENTUPLOAD_LIST);			
@@ -215,10 +213,10 @@ public class SchoolContentUploadAction extends EducationBaseAction{
 			}
 		}else{
 			getPaginatedSearchResults(request, contentUploadBean, null);
-		}
+		}*/
 		
-		request.setAttribute("action","display");
-		return mapping.findForward(strActionFwd);
+	/*	request.setAttribute("action","display");
+		return mapping.findForward(strActionFwd);*/
 	}
 	
 	/**
