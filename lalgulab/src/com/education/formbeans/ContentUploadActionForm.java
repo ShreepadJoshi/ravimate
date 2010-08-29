@@ -44,11 +44,11 @@ public class ContentUploadActionForm extends ActionForm {
     private int uptContentTypeID ;
     private String uptContentTypeName = "";
     private int uptHasExistingSuppFile;
-    private String uptContentid;
+    private String uptContentid = "";
     private int uptContentStreamLength;
     private int uptSupportStreamLength;
     private String uptClassId = "";
-    private String checkbox_id;
+    private String checkbox_id = "";
     
     
     /**
