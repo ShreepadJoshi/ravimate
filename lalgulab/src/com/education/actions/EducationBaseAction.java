@@ -427,7 +427,7 @@ public abstract class EducationBaseAction extends Action {
 	}
 	
 	protected void dispMessage(HttpServletRequest request,String messageType, ActionMessage message){
-//		addError(request,messageType, message );
+		addError(request,messageType, message );
 	}
 	
 	/*
