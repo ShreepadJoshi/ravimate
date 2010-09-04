@@ -5,7 +5,7 @@ public class SessionConstants {
 	public static final String user_info = "user_info";
 	
 	/** Cached search results constants  **/
-	public static final String SCH_RESULTS_TEACHER_QUESTION_LIST = "teacher list";
+	public static final String SCH_RESULTS_TEACHER_QUESTION_LIST = "Teacher QuestionList";
 	public static final String SCH_RESULTS_REVIEWER_QUESTION_LIST = "reviewer list";
 	public static final String SCH_RESULTS_NEWUSER_AGENT_LIST = "NewUser AgentList";
 	public static final String SCH_RESULTS_STUDENT_LIST = "StudentList";
