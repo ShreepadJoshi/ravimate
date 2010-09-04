@@ -182,7 +182,8 @@ public class AdminQuestionListAction extends EducationBaseAction {
 		if (roleId.equals(EducationConstant.TEACHER_USER_ROLE)){
 				totalNoOfRecords = service.getQuestionsCount(questionBean.getSch_classType(),questionBean.getSch_subject(),
 				questionBean.getSch_questionStatus(),questionBean.getSch_topic(),
-				questionBean.getSch_fromDate(),questionBean.getSch_toDate(),questionBean.getSch_isGraphics(),userId);		
+				questionBean.getSch_fromDate(),questionBean.getSch_toDate(),questionBean.getSch_isGraphics(),userId);	
+				cacheSearchResult(request,SessionConstants.SCH_RESULTS_TEACHER_QUESTION_LIST, thePage);
 		}else{		
 			//must be in adimin role
 			totalNoOfRecords = service.getQuestionsCount(questionBean.getSch_classType(),questionBean.getSch_subject(),
