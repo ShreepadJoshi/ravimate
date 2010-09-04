@@ -15,8 +15,7 @@ import com.education.util.GetConnection;
 public class CourseCatalogueDAO extends AbstractDAO {
 
 	public List<CourseCatalogueTO> getDefaultValues() throws BaseAppException {
-   //Smita - Changed the query to display Board field - 27th July
-		List<CourseCatalogueTO> courseCatalogueTOList = new ArrayList<CourseCatalogueTO>();
+  	List<CourseCatalogueTO> courseCatalogueTOList = new ArrayList<CourseCatalogueTO>();
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
