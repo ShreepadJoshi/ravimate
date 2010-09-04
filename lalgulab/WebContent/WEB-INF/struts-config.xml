@@ -112,6 +112,7 @@
 		
 		<!-- Admin Links -->
 		<forward name="adminQuestionList" path="/adminQuestionList.do" />
+		<forward name="teacherQuestionList" path="/teacherQuestionList.do" />
 		<forward name="newUserTeacherList" path="/newUserTeacherListAction.do" />
 		<forward name="newUserReviewerList" path="/newUserReviewerListAction.do" />
 		<forward name="newUserAgentList" path="/newUserAgentListAction.do" />
@@ -185,6 +186,15 @@
 				<forward name="linkQtoClassAction" path="/linkQtoClass.do" />
 								
 		</action>
+		<action path="/teacherQuestionList"
+				type="com.education.actions.AdminQuestionListAction"
+				name="AdminQuestionListBean"
+				scope="request">				
+				<forward name="displayPage" path="/pages/teacherQuestionlist.jsp" />
+				<forward name="actionSuccess" path="/teacherQuestionList.do" />
+				<forward name="linkQtoClassAction" path="/linkQtoClass.do" />
+								
+		</action>
 		
 		<action path="/newUserTeacherListAction"
 				type="com.education.actions.NewUserTeacherListAction"
@@ -243,7 +253,7 @@
 					<forward name="editMode" path="/pages/manageQuestionEditMode.jsp" />
 					<forward name="AdminPage" path="/pages/manageQuestionAdmin.jsp" />
 					<forward name="grd_nav_admin_QuestionList" path="/adminQuestionList.do" />
-					<forward name="grd_nav_teacher_QuestionList" path="/teacher.do" />
+					<forward name="grd_nav_teacher_QuestionList" path="/teacherQuestionList.do" />
 					<forward name="grd_nav_reviewer_QuestionList" path="/reviewer.do" />
 					<forward name="nav_linkQtoClass_page" path="/linkQtoClass.do" />
 					<forward name="onError" path="/manageQuestion.do" />
@@ -427,8 +437,20 @@
 				type="com.education.actions.CourseCatalogueAction"
 				name="CourseCatalogueBean">
 				<forward name="displayCatlog" path="tiles.courseCat.CourseCatalogueDisplay" />
+				<forward name="onError" path="/courseCatalogue.do"/>
+				<forward name="makePaymentPage" path="/makePayment.do"/>
+		</action>
+
+		<action path="/makePayment"
+				type="com.education.actions.MakePaymentAction"
+				name="MakePaymentBean">
+				<forward name="makePaymentPage" path="/pages/makePayment.jsp"/>
+				<!-- <forward name="testQuestionPage" path="/pages/testQuestionPage.jsp"/> -->
+				<forward name="myPage" path="/myPage.do"/>
+				<forward name="onError" path="/courseCatalogue.do"/>
 		</action>
 		
+
 		<action path="/schoolContentUpload"
 			type="com.education.actions.SchoolContentUploadAction" scope="request">
 			<forward name="displayPage" path="tiles.schoolContentUpload" />
