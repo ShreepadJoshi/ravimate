@@ -109,6 +109,27 @@ function setPopupDefaults(){
 		});
 }
 
+function setPopupDefaultsForSchoolPopup(){
+	//alert('In setPopupDefaults()');
+	ModalPopups.SetDefaults( 
+		{
+		 backgroundColor: "#FFFFFF", 
+		 //titleBackColor: "#C1D2E7",
+		 titleBackColor: "#22a7d3",
+		 //titleBackColor: "#E4E4E4",
+		 titleFontColor: "#FFFFFF",
+		 popupBackColor: "#F0F0FF",
+		 //popupBackColor: "#C7D6E9",
+		 popupFontColor: "black",
+		 //footerBackColor: "#C1D2E7",
+		 footerBackColor: "#FFFFFF",
+		 footerFontColor: "#15428B",
+		 fontFamily: "Verdana,Arial",
+		 fontSize: "9pt"  
+		 
+		});
+}
+
 function newUserSignup_login() {
 	//alert('display loginDialog In login()');
 	setPopupDefaults();
@@ -165,6 +186,7 @@ function login() {
     );            
     ModalPopups.GetCustomControl("login_username").focus(); 
 }
+
 function display_schoolDetails(count) {
 	 var schoolName= "" ;
 	 var board= "" ;
@@ -177,49 +199,46 @@ function display_schoolDetails(count) {
 	 var mediumOdIntroduction= "" ;
 	 
 	 var table = document.getElementById("row");
-	 	table
 	    var rows = table.getElementsByTagName("tr");
 	   
 	    for (i = 0; i < rows.length; i++) {
 	       if(count == i){
 	    	   var column =  rows[i].getElementsByTagName("td");
 	    	       schoolName =column[0].innerHTML; 
-	    		     board = column[1].innerHTML;
-	    		     district = column[2].innerHTML;
-	    		     state = column[3].innerHTML;
-	    		     postalAddr = column[4].innerHTML;
-	    		     pinCode = column[5].innerHTML;
-	    		     yearOfFoundation = column[6].innerHTML;
-	    		     status = column[7].innerHTML;
-	    		     mediumOdIntroduction = column[8].innerHTML;
+	    	       	postalAddr = column[1].innerHTML;
+	    	         city = column[2].innerHTML;
+	    	         pinCode = column[3].innerHTML;
+	    	         webSite = column[4].innerHTML;
+	    		     board = column[5].innerHTML;
+	    		     category = column[6].innerHTML;
+	    		     type = column[7].innerHTML;
+	    		     contactPerson = column[8].innerHTML;
+	    		     contactNumber = column[9].innerHTML;
+	    		    
 	       } 
 	    }
-	setPopupDefaults();
+	setPopupDefaultsForSchoolPopup();
 	ModalPopups.Custom("popup_SchoolDetails",
 	"School Details",
-    "<div style='padding: 25px;'>" +
-    "<table align='left'> " +
-    "<tr><td style='padding-left:25px'>School Name : "+ schoolName +"</td></td></tr> "+
-    "<tr ><td style='padding-left:25px'>Board : "+ board +" </td></tr>"+
-    "<tr ><td style='padding-left:10px'>District : "+ district +" </td></tr>"+
-    "<tr><td style='padding-left:10px'>State: "+ state +" </td></tr>"+
-    "<tr><td style='padding-left:10px'>Postal Address: "+ postalAddr +" </td></tr>"+
-    "<tr><td style='padding-left:10px'>Pin Code: "+ pinCode +" </td></tr>"+
-    "<tr><td style='padding-left:10px'>Year Of Foundation : "+ yearOfFoundation +"</td></tr>"+
-    "<tr><td style='padding-left:10px'>Status: "+ status +" </td></tr>"+
-    "<tr><td style='padding-left:10px'>Medium Of Instaruction: "+ mediumOdIntroduction +" </td></tr>"+
-    "<tr><td><img src='images/School.jpg' width='150' height='113' align='absbottom'/></td> "+
-    "<td align='right' style='padding-left:60px'><iframe width='250' height='250' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='http://maps.google.co.in/maps?hl=en&amp;q=adding+google+map+to+website&amp;ie=UTF8&amp;showlabs=1&amp;ll=18.516825,73.842092&amp;spn=0.043989,0.063605&amp;output=embed'></iframe></td>" +
-    "</tr>" +
-    "</table>" +	 
-    "</div>" ,
-    {
-        width: 550,
-        height:90,
-        buttons: "cancel",
-        cancelButtonText: "Cancel",
-        onCancel: "cancel()"
-    }            
+   "<div style='padding: 25px;'>" +
+   "<table width='100' border='0' align='center' cellpadding='0' cellspacing='10'>" +
+   "<tr><td class = 'input_label'>School Name :</td><td class = 'input_field' maxlength='40' size='40' readOnly='true' value="+schoolName+"></td></tr> "+
+	"<tr><td class = 'input_label'>Address: </td><td colspan='2' ><label><input name='Address1' type='text'   class = 'input_field' maxlength='40' size='40' readOnly='true' value="+postalAddr+"></label></td></tr> "+
+	"<tr><td> </td><td colspan='2'><label><input name='Address2' type='text'  class = 'input_field' maxlength='40' size='40' readOnly='true'></label></td></tr>" +
+	"<tr><td  class = 'input_label'>City: </td><td colspan='0' ><label><input name='City' type='text' class = 'input_field' maxlength='20'  size='20' readOnly='true' value="+postalAddr+"></td><td  width='80' class = 'input_label' >PIN / Zip: </td><td colspan='0' ><label><input name='Pin' type='text' class = 'input_field' maxlength='8' size='8' readOnly='true' value="+pinCode+" /></td></tr> " +
+	"<tr><td  class = 'input_label'>Web Site: </td><td colspan='1'><label><input name='WebSite' type='text' class = 'input_field' maxlength='40' size='40' readOnly='true'  value="+webSite+"></td></tr>" +
+	"<tr><td  class = 'input_label'>Board: </td><td colspan='1'><label><input name='Board' type='text' class = 'input_field'  maxlength='20' size='20' readOnly='true' value="+board+"></td><td rowspan='5' colspan='3' align='left' valign='middle'><iframe frameborder='0' scrolling='no' width='240' height='169' marginheight='10' marginwidth='10' src='http://maps.google.co.in/maps?hl=en&amp;q=adding+google+map+to+website&amp;ie=UTF8&amp;showlabs=1&amp;ll=18.516825,73.842092&amp;spn=0.043989,0.063605&amp;output=embed'></iframe></td></tr>"+
+	"<tr><td  class = 'input_label'>Category</td><td colspan='0'><label><input name='PvtGovt' type='text' class = 'input_field' maxlength='15'  size='15' readOnly='true' value="+category+"></td></tr> " +
+	"<tr><td  class = 'input_label' >Type: </td><td colspan='0' ><label><input name='InstituteType' type='text' class = 'input_field' maxlength='20'  size='20' readOnly='true'  value="+type+"></td></tr> "+
+	"<tr><td  class = 'input_label'>Contact Person: </td><td><label><input name='ContactPerson' type='text' class = 'input_field' maxlength='25' size='25'  readOnly='true' value="+contactPerson+"></td></tr>" +
+	"<tr><td  class = 'input_label' >Contact No: </td><td><label><input name='ContactNo' type='text' class = 'input_field' maxlength='12'  size='12' readOnly='true' value="+contactNumber+"></td></tr> "+
+	"<tr><td colspan='2' align='right' valign='bottom'><a href='#' onClick='cancel()'>Back to school list</a></td></tr> "+
+   "</div>" ,
+   {
+		buttons: "",
+       width: 650,
+       height:50
+   }            
 	);
 }
 
