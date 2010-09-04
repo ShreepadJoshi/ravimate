@@ -238,6 +238,12 @@
   <definition name="tiles.bodyPanel.adminQuestionList" extends="tiles.bodyPanel">
 	<put name="content" value="/WEB-INF/jspf/bodycontent_adminQuestionList.jsp" />
   </definition>
+  
+  <!--Teacher Question List Page BodyContent -->
+  <definition name="tiles.bodyPanel.teacherQuestionList" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_teacherQuestionList.jsp" />
+  </definition>
+  
   <!--Admin ManageQuestion Page BodyContent -->
   <definition name="tiles.bodyPanel.adminManageQuestion" extends="tiles.bodyPanel">
 	<put name="content" value="/WEB-INF/jspf/bodycontent_manageQuestion_admin.jsp" />
@@ -300,6 +306,13 @@
   <definition name="tiles.bodyPanel.testMainPage" extends="tiles.bodyPanel">
 	<put name="content" value="/WEB-INF/jspf/bodycontent_testMainPage.jsp" />
   </definition>
+  
+  <!--MakePayment Page BodyContent -->
+  <definition name="tiles.bodyPanel.makePaymentPage" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_makePayment.jsp" />
+  </definition>
+  
+  
   
   <!--TestQuestion Page BodyContent -->
   <definition name="tiles.bodyPanel.testQuestionPage" extends="tiles.bodyPanel">
@@ -458,8 +471,8 @@
   </definition>
   <!-- ManageQuestion Page in Create mode -->
   <definition name="tiles.manageQuestionPage_createMode" extends="tiles.userHomePage">
-	<put name="title"  value="Ez-Learning->ManageQuestion" />
-	<put name="bodyContentHeading" value="ManageQuestion" />
+	<put name="title"  value="Ez-Learning->AddQuestion" />
+	<put name="bodyContentHeading" value="AddQuestion" />
 	<put name="bodyContent" value="tiles.bodyPanel.manageQuestion.createMode" />
   </definition>	  	
 <!-- ManageQuestion Page in view mode -->
@@ -479,6 +492,12 @@
 	<put name="title"  value="Ez-Learning->QuestionList" />
 	<put name="bodyContentHeading" value="Question List" />
 	<put name="bodyContent" value="tiles.bodyPanel.adminQuestionList" />
+  </definition>
+   <!--Teacher Question List Page -->
+  <definition name="tiles.teacherQuestionListPage" extends="tiles.userHomePage">	
+	<put name="title"  value="Ez-Learning->QuestionList" />
+	<put name="bodyContentHeading" value="Question List" />
+	<put name="bodyContent" value="tiles.bodyPanel.teacherQuestionList" />
   </definition>
   <!--Admin ManageQuestion Page -->
   <definition name="tiles.adminManageQuestionPage" extends="tiles.adminHomePage">	
@@ -609,6 +628,17 @@
 	<put name="bodyContent" value="tiles.bodyPanel.testMainPage" />		
 	<put name="definition"  value="5"/>
   </definition>
+  
+  <!-- Make Payment Page -->
+   <definition name="tiles.makePaymentPage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Make Payment" />
+	<put name="bodyContentHeading" value="Make Payment" />
+	<put name="bodyContent" value="tiles.bodyPanel.makePaymentPage" />		
+	<put name="definition"  value="5"/>
+  </definition>
+  
+  
+  
   <!-- TestQuestion Page -->
    <definition name="tiles.testQuestionPage" extends="tiles.userHomePage">
 	<put name="title"  value="Ez-Learning->Test Question " />
