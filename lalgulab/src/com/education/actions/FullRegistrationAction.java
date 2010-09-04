@@ -122,7 +122,17 @@ public class FullRegistrationAction extends EducationBaseAction{
 			RegistrationTo rto=new RegistrationTo();
 			populateRegTOFrmBean(registrationBean,rto);
 			UserRegistrationService userRegistrationService= new UserRegistrationService();
-			UserTO userTo =  userRegistrationService.registerUser(rto);
+			//UserTO userTo =  userRegistrationService.registerUser(rto);
+			
+			UserSessionInfo objUserInfo = (UserSessionInfo) request.getSession()
+			.getAttribute(SessionConstants.user_info);
+
+						int userId;
+						if(objUserInfo != null) {
+							userId = objUserInfo.getUserId();
+							rto.setUserId(String.valueOf(userId));
+						}
+			UserTO userTo = userRegistrationService.updateUser(rto);
 			strActionForward = "success";
 		}
 		
