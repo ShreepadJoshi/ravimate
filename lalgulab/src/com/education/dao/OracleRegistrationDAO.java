@@ -72,8 +72,8 @@ public class OracleRegistrationDAO extends AbstractDAO{
 				+ " Hobbies, IsFullReg,IsApproved,city,state) "
 				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 
-		String partialReg_Q = " insert into t_user (EmailId, RoleId, Password, RegistrationDate, "
-				+ " IsFullReg,IsApproved) " + " values(?,?,?,?,?,?) ";
+	//	String partialReg_Q = " insert into t_user (EmailId, RoleId, Password, RegistrationDate, "
+			//	+ " IsFullReg,IsApproved) " + " values(?,?,?,?,?,?) ";
 
 		PreparedStatement psmt = null;
 		try {
@@ -101,17 +101,17 @@ public class OracleRegistrationDAO extends AbstractDAO{
 				psmt.setInt(18, rto.getIsApproved());
 				psmt.setString(19, rto.getCity());
 				psmt.setString(20, rto.getState());
-				psmt.executeUpdate();
+			//	psmt.executeUpdate();
 			//} else if (rto.getIsFullregistration() == 0) {
-//				psmt = con.prepareStatement(partialReg_Q);
-//				psmt.setString(1, rto.getEmailID());
-//				psmt.setInt(2, rto.getRoleId());
-//				psmt.setString(3, rto.getPassword());
-//				psmt.setDate(4,
-//						new java.sql.Date(Utilities.getCurrentDB_Date()));
-//				psmt.setInt(5, rto.getIsFullregistration());
-//				psmt.setInt(6, rto.getIsApproved());
-//				psmt.executeUpdate();
+				//	psmt = con.prepareStatement(partialReg_Q);
+				//psmt.setString(1, rto.getEmailID());
+			//	psmt.setInt(2, rto.getRoleId());
+			//	psmt.setString(3, rto.getPassword());
+			//	psmt.setDate(4,
+					//new java.sql.Date(Utilities.getCurrentDB_Date()));
+			//	psmt.setInt(5, rto.getIsFullregistration());
+			//	psmt.setInt(6, rto.getIsApproved());
+				psmt.executeUpdate();
 			//}
 			
 			//Get Logged In user Details For Application to use
@@ -141,7 +141,71 @@ public class OracleRegistrationDAO extends AbstractDAO{
 		}
 		return userTo;
 	}
+	
+	
+	
+	/** This method updates the t_user table with all details after Full Registration, through Guest Role. 
+	 * @param rto
+	 * @return UserTO
+	 * @throws BaseAppException
+	 */
+	public UserTO updateUser(RegistrationTo rto) throws BaseAppException {
 
+		
+		UserTO userTo = new UserTO();
+		Connection con = null;
+		int roleId = rto.getRoleId();
+		String password = rto.getPassword();
+		String address1 = rto.getAddress1();
+		String pinCode = rto.getPin();
+		String country = rto.getCountry();
+		String landline = rto.getLandlineNo();
+		String mobileNo = rto.getMobileNo();
+		String alternateEmail = rto.getAlternateEmailID();
+		String hobbies = rto.getHobbies();
+		String firstName = rto.getFirstName();
+		String lastName = rto.getLastName();
+		String sex = rto.getSex();
+		java.sql.Date reg1Date = new java.sql.Date(Utilities.getCurrentDB_Date());
+		String city = rto.getCity();
+		String state = rto.getState();
+		String userId = rto.getUserId();
+		int isAprroved = rto.getIsApproved();
+		
+		String sql = "Update t_user SET RoleId = "+roleId+", Password = '"+password+"' ,Address1 = '"+address1+"' ,PIN = '"+pinCode+"',Country='"+country+"',Landline ='"+landline+"',MobileNumber = '"+mobileNo+"' ,AlternateEmailId ='"+alternateEmail+"', FirstName ='"+firstName+"',LastName = '"+lastName+"', Sex = '"+sex+"', RegistrationDate = '"+reg1Date+"',Hobbies = '"+hobbies+"', city ='"+city+"',state= '"+state+"',Isapproved = '"+isAprroved+"' where userid = "+userId+" ";
+		
+		PreparedStatement psmt = null;
+		try {
+			con = GetConnection.getSimpleConnection();
+				psmt = con.prepareStatement(sql);
+				psmt.executeUpdate();
+		}catch (MySQLIntegrityConstraintViolationException e) {
+			throw new DBIntegrityViolationException(e.getMessage());
+		} catch (MysqlDataTruncation e) {
+			throw new DBDataOutOfRangeException(e.getMessage(), Utilities
+					.getDataTooLongExceptionColumnName(e.getMessage()));
+		} catch (SQLException e) {
+			if (e.getMessage().contains("Incorrect"))
+				throw new DBInvalidDataInsertionException(e.getMessage(),
+						Utilities.getDataMissingExceptionColumnName(e
+								.getMessage()), Utilities
+								.getDataMissingExceptionColumValue(e
+										.getMessage()));
+			else
+				throw new RuntimeException(e);
+		} finally {
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				throw new DBDataSourceException(e.getMessage());
+			}
+		}
+		return userTo;
+	}
+
+	
+	
 	/**
 	 * Checks if the user with given emailId and password exists and accordingly
 	 * prepares the UserTO object holding all the user information else returns
