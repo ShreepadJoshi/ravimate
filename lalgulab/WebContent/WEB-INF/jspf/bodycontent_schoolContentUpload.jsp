@@ -4,9 +4,7 @@
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@page import="com.education.transferobj.ContentUploadTO"%>
 <center><span style="color: red; background-color: #F0F0FF"><html:errors /></span></center>
-<table width="100%" border="0" align="center" cellpadding="0"
-	cellspacing="10" bgcolor="#F0F0FF">
-	<form action="/EZLearning/schoolContentUpload.do" method="POST"
+	<form action="schoolContentUpload.do" method="POST"
 			enctype="multipart/form-data"">
 				<table width="50%" border="1" align="center" cellpadding="0"
 						cellspacing="10" bgcolor="#F0F0FF">
@@ -26,4 +24,3 @@
 			
 				</table>
 	</form>
-</table>
