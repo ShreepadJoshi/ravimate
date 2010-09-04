@@ -1,4 +1,3 @@
-
 <%@page import="com.education.Session.UserSessionInfo"%>
 <%@page import="com.education.Session.SessionConstants"%>
 <%@page import="com.education.util.EducationConstant"%>
@@ -11,14 +10,15 @@
 %>
 <display:table name="findSchool.pgSearchResults" id="row" requestURI="/findSchool.do" pagesize="10" decorator="org.displaytag.decorator.TotalTableDecorator">
 <%a = ((TSchool)row).getSchoolId(); %>
-	<display:column property="schoolName" decorator="com.education.displaytag.SchoolLinkWrapper" title="School Name" />
-	<display:column property="schoolBoard" title="Board" />	
-	<display:column property="schoolDistrict" title="District"/>
-	<display:column property="schoolState" title="State"/>
-	<display:column property="schoolPostalAddr" title="Postal Addr"/>
-	<display:column property="schoolPinCode" title="Pin"/>
-	<display:column property="yearoffoundation" title="Year Of Foundation"/>
-	<display:column property="schoolStatus" title="Status"/>
-	<display:column property="mediumofInstruction" title="Medium Of Instruction"/>
-	<display:setProperty name="paging.banner.placement" value="bottom"/>
+	<display:column property="schoolName" decorator="com.education.displaytag.SchoolLinkWrapper" title="School Name" style="padding-left:2px;"/>
+	<display:column property="schoolPostalAddr" title="Postal Addr" style="padding-left:2px;"/>
+	<display:column property="schoolDistrict" title="City" style="padding-left:2px;"/>
+	<display:column property="schoolPinCode" title="Pin" style="padding-left:2px;"/>
+	<display:column property="schoolWebsite" title="WebSite" style="padding-left:2px;"/>
+	<display:column property="schoolBoard" title="Board" style="padding-left:2px;"/>	
+	<display:column property="schoolCategory" title="Category" style="padding-left:2px;"/>
+	<display:column property="schoolType" title="Category" style="padding-left:2px;"/>
+	<display:column property="principalName" title="Contact Person" style="padding-left:2px;"/>
+	<display:column property="schoolPhoneNo" title="Contact Number" style="padding-left:2px;"/>
+	<display:setProperty name="paging.banner.placement" value="bottom" />
 </display:table>
