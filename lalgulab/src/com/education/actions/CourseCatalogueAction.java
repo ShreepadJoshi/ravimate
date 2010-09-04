@@ -36,7 +36,7 @@ public class CourseCatalogueAction extends EducationBaseAction {
 	public ActionForward performAction(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		String actionFwdString = "displayCatlog";
+		String actionFwdString = "makePaymentPage";
 		String[] strIds = getCheckedIds(request);
 		CourseCatalogueForm courseCatform = (CourseCatalogueForm) form;
 		UserSessionInfo objUserInfo =  (UserSessionInfo)request.getSession().getAttribute(SessionConstants.user_info);
