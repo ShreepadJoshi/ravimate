@@ -43,7 +43,7 @@ public class PopulateDropDownByAjaxAction extends EducationBaseAction{
 		
 		if(dropDownBean.getPickDropDownvalueFor().equalsIgnoreCase("topiclist")){
 			//get topic list
-			 list = service.getTopicListBYSubjectId(dropDownBean.getSubjectId());
+			 list = service.getTopicListBYSubjectId(dropDownBean.getClassId(),dropDownBean.getSubjectId());
 			 //selectTag = "<select class='text' name='"+ dropDownBean.getElementName() +"' id='"+ dropDownBean.getElementName() +"'" +
 			 //" onchange=\"populateSubTopics(document.getElementById('subject').value,this.value,'ManageQsubTopic_divID')\">";
 			
