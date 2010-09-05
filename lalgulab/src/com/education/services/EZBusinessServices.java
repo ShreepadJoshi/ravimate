@@ -29,9 +29,9 @@ public class EZBusinessServices {
 	}
 	
 	
-	public ArrayList getTopicListBYSubjectId(String subjectId)throws BaseAppException{
+	public ArrayList getTopicListBYSubjectId(String classId , String subjectId)throws BaseAppException{
 		OracleEZDAO oracleEZDAO = new OracleEZDAO();
-		return oracleEZDAO.getTopicListBYSubjectId(subjectId);
+		return oracleEZDAO.getTopicListBYSubjectId(classId, subjectId);
 	}
 	
 	public ArrayList getTopicList()throws BaseAppException{
