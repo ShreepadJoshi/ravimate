@@ -61,10 +61,9 @@ public class OracleRegistrationDAO extends AbstractDAO{
 
 	public UserTO registerUser(RegistrationTo rto) throws BaseAppException {
 
-		// TODO : Make it update query for full registration .
 		UserTO userTo = new UserTO();
 		Connection con = null;
-		String password = getPassword(rto.getEmailID());
+		//String password = getPassword(rto.getEmailID());
 		String fullReg_Q = " insert into t_user (EmailId, RoleId, Password, Address1,PIN,"
 				+ " Country,PhoneSTD,PhoneISD,Landline,"
 				+ " MobileNumber,AlternateEmailId, FirstName, "
@@ -82,7 +81,7 @@ public class OracleRegistrationDAO extends AbstractDAO{
 				psmt = con.prepareStatement(fullReg_Q);
 				psmt.setString(1, rto.getEmailID());
 				psmt.setInt(2, rto.getRoleId());
-				psmt.setString(3, password);
+				psmt.setString(3, rto.getPassword());
 				psmt.setString(4, rto.getAddress1());
 				psmt.setString(5, rto.getPin());
 				psmt.setString(6, rto.getCountry());
@@ -115,7 +114,7 @@ public class OracleRegistrationDAO extends AbstractDAO{
 			//}
 			
 			//Get Logged In user Details For Application to use
-			userTo = getloginDetails(rto.getEmailID(),password);			
+			userTo = getloginDetails(rto.getEmailID(),rto.getPassword());			
 			
 		}catch (MySQLIntegrityConstraintViolationException e) {
 			throw new DBIntegrityViolationException(e.getMessage());
@@ -149,10 +148,10 @@ public class OracleRegistrationDAO extends AbstractDAO{
 	 * @return UserTO
 	 * @throws BaseAppException
 	 */
-	public UserTO updateUser(RegistrationTo rto) throws BaseAppException {
+	public int updateUser(RegistrationTo rto) throws BaseAppException {
 
+		int updateCount;
 		
-		UserTO userTo = new UserTO();
 		Connection con = null;
 		int roleId = rto.getRoleId();
 		String password = rto.getPassword();
@@ -170,15 +169,18 @@ public class OracleRegistrationDAO extends AbstractDAO{
 		String city = rto.getCity();
 		String state = rto.getState();
 		String userId = rto.getUserId();
-		int isAprroved = rto.getIsApproved();
+		String isAprroved = EducationConstant.REG_STATUS_NOT_APPROVED;
+		int isFullReg  = 1;
 		
-		String sql = "Update t_user SET RoleId = "+roleId+", Password = '"+password+"' ,Address1 = '"+address1+"' ,PIN = '"+pinCode+"',Country='"+country+"',Landline ='"+landline+"',MobileNumber = '"+mobileNo+"' ,AlternateEmailId ='"+alternateEmail+"', FirstName ='"+firstName+"',LastName = '"+lastName+"', Sex = '"+sex+"', RegistrationDate = '"+reg1Date+"',Hobbies = '"+hobbies+"', city ='"+city+"',state= '"+state+"',Isapproved = '"+isAprroved+"' where userid = "+userId+" ";
+		
+		String sql = "Update t_user SET RoleId = "+roleId+", Address1 = '"+address1+"' ,PIN = '"+pinCode+"',Country='"+country+"',Landline ='"+landline+"',MobileNumber = '"+mobileNo+"' ,AlternateEmailId ='"+alternateEmail+"', FirstName ='"+firstName+"',LastName = '"+lastName+"', Sex = '"+sex+"', RegistrationDate = '"+reg1Date+"',Hobbies = '"+hobbies+"', city ='"+city+"',state= '"+state+"',Isapproved = '"+isAprroved+"',IsFullReg = '"+isFullReg+"' where userid = "+userId+" ";
 		
 		PreparedStatement psmt = null;
 		try {
 			con = GetConnection.getSimpleConnection();
 				psmt = con.prepareStatement(sql);
-				psmt.executeUpdate();
+				updateCount = psmt.executeUpdate();
+				psmt.close();
 		}catch (MySQLIntegrityConstraintViolationException e) {
 			throw new DBIntegrityViolationException(e.getMessage());
 		} catch (MysqlDataTruncation e) {
@@ -201,7 +203,7 @@ public class OracleRegistrationDAO extends AbstractDAO{
 				throw new DBDataSourceException(e.getMessage());
 			}
 		}
-		return userTo;
+		return updateCount;
 	}
 
 	
@@ -225,7 +227,7 @@ public class OracleRegistrationDAO extends AbstractDAO{
 		ResultSet rs;
 		UserTO userTo = null;
 		String sql1 = " SELECT UserID,EmailId,IsFullReg, "
-				+ " FirstName,LastName,RegistrationDate,RoleId,UnsuccessfulAttempt "
+				+ " FirstName,LastName,RegistrationDate,RoleId,IsApproved,UnsuccessfulAttempt "
 				+ " FROM t_user WHERE EmailId='" + emailId + "'"
 				+ " AND Password ='" + password + "'";
 		try {
@@ -242,6 +244,7 @@ public class OracleRegistrationDAO extends AbstractDAO{
 				userTo.setDoneFullRegistration(hasDoneFullReg);
 				userTo.setRegistrationDate(rs.getString("RegistrationDate"));
 				userTo.setRoleId(rs.getInt("RoleId"));
+				userTo.setIsApproved(rs.getString("ISApproved"));
 				userTo.setUserloginID(userTo.getEmailId());
 				userTo.setUserId(rs.getInt("UserID"));
 				int cnt = rs.getInt("UnsuccessfulAttempt");
