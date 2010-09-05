@@ -15,9 +15,10 @@ import org.expframework.data.ExceptionDisplayDTO;
 import com.education.Session.SessionConstants;
 import com.education.Session.UserSessionInfo;
 import com.education.formbeans.FullRegActionForm;
+
 import com.education.services.UserRegistrationService;
 import com.education.transferobj.RegistrationTo;
-import com.education.transferobj.UserTO;
+
 import com.education.util.EducationConstant;
 import com.education.util.Utilities;
 
@@ -28,6 +29,7 @@ public class FullRegistrationAction extends EducationBaseAction{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		FullRegActionForm registrationBean = (FullRegActionForm)form;
+		
 		UserSessionInfo objUserInfo = (UserSessionInfo) request.getSession()
 		.getAttribute(SessionConstants.user_info);
 		if(objUserInfo != null) {
@@ -126,13 +128,19 @@ public class FullRegistrationAction extends EducationBaseAction{
 			
 			UserSessionInfo objUserInfo = (UserSessionInfo) request.getSession()
 			.getAttribute(SessionConstants.user_info);
-
+		
+			
+			
+			
 						int userId;
 						if(objUserInfo != null) {
 							userId = objUserInfo.getUserId();
 							rto.setUserId(String.valueOf(userId));
+							rto.setEmailID(objUserInfo.getUserTo().getEmailId());
+							rto.setPassword(objUserInfo.getUserTo().getPassword1());
+							
 						}
-			UserTO userTo = userRegistrationService.updateUser(rto);
+			int updateCount = userRegistrationService.updateUser(rto);
 			strActionForward = "success";
 		}
 		
@@ -151,7 +159,7 @@ public class FullRegistrationAction extends EducationBaseAction{
 		rto.setHobbies(registrationBean.getHobbies());
 		rto.setIsFullregistration(1); //Set Full Registration flag to true
 		rto.setIsApproved(EducationConstant.REG_STATUS_WAIT_FOR_ADMIN_APPROVAL); // Waits for approval from Admin
-		rto.setLandlineNo( registrationBean.getLandlineNo() );
+		rto.setLandlineNo(registrationBean.getLandlineNo() );
 		rto.setStdCode(registrationBean.getStdCode());
 		rto.setIsdCode(registrationBean.getIsdCode());
 		rto.setMobileNo( registrationBean.getMobileNo() );
@@ -159,7 +167,6 @@ public class FullRegistrationAction extends EducationBaseAction{
 		rto.setSex(registrationBean.getSex());		
 		rto.setRoleId(Integer.parseInt(registrationBean.getRoleType()));
 		rto.setState(registrationBean.getState());
-		
 	}
 	
 	private void populateRegBeanFrmTO(FullRegActionForm registrationBean,RegistrationTo rto){
