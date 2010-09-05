@@ -5,6 +5,7 @@ var EMAILID_NOT_EXIST_MESSAGE = "EmailID does not exist!";
 var LOGIN_EXCEPTION_MESSAGE = "Some Problem in Login, Please Contact System Admin!";
 var SENDMAIL_EXCEPTION_MESSAGE = "Some Problem in sending mail,Please Contact System Admin!";
 var UNSUCCESSFULL_EXCEPTION_MSG = "User has been blocked, due to 5 unsuccessfull Attempts";
+var USER_WAITING_FOR_ADMIN_APPROVAL = "Waiting for admin approval,can't login";
 
 function abc(){
 window.showModalDialog("dialogpage.html",window,"dialogHeight:100px;dialogWidth: 283px; dialogTop: 286px; edge: Raised; center: Yes; resizable: Yes; status: No;");
@@ -366,9 +367,6 @@ function cancelbutton_EventHanderl() {
 }
 
 function processLoginResponse(p_respText){
-	
-	
-	
 	if(p_respText != null && p_respText == "INVALID_LOGIN"){
 	
 		ModalPopups.Alert("jsAlert1",
@@ -419,8 +417,15 @@ function processLoginResponse(p_respText){
 		            okButtonText: "Close"
 		        }
 	    	);
-	}	
-	else{
+	} else if(p_respText != null && p_respText == "WAITING_FOR_ADMIN_APPROVAL"){
+		ModalPopups.Alert("jsAlert1",
+		        "Login Approval",
+		        "<div style='padding:25px;'>"+USER_WAITING_FOR_ADMIN_APPROVAL+"</div>", 
+		        {
+		            okButtonText: "Close"
+		        }
+	    	);
+	} else{
 		window.location=DOMAIN_NAME+"homepage.jsp";		
 		//window.location.reload(true);	// causes the document to be reloaded from web server
 		//window.location.replace("index.jsp"); //doc reloaded frm server, no entry is made in page history 		 	
@@ -485,7 +490,6 @@ function loginAjaxRequest(url) {
 			if (xmlHttp.readyState == 4) {
 				if (xmlHttp.status == 200) {
 					resText = xmlHttp.responseText;
-					//alert("result Ajax call: "+ resText);
 					processLoginResponse(resText);					 
 				}
 			}	
