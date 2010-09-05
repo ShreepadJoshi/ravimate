@@ -21,13 +21,12 @@ public class UserRegistrationService {
 
 	}
 	
-	public UserTO updateUser(RegistrationTo rto) throws BaseAppException {
+	public int updateUser(RegistrationTo rto) throws BaseAppException {
 		// encrypt password
-		String encrypted_password = Utilities.encryptData(rto.getPassword());
-		rto.setPassword(encrypted_password);
+		//String encrypted_password = Utilities.encryptData(rto.getPassword());
+	//	rto.setPassword(encrypted_password);
 		OracleRegistrationDAO userDAO = new OracleRegistrationDAO();
 		return userDAO.updateUser(rto);
-
 	}
 	
 	
