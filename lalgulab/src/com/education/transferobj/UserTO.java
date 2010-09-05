@@ -13,9 +13,18 @@ public class UserTO {
    private boolean doneFullRegistration = false;
     private String userloginID = "";
     private int userId ;
+    private String isApproved; 
     
 
-    public boolean isDoneFullRegistration() {
+	public String getIsApproved() {
+		return isApproved;
+	}
+
+	public void setIsApproved(String isApproved) {
+		this.isApproved = isApproved;
+	}
+
+	public boolean isDoneFullRegistration() {
 		return doneFullRegistration;
 	}
 
