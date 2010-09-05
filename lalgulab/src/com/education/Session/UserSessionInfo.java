@@ -9,6 +9,13 @@ public class UserSessionInfo {
 	 private String lastName = "";
 	 private String registrationDate = "";
 	private boolean doneFullRegistration = false;
+	private String password = "";
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	private String userloginName = "";
 	private String roleId = "";
 	 private int userId ;
