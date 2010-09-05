@@ -104,28 +104,28 @@ var xmlHttp;
 	/**
 	 * Functions populates the drop down value
 	 */
-	function populateDropdown(dropDownName,nameValuePair,listType,divID,onChangeEvent){		
-		var splitVlaues = nameValuePair.split(",");
-		var values = "";
+	function populateDropdown(dropDownName,classId,subjectId,listType,divID,onChangeEvent){	
+		 //var splitVlaues = nameValuePair.split(",");
+		var splitVlaues =  new Array();
+		if(classId != "") {
+			splitVlaues[0] = classId;
+		} 
+		if(subjectId != "" || subjectId != 0) {
+			splitVlaues[1] = subjectId;
+		}
 		var optionList = "<option value=\"Mat\">Maths</option>"+
 						  "<option value=\"Eng\">English</option>"+
 						  "<option value=\"Science\">Science</option>";
 		
 		var respAjaxHtml = "";
 		
-		for(i=0; i<splitVlaues.length; i++ ){
-			if(values == "")
-				values = splitVlaues[i];
-			else
-				values = values + "&" + splitVlaues[i]; 
-		}
-		var url = DOMAIN_NAME+"populateDropdownByAjax.do?"+
-				  values+
-				  "&pickDropDownvalueFor="+listType;
+		
+		var url = DOMAIN_NAME+"populateDropdownByAjax.do?"+splitVlaues+
+		"&pickDropDownvalueFor="+listType;
 		//alert("Url: "+ url);
 				    
 		//make sure selected value is not empty then do Ajax call
-		if(nameValuePair != null && nameValuePair != ""){			
+		if(splitVlaues != null && splitVlaues .length > 0){			
 			if (window.ActiveXObject) {
 				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
 			}else if (window.XMLHttpRequest) {
