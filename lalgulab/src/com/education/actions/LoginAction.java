@@ -31,6 +31,7 @@ import com.education.services.UserRegistrationService;
 import com.education.transferobj.QuestionBankTO;
 import com.education.transferobj.RegistrationTo;
 import com.education.transferobj.UserTO;
+import com.education.util.EducationConstant;
 import com.education.util.Utilities;
 
 
@@ -56,6 +57,7 @@ public class LoginAction extends Action {
 			String[]names = request.getParameterValues("name");
 			boolean login_Result = false;
 			boolean signup_Result = false;
+			boolean waiting_for_approval = false;
 			
 			String[]list = request.getParameterValues("list");
 			String[]subjects = request.getParameterValues("subject");
@@ -73,7 +75,11 @@ public class LoginAction extends Action {
 			
 			if(loginBean.getLoginType().equalsIgnoreCase("login")){
 				userTo =userRegistrationService.getloginDetails(loginBean.getUsername(),loginBean.getPassword());
-				
+				if(userTo != null) {
+					if(userTo.getIsApproved().endsWith(EducationConstant.REG_STATUS_NOT_APPROVED) && userTo.isDoneFullRegistration() == true) {
+						waiting_for_approval = true;
+					}
+				}
 				login_Result = (userTo != null ? true : false);
 				
 			}else if(loginBean.getLoginType().equalsIgnoreCase("signup")){	
@@ -81,7 +87,7 @@ public class LoginAction extends Action {
 				//check if username with same emailId exists in DB
 				boolean exist_username = userRegistrationService.existUsername(loginBean.getUsername());
 				
-				if(!exist_username){
+				if(!exist_username) {
 					if(loginBean.getPassword1().equals(loginBean.getPassword2())){
 						RegistrationTo rto = new RegistrationTo();
 						rto.setEmailID(loginBean.getUsername());
@@ -98,6 +104,8 @@ public class LoginAction extends Action {
 					signup_Result = false;
 					
 				}
+				
+				
 			}
 			
 			//On successful login/newUserSignup set details to session
@@ -111,8 +119,11 @@ public class LoginAction extends Action {
 			
 			// set the return value for Invalid login/Signup
 			if( loginBean.getLoginType().equalsIgnoreCase("login") ){
-				if(!login_Result)
-					out.print("INVALID_LOGIN");			
+				if(!login_Result) {
+					out.print("INVALID_LOGIN");	
+				} else if(waiting_for_approval) {
+					out.print("WAITING_FOR_ADMIN_APPROVAL");	
+				}
 			}else if( loginBean.getLoginType().equalsIgnoreCase("signup")){
 				if(!signup_Result)
 					out.print("SAME_EMAILID_EXIST");
