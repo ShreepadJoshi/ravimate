@@ -186,15 +186,15 @@ public class OracleEZDAO extends AbstractDAO{
 		return subjectList;
 	}
 	
-	public ArrayList getTopicListBYSubjectId(String subjectId) throws BaseAppException{
+	public ArrayList getTopicListBYSubjectId(String classId,String subjectId) throws BaseAppException{
 		String sql = " SELECT DISTINCT topicTable.topicId, topicTable.topicValue "+
 					 " FROM t_class_subject_topic_subTopic_mapping mapping_Table "+
 					 " INNER JOIN t_topics topicTable "+
 					 "   ON mapping_Table.topicId = topicTable.topicId ";
 		
-		if(!Utilities.isNullOrBlank(subjectId)){
+		if((!Utilities.isNullOrBlank(subjectId)) && (!Utilities.isNullOrBlank(classId))){
 			
-			sql+=" where mapping_Table.subjectId="+subjectId;
+			sql+=" where mapping_Table.classId ="+classId+" and mapping_Table.subjectId="+subjectId;
 		}
 		sql += " order by topicTable.topicValue ";
 		
