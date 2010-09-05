@@ -32,7 +32,7 @@
 	<tr>
 		<td  width="201" height="110" align="left" valign="middle">
 		<img
-			src="<html:rewrite page='/images/ez_logo.jpg'/>" alt=""
+			src="<html:rewrite page='/images/e_logo1.jpg'/>" alt=""
 			width="201" height="104" /></td>
 		<td width="798" align="right" valign="bottom">
 		
