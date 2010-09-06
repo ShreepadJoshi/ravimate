@@ -16,8 +16,7 @@
 		<td colspan="2"  align ="left" width="10"> 
 			
 			<label>
-				<html:select property="sch_classType" styleClass="input_field"
-				onchange="populateDropdown('sch_subject','classId='+this.value,'subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
+				<html:select property="sch_classType" styleClass="input_field" onchange="populateDropdown('sch_subject','classId='+this.value,'0','0','subjectlist','subjectDropdown',''+QUESTIONLIST_ADD_REC_SUBJECTDD)">>
 					<html:optionsCollection property="classTypeOptions"/>
 				</html:select>
 				
@@ -37,7 +36,7 @@
 			<label>
 			<div id="subjectDropdown">
 				<html:select property="sch_subject" styleClass="input_field"
-					onchange="populateDropdown('sch_topic','subjectId='+this.value,'topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)">
+					onchange="populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_TOPICDD)">
 					<html:optionsCollection property="subjectOptions"/>
 				</html:select>
 			</div>	
