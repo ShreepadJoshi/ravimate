@@ -6,13 +6,18 @@ var xmlHttp;
 	var MANAGEQPG_TOPICDD = "2";
 	var MANAGEQPG_SUBTOPICDD = "3";
 	
-	var CONTENTUPLOADPG_ADD_REC_SUBJECTDD = "4";	
+	var CONTENTUPLOADPG_ADD_REC_SUBJECTDD = "4";
 	var CONTENTUPLOADPG_ADD_REC_TOPICDD="5";
 	var CONTENTUPLOADPG_ADD_REC_SUBTOPICDD = "6";
 	
 	var MANAGEQPG_SUBJECTDD_NEW = "7";	
 	var MANAGEQPG_TOPICDD_NEW="8";
 	var MANAGEQPG_SUBTOPICDD_NEW = "9";
+	var QUESTIONLIST_ADD_REC_TOPICDD = "10";
+	var QUESTIONLIST_ADD_REC_SUBJECTDD = "11";
+	var MANAGEQUESTION_ADD_REC_SUBJECTDD = "12";
+	var MANAGEQUESTION_ADD_REC_TOPICDD = "13";
+	var MANAGEQUESTION_ADD_REC_CLASSDD = "14";
 	
 	var END = "7"; 
 	
@@ -21,14 +26,20 @@ var xmlHttp;
 	var MANAGEQPG_TOPICDD_ONCHANGE_EVENT = "onchange=\"populateDropdown('subTopic','subjectId='+document.getElementById('subject').value+',topicValue='+this.value,'subtopiclist','ManageQsubTopic_divID',''+MANAGEQPG_SUBTOPICDD)\"";
 	var MANAGEQPG_SUBTOPICDD_ONCHANGE_EVENT = ""
 	
-	var CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT ="onchange=\"populateDropdown('uptTopicId','subjectId='+this.value,'topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)\"";
-	var CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT ="onchange=\"populateDropdown('uptsubTopicId','subjectId='+document.getElementById('uptsubjectId').value+',topicValue='+this.value,'subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBTOPICDD)\"";
+	var CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT ="onchange=\"populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)\"";
+	
+	var QUESTIONLIST_ADD_REC_SUBJECTDD_ONCHANGE_EVENT ="onchange=\"populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_TOPICDD)\"";
+	var CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT ="onchange=\"populateDropdown('uptsubTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','topicId='+document.getElementById('uptTopicId').value+'','subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBTOPICDD)\"";
+	
 	var CONTENTUPLOADPG_ADD_REC_SUBTOPICDD_ONCHANGE_EVENT = "";
 	
-	var MANAGEQPG_SUBJECTDD_ONCHANGE_EVENT_NEW ="onchange=\"wrapperFunDropDown('uptTopicId','subjectId='+this.value,'topiclist','topicDropdown',''+MANAGEQPG_TOPICDD_NEW,'subjectId',this.value)\"";
-	var MANAGEQPG_TOPICDD_ONCHANGE_EVENT_NEW ="onchange=\"wrapperFunDropDown('uptsubTopicId','subjectId='+document.getElementById('uptsubjectId').value+',topicValue='+this.value,'subtopiclist','subTopicDropdown',''+MANAGEQPG_SUBTOPICDD_NEW,'topicId',this.value)\"";
+	//var MANAGEQPG_SUBJECTDD_ONCHANGE_EVENT_NEW ="onchange=\"wrapperFunDropDown('uptTopicId','subjectId='+this.value,'topiclist','topicDropdown',''+MANAGEQPG_TOPICDD_NEW,'subjectId',this.value)\"";
+	//var MANAGEQPG_TOPICDD_ONCHANGE_EVENT_NEW ="onchange=\"wrapperFunDropDown('uptsubTopicId','subjectId='+document.getElementById('uptsubjectId').value+',topicValue='+this.value,'subtopiclist','subTopicDropdown',''+MANAGEQPG_SUBTOPICDD_NEW,'topicId',this.value)\"";
 	var MANAGEQPG_SUBTOPICDD_ONCHANGE_EVENT_NEW = "onchange=\"document.getElementById('subTopicId').value=this.value;\" ";
-
+	
+	var MANAGEQUESTION_SUBJECTDD_ONCHANGE_EVENT = "";
+	var MANAGEQUESTION_CLASSDD_ONCHANGE_EVENT = "";
+	var MANAGEQUESTION_TOPICDD_ONCHANGE_EVENT ="onchange=\"populateDropdown('subTopic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','topicId='+document.getElementById('topic').value+'','subtopiclist','subTopicDropdown',''+MANAGEQUESTION_ADD_REC_TOPICDD)\"";
 /** GLOBAL CONSTANTS END **/
 
 
@@ -104,7 +115,7 @@ var xmlHttp;
 	/**
 	 * Functions populates the drop down value
 	 */
-	function populateDropdown(dropDownName,classId,subjectId,listType,divID,onChangeEvent){	
+	function populateDropdown(dropDownName,classId,subjectId,topicId,listType,divID,onChangeEvent){	
 		 //var splitVlaues = nameValuePair.split(",");
 		var splitVlaues =  new Array();
 		if(classId != "") {
@@ -113,6 +124,17 @@ var xmlHttp;
 		if(subjectId != "" || subjectId != 0) {
 			splitVlaues[1] = subjectId;
 		}
+		if(topicId != "" || topicId !=0) {
+			splitVlaues[2] = topicId;
+		}
+		var values = "";
+		for(i=0; i<splitVlaues.length; i++ ){
+			if(values == "") {
+				values = splitVlaues[i];
+			} else {
+				values = values + "&" + splitVlaues[i];
+			} 
+		}
 		var optionList = "<option value=\"Mat\">Maths</option>"+
 						  "<option value=\"Eng\">English</option>"+
 						  "<option value=\"Science\">Science</option>";
@@ -120,8 +142,7 @@ var xmlHttp;
 		var respAjaxHtml = "";
 		
 		
-		var url = DOMAIN_NAME+"populateDropdownByAjax.do?"+splitVlaues+
-		"&pickDropDownvalueFor="+listType;
+		var url = DOMAIN_NAME+"populateDropdownByAjax.do?"+values+"&pickDropDownvalueFor="+listType;
 		//alert("Url: "+ url);
 				    
 		//make sure selected value is not empty then do Ajax call
@@ -151,7 +172,7 @@ var xmlHttp;
 	}
 	
 	
-	function prepareSelectTag(optionList,dropDownName,onChangeEvent){		
+	function prepareSelectTag(optionList,dropDownName,onChangeEvent){	
 		var startTag = "<select name='"+ dropDownName +"' id='"+ dropDownName +"' ";
 		var endTag = "</select>";
 		var selectTag = "";
@@ -167,18 +188,24 @@ var xmlHttp;
 		
 		else if(onChangeEvent == CONTENTUPLOADPG_ADD_REC_SUBJECTDD)
 			startTag += CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT;
+		else if(onChangeEvent == QUESTIONLIST_ADD_REC_SUBJECTDD)
+			startTag += QUESTIONLIST_ADD_REC_SUBJECTDD_ONCHANGE_EVENT;
 		else if(onChangeEvent == CONTENTUPLOADPG_ADD_REC_TOPICDD)
 			startTag += CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT;
 		else if(onChangeEvent == CONTENTUPLOADPG_ADD_REC_SUBTOPICDD)
 			startTag += CONTENTUPLOADPG_ADD_REC_SUBTOPICDD_ONCHANGE_EVENT;
-		
 		else if(onChangeEvent == MANAGEQPG_SUBJECTDD_NEW )
 			startTag += MANAGEQPG_SUBJECTDD_ONCHANGE_EVENT_NEW;
 		else if(onChangeEvent == MANAGEQPG_TOPICDD_NEW)
 			startTag += MANAGEQPG_TOPICDD_ONCHANGE_EVENT_NEW;
 		else if(onChangeEvent == MANAGEQPG_SUBTOPICDD_NEW )
 			startTag += MANAGEQPG_SUBTOPICDD_ONCHANGE_EVENT_NEW;
-			
+		else if(onChangeEvent == MANAGEQUESTION_ADD_REC_SUBJECTDD) 
+			startTag += MANAGEQUESTION_SUBJECTDD_ONCHANGE_EVENT;
+		else if (onChangeEvent == MANAGEQUESTION_ADD_REC_TOPICDD) 
+			startTag += MANAGEQUESTION_TOPICDD_ONCHANGE_EVENT;
+		else if (onChangeEvent == MANAGEQUESTION_ADD_REC_CLASSDD) 
+				startTag += MANAGEQUESTION_CLASSDD_ONCHANGE_EVENT;	
 		else if(onChangeEvent == END)
 			startTag += "";
 					
