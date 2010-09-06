@@ -26,7 +26,7 @@
 			<tr>
 				<td class="input_label">class/Cert:<span style="color: red">&#42;</span></td>
 				<td colspan="3">
-				<html:select styleClass="input_field" styleId="cert" property="cert">
+				<html:select styleClass="input_field" styleId="cert" property="cert" onchange="populateDropdown('subject','classId='+document.getElementById('cert').value+'','0','0','subjectlist','subjectDropdown',''+END)">
 					<html:optionsCollection property="classOptions"/>
 				</html:select>
 				<div id="cert_ErrMsg" style="display:none;color: red" >class/cert is Required</div>	
@@ -35,18 +35,20 @@
 			<tr>
 				<td class="input_label">Subject:<span style="color: red">&#42;</span></td>
 				<td colspan="3">
-				
-				<html:select styleClass="input_field" styleId="subject" property="subject">
+				<div id="subjectDropdown">
+				<html:select styleClass="input_field" styleId="subject" property="subject" onchange="populateDropdown('topic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','0','topiclist','topicDropdown',''+MANAGEQUESTION_ADD_REC_SUBJECTDD)">
 					<html:optionsCollection property="subjectOptions"/>
 				</html:select>
+				</div>
 				<div id="subject_ErrMsg" style="display:none;color: red" >Subject is Required</div>
 				</td>
 			</tr>
 			<tr>
 				<td class="input_label">Topic:<span style="color: red">&#42;</span></td>
 				<td colspan="3">
-					<div id="ManageQtopic_divID">
-						<html:select styleClass="input_field" styleId="topic" property="topic">
+					<div id="topicDropdown">
+						<html:select styleClass="input_field" styleId="topic" property="topic" onchange="populateDropdown('subTopic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','topicId='+document.getElementById('topic').value+'','subtopiclist','subTopicDropdown',''+MANAGEQUESTION_ADD_REC_TOPICDD)">
+						
 							<html:optionsCollection property="topicOptions"/>
 						</html:select>							
 					</div>
@@ -56,7 +58,7 @@
 			<tr>
 				<td class="input_label">Sub Topic:<span style="color: red">&#42;</span></td>
 				<td colspan="3">
-				<div id="ManageQsubTopic_divID">
+				<div id="subTopicDropdown">
 				<html:select styleClass="input_field" styleId="subTopic" property="subTopic">
 					<html:optionsCollection property="subTopicOptions"/>
 				</html:select>			
