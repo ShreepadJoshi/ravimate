@@ -12,7 +12,7 @@
 		</td>
 		<td colspan="2" width="10">			
 			<html:select property="sch_classType" styleId="sch_classType" styleClass="input_field"
-					onchange="populateDropdown('sch_subject','classId='+this.value,'subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
+					onchange="populateDropdown('sch_subject','classId='+this.value,'0','0','subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
 					<html:optionsCollection property="classOptions"/>
 			</html:select>
 			<div id="sch_classType_ErrMsg" style="display: none;color: red"> Class is Required </div>	
