@@ -4,7 +4,7 @@
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@page import="com.education.util.EducationConstant"%>
 <link type="text/css" href="http://localhost:8080/displaytag-examples-1.2/css/alternative.css" rel="stylesheet" />
-<html:form action="/adminQuestionList" styleId="questionListFormID" method="post">
+<html:form action="/adminQuestionList" styleId="questionListFormID" method="post" >
 <center><span style="color: red;background-color:#F0F0FF "><html:errors/></span></center>	
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="10" bgcolor="#F0F0FF">
 
@@ -15,7 +15,8 @@
 			<label>
 			
 				<html:select property="sch_classType" styleClass="input_field" styleId="sch_classType"
-				onchange="populateDropdown('sch_subject','classId='+this.value,'0','subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
+				onchange="populateDropdown('sch_subject','classId='+this.value,'0','0','subjectlist','subjectDropdown',''+QUESTIONLIST_ADD_REC_SUBJECTDD)">
+				
 					<html:optionsCollection property="classTypeOptions"/>
 				</html:select>
 			</label></td>
@@ -32,15 +33,14 @@
 	<tr>
 		<td class="input_label">Subject:</td>
 		<td colspan="1" align ="left" width="10">
-			<label>
 			<div id="subjectDropdown">
-				<html:select property="sch_subject" styleClass="input_field" styleId="sch_subject"
-				onchange="populateDropdown('sch_topic','1','subjectId='+this.value,'topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)">
-				
+			<label>
+				<html:select property="sch_subject" styleClass="input_field" styleId="sch_subject" 
+				onchange="populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_TOPICDD)">
 					<html:optionsCollection property="subjectOptions"/>
 				</html:select>
-			</div>	
 			</label>
+			</div>	
 		</td>
 
 
