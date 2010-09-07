@@ -219,7 +219,11 @@ public class AdminQuestionListAction extends EducationBaseAction {
 		//store search criteria
 		((PaginatedListImpl)thePage).setSearchCriteria(searchCriteria);
 		//cache search results in session
-		cacheSearchResult(request,SessionConstants.SCH_RESULTS_ADMIN_QUESTION_LIST, thePage);		
+		if (roleId.equals(EducationConstant.ADMIN_USER_ROLE) == true){
+			cacheSearchResult(request,SessionConstants.SCH_RESULTS_ADMIN_QUESTION_LIST, thePage);
+		} else if(roleId.equals(EducationConstant.TEACHER_USER_ROLE) == true) {
+			cacheSearchResult(request,SessionConstants.SCH_RESULTS_ADMIN_QUESTION_LIST, thePage);
+		}
 	}	
 	
 	@Override 
