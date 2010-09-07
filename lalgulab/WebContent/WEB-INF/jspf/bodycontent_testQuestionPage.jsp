@@ -112,6 +112,7 @@
 			<%}else{%>
 				<html:submit property="action" value="Next" onclick="javascript:testSubmit('<%=questionNumber%>');" />&nbsp;
 			<%} %>
+			<html:submit property="action" value="Save & Next" />&nbsp;
 			<html:submit property="action" value="Revisit" />&nbsp;
 			<span style="text-align: right;">
 			<html:submit property="action" value="TestStatus" />&nbsp;
