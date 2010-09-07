@@ -89,7 +89,7 @@ public class TakeTestAction  extends EducationBaseAction {
 //			request.setAttribute("qId",bean.getQuestionID());
 			
 		}else if(actionPerformed!=null && actionPerformed.equalsIgnoreCase("next")){
-			updateQuestionDetails(request,questionMap, bean, actionPerformed);
+			//updateQuestionDetails(request,questionMap, bean, actionPerformed);
 			actionFwdName = "testQuestionPage";
 			//Get Next Question Details
 			TestQuestion nextQuestion = (TestQuestion)questionMap.get(
@@ -100,7 +100,19 @@ public class TakeTestAction  extends EducationBaseAction {
 			//set questionID in requestionScope
 //			request.setAttribute("qId",bean.getQuestionID());
 			
-		}else if(actionPerformed!=null && actionPerformed.equalsIgnoreCase("revisit")){
+		}else if(actionPerformed!=null && actionPerformed.equalsIgnoreCase("save & next")){
+			saveQuestionDetails(request,questionMap, bean, actionPerformed);
+			actionFwdName = "testQuestionPage";
+			//Get Next Question Details
+			TestQuestion nextQuestion = (TestQuestion)questionMap.get(
+					new Integer(Integer.valueOf(bean.getQuestionNumber())+1));			
+			setQuestionDetails(request,bean, ""+nextQuestion.getQuestionID(),
+							""+nextQuestion.getTestpaperQuestionNumber(),noOfQuestion,nextQuestion.getAnswer());
+			resetOptions(bean);
+			//set questionID in requestionScope
+//			request.setAttribute("qId",bean.getQuestionID());
+			
+		} else if(actionPerformed!=null && actionPerformed.equalsIgnoreCase("revisit")){
 			updateQuestionDetails(request,questionMap, bean, actionPerformed);
 			actionFwdName = "testQuestionPage";			
 			//Displays same Question Details
@@ -110,7 +122,7 @@ public class TakeTestAction  extends EducationBaseAction {
 							""+testQuestion.getTestpaperQuestionNumber(),noOfQuestion,bean.getAnswer());
 			
 		}else if(actionPerformed!=null && actionPerformed.equalsIgnoreCase("teststatus")){
-			//updateQuestionDetails(questionMap, bean, actionPerformed);
+			updateQuestionDetails(request,questionMap, bean, actionPerformed);
 			actionFwdName = "testMainPage";
 			calculate_Update_QuestionSummary(questionMap,request);
 			
@@ -172,7 +184,25 @@ public class TakeTestAction  extends EducationBaseAction {
 		//If Answer update the answer Question Status to Completed
 		if( actionPerformed.equalsIgnoreCase("revisit") ){			
 			question.setQuestionStatus(EducationConstant.TEST_QUESTION_STATUS_TOREVIST);
-		}else if(!Utilities.isNullOrBlank(bean.getAnswer()) ){			
+		}else if(!Utilities.isNullOrBlank(bean.getAnswer())){			
+			question.setQuestionStatus(EducationConstant.TEST_QUESTION_STATUS_COMPLETED);
+			question.setAnswer(bean.getAnswer());
+		}		
+		questionSet.put(key,question);
+		request.getSession(false).setAttribute(SessionConstants.TEST_SAMPLETEST_QUESTIONS,questionSet);
+	}
+	
+	/** Only save the question details for the corresponding question.
+	 * @param request
+	 * @param questionSet
+	 * @param bean
+	 * @param actionPerformed
+	 */
+	private void saveQuestionDetails(HttpServletRequest request, TreeMap questionSet,TestQuestionBeanActionForm bean,String actionPerformed ){
+		Integer key = new Integer(bean.getQuestionNumber());
+		TestQuestion question = (TestQuestion)questionSet.get(key);
+		//If Answer update the answer Question Status to Completed
+		if(!Utilities.isNullOrBlank(bean.getAnswer())){			
 			question.setQuestionStatus(EducationConstant.TEST_QUESTION_STATUS_COMPLETED);
 			question.setAnswer(bean.getAnswer());
 		}		
