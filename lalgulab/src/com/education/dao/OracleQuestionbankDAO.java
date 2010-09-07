@@ -284,6 +284,8 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 	public ArrayList getQuestions(String classID, String subject,
 			String statusId, String topic, String frmDate, String toDate,
 			Integer isGraphics, int frmRecord, int totalNoOfRecords) throws BaseAppException {
+		
+		 
 
 		String where = "";
 		String where1 = " where a.questionid=b.questionid "
@@ -297,9 +299,12 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 				+ " t_topics topic,t_subtopics subTopic ";
 		String fromClause2 = " From t_question_bank a ,t_picture_question d,"
 				+ " t_topics topic,t_subtopics subTopic ";
-
+		
 		String limit = " Limit " + frmRecord + "," + totalNoOfRecords + " ";
-
+		
+		
+		
+		
 		if (null != classID && !classID.equalsIgnoreCase("")) {
 
 			fromClause1 += ",t_class_question_link c ";
@@ -330,11 +335,20 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 					+ Utilities.getDate_DBFormat(toDate,
 							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
 		}
+		where1 = where1 + where ;
+		where2 = where2 + where ;
 		if (null != isGraphics && isGraphics != 0) {
-			where = where + " and a.IsGraphics = " + isGraphics.intValue();
+			where2 = where2 + " and a.IsGraphics = " + isGraphics.intValue();
+			where1 = where1 + " and a.IsGraphics = '1' ";
+			where1 = where1 + limit;
+		} else if (isGraphics == 0 || isGraphics == null) {
+			where1 = where1 + " and a.IsGraphics = '0' ";
+			where2 = where2 + " and a.IsGraphics = '1' ";
+			where2 = where2 + limit;
+			
 		}
-		where1 = where1 + where + limit;
-		where2 = where2 + where + limit;
+		
+		
 
 		String sql = "select a.QuestionId,a.Subject,topic.topicId,topic.topicValue,subTopic.subTopicId,subTopic.subTopicValue,a.IsGraphics,"
 				+ "a.Answer,a.QuestionStatusId,a.IsVerified,a.CreatedBy,a.CreatedOn,a.VerifiedBy,a.VerificationRemark,"
@@ -347,7 +361,8 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 				+ "a.Answer,a.QuestionStatusId,a.IsVerified,a.CreatedBy,a.CreatedOn,a.VerifiedBy,a.VerificationRemark,"
 				+ "d.Description,d.Option_1,d.Option_2,d.Option_3,d.Option_4,d.Option_5,d.AnswerExplanation "
 				+ fromClause2 + " " + where2;
-
+		
+		
 		Connection con = null;
 		PreparedStatement psmt;
 		ResultSet rs;
@@ -465,11 +480,11 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
 		}
 		if (null != isGraphics && isGraphics != 0) {
-			where2 = where2 + " and a.IsGraphics = " + isGraphics.intValue();
-			where1 = where1 + "and a.IsGraphics = '0' ";
+			where2 = where2 + " and a.IsGraphics =  " + isGraphics.intValue();
+			where1 = where1 + " and a.IsGraphics =  '0' ";
 		} else if (isGraphics == 0 || isGraphics == null) {
-			where1 = where1 + "and a.IsGraphics = '0' ";
-			where2 = where2 + "and a.IsGraphics = '1' ";
+			where1 = where1 + " and a.IsGraphics = '0' ";
+			where2 = where2 + " and a.IsGraphics = '1' ";
 		}
 		where = where  + " and a.CreatedBy='" + userID + "' "; 
 		where1 = where1 + where + limit;
@@ -582,10 +597,10 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
 		}
 		if (null != isGraphics && isGraphics != 0) {
-			where = where + " and a.IsGraphics = " + isGraphics.intValue();
+			where = where +  "  and a.IsGraphics = "  + isGraphics.intValue();
 		}
-		where1 = where1 + where;
-		where2 = where2 + where;
+		where1 = where1  +  where;
+		where2 = where2  +  where;
 		String sql = "select count(temp.questionid) as rowcount from "
 				+ "( select a.questionid from t_question_bank a , t_text_question b "
 				+ where1
