@@ -36,7 +36,7 @@
 			<div id="subjectDropdown">
 			<label>
 				<html:select property="sch_subject" styleClass="input_field" styleId="sch_subject" 
-				onchange="populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_TOPICDD)">
+				onchange="populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_TOPICDD)" >
 					<html:optionsCollection property="subjectOptions"/>
 				</html:select>
 			</label>
@@ -49,7 +49,7 @@
 			<label>
 				<!-- <html:text property="sch_topic" styleClass="input_field" maxlength="20" size="20" /> -->
 				<div id="topicDropdown">
-					<html:select property="sch_topic" styleClass="input_field" >
+					<html:select property="sch_topic" styleClass="input_field" onfocus="populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_TOPICDD)">
 						<html:optionsCollection property="topicOptions"/>
 					</html:select>
 				</div>
