@@ -7,15 +7,17 @@
 	</tr>
 	<tr>
 		<td>
-		<object id="MediaPlayer" width="192" height="190" classid="CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95"
+		
+		<object id="MediaPlayer" width="280" height="200" classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701"
 		standby="Loading Windows Media Player components..." type="application/x-oleobject">
 		<param name="FileName" value="images/GlobeatVaticanCity.wmv">
 		<param name="ShowControls" value="true">
 		<param name="ShowStatusBar" value="false">
 		<param name="ShowDisplay" value="false">
 		<param name="autostart" value="false">
-		<embed type="application/x-mplayer2" src="images/GlobeatVaticanCity.wmv" name="MediaPlayer"
-		width="192" height="190" showcontrols="1" showstatusbar="0" showdisplay="0" autostart="0"> </embed>
+		<param name="Volume" value="-300">
+		<embed type="application/x-mplayer2" pluginspage="http://www.microsoft.com/Windows/MediaPlayer/" src="images/GlobeatVaticanCity.wmv" name="MediaPlayer"
+		width="280" height="200" showcontrols="1" showstatusbar="0" showdisplay="0" autostart="0" volume="-300"> </embed>
 		</object>
 	</td>
 	</tr>
