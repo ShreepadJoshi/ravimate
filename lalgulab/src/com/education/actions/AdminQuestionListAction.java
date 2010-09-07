@@ -191,7 +191,8 @@ public class AdminQuestionListAction extends EducationBaseAction {
 				questionBean.getSch_fromDate(),questionBean.getSch_toDate(),questionBean.getSch_isGraphics());
 		}
 		int frmRecord = thePage.getFirstRecordIndex();
-		int noOfRecords = thePage.getPageSize();		
+		int noOfRecords = thePage.getPageSize();
+		
 		thePage.setTotalNumberOfRows(totalNoOfRecords);
 		if(totalNoOfRecords > 200) {
 			dispRefineSearchMessage(request, totalNoOfRecords);
