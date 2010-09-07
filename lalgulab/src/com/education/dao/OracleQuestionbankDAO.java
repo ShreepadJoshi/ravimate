@@ -479,16 +479,18 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 					+ Utilities.getDate_DBFormat(toDate,
 							EducationConstant.DISPLAY_DATE_FORMAT) + "'";
 		}
+		where = where  + " and a.CreatedBy='" + userID + "' ";
+		where1 = where1 + where ;
+		where2 = where2 + where ;
 		if (null != isGraphics && isGraphics != 0) {
-			where2 = where2 + " and a.IsGraphics =  " + isGraphics.intValue();
-			where1 = where1 + " and a.IsGraphics =  '0' ";
+			where2 = where2 + " and a.IsGraphics = " + isGraphics.intValue();
+			where1 = where1 + " and a.IsGraphics = '1' ";
+			where1 = where1 + limit;
 		} else if (isGraphics == 0 || isGraphics == null) {
 			where1 = where1 + " and a.IsGraphics = '0' ";
 			where2 = where2 + " and a.IsGraphics = '1' ";
+			where2 = where2 + limit;
 		}
-		where = where  + " and a.CreatedBy='" + userID + "' "; 
-		where1 = where1 + where + limit;
-		where2 = where2 + where + limit;
 
 		String sql = "select a.QuestionId,a.Subject,topic.topicId,topic.topicValue,subTopic.subTopicId,subTopic.subTopicValue,a.IsGraphics,"
 				+ "a.Answer,a.QuestionStatusId,a.IsVerified,a.CreatedBy,a.CreatedOn,a.VerifiedBy,a.VerificationRemark,"
@@ -501,10 +503,7 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 				+ "a.Answer,a.QuestionStatusId,a.IsVerified,a.CreatedBy,a.CreatedOn,a.VerifiedBy,a.VerificationRemark,"
 				+ "d.Description,d.Option_1,d.Option_2,d.Option_3,d.Option_4,d.Option_5,d.AnswerExplanation "
 				+ fromClause2 + " " + where2;
-		
-		
-		
-
+	
 		Connection con = null;
 		PreparedStatement psmt;
 		ResultSet rs;
