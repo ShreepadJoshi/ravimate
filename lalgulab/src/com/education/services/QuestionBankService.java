@@ -103,10 +103,10 @@ public class QuestionBankService {
 	 */
 	public ArrayList getQuestions(String classID, String subject,
 			String status, String topic,String frmDate,String toDate,
-			Integer isGraphics,int frmRecord, int noOfRecords) throws BaseAppException{
+			Integer isGraphics,int frmRecord, int toRecord) throws BaseAppException{
 		OracleQuestionbankDAO oracleQuestionbankDAO = new OracleQuestionbankDAO();
 		return oracleQuestionbankDAO.getQuestions(classID, subject, status,
-				topic,frmDate,toDate,isGraphics, frmRecord, noOfRecords);
+				topic,frmDate,toDate,isGraphics, frmRecord, toRecord);
 	}
 	
 	/**
