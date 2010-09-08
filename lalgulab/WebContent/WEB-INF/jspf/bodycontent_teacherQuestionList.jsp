@@ -97,7 +97,7 @@
 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="10" bgcolor="#F0F0FF">
 <tr><td>
 <display:table id="row" name="AdminQuestionListBean.pgSearchResults" 
-	 requestURI="/adminQuestionList.do" style="width:100%"
+	 requestURI="/teacherQuestionList.do" style="width:100%"
 	decorator="com.education.displaytag.TeacherQuestionListTableDecorator" class="its">	
 	<display:column property="questionId" title="<input type='checkbox' id='allchkBoxID' onclick='checkAll(this.id,\"hiddenIdList\")'/>" />
 	<display:column title="Question Description" property="question" maxLength="48" style="text-align:left;"/>
