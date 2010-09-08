@@ -115,12 +115,12 @@ public class OracleQuestionbankDAO extends AbstractDAO{
 		PreparedStatement psmt = null;
 		try {
 			//check if the data is valid
-			if(Utilities.isNullOrBlank(answerDiscription)){
+			/* if(Utilities.isNullOrBlank(answerDiscription)){
 				DBInvalidDataInsertionException ex = new DBInvalidDataInsertionException("Invalid data for Answer column");
 				ex.setColumnName("Answer");
 				ex.setColumnValue("");
 				throw ex;
-			}
+			}*/
 			//check if the data is valid
 			if(Utilities.isNullOrBlank(subject)){
 				DBInvalidDataInsertionException ex = new DBInvalidDataInsertionException("Invalid data for Subject column");
