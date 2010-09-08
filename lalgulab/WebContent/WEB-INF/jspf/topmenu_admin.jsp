@@ -20,14 +20,6 @@
 		|
 		<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
 		|
-		<html:link styleClass="nav" action="/affiliate">Affiliates</html:link>
-		|
-		<html:link styleClass="nav" action="/teacher">Teacher</html:link>
-		|
-		<html:link styleClass="nav" action="/agent">Agents</html:link>
-		|
-		<html:link styleClass="nav" action="/reviewer">Reviewer</html:link>
-		|
 		<html:link styleClass="nav" action="/showFaqStaticContent">FAQ</html:link>
 		|
 		<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>	
