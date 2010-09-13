@@ -113,7 +113,7 @@ function valContentUploadPg(mode){
 			return false;
 		}	
 	}
-	
+	return;
 }
 
 function valSchoolContentUploadPg(mode) {
