@@ -6,6 +6,15 @@ public class DropDownValueByAjaxActionForm extends ActionForm{
 
 	private String subjectId;
 	private String classId;
+	private String topicId;
+	public String getTopicId() {
+		return topicId;
+	}
+
+	public void setTopicId(String topicId) {
+		this.topicId = topicId;
+	}
+
 	private String topicValue = "";
 	private String subTopicValue = "";
 	private String subjectValue = "";
