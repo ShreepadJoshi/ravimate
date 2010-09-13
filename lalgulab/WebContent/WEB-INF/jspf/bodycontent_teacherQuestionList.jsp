@@ -48,7 +48,7 @@
 		<td colspan="5" width="15" align="left">
 			<label>
 				<div id="topicDropdown">
-					<html:select property="sch_topic" styleClass="input_field">
+					<html:select property="sch_topic" styleClass="input_field" onfocus="populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_SUBJECTDD)">
 						<html:optionsCollection property="topicOptions"/>
 					</html:select>
 				</div>
