@@ -39,9 +39,9 @@ public class EZBusinessServices {
 		return oracleEZDAO.getTopicList();
 	}
 	
-	public ArrayList getSubTopicListBYSubjectId(String subjectId,String strTopicValue)throws BaseAppException{
+	public ArrayList getSubTopicListBYSubjectId(String classId,String subjectId,String strTopicId)throws BaseAppException{
 		OracleEZDAO oracleEZDAO = new OracleEZDAO();
-		return oracleEZDAO.getSubTopicListBYSubjectId(subjectId, strTopicValue);
+		return oracleEZDAO.getSubTopicListBYSubjectId(classId,subjectId, strTopicId);
 	}
 	
 	public ArrayList getSubTopicList()throws BaseAppException{
