@@ -16,7 +16,7 @@
 		<td colspan="2"  align ="left" width="10"> 
 			
 			<label>
-				<html:select property="sch_classType" styleClass="input_field" onchange="populateDropdown('sch_subject','classId='+this.value,'0','0','subjectlist','subjectDropdown',''+QUESTIONLIST_ADD_REC_SUBJECTDD)">>
+				<html:select property="sch_classType"  styleId="sch_classType" styleClass="input_field" onchange="populateDropdown('sch_subject','classId='+this.value,'0','0','subjectlist','subjectDropdown',''+QUESTIONLIST_ADD_REC_SUBJECTDD)">>
 					<html:optionsCollection property="classTypeOptions"/>
 				</html:select>
 				
@@ -35,8 +35,8 @@
 		<td colspan="1" align ="left" width="10">
 			<label>
 			<div id="subjectDropdown">
-				<html:select property="sch_subject" styleClass="input_field"
-					onchange="populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_TOPICDD)">
+				<html:select property="sch_subject" styleId="sch_subject" styleClass="input_field"
+					onchange="populateDropdown('sch_topic','classId='+document.getElementById('sch_classType').value+'','subjectId='+document.getElementById('sch_subject').value+'','0','topiclist','topicDropdown',''+QUESTIONLIST_ADD_REC_SUBJECTDD)">
 					<html:optionsCollection property="subjectOptions"/>
 				</html:select>
 			</div>	

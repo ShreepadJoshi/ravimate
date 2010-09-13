@@ -48,7 +48,7 @@
 							<div id="subjectDropdown"><html:select
 								styleId="uptsubjectId" property="uptsubjectId"
 								name="ContentUploadBean" styleClass="input_field"
-								onchange="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
+								onchange="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT)">
 								<html:optionsCollection property="subjectOptions" label="label"
 									value="value" />
 							</html:select></div>
@@ -61,8 +61,7 @@
 							<td colspan="2" align="left">
 							<div id="topicDropdown"><html:select styleId="uptTopicId"
 								property="uptTopicId" name="ContentUploadBean"
-								styleClass="input_field" onclick="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)"
-								onchange="populateDropdown('uptsubTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','topicId='+document.getElementById('uptTopicId').value+'','subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT)" >
+								styleClass="input_field" onchange="populateDropdown('uptsubTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','topicId='+document.getElementById('uptTopicId').value+'','subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT)" onfocus="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT)" >
 								<html:optionsCollection property="topicOptions" label="label"
 									value="value" />
 							</html:select></div>
@@ -75,7 +74,7 @@
 							<td colspan="1" align="left">
 							<div id="subTopicDropdown"><html:select
 								styleId="uptsubTopicId" property="uptsubTopicId"
-								name="ContentUploadBean" styleClass="input_field">
+								name="ContentUploadBean" styleClass="input_field" onfocus="populateDropdown('uptsubTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','topicId='+document.getElementById('uptTopicId').value+'','subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT)">
 								<html:optionsCollection property="subTopicOptions" label="label"
 									value="value" />
 							</html:select></div>
@@ -121,16 +120,7 @@
 		<td></html:form></td>
 	</tr>
 	<script type="text/javascript">
-	<%if(request.getAttribute("contentUploadBean") != null){
-		ContentUploadActionForm contentUploadBean = (ContentUploadActionForm) request.getAttribute("contentUploadBean");
-		if(contentUploadBean.getUptsubTopicId().equals("")){
-		%>
-			var varUptsubjectId = document.getElementById("uptsubjectId");
-			populateDropdown('uptTopicId','subjectId='+varUptsubjectId.value,'topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD);
-		<%	
-		}
-	}
-	%>
+	
 	</script>
 </table>
 

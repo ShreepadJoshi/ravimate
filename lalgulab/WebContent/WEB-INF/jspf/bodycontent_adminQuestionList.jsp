@@ -7,29 +7,23 @@
 <html:form action="/adminQuestionList" styleId="questionListFormID" method="post" >
 <center><span style="color: red;background-color:#F0F0FF "><html:errors/></span></center>	
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="10" bgcolor="#F0F0FF">
-
 	<tr>
 		<td class="input_label">Class / Cert:</td>
 		<td colspan="2"  align ="left" width="10"> 
-			
 			<label>
-			
 				<html:select property="sch_classType" styleClass="input_field" styleId="sch_classType"
 				onchange="populateDropdown('sch_subject','classId='+this.value,'0','0','subjectlist','subjectDropdown',''+QUESTIONLIST_ADD_REC_SUBJECTDD)">
 				
 					<html:optionsCollection property="classTypeOptions"/>
 				</html:select>
 			</label></td>
-		
 		<td colspan="1" height="30" align="right" valign="middle">
 			<a onclick="javascript:document.getElementById('questionListFormID').submit();">
 				<img border="0" src="<html:rewrite page="/images/search.jpg"/>"
 					valign="middle" alt="Search" width="20" height="20" />
 			</a>
 		</td>
-
 	</tr>
-
 	<tr>
 		<td class="input_label">Subject:</td>
 		<td colspan="1" align ="left" width="10">
@@ -42,8 +36,6 @@
 			</label>
 			</div>	
 		</td>
-
-
 		<td class="input_label">Topic:</td>
 		<td colspan="5" width="15" align="left">
 			<label>
@@ -56,7 +48,6 @@
 			 </label>
 		</td>
 	</tr>
-
 	<tr>
 		<td class="input_label">Status:</td>
 		<td colspan="1" align ="left" width="10">
@@ -116,7 +107,6 @@
 		<html:submit property="action" value="MarkAsInActive" styleClass="url"/>
 	</display:footer>
 </display:table>
-
 </td></tr>
 </table>
 </html:form>
