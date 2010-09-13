@@ -49,7 +49,7 @@ public class PopulateDropDownByAjaxAction extends EducationBaseAction{
 			
 		}else if(dropDownBean.getPickDropDownvalueFor().equalsIgnoreCase("subtopiclist")){
 			//get subtopic list
-			list = service.getSubTopicListBYSubjectId(dropDownBean.getSubjectId(), dropDownBean.getTopicValue());
+			list = service.getSubTopicListBYSubjectId(dropDownBean.getClassId(),dropDownBean.getSubjectId(),dropDownBean.getTopicId());
 			//selectTag = "<select class='text' name='"+ dropDownBean.getElementName() +"' id='"+ dropDownBean.getElementName() +"'>";
 						
 		}else if(dropDownBean.getPickDropDownvalueFor().equalsIgnoreCase("subjectlist")){
