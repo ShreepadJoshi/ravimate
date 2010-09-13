@@ -8,24 +8,21 @@
 		UserSessionInfo  objUserinfo = 
 			(UserSessionInfo)( session.getAttribute(SessionConstants.user_info) == null ?
 									null : session.getAttribute(SessionConstants.user_info) );
-	   if( objUserinfo != null && objUserinfo.getUserloginName()  != null){%>
-	      	<table><tr><td colspan="15" width="10">
-				<span style="text-align:center;"><font size="4" color="red" style="font-family:Times New Roman"><b><i>Welcome
+	   if((objUserinfo != null) && (!objUserinfo.getFirstName().equals(""))){
+			%>	
+			<table> <tr ><td>
+				<span style="text-align:center;"><font size="4" color="red" style="font-family:Times New Roman; padding-right:10px;"><b><i>Welcome
 	      		<%=objUserinfo.getUserloginName()%></i></b></font></span></td>
 	      	</tr></table>
-	      	
-  		<%} %>   
-  		<% if( objUserinfo != null && objUserinfo.getUserloginName()  != null){%> 
-      	<html:link styleClass="nav" action="/admin">Home</html:link>
-		|
-		<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
-		|
-		<html:link styleClass="nav" action="/showFaqStaticContent">FAQ</html:link>
-		|
-		<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>	
-		|
-		<html:link action="/signOut" >SignOut</html:link>
-      	<% } else if(objUserinfo == null) { %>
+	      	&nbsp;<br>
+			<html:link styleClass="nav" forward="home">Home</html:link>
+			|
+			<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
+			|
+			<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>
+			|
+			<html:link action="/signOut" >SignOut</html:link>
+		<% } else if(objUserinfo == null) { %>
 		<html:link styleClass="nav" action="/admin">Home</html:link>
 		|
 		<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
@@ -42,4 +39,3 @@
 		|
 		<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>
 		<%} %>
-
