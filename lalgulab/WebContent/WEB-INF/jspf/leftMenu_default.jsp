@@ -3,7 +3,10 @@
 <%@page import="com.education.Session.SessionConstants"%>
 	  
 <%@page import="com.education.util.EducationConstant"%>
-<tr>
+<%UserSessionInfo objUserinfo = (UserSessionInfo)( session.getAttribute(SessionConstants.user_info) == null ?
+									null : session.getAttribute(SessionConstants.user_info) );
+ if( objUserinfo == null){%>
+	<tr>
         <td align="left" valign="top">&nbsp;</td>
       </tr>
       <tr>
@@ -12,11 +15,7 @@
       <tr>
         <td height="2" align="left" valign="middle" ></td>
       </tr>
-      
-      <%
-		UserSessionInfo objUserinfo = (UserSessionInfo)( session.getAttribute(SessionConstants.user_info) == null ?
-									null : session.getAttribute(SessionConstants.user_info) );
-      	if( objUserinfo != null){%>
+   <%} else	if( objUserinfo != null){%>
      		
 			<tr>
 				<td width="192" height="22" align="left" valign="middle"
@@ -28,8 +27,7 @@
         		<td height="2" align="left" valign="middle" ></td>
       		</tr>
      		 		
-     <%}%>
-     <%if(objUserinfo != null && (objUserinfo.getRoleId().equals(EducationConstant.TEACHER_USER_ROLE) == false)){%>
+     <%}if(objUserinfo != null && (objUserinfo.getRoleId().equals(EducationConstant.TEACHER_USER_ROLE) == false)){%>
 	  <tr>
         <td width="192" height="22" align="left" valign="middle" class="leftnavbg">
         	<html:link forward="takeSampleTestLink" styleClass="url" >Take a sample test</html:link>
