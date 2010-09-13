@@ -157,9 +157,9 @@ public class OracleEZDAO extends AbstractDAO{
 		String where = " WHERE mappingTable.classId = ? ";
 		
 		if( !Utilities.isNullOrBlank(classId)){
-			sql +=where;
+			sql+= where;
 		}
-		sql +=" order by subjectMasterTable.subjectValue ";
+		sql += " order by subjectMasterTable.subjectValue ";
 		
 		Connection con = null;
 		PreparedStatement psmt = null;
@@ -190,13 +190,26 @@ public class OracleEZDAO extends AbstractDAO{
 		String sql = " SELECT DISTINCT topicTable.topicId, topicTable.topicValue "+
 					 " FROM t_class_subject_topic_subTopic_mapping mapping_Table "+
 					 " INNER JOIN t_topics topicTable "+
-					 "   ON mapping_Table.topicId = topicTable.topicId ";
+					 "  ON mapping_Table.topicId = topicTable.topicId ";
 		
-		if((!Utilities.isNullOrBlank(subjectId)) && (!Utilities.isNullOrBlank(classId))){
 			
-			sql+=" where mapping_Table.classId ="+classId+" and mapping_Table.subjectId="+subjectId;
-		}
-		sql += " order by topicTable.topicValue ";
+			String where = "";	
+			
+			if(!Utilities.isNullOrBlank(subjectId) && (!Utilities.isNullOrBlank(classId))) {
+				where+=	" where mapping_Table.classId ='"+classId+"'  AND mapping_Table.subjectId='"+subjectId+"'";
+				sql+= where;
+			}
+			if(Utilities.isNullOrBlank(classId)) {
+				where+=	" where mapping_Table.subjectId='"+subjectId+"'";
+				sql+= where;
+			}
+			if(Utilities.isNullOrBlank(subjectId)) {
+				where+=	" where mapping_Table.classId='"+classId+"'";
+				sql+= where;
+			}
+			
+			
+			sql+= " order by topicTable.topicValue ";
 		
 		Connection con;
 		PreparedStatement psmt;
@@ -249,43 +262,54 @@ public class OracleEZDAO extends AbstractDAO{
 		return topicList;
 	}
 	
-	public ArrayList getSubTopicListBYSubjectId(String subjectId,String strTopicValue) throws BaseAppException{
-		String sql = " SELECT DISTINCT subTopicTable.subTopicId,subTopicTable.subTopicValue "+
-					 " FROM t_class_subject_topic_subTopic_mapping mapping_Table "+
-					 " INNER JOIN t_subtopics subTopicTable "+
-					 "   ON mapping_Table.subTopicId = subTopicTable.subTopicId "+
-					 " INNER JOIN t_topics TopicTable "+
-					 "	   ON mapping_Table.topicId = TopicTable.topicId ";
+	public ArrayList getSubTopicListBYSubjectId(String classId,
+			String subjectId, String topicId) throws BaseAppException {
+		String sql = " SELECT DISTINCT subTopicTable.subTopicId,subTopicTable.subTopicValue "
+				+ " FROM t_class_subject_topic_subTopic_mapping mapping_Table "
+				+ " INNER JOIN t_subtopics subTopicTable "
+				+ "   ON mapping_Table.subTopicId = subTopicTable.subTopicId "
+				+ " INNER JOIN t_topics TopicTable "
+				+ "	   ON mapping_Table.topicId = TopicTable.topicId ";
+		String where = "";	
+		if (!Utilities.isNullOrBlank(classId) && (!Utilities.isNullOrBlank(subjectId)) && (!Utilities.isNullOrBlank(topicId))) {
+			where+=	" where mapping_Table.classId ='"+classId+"'  AND mapping_Table.subjectId='"+subjectId+"'  AND mapping_Table.topicId='"+topicId+"'";
+			sql+= where;
+		}
+		if(Utilities.isNullOrBlank(classId)) {
+			where+=	" where mapping_Table.subjectId='"+subjectId+"' AND mapping_Table.topicId='"+topicId+"'";
+			sql+= where;
+		}
+		
+		if(Utilities.isNullOrBlank(subjectId)) {
+			where+=	" where mapping_Table.classId='"+classId+"' AND mapping_Table.topicId='"+topicId+"'";
+			sql+= where;
+		}		
+		
+		if (Utilities.isNullOrBlank(topicId)) {
+			where+=	" where mapping_Table.classId ='"+classId+"'  AND mapping_Table.subjectId='"+subjectId+"'";
+			sql+= where;
+		} 
+		
+		sql += " order by subTopicTable.subTopicValue ";
 
-		String where = ""; 
-		
-		where += ( !Utilities.isNullOrBlank(subjectId) ? 
-					where.equals("") ? " where mapping_Table.subjectId="+subjectId : " AND mapping_Table.subjectId="+subjectId : "" );
-		
-		where += ( !Utilities.isNullOrBlank(strTopicValue) ? 
-				where.equals("") ? " where mapping_Table.topicId='"+strTopicValue+"'" : " AND mapping_Table.topicId='"+strTopicValue+"'" : "" );
-
-		sql +=where;
-		sql +=" order by subTopicTable.subTopicValue ";
-		
 		Connection con;
 		PreparedStatement psmt;
 		ResultSet rs;
-		ArrayList subTopicList = new ArrayList();		 
-		
+		ArrayList subTopicList = new ArrayList();
+
 		try {
-		con = GetConnection.getSimpleConnection();
-		psmt = con.prepareStatement(sql);
-		
-		rs = psmt.executeQuery();
-		while (rs.next()) {
-			TopicSubTopicTO objTo = new TopicSubTopicTO();
-			objTo.setSubTopicId(rs.getInt("subTopicId"));
-			objTo.setSubTopicValue((rs.getString("subtopicValue")));
-			subTopicList.add(objTo);
-		}
-		
-		}  catch (SQLException e) {
+			con = GetConnection.getSimpleConnection();
+			psmt = con.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				TopicSubTopicTO objTo = new TopicSubTopicTO();
+				objTo.setSubTopicId(rs.getInt("subTopicId"));
+				objTo.setSubTopicValue((rs.getString("subtopicValue")));
+				subTopicList.add(objTo);
+			}
+
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 		return subTopicList;
@@ -319,6 +343,6 @@ public class OracleEZDAO extends AbstractDAO{
 	}
 
 	public static void main(String[] args)throws BaseAppException {
-		new OracleEZDAO().getSubTopicListBYSubjectId("1","1");
+		new OracleEZDAO().getSubTopicListBYSubjectId("1","1","1");
 	}
 }
