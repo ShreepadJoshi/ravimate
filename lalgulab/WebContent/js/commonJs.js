@@ -37,9 +37,9 @@ var xmlHttp;
 	//var MANAGEQPG_TOPICDD_ONCHANGE_EVENT_NEW ="onchange=\"wrapperFunDropDown('uptsubTopicId','subjectId='+document.getElementById('uptsubjectId').value+',topicValue='+this.value,'subtopiclist','subTopicDropdown',''+MANAGEQPG_SUBTOPICDD_NEW,'topicId',this.value)\"";
 	var MANAGEQPG_SUBTOPICDD_ONCHANGE_EVENT_NEW = "onchange=\"document.getElementById('subTopicId').value=this.value;\" ";
 	
-	var MANAGEQUESTION_SUBJECTDD_ONCHANGE_EVENT = "";
+	var MANAGEQUESTION_SUBJECTDD_ONCHANGE_EVENT = "onchange=\"populateDropdown('topic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','0','topiclist','topicDropdown',''+MANAGEQUESTION_ADD_REC_TOPICDD)\"";
 	var MANAGEQUESTION_CLASSDD_ONCHANGE_EVENT = "";
-	var MANAGEQUESTION_TOPICDD_ONCHANGE_EVENT ="onchange=\"populateDropdown('subTopic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','topicId='+document.getElementById('topic').value+'','subtopiclist','subTopicDropdown',''+MANAGEQUESTION_ADD_REC_TOPICDD)\"";
+	var MANAGEQUESTION_TOPICDD_ONCHANGE_EVENT ="onchange=\"populateDropdown('subTopic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','topicId='+document.getElementById('topic').value+'','subtopiclist','subTopicDropdown',''+MANAGEQUESTION_TOPICDD_ONCHANGE_EVENT)\"";
 /** GLOBAL CONSTANTS END **/
 
 
@@ -103,7 +103,6 @@ var xmlHttp;
 			doajaxRequest(DOMAIN_NAME+"populateDropdownByAjax.do?subjectId="+subjectId+"&pickDropDownvalueFor=topicList",elementID);	
 		}	
 	}
-	
 	function populateSubTopics(subjectId,topicValue,elementID){
 		//alert('In populateSubTopics() subjectId: '+ subjectId+' topicValue:'+topicValue+ ' elementID:'+elementID);
 		
@@ -112,29 +111,44 @@ var xmlHttp;
 			doajaxRequest(DOMAIN_NAME+"populateDropdownByAjax.do?subjectId="+subjectId+"&topicValue="+topicValue+"&pickDropDownvalueFor=subtopiclist",elementID);	
 		}	
 	}
+
 	/**
 	 * Functions populates the drop down value
 	 */
 	function populateDropdown(dropDownName,classId,subjectId,topicId,listType,divID,onChangeEvent){	
-		 //var splitVlaues = nameValuePair.split(",");
+		var equal = "=";
+		var classAt = classId.indexOf(equal);
+		var subjectAt = subjectId.indexOf(equal);
+		var topicAt = topicId.indexOf(equal);
 		var splitVlaues =  new Array();
-		if(classId != "") {
+		
+		if((classId.substring(classAt+1) == "")) {
+			splitVlaues[0] = "";
+		} else if((classId.substring(classAt+1) != "")) {
 			splitVlaues[0] = classId;
-		} 
-		if(subjectId != "" || subjectId != 0) {
+		}
+		
+		if((subjectId.substring(subjectAt+1) == "")) {
+			splitVlaues[1] = "";
+		} else if((subjectId.substring(subjectAt+1) != "") &&  (subjectId.substring(subjectAt+1) > 0)) {
 			splitVlaues[1] = subjectId;
 		}
-		if(topicId != "" || topicId !=0) {
+		if((topicId.substring(topicAt+1) != ""  &&  topicId.substring(topicAt+1) > 0)) {
 			splitVlaues[2] = topicId;
+		} else if(topicId.substring(topicAt+1) == "") {
+			splitVlaues[2] = "";
 		}
+		
+	
 		var values = "";
-		for(i=0; i<splitVlaues.length; i++ ){
+		for(var i=0; i<splitVlaues.length; i++ ){
 			if(values == "") {
 				values = splitVlaues[i];
 			} else {
 				values = values + "&" + splitVlaues[i];
 			} 
 		}
+		
 		var optionList = "<option value=\"Mat\">Maths</option>"+
 						  "<option value=\"Eng\">English</option>"+
 						  "<option value=\"Science\">Science</option>";
@@ -143,8 +157,6 @@ var xmlHttp;
 		
 		
 		var url = DOMAIN_NAME+"populateDropdownByAjax.do?"+values+"&pickDropDownvalueFor="+listType;
-		//alert("Url: "+ url);
-				    
 		//make sure selected value is not empty then do Ajax call
 		if(splitVlaues != null && splitVlaues .length > 0){			
 			if (window.ActiveXObject) {
@@ -194,10 +206,6 @@ var xmlHttp;
 			startTag += CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT;
 		else if(onChangeEvent == CONTENTUPLOADPG_ADD_REC_SUBTOPICDD)
 			startTag += CONTENTUPLOADPG_ADD_REC_SUBTOPICDD_ONCHANGE_EVENT;
-		else if(onChangeEvent == MANAGEQPG_SUBJECTDD_NEW )
-			startTag += MANAGEQPG_SUBJECTDD_ONCHANGE_EVENT_NEW;
-		else if(onChangeEvent == MANAGEQPG_TOPICDD_NEW)
-			startTag += MANAGEQPG_TOPICDD_ONCHANGE_EVENT_NEW;
 		else if(onChangeEvent == MANAGEQPG_SUBTOPICDD_NEW )
 			startTag += MANAGEQPG_SUBTOPICDD_ONCHANGE_EVENT_NEW;
 		else if(onChangeEvent == MANAGEQUESTION_ADD_REC_SUBJECTDD) 
