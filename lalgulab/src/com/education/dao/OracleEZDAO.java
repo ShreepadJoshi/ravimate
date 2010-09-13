@@ -191,20 +191,24 @@ public class OracleEZDAO extends AbstractDAO{
 					 " FROM t_class_subject_topic_subTopic_mapping mapping_Table "+
 					 " INNER JOIN t_topics topicTable "+
 					 "  ON mapping_Table.topicId = topicTable.topicId ";
+			String where;
 		
-			
-			String where = "";	
+			if((!Utilities.isNullOrBlank(subjectId)) && (!Utilities.isNullOrBlank(classId))) {
+				where = "where";
+			} else {
+				where = "";
+			}
 			
 			if(!Utilities.isNullOrBlank(subjectId) && (!Utilities.isNullOrBlank(classId))) {
-				where+=	" where mapping_Table.classId ='"+classId+"'  AND mapping_Table.subjectId='"+subjectId+"'";
+				where+=	"  mapping_Table.classId ='"+classId+"'  AND mapping_Table.subjectId='"+subjectId+"'";
 				sql+= where;
-			}
-			if(Utilities.isNullOrBlank(classId)) {
-				where+=	" where mapping_Table.subjectId='"+subjectId+"'";
-				sql+= where;
-			}
-			if(Utilities.isNullOrBlank(subjectId)) {
+			} 
+			
+			if(Utilities.isNullOrBlank(subjectId) && (!Utilities.isNullOrBlank(classId))) {
 				where+=	" where mapping_Table.classId='"+classId+"'";
+				sql+= where;
+			} else if(Utilities.isNullOrBlank(classId) && (!Utilities.isNullOrBlank(subjectId))) {
+				where+=	" where mapping_Table.subjectId='"+subjectId+"'";
 				sql+= where;
 			}
 			
@@ -270,25 +274,36 @@ public class OracleEZDAO extends AbstractDAO{
 				+ "   ON mapping_Table.subTopicId = subTopicTable.subTopicId "
 				+ " INNER JOIN t_topics TopicTable "
 				+ "	   ON mapping_Table.topicId = TopicTable.topicId ";
-		String where = "";	
-		if (!Utilities.isNullOrBlank(classId) && (!Utilities.isNullOrBlank(subjectId)) && (!Utilities.isNullOrBlank(topicId))) {
-			where+=	" where mapping_Table.classId ='"+classId+"'  AND mapping_Table.subjectId='"+subjectId+"'  AND mapping_Table.topicId='"+topicId+"'";
+		
+		
+		String where ="where" ;
+		
+		if(!Utilities.isNullOrBlank(subjectId) && (!Utilities.isNullOrBlank(classId)) && (!Utilities.isNullOrBlank(topicId))) {
+			where+=	"  mapping_Table.classId ='"+classId+"'  AND mapping_Table.subjectId='"+subjectId+"'  AND mapping_Table.topicId='"+topicId+"' ";
 			sql+= where;
+		}  else if(Utilities.isNullOrBlank(subjectId) && Utilities.isNullOrBlank(classId) && Utilities.isNullOrBlank(topicId)) {
+			where ="";
 		}
-		if(Utilities.isNullOrBlank(classId)) {
-			where+=	" where mapping_Table.subjectId='"+subjectId+"' AND mapping_Table.topicId='"+topicId+"'";
+		
+	
+		if((!Utilities.isNullOrBlank(classId)) && Utilities.isNullOrBlank(subjectId) &&  (!Utilities.isNullOrBlank(topicId))) {
+			where+=	"  mapping_Table.classId='"+classId+"' AND mapping_Table.topicId='"+topicId+"'";
+			sql+= where;
+		} else if(Utilities.isNullOrBlank(classId) && (!Utilities.isNullOrBlank(subjectId)) &&  Utilities.isNullOrBlank(topicId)) {
+			where+=	"  mapping_Table.subjectId='"+subjectId+"'";
+			sql+= where;
+		} else if(Utilities.isNullOrBlank(classId) && (!Utilities.isNullOrBlank(subjectId)) &&  (!Utilities.isNullOrBlank(topicId))) {
+			where+=	"  mapping_Table.subjectId='"+subjectId+"' AND mapping_Table.topicId='"+topicId+"'";
+			sql+= where;
+		} else if((!Utilities.isNullOrBlank(classId)) && (!Utilities.isNullOrBlank(subjectId)) &&  Utilities.isNullOrBlank(topicId)) {
+			where+=	"  mapping_Table.classId='"+classId+"' AND mapping_Table.subjectId='"+subjectId+"'";;
+			sql+= where;
+		} else if(Utilities.isNullOrBlank(classId) && Utilities.isNullOrBlank(subjectId) &&  (!Utilities.isNullOrBlank(topicId))) {
+			where+=	" mapping_Table.topicId='"+topicId+"'";
 			sql+= where;
 		}
 		
-		if(Utilities.isNullOrBlank(subjectId)) {
-			where+=	" where mapping_Table.classId='"+classId+"' AND mapping_Table.topicId='"+topicId+"'";
-			sql+= where;
-		}		
 		
-		if (Utilities.isNullOrBlank(topicId)) {
-			where+=	" where mapping_Table.classId ='"+classId+"'  AND mapping_Table.subjectId='"+subjectId+"'";
-			sql+= where;
-		} 
 		
 		sql += " order by subTopicTable.subTopicValue ";
 
