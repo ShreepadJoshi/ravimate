@@ -10,7 +10,8 @@
 %>
 <display:table name="findSchool.pgSearchResults" id="row" requestURI="/findSchool.do" pagesize="10" decorator="org.displaytag.decorator.TotalTableDecorator">
 <%a = ((TSchool)row).getSchoolId(); %>
-	<display:column property="schoolName" decorator="com.education.displaytag.SchoolLinkWrapper" title="School Name" style="padding-left:2px;"/>
+	<display:column property="schoolId" decorator="com.education.displaytag.SchoolLinkWrapper"/>
+	<display:column property="schoolName"  title="School Name" style="padding-left:2px;"/>
 	<display:column property="schoolPostalAddr" title="Postal Addr" style="padding-left:2px;"/>
 	<display:column property="schoolDistrict" title="City" style="padding-left:2px;"/>
 	<display:column property="schoolPinCode" title="Pin" style="padding-left:2px;"/>
