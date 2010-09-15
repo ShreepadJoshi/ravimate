@@ -187,8 +187,9 @@
   <definition name="tiles.bodyPanel.faq" extends="tiles.bodyPanel">
 	<put name="content" value="/WEB-INF/jspf/bodycontent_faq.jsp" />
   </definition>
-   <definition name="tiles.bodyPanel.faq" extends="tiles.bodyPanel">
-	<put name="content" value="/WEB-INF/jspf/bodycontent_faq.jsp" />
+ 
+  <definition name="tiles.bodyPanel.registrationMessage" extends="tiles.bodyPanel">
+	<put name="content" value="/WEB-INF/jspf/bodycontent_registrationMessage.jsp" />
   </definition>
   <!--AboutUs Page BodyContent -->
   <definition name="tiles.bodyPanel.aboutUs" extends="tiles.bodyPanel">
@@ -463,6 +464,15 @@
 	<put name="bodyContentHeading" value="FAQ's" />
 	<put name="bodyContent" value="tiles.bodyPanel.faq" />
   </definition>
+  
+  <definition name="tiles.registrationMessagePage" extends="tiles.userHomePage">
+	<put name="title"  value="Ez-Learning->Message" />
+	<put name="bodyContentHeading" value="Registration Message" />
+	<put name="bodyContent" value="tiles.bodyPanel.registrationMessage" />
+  </definition>
+  
+  
+  
   <!--AboutUs Page -->
   <definition name="tiles.aboutUsPage" extends="tiles.userHomePage">
 	<put name="title"  value="Ez-Learning->AboutUs" />
