@@ -42,6 +42,10 @@ public class ContentUploadAction extends EducationBaseAction{
 		bean.setClassTypeOptions(new Utilities().getDropdownValue(EducationConstant.CLASS_DROPDOWN_VALUE));
 		
 		bean.setSubjectOptions(new Utilities().getDropdownValue(EducationConstant.SUBJECT_DROPDOWN_VALUE));
+		bean.setTopicOptions(new Utilities().getDropdownValue(EducationConstant.TOPICS_DROPDOWN_VALUE));
+		
+		bean.setSubTopicOptions(new Utilities().getDropdownValue(EducationConstant.SUBTOPICS_DROPDOWN_VALUE));
+		
 		
 		//condition to not display search results by default
 		if(isNavigationDone(request)){
@@ -57,6 +61,7 @@ public class ContentUploadAction extends EducationBaseAction{
 			throws Exception {		
 		
 		ContentUploadActionForm contentUploadBean = (ContentUploadActionForm)form;
+	
 		QuestionBankService service = new QuestionBankService();
 		String strActionFwd = "actionSuccess";
 		//Set the Exception Handling details ActionForward, Context Senstive Exception detail
