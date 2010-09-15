@@ -91,6 +91,7 @@
 		<forward name="aboutus" path="/pages/aboutUs.jsp" />
 		<forward name="contactus" path="/pages/contactUs.jsp" />
 		<forward name="faq" path="/pages/faq.jsp" />
+		<forward name="registrationMessage" path="/pages/registrationMessage.jsp" />
 		<forward name="home" path="/index.jsp" />	
 		<forward name="teacherpage" path="/teacher.do" />
 		<forward name="reviewerpage" path="/reviewer.do" />
@@ -478,6 +479,13 @@
 			scope="request">
 			<forward name="faqPage" path="tiles.faqPage" />
 		</action>
+		
+		<action path="/showRegistrationMessageContent"
+			type="com.education.actions.ShowRegistrationMessageContentAction" 
+			scope="request">
+			<forward name="registrationMessagePage" path="tiles.registrationMessagePage" />
+		</action>
+		
 		
 		<action path="/showMgmtDetailsStaticContent"
 			type="com.education.actions.ShowMgmtDetailsStaticContentAction" 
