@@ -16,6 +16,7 @@ import com.education.exceptions.DBDataOutOfRangeException;
 import com.education.exceptions.DBDataSourceException;
 import com.education.exceptions.DBIntegrityViolationException;
 import com.education.exceptions.DBInvalidDataInsertionException;
+import com.education.transferobj.AffiliateTO;
 import com.education.transferobj.RegistrationTo;
 import com.education.transferobj.UserTO;
 import com.education.util.EducationConstant;
@@ -206,7 +207,66 @@ public class OracleRegistrationDAO extends AbstractDAO{
 		return updateCount;
 	}
 
-	
+	/** This method updates the t_user table with all details after Full Registration, through Guest Role. 
+	 * @param rto
+	 * @return UserTO
+	 * @throws BaseAppException
+	 */
+	public void updateAffilateUser(AffiliateTO affiliateTo) throws BaseAppException {
+
+		
+		Connection con = null;
+		int roleId = affiliateTo.getRoleId();
+		String password = affiliateTo.getPassword();
+		String address1 = affiliateTo.getAddress1();
+		String pinCode = affiliateTo.getPin();
+		String country = affiliateTo.getCountry();
+		String landline = affiliateTo.getLandlineNo();
+		String mobileNo = affiliateTo.getMobileNo();
+		String alternateEmail = affiliateTo.getAlternateEmailID();
+		String hobbies = affiliateTo.getHobbies();
+		String firstName = affiliateTo.getFirstName();
+		String lastName = affiliateTo.getLastName();
+		String sex = affiliateTo.getSex();
+		java.sql.Date reg1Date = new java.sql.Date(Utilities.getCurrentDB_Date());
+		String city = affiliateTo.getCity();
+		String state = affiliateTo.getState();
+		String userId = affiliateTo.getUserId();
+		String isAprroved = EducationConstant.REG_STATUS_NOT_APPROVED;
+		int isFullReg  = 1;
+		
+		
+		String sql = "Update t_user SET RoleId = "+roleId+", Address1 = '"+address1+"' ,PIN = '"+pinCode+"',Country='"+country+"',Landline ='"+landline+"',MobileNumber = '"+mobileNo+"' ,AlternateEmailId ='"+alternateEmail+"', FirstName ='"+firstName+"',LastName = '"+lastName+"', Sex = '"+sex+"', RegistrationDate = '"+reg1Date+"',Hobbies = '"+hobbies+"', city ='"+city+"',state= '"+state+"',Isapproved = '"+isAprroved+"',IsFullReg = '"+isFullReg+"' where userid = "+userId+" ";
+		
+		PreparedStatement psmt = null;
+		try {
+			con = GetConnection.getSimpleConnection();
+				psmt = con.prepareStatement(sql);
+				psmt.executeUpdate();
+				psmt.close();
+		}catch (MySQLIntegrityConstraintViolationException e) {
+			throw new DBIntegrityViolationException(e.getMessage());
+		} catch (MysqlDataTruncation e) {
+			throw new DBDataOutOfRangeException(e.getMessage(), Utilities
+					.getDataTooLongExceptionColumnName(e.getMessage()));
+		} catch (SQLException e) {
+			if (e.getMessage().contains("Incorrect"))
+				throw new DBInvalidDataInsertionException(e.getMessage(),
+						Utilities.getDataMissingExceptionColumnName(e
+								.getMessage()), Utilities
+								.getDataMissingExceptionColumValue(e
+										.getMessage()));
+			else
+				throw new RuntimeException(e);
+		} finally {
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				throw new DBDataSourceException(e.getMessage());
+			}
+		}
+	}
 	
 	/**
 	 * Checks if the user with given emailId and password exists and accordingly
