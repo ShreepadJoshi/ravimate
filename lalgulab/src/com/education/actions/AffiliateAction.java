@@ -93,15 +93,21 @@ public class AffiliateAction extends EducationBaseAction {
 			{
 				
 					//User should Complusory select class and subject to get search result 
-					if(!isSearchCriteria_Selection_done(bean)){
+				/*	if(!isSearchCriteria_Selection_done(bean)){
 						dispMessage(request, "", new ActionMessage("error.select.classSubject.searchCriteria"));
 						bean.setPgSearchResults(cachedPage);
 						return mapping.findForward("displayPage");
-					}
-					
+					}*/
+				UserSessionInfo objUserInfo = (UserSessionInfo) request.getSession()
+				.getAttribute(SessionConstants.user_info);
+				
 					service = new AffiliateService();
 					affTo = new AffiliateTO();
 					Utilities.copyProperties(affTo, bean);
+					if(objUserInfo != null) {
+						affTo.setUserId(String.valueOf(objUserInfo.getUserId()));
+					}
+					
 					affTo.setFirstName(bean.getFirstName());
 					affTo.setLastName(bean.getLastName());
 					affTo.setEmailID(bean.getEmailID());
@@ -113,7 +119,10 @@ public class AffiliateAction extends EducationBaseAction {
 					affTo.setAffAcctDtls(bean.getAffAcctDtls());
 					affTo.setCountry(bean.getCountry());
 					affTo.setState(bean.getState());
-					
+					affTo.setAddress1(bean.getAddress());
+					affTo.setHobbies(bean.getHobbies());
+					affTo.setAlternateEmailID(bean.getAlternateEmailID());
+					affTo.setLandlineNo(bean.getLandlineNo());
 					affTo.setRoleId(Integer.parseInt(EducationConstant.AFFILIATE_USER_ROLE));
 					affTo.setIsApproved(Integer.parseInt(EducationConstant.REG_STATUS_NOT_APPROVED));
 					service.addAffiliate(affTo);
