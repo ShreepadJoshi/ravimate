@@ -30,7 +30,6 @@ public class NewUserAffiliateListAction extends EducationBaseAction{
 			HttpServletRequest request, HttpServletResponse response)
 		throws BaseAppException {		
 		NewUserActionForm newUserBean = (NewUserActionForm)form;
-		System.out.println("request================="+request);
 		//condition to not display search results by default
 		if(isNavigationDone(request)){
 			getPaginatedSearchResults(request,newUserBean,null);
