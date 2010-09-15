@@ -6,6 +6,7 @@ import java.util.Iterator;
 import org.expframework.exceptions.BaseAppException;
 
 import com.education.dao.OracleRegistrationDAO;
+import com.education.transferobj.AffiliateTO;
 import com.education.transferobj.RegistrationTo;
 import com.education.transferobj.UserTO;
 import com.education.util.Utilities;
@@ -27,6 +28,11 @@ public class UserRegistrationService {
 	//	rto.setPassword(encrypted_password);
 		OracleRegistrationDAO userDAO = new OracleRegistrationDAO();
 		return userDAO.updateUser(rto);
+	}
+	public void updateAffilateUser(AffiliateTO affiliateTo) throws BaseAppException {
+	
+		OracleRegistrationDAO userDAO = new OracleRegistrationDAO();
+		userDAO.updateAffilateUser(affiliateTo);
 	}
 	
 	

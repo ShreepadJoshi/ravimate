@@ -27,10 +27,11 @@ public class AffiliateService {
 	{
 		AffiliateDao affDao = new AffiliateDao();
 		UserRegistrationService service = new UserRegistrationService();
-		UserTO userTo = service.registerUser(affTo);
-		if(userTo == null) 
-			throw new BaseAppException("Cannot Insert Data into User table."); 
-		affTo.setAffiliateId(String.valueOf(userTo.getUserId()));
+		service.updateAffilateUser(affTo);
+	//	UserTO userTo = service.registerUser(affTo);
+		//if(userTo == null) 
+			//throw new BaseAppException("Cannot Insert Data into User table."); 
+		affTo.setAffiliateId(String.valueOf(affTo.getUserId()));
 		return affDao.insert(affTo);
 	}
 	
@@ -42,7 +43,6 @@ public class AffiliateService {
 		StringBuilder sql = new StringBuilder(512);
 		sql.append("SELECT t.FirstName, t.lastName, a.affiliate_org_name from t_user t, t_affiliate a ");
 		sql.append("WHERE t.userid = a.affiliate_Id ");
-		System.out.println("===========searchAffiliate========================"+dto.getFirstName());
 		if (dto.getFirstName() != null && !"".equals(dto.getFirstName().trim()))
 		{
 			sql.append("AND t.firstName = ? ");
