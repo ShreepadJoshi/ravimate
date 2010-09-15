@@ -20,20 +20,19 @@ UserSessionInfo  objUserinfo =
 		<html:link styleClass="nav" action="/showContactUsStaticContent">Contact Us</html:link>
 		|
 		<html:link action="/signOut" >SignOut</html:link>
-	<% } else if(objUserinfo == null) {
-		%>
+	<% } else if(objUserinfo == null) {%>
 
 		<html:link styleClass="nav" forward="home">Home</html:link>
 		|
 		<html:link styleClass="nav" action="/showAboutUsStaticContent">About Us</html:link>
 		|
-		<html:link styleClass="nav" action="/affiliate">Affiliates</html:link>
+		<html:link styleClass="nav" action="/showRegistrationMessageContent">Affiliates</html:link>
 		|
-		<html:link styleClass="nav" action="/teacher">Teacher</html:link>
+		<html:link styleClass="nav" action="/showRegistrationMessageContent">Teacher</html:link>
 		|
-		<html:link styleClass="nav" action="/agent">Agents</html:link>
+		<html:link styleClass="nav" action="/showRegistrationMessageContent">Agents</html:link>
 		|
-		<html:link styleClass="nav" action="/reviewer">Reviewer</html:link>
+		<html:link styleClass="nav" action="/showRegistrationMessageContent">Reviewer</html:link>
 		|
 		<html:link styleClass="nav" action="/showFaqStaticContent">FAQ</html:link>
 		|
