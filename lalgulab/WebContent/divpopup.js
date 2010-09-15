@@ -191,30 +191,32 @@ function login() {
 function display_schoolDetails(count) {
 	 var schoolName= "" ;
 	 var board= "" ;
-	 var district= "" ;
-	 var state= "" ;
+	 var city= "" ;
 	 var postalAddr= "" ;
 	 var pinCode= "" ;
-	 var yearOfFoundation= "" ;
-	 var status= "" ;
-	 var mediumOdIntroduction= "" ;
+	 var webSite = "";
+	 var category = "";
+	 var type= "";
+	 var contactPerson = "";
+	 var contactNumber ="";
 	 
 	 var table = document.getElementById("row");
 	    var rows = table.getElementsByTagName("tr");
-	   
 	    for (i = 0; i < rows.length; i++) {
 	       if(count == i){
+	    	 
 	    	   var column =  rows[i].getElementsByTagName("td");
-	    	       schoolName =column[0].innerHTML; 
-	    	       	postalAddr = column[1].innerHTML;
-	    	         city = column[2].innerHTML;
-	    	         pinCode = column[3].innerHTML;
-	    	         webSite = column[4].innerHTML;
-	    		     board = column[5].innerHTML;
-	    		     category = column[6].innerHTML;
-	    		     type = column[7].innerHTML;
-	    		     contactPerson = column[8].innerHTML;
-	    		     contactNumber = column[9].innerHTML;
+	    	   		schoolId = column[0].innerHTML; 
+	    	       schoolName = column[1].innerHTML; 
+	    	       	postalAddr = column[2].innerHTML;
+	    	         city = column[3].innerHTML;
+	    	         pinCode = column[4].innerHTML;
+	    	         webSite = column[5].innerHTML;
+	    		     board = column[6].innerHTML;
+	    		     category = column[7].innerHTML;
+	    		     type = column[8].innerHTML;
+	    		     contactPerson = column[9].innerHTML;
+	    		     contactNumber = column[10].innerHTML;
 	    		    
 	       } 
 	    }
@@ -223,17 +225,18 @@ function display_schoolDetails(count) {
 	"School Details",
    "<div style='padding: 25px;'>" +
    "<table width='100' border='0' align='center' cellpadding='0' cellspacing='10'>" +
-   "<tr><td class = 'input_label'>School Name :</td><td class = 'input_field' maxlength='40' size='40' readOnly='true' value="+schoolName+"></td></tr> "+
-	"<tr><td class = 'input_label'>Address: </td><td colspan='2' ><label><input name='Address1' type='text'   class = 'input_field' maxlength='40' size='40' readOnly='true' value="+postalAddr+"></label></td></tr> "+
+   "<tr><td class = 'input_label'>School: </td><td colspan='2' ><label><input name='SchoolName' type='text'   class = 'input_field' maxlength='40' size='40' readOnly='true' value='"+schoolName+"'></label></td></tr> "+
+	"<tr><td class = 'input_label'>Address: </td><td colspan='2' ><label><input name='Address1' type='text'   class = 'input_field' maxlength='40' size='40' readOnly='true' value='"+postalAddr+"'></label></td></tr> "+
 	"<tr><td> </td><td colspan='2'><label><input name='Address2' type='text'  class = 'input_field' maxlength='40' size='40' readOnly='true'></label></td></tr>" +
-	"<tr><td  class = 'input_label'>City: </td><td colspan='0' ><label><input name='City' type='text' class = 'input_field' maxlength='20'  size='20' readOnly='true' value="+postalAddr+"></td><td  width='80' class = 'input_label' >PIN / Zip: </td><td colspan='0' ><label><input name='Pin' type='text' class = 'input_field' maxlength='8' size='8' readOnly='true' value="+pinCode+" /></td></tr> " +
-	"<tr><td  class = 'input_label'>Web Site: </td><td colspan='1'><label><input name='WebSite' type='text' class = 'input_field' maxlength='40' size='40' readOnly='true'  value="+webSite+"></td></tr>" +
-	"<tr><td  class = 'input_label'>Board: </td><td colspan='1'><label><input name='Board' type='text' class = 'input_field'  maxlength='20' size='20' readOnly='true' value="+board+"></td><td rowspan='5' colspan='3' align='left' valign='middle'><iframe frameborder='0' scrolling='no' width='240' height='169' marginheight='10' marginwidth='10' src='http://maps.google.co.in/maps?hl=en&amp;q=adding+google+map+to+website&amp;ie=UTF8&amp;showlabs=1&amp;ll=18.516825,73.842092&amp;spn=0.043989,0.063605&amp;output=embed'></iframe></td></tr>"+
-	"<tr><td  class = 'input_label'>Category</td><td colspan='0'><label><input name='PvtGovt' type='text' class = 'input_field' maxlength='15'  size='15' readOnly='true' value="+category+"></td></tr> " +
-	"<tr><td  class = 'input_label' >Type: </td><td colspan='0' ><label><input name='InstituteType' type='text' class = 'input_field' maxlength='20'  size='20' readOnly='true'  value="+type+"></td></tr> "+
-	"<tr><td  class = 'input_label'>Contact Person: </td><td><label><input name='ContactPerson' type='text' class = 'input_field' maxlength='25' size='25'  readOnly='true' value="+contactPerson+"></td></tr>" +
-	"<tr><td  class = 'input_label' >Contact No: </td><td><label><input name='ContactNo' type='text' class = 'input_field' maxlength='12'  size='12' readOnly='true' value="+contactNumber+"></td></tr> "+
-	"<tr><td colspan='2' align='right' valign='bottom'><a href='#' onClick='cancel()'>Back to school list</a></td></tr> "+
+	"<tr><td  class = 'input_label'>City: </td><td colspan='0' ><label><input name='City' type='text' class = 'input_field' maxlength='20'  size='20' readOnly='true' value='"+city+"'></td><td colspan='1' valign='left' align='left' width='80' class = 'input_label' >PIN / Zip: </td><td colspan='0' ><label><input name='Pin' type='text' class = 'input_field' maxlength='8' size='8' readOnly='true' value="+pinCode+" /></td></tr> " +
+	"<tr><td  class = 'input_label'>Web Site: </td><td colspan='1'><label><input name='WebSite' type='text' class = 'input_field' maxlength='40' size='40' readOnly='true'  value='"+webSite+"'></td></tr>" +
+	"<tr><td  class = 'input_label'>Board: </td><td colspan='1'><label><input name='Board' type='text' class = 'input_field'  maxlength='20' size='20' readOnly='true' value='"+board+"'></td><td rowspan='5' colspan='3' align='left' valign='left'><iframe frameborder='2' scrolling='no' width='240' height='169' marginheight='10' marginwidth='10' src='http://maps.google.co.in/maps?hl=en&amp;q=adding+google+map+to+website&amp;ie=UTF8&amp;showlabs=1&amp;ll=18.516825,73.842092&amp;spn=0.043989,0.063605&amp;output=embed'></iframe></td></tr>"+
+	"<tr><td  class = 'input_label'>Category</td><td colspan='0'><label><input name='PvtGovt' type='text' class = 'input_field' maxlength='15'  size='15' readOnly='true' value='"+category+"'></td></tr> " +
+	"<tr><td  class = 'input_label' >Type: </td><td colspan='0' ><label><input name='InstituteType' type='text' class = 'input_field' maxlength='20'  size='20' readOnly='true'  value='"+type+"'></td></tr> "+
+	"<tr><td  class = 'input_label'>Contact Person: </td><td><label><input name='ContactPerson' type='text' class = 'input_field' maxlength='25' size='25'  readOnly='true' value='"+contactPerson+"'></td></tr>" +
+	"<tr><td  class = 'input_label' >Contact No: </td><td><label><input name='ContactNo' type='text' class = 'input_field' maxlength='12'  size='12' readOnly='true' value='"+contactNumber+"'></td></tr> "+
+	"<tr width='50' height='50'><td colspan='3' align='left' valign='bottom'><a href='#' onClick='openSchoolImage()'>School image</a></td>"+
+	"<td colspan='2' align='right' valign='bottom'><a href='#' onClick='cancel()'>Back to school list</a></td></tr> "+
    "</div>" ,
    {
 		buttons: "",
@@ -246,6 +249,26 @@ function display_schoolDetails(count) {
 
 function cancel() {
 	ModalPopups.Cancel("popup_SchoolDetails");
+}
+function openSchoolImage() {
+	setPopupDefaults();
+	ModalPopups.Custom("popup_SchoolImage",
+	"School Image",
+    "<div style='padding: 25px;'>" +
+    "<table align='center'> " +
+	"<tr><td><img src='images/School.jpg' width='150' height='113' align='absbottom'/></td> " +
+	"</tr>" +
+    "</table>" +	 
+    "</div>" ,
+    {
+        buttons: "cancel",
+        cancelButtonText: "Cancel",
+        onCancel: "cancelImage()"
+    }            
+	);
+}
+function cancelImage() {
+	ModalPopups.Cancel("popup_SchoolImage");
 }
 
 
