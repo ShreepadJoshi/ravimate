@@ -158,31 +158,37 @@ var xmlHttp;
 		
 		var url = DOMAIN_NAME+"populateDropdownByAjax.do?"+values+"&pickDropDownvalueFor="+listType;
 		//make sure selected value is not empty then do Ajax call
-		if(splitVlaues != null && splitVlaues .length > 0){			
 			if (window.ActiveXObject) {
 				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
 			}else if (window.XMLHttpRequest) {
 				xmlHttp = new XMLHttpRequest();
 			}
-			xmlHttp.open("Post", url);
+			xmlHttp.open("Post",url);	
+			xmlHttp.send(null);
 			xmlHttp.onreadystatechange = function() {
-				//alert('In doajaxRequest() Callback');
+				//	alert(' xmlHttp.readyState '+ xmlHttp.readyState);
 				if (xmlHttp.readyState == 4) {
-					//alert(' In doajaxRequest()Ajax Req Success '+ xmlHttp.status);
+					//	alert(' In doajaxRequest()Ajax Req Success '+ xmlHttp.status);
+					//alert(' xmlHttp.readyState '+ xmlHttp.readyState);
 					if (xmlHttp.status == 200) {
 						respAjaxHtml = xmlHttp.responseText;
+					//		alert("respAjaxHtml: "+ respAjaxHtml);
 						var selectTag = prepareSelectTag(respAjaxHtml,dropDownName,onChangeEvent);
-						//alert("selectTag: "+ selectTag);
+					//	alert("selectTag: "+ selectTag);
 						//alert('Previous InnerDIVContent: '+document.getElementById(divID).innerHTML);
 						document.getElementById(divID).innerHTML = selectTag;
 						//alert('New InnerDIVContent: '+document.getElementById(divID).innerHTML); 
 					}
 				}
+				
 			};//end ajax call back function
-			xmlHttp.send(null);
-		}//end nameValuePair If condition
+			
+			
 	}
 	
+		
+	 
+	 
 	
 	function prepareSelectTag(optionList,dropDownName,onChangeEvent){	
 		var startTag = "<select name='"+ dropDownName +"' id='"+ dropDownName +"' ";
