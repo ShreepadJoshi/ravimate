@@ -24,7 +24,7 @@
 	</tr>
 
 	<tr>
-		<td height="2" align="left" valign="middle"
+		<td height="" align="left" valign="middle"
 			background="<html:rewrite page='/images/dotted_line.jpg'/>"></td>
 	</tr>
 <!-- Testimonails Starts here -->
@@ -35,7 +35,7 @@
 					height="11" hspace="15" border="0" />Testimonial</td>
 			</tr>
 			<tr>
-				<td width="194" height="1" align="left" valign="top"
+				<td width="" height="" align="left" valign="top"
 					background="<html:rewrite page='/images/dotted_line.jpg'/>"></td>
 			</tr><br>
 			<tr>
@@ -47,7 +47,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td height="1" align="left" valign="top"
+				<td height="" align="left" valign="top"
 					background="<html:rewrite page='/images/dotted_line.jpg'/>"></td>
 			</tr>
 		

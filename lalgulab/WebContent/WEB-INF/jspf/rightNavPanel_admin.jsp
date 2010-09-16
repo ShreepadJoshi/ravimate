@@ -7,7 +7,7 @@
 			hspace="15" border="0" />See our Demo</td>
 	</tr>
 	<tr>
-		<td height="2" align="left" valign="middle"
+		<td height="" align="left" valign="middle"
 			background="<html:rewrite page='/images/dotted_line.jpg'/>"></td>
 	</tr>
       <tr>
@@ -38,7 +38,7 @@
 					height="11" hspace="15" border="0" />Testimonial</td>
 			</tr>
 			<tr>
-				<td width="194" height="1" align="left" valign="top"
+				<td width="194" height="" align="left" valign="top"
 					background="<html:rewrite page='/images/dotted_line.jpg'/>"></td>
 			</tr>
 			<tr>
@@ -51,7 +51,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td height="1" align="left" valign="top"
+				<td height="0" align="left" valign="top"
 					background="<html:rewrite page='/images/dotted_line.jpg'/>"></td>
 			</tr>
 		</table>
