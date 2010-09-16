@@ -300,19 +300,158 @@ function resetManageQ(){
 		document.getElementById('explanation_ErrMsg').style.display="none";	
 }
 
-function resetFullReg(){
-	document.getElementById('firstName_ErrMsg').style.display="none";
-	document.getElementById('lastName_ErrMsg').style.display="none";
-	document.getElementById('emailID_ErrMsg').style.display="none";
-	document.getElementById('password_ErrMsg').style.display="none";
-	document.getElementById('repassword_ErrMsg').style.display="none";
-	document.getElementById('address_ErrMsg').style.display="none";
-	document.getElementById('city_ErrMsg').style.display="none";
-	document.getElementById('pin_ErrMsg').style.display="none";
-	document.getElementById('country_ErrMsg').style.display="none";
-	document.getElementById('alternateEmailID_ErrMsg').style.display="none";
-	document.getElementById('mobileno_ErrMsg').style.display="none";
-	document.getElementById('landlineno_ErrMsg').style.display="none";
+function validateAffiliateFullReg(){
+	var firstName = document.getElementById('firstName').value;
+	var lastName = document.getElementById('lastName').value;
+	var address = document.getElementById('address').value;
+	var region = document.getElementById('region').value;
+	var country = document.getElementById('country').value;
+	var state = document.getElementById('state').value;
+	var city = document.getElementById('city').value;
+	var pin = document.getElementById('pin').value;
+	var mobNoPart1 = document.getElementById('mobNoPart1').value;
+	var mobNoPart2 = document.getElementById('mobNoPart2').value;
+	
+
+	var Result_FirstName = false;
+	var Result_LastName = false;
+	var Result_address = false;
+	var Result_city = false;
+	var Result_pin = false;
+	var Result_Country = false;
+	var Result_MobileNo = false;
+	var Result_Region = false;
+	var Result_State = false;
+	
+	// for mandatory field First Name
+	if(stripBlanks(firstName)==''){
+		Result_FirstName = false;
+		document.getElementById('firstName_ErrMsg').innerHTML = "FirstName is Required";
+		document.getElementById('firstName_ErrMsg').style.display='';
+	}else{		
+		if(!isAlpha(firstName)){
+			Result_FirstName = false;
+			document.getElementById('firstName_ErrMsg').innerHTML = "Invalid Entry";
+			document.getElementById('firstName_ErrMsg').style.display='';
+		}else{
+			Result_FirstName = true;
+			document.getElementById('firstName_ErrMsg').style.display="none";	
+		}
+	}
+	
+	
+	
+	// for mandatory field Last Name
+	if(stripBlanks(lastName)==''){
+		Result_LastName = false;
+		document.getElementById('lastName_ErrMsg').innerHTML = "LastName is Required";
+		document.getElementById('lastName_ErrMsg').style.display='';
+	}else{		
+		if(!isAlpha(lastName)){
+			Result_LastName = false;
+			document.getElementById('lastName_ErrMsg').innerHTML = "Invalid Entry";
+			document.getElementById('lastName_ErrMsg').style.display='';
+		}else{
+			Result_LastName = true;
+			document.getElementById('lastName_ErrMsg').style.display='none';	
+		}
+	}	
+	
+	// for mandatory field Address
+	if(stripBlanks(address)==''){
+		Result_address = false;		
+		document.getElementById('address_ErrMsg').style.display='';
+	}else{
+		Result_address = true;
+		document.getElementById('address_ErrMsg').style.display='none';
+	}
+	
+	// for mandatory field City
+	if(stripBlanks(city)==''){
+		Result_city = false;
+		document.getElementById('city_ErrMsg').innerHTML = "City is Required";
+		document.getElementById('city_ErrMsg').style.display='';
+	}else{		
+		if(!isAlpha(city)){
+			Result_city = false;
+			document.getElementById('city_ErrMsg').innerHTML = "Invalid Entry";
+			document.getElementById('city_ErrMsg').style.display='';
+		}else{
+			Result_city = true;
+			document.getElementById('city_ErrMsg').style.display='none';	
+		}
+	}
+	
+	// for mandatory field PinCode
+	if(stripBlanks(pin)==''){
+		Result_pin = false;
+		document.getElementById('pin_ErrMsg').innerHTML = "Pin is Required";
+		document.getElementById('pin_ErrMsg').style.display='';
+	}else{		
+		if(!isNumber(pin) || pin.length != 6){
+			Result_pin = false;
+			document.getElementById('pin_ErrMsg').innerHTML = "Invalid Entry";
+			document.getElementById('pin_ErrMsg').style.display='';
+		}else{
+			Result_pin = true;
+			document.getElementById('pin_ErrMsg').style.display='none';	
+		}
+	}
+	
+	// for mandatory field Country
+	if(stripBlanks(country)==''){
+		Result_Country = false;
+		document.getElementById('country_ErrMsg').innerHTML = "Country is Required";
+		document.getElementById('country_ErrMsg').style.display='';
+	}else{
+		Result_Country = true;
+		document.getElementById('country_ErrMsg').style.display='none';
+	}
+	
+	// for mandatory field Mobile No
+	if(stripBlanks(mobNoPart1)=='' || stripBlanks(mobNoPart2)=='' ){
+		Result_MobileNo = false;
+		document.getElementById('mobileno_ErrMsg').innerHTML = "MobileNo is Required";
+		document.getElementById('mobileno_ErrMsg').style.display='';
+	}else{		
+		if(!isNumber(mobNoPart2) || (mobNoPart2.length != 10) || !( mobNoPart1 == '+91' || mobNoPart1 == '0') ){
+			Result_MobileNo = false;
+			document.getElementById('mobileno_ErrMsg').innerHTML = "Invalid Entry";
+			document.getElementById('mobileno_ErrMsg').style.display='';
+		}else{
+			Result_MobileNo = true;
+			document.getElementById('mobileno_ErrMsg').style.display='none';	
+		}
+	}
+	
+	
+	// for mandatory field Region
+	if(stripBlanks(region)==''){
+		Result_Region = false;
+		document.getElementById('region_ErrMsg').innerHTML = "Region is Required";
+		document.getElementById('region_ErrMsg').style.display='';
+	}else{
+		Result_Region = true;
+		document.getElementById('region_ErrMsg').style.display='none';
+	}
+	
+	// for mandatory field State
+	if(stripBlanks(state)==''){
+		Result_State = false;
+		document.getElementById('state_ErrMsg').innerHTML = "State is Required";
+		document.getElementById('state_ErrMsg').style.display='';
+	}else{
+		Result_State = true;
+		document.getElementById('state_ErrMsg').style.display='none';
+	}
+	
+	if(Result_FirstName && Result_LastName && Result_address && Result_city
+			&& Result_pin && Result_Country && Result_MobileNo  && Result_Region && Result_State){
+			return true;
+		}else{
+			return false;
+		}
+	
 }
 
 function validateFullReg(){
@@ -334,6 +473,8 @@ function validateFullReg(){
 	// var alternateEmailID = document.getElementById('alternateEmailID').value;
 	var mobNoPart1 = document.getElementById('mobNoPart1').value;
 	var mobNoPart2 = document.getElementById('mobNoPart2').value;
+	
+	
 	// var landNoPart1 = document.getElementById('landNoPart1').value;
 	// var landNoPart2 = document.getElementById('landNoPart2').value;
 	
