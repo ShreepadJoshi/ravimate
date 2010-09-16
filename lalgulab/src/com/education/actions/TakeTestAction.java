@@ -102,12 +102,14 @@ public class TakeTestAction  extends EducationBaseAction {
 			
 		}else if(actionPerformed!=null && actionPerformed.equalsIgnoreCase("save & next")){
 			saveQuestionDetails(request,questionMap, bean, actionPerformed);
-			actionFwdName = "testQuestionPage";
+			actionFwdName = "testMainPage";
 			//Get Next Question Details
+			if(Integer.parseInt(noOfQuestion) < 20) {
 			TestQuestion nextQuestion = (TestQuestion)questionMap.get(
 					new Integer(Integer.valueOf(bean.getQuestionNumber())+1));			
 			setQuestionDetails(request,bean, ""+nextQuestion.getQuestionID(),
 							""+nextQuestion.getTestpaperQuestionNumber(),noOfQuestion,nextQuestion.getAnswer());
+			}
 			resetOptions(bean);
 			//set questionID in requestionScope
 //			request.setAttribute("qId",bean.getQuestionID());
