@@ -217,7 +217,7 @@
 	</tr>
 		<tr>
 		<td colspan="4" align="center">
-		<html:submit styleId="addorupdate" property="action" value="Add" styleClass="url"/>
+		<html:submit styleId="addorupdate" property="action" value="Add" styleClass="url" onclick="return validateAffiliateFullReg()"/>
 		 <html:submit styleId="close" property="action" value="Close" styleClass="url"/>	
 		</td>
 	</tr>
