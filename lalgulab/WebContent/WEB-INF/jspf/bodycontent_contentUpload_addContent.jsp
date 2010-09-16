@@ -5,7 +5,7 @@
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@page import="com.education.transferobj.ContentUploadTO"%>
 <%@page import="com.education.formbeans.ContentUploadActionForm"%>
-
+<body onload="document.getElementById('uptsubjectId').focus();" >
 <center><span style="color: red; background-color: #F0F0FF"><html:errors /></span></center>
 <table width="100%" border="0" align="left" cellpadding="0"
 	cellspacing="10" bgcolor="#F0F0FF">
@@ -47,8 +47,8 @@
 							<td colspan="2" align="left">
 							<div id="subjectDropdown"><html:select
 								styleId="uptsubjectId" property="uptsubjectId"
-								name="ContentUploadBean" styleClass="input_field"
-								onchange="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT)">
+								name="ContentUploadBean" styleClass="input_field" 
+								onchange="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT)" onfocus="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT)">
 								<html:optionsCollection property="subjectOptions" label="label"
 									value="value" />
 							</html:select></div>
@@ -61,7 +61,7 @@
 							<td colspan="2" align="left">
 							<div id="topicDropdown"><html:select styleId="uptTopicId"
 								property="uptTopicId" name="ContentUploadBean"
-								styleClass="input_field" onchange="populateDropdown('uptsubTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','topicId='+document.getElementById('uptTopicId').value+'','subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT)" onfocus="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT)" >
+								styleClass="input_field" onchange="populateDropdown('uptsubTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','topicId='+document.getElementById('uptTopicId').value+'','subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT)" onfocus="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT)" onfocus="populateDropdown('uptsubTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','topicId='+document.getElementById('uptTopicId').value+'','subtopiclist','subTopicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD_ONCHANGE_EVENT)" onfocus="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD_ONCHANGE_EVENT)" >
 								<html:optionsCollection property="topicOptions" label="label"
 									value="value" />
 							</html:select></div>
@@ -125,3 +125,4 @@
 </table>
 
 
+</body>
