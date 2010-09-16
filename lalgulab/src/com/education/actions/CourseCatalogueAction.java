@@ -46,12 +46,12 @@ public class CourseCatalogueAction extends EducationBaseAction {
 		if(strIds !=null && toList!= null){
 			for(int i=0; i<strIds.length;i++){
 				CourseCatalogueTO to = toList.get(Integer.parseInt(strIds[i]));
-				to.setUserId(objUserInfo.getUserId());
+				//to.setUserId(objUserInfo.getUserId());
 				selectedToList.add(to);
 			}
 		}
 		CourseCatalogueServie courseCatalogueServie = new CourseCatalogueServie();
-		courseCatalogueServie.addCourseCatalogue(selectedToList);
+		//courseCatalogueServie.addCourseCatalogue(selectedToList);
 		dispMessage(request,"",new ActionMessage("message.saved",
 				new String[]{"","Saved...."}));
 		request.getSession().setAttribute("CourseCatalogueTO", toList);
