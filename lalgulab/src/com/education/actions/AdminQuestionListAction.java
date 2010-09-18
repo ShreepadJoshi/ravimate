@@ -222,7 +222,7 @@ public class AdminQuestionListAction extends EducationBaseAction {
 		if (roleId.equals(EducationConstant.ADMIN_USER_ROLE) == true){
 			cacheSearchResult(request,SessionConstants.SCH_RESULTS_ADMIN_QUESTION_LIST, thePage);
 		} else if(roleId.equals(EducationConstant.TEACHER_USER_ROLE) == true) {
-			cacheSearchResult(request,SessionConstants.SCH_RESULTS_ADMIN_QUESTION_LIST, thePage);
+			cacheSearchResult(request,SessionConstants.SCH_RESULTS_TEACHER_QUESTION_LIST, thePage);
 		}
 	}	
 	
