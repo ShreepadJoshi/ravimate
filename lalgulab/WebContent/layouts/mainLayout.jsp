@@ -61,7 +61,7 @@
 			<!-- TOP LEFT MENU ENDS HERE -->
 		</td>
 		
-		<td align="center" valign="top" style="padding-bottom: 5px;">
+		<td align="left" valign="top" style="padding-bottom: 5px;">
 		
 		<!-- PAGE HEADER IMAGE STRATS HERE -->
 			<tiles:insert attribute="header" />
@@ -120,7 +120,7 @@
 					</tr>
 				</table>
 				</td>
-				<td width="258" align="left" valign="left">
+				<td width="258" align="left" valign="top">
 				
 				
 					<!-- RIGHT NAVIGATION PANEL STARTS HERE -->
