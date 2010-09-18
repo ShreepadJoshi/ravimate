@@ -19,7 +19,7 @@
 							<td><html:hidden property="uptContentid" /> <html:select
 								styleId="uptClassId" property="uptClassId"
 								name="ContentUploadBean" styleClass="input_field"
-								onchange="populateDropdown('uptsubjectId','classId='+this.value,'subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
+								onchange="populateDropdown('uptsubjectId','classId='+document.getElementById('uptClassId').value+'','0','0','subjectlist','subjectDropdown',''+CONTENTUPLOADPG_ADD_REC_SUBJECTDD)">
 								<html:optionsCollection property="classTypeOptions"
 									label="label" value="value" />
 							</html:select>
@@ -33,7 +33,7 @@
 							<div id="subjectDropdown"><html:select
 								styleId="uptsubjectId" property="uptsubjectId"
 								name="ContentUploadBean" styleClass="input_field"
-								onchange="populateDropdown('uptTopicId','subjectId='+this.value,'topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)">
+								onchange="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)">
 								<html:optionsCollection property="subjectOptions" label="label"
 									value="value" />
 							</html:select></div>
@@ -47,7 +47,7 @@
 							<div id="topicDropdown"><html:select styleId="uptTopicId"
 								property="uptTopicId" name="ContentUploadBean"
 								styleClass="input_field"
-								onchange="populateDropdown('uptsubTopicId','subjectId='+document.getElementById('uptsubjectId').value+',topicValue='+this.value,'subtopiclist','subTopicDropdown',''+END)">
+								onchange="populateDropdown('uptsubTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','topicId='+document.getElementById('uptTopicId').value+'','subtopiclist','subTopicDropdown',''+END)" onfocus="populateDropdown('uptTopicId','classId='+document.getElementById('uptClassId').value+'','subjectId='+document.getElementById('uptsubjectId').value+'','0','topiclist','topicDropdown',''+CONTENTUPLOADPG_ADD_REC_TOPICDD)">
 								<html:optionsCollection property="topicOptions" label="label"
 									value="value" />
 							</html:select></div>
