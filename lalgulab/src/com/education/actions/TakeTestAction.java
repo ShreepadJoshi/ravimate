@@ -102,13 +102,16 @@ public class TakeTestAction  extends EducationBaseAction {
 			
 		}else if(actionPerformed!=null && actionPerformed.equalsIgnoreCase("save & next")){
 			saveQuestionDetails(request,questionMap, bean, actionPerformed);
-			actionFwdName = "testMainPage";
+			
 			//Get Next Question Details
-			if(Integer.parseInt(noOfQuestion) < 20) {
-			TestQuestion nextQuestion = (TestQuestion)questionMap.get(
-					new Integer(Integer.valueOf(bean.getQuestionNumber())+1));			
-			setQuestionDetails(request,bean, ""+nextQuestion.getQuestionID(),
-							""+nextQuestion.getTestpaperQuestionNumber(),noOfQuestion,nextQuestion.getAnswer());
+			if(bean.getQuestionNumber().equals(noOfQuestion) == true) {
+				actionFwdName = "testMainPage";
+			} else if(bean.getQuestionID().equals(noOfQuestion) == false) {
+				TestQuestion nextQuestion = (TestQuestion)questionMap.get(
+						new Integer(Integer.valueOf(bean.getQuestionNumber())+1));			
+				setQuestionDetails(request,bean, ""+nextQuestion.getQuestionID(),
+								""+nextQuestion.getTestpaperQuestionNumber(),noOfQuestion,nextQuestion.getAnswer());
+				actionFwdName = "testQuestionPage";
 			}
 			resetOptions(bean);
 			//set questionID in requestionScope
@@ -122,9 +125,8 @@ public class TakeTestAction  extends EducationBaseAction {
 					new Integer(Integer.valueOf(bean.getQuestionNumber())));			
 			setQuestionDetails(request,bean, ""+testQuestion.getQuestionID(),
 							""+testQuestion.getTestpaperQuestionNumber(),noOfQuestion,bean.getAnswer());
-			
 		}else if(actionPerformed!=null && actionPerformed.equalsIgnoreCase("teststatus")){
-			updateQuestionDetails(request,questionMap, bean, actionPerformed);
+			//updateQuestionDetails(request,questionMap, bean, actionPerformed);
 			actionFwdName = "testMainPage";
 			calculate_Update_QuestionSummary(questionMap,request);
 			
