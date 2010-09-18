@@ -5,12 +5,9 @@
 <%@taglib uri="http://displaytag.sf.net" prefix="display" %>    
 <%@page import="java.util.List"%>
 <%@page import="com.education.transferobj.TSchool"%>
-<%int a =0;
+<display:table name="findSchool.pgSearchResults" id="row" requestURI="/findSchool.do" pagesize="10" decorator="">
 
-%>
-<display:table name="findSchool.pgSearchResults" id="row" requestURI="/findSchool.do" pagesize="10" decorator="org.displaytag.decorator.TotalTableDecorator">
-<%a = ((TSchool)row).getSchoolId(); %>
-	<display:column property="schoolId" decorator="com.education.displaytag.SchoolLinkWrapper"/>
+	<display:column property="schoolId" title="Id" decorator="com.education.displaytag.SchoolLinkWrapper"/>
 	<display:column property="schoolName"  title="School Name" style="padding-left:2px;"/>
 	<display:column property="schoolPostalAddr" title="Postal Addr" style="padding-left:2px;"/>
 	<display:column property="schoolDistrict" title="City" style="padding-left:2px;"/>
