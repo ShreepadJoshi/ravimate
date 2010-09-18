@@ -37,8 +37,12 @@ public class StudentRegistrationAction extends EducationBaseAction {
 			if (session != null) {
 				UserSessionInfo objUserSessionInfo = (UserSessionInfo) session
 						.getAttribute(SessionConstants.user_info);
-
+				
+				
 				populateTOFromForm(studentBean, objUserSessionInfo);
+				studentBean.setEmailID(objUserSessionInfo.getEmailId());
+				studentBean.setPassword("********");
+				studentBean.setRepassword("********");
 				StudentRegistrationService studentRegistrationService = new StudentRegistrationService();
 				List<ClassCertTO> certificateList = studentRegistrationService
 						.getClassCertificateList();
