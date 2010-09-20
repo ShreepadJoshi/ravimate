@@ -47,7 +47,7 @@
 				<td class="input_label">Topic:<span style="color: red">&#42;</span></td>
 				<td colspan="3">
 					<div id="topicDropdown">
-						<html:select styleClass="input_field" styleId="topic" property="topic" onchange="populateDropdown('subTopic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','topicId='+document.getElementById('topic').value+'','subtopiclist','subTopicDropdown',''+MANAGEQUESTION_ADD_REC_TOPICDD)" onclick="populateDropdown('topic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','0','topiclist','topicDropdown',''+MANAGEQUESTION_ADD_REC_SUBJECTDD)">
+						<html:select styleClass="input_field" styleId="topic" property="topic" onchange="populateDropdown('subTopic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','topicId='+document.getElementById('topic').value+'','subtopiclist','subTopicDropdown',''+MANAGEQUESTION_ADD_REC_TOPICDD)" onfocus="populateDropdown('topic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','0','topiclist','topicDropdown',''+MANAGEQUESTION_ADD_REC_SUBJECTDD)">
 							<html:optionsCollection property="topicOptions"/>
 						</html:select>							
 					</div>
@@ -58,7 +58,7 @@
 				<td class="input_label">Sub Topic:<span style="color: red">&#42;</span></td>
 				<td colspan="3">
 				<div id="subTopicDropdown">
-				<html:select styleClass="input_field" styleId="subTopic" property="subTopic">
+				<html:select styleClass="input_field" styleId="subTopic" property="subTopic" onfocus="populateDropdown('subTopic','classId='+document.getElementById('cert').value+'','subjectId='+document.getElementById('subject').value+'','topicId='+document.getElementById('topic').value+'','subtopiclist','subTopicDropdown',''+MANAGEQUESTION_ADD_REC_TOPICDD)">
 					<html:optionsCollection property="subTopicOptions"/>
 				</html:select>			
 				</div>	
