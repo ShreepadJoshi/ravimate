@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jun 13, 2010 1:24:59 PM by Hibernate Tools 3.1.0.beta4 -->
 <hibernate-mapping>
-    <class name="com.education.transferobj.TSchool" table="t_school" catalog="db_education">
+    <class name="com.education.transferobj.TSchool" table="t_school" catalog="db_education_n">
         <id name="schoolId" type="int">
             <column name="schoolId" />
             <generator class="assigned" />
