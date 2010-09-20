@@ -32,11 +32,13 @@ public class FullRegistrationAction extends EducationBaseAction{
 		
 		UserSessionInfo objUserInfo = (UserSessionInfo) request.getSession()
 		.getAttribute(SessionConstants.user_info);
+		
 		if(objUserInfo != null) {
 			registrationBean.setEmailID(objUserInfo.getEmailId());
 			registrationBean.setPassword("********");
 			registrationBean.setRepassword("********");
 		}
+	
 		String mode = request.getParameter("mode");
 		RegistrationTo regTOData = null;
 		String actionPage = null;
@@ -129,18 +131,19 @@ public class FullRegistrationAction extends EducationBaseAction{
 			UserSessionInfo objUserInfo = (UserSessionInfo) request.getSession()
 			.getAttribute(SessionConstants.user_info);
 		
-			
-			
-			
-						int userId;
-						if(objUserInfo != null) {
-							userId = objUserInfo.getUserId();
-							rto.setUserId(String.valueOf(userId));
-							rto.setEmailID(objUserInfo.getUserTo().getEmailId());
-							rto.setPassword(objUserInfo.getUserTo().getPassword1());
-							
-						}
+			int userId;
+			if(objUserInfo != null) {
+				userId = objUserInfo.getUserId();
+				rto.setUserId(String.valueOf(userId));
+				rto.setEmailID(objUserInfo.getUserTo().getEmailId());
+				rto.setPassword(objUserInfo.getUserTo().getPassword1());
+				
+			}
 			int updateCount = userRegistrationService.updateUser(rto);
+			//objUserInfo.getUserTo().setDoneFullRegistration(true);
+			//if(objUserInfo.getUserTo().isDoneFullRegistration() == true) {
+			//	throw new Exception("I m here ");
+		//	}
 			strActionForward = "success";
 		}
 		
