@@ -301,9 +301,10 @@ public class OracleEZDAO extends AbstractDAO{
 		} else if(Utilities.isNullOrBlank(classId) && Utilities.isNullOrBlank(subjectId) &&  (!Utilities.isNullOrBlank(topicId))) {
 			where+=	" mapping_Table.topicId='"+topicId+"'";
 			sql+= where;
+		} else if((!Utilities.isNullOrBlank(classId)) && Utilities.isNullOrBlank(subjectId) &&  Utilities.isNullOrBlank(topicId)) {
+			where+=	" mapping_Table.classId='"+classId+"'";
+			sql+= where;
 		}
-		
-		
 		
 		sql += " order by subTopicTable.subTopicValue ";
 
