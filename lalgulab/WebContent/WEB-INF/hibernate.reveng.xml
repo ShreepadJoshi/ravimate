@@ -2,5 +2,5 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-  <table-filter match-catalog="db_education" match-name="t_school"/>
+  <table-filter match-catalog="db_education_n" match-name="t_school"/>
 </hibernate-reverse-engineering>
