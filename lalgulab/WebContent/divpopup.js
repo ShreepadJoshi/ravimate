@@ -208,8 +208,20 @@ function display_schoolDetails(count) {
 	    	   var column =  rows[i].getElementsByTagName("td");
 	    	   		schoolId = column[0].innerHTML; 
 	    	       schoolName = column[1].innerHTML; 
+	    	      
 	    	       	postalAddr = column[2].innerHTML;
-	    	         city = column[3].innerHTML;
+    	        var splitVlaues = postalAddr.split(",",25);
+    	           var values = "";
+	    	       var values1 = "";
+	    	       for(j=0; j<splitVlaues.length; j++ ){
+	    				if(values == "")   {
+	    					values = splitVlaues[j];
+	    				} else {
+	    					values1 = splitVlaues[j];
+	    				}
+	    			}
+	    	
+	    	       city = column[3].innerHTML;
 	    	         pinCode = column[4].innerHTML;
 	    	         webSite = column[5].innerHTML;
 	    		     board = column[6].innerHTML;
@@ -226,8 +238,8 @@ function display_schoolDetails(count) {
    "<div style='padding: 25px;'>" +
    "<table width='100' border='0' align='center' cellpadding='0' cellspacing='10'>" +
    "<tr><td class = 'input_label'>School: </td><td colspan='2' ><label><input name='SchoolName' type='text'   class = 'input_field' maxlength='40' size='40' readOnly='true' value='"+schoolName+"'></label></td></tr> "+
-	"<tr><td class = 'input_label'>Address: </td><td colspan='2' ><label><input name='Address1' type='text'   class = 'input_field' maxlength='40' size='40' readOnly='true' value='"+postalAddr+"'></label></td></tr> "+
-	"<tr><td> </td><td colspan='2'><label><input name='Address2' type='text'  class = 'input_field' maxlength='40' size='40' readOnly='true'></label></td></tr>" +
+	"<tr><td class = 'input_label'>Address: </td><td colspan='2' ><label><input name='Address1' type='text'   class = 'input_field' maxlength='40' size='40' readOnly='true' value='"+values+"'></label></td></tr> "+
+	"<tr><td> </td><td colspan='2'><label><input name='Address2' type='text'  class = 'input_field' maxlength='40' size='40' readOnly='true' value='"+values1+"'></label></td></tr>" +
 	"<tr><td  class = 'input_label'>City: </td><td colspan='0' ><label><input name='City' type='text' class = 'input_field' maxlength='20'  size='20' readOnly='true' value='"+city+"'></td><td colspan='1' valign='left' align='left' width='80' class = 'input_label' >PIN / Zip: </td><td colspan='0' ><label><input name='Pin' type='text' class = 'input_field' maxlength='8' size='8' readOnly='true' value="+pinCode+" /></td></tr> " +
 	"<tr><td  class = 'input_label'>Web Site: </td><td colspan='1'><label><input name='WebSite' type='text' class = 'input_field' maxlength='40' size='40' readOnly='true'  value='"+webSite+"'></td></tr>" +
 	"<tr><td  class = 'input_label'>Board: </td><td colspan='1'><label><input name='Board' type='text' class = 'input_field'  maxlength='20' size='20' readOnly='true' value='"+board+"'></td><td rowspan='5' colspan='3' align='left' valign='left'><iframe frameborder='2' scrolling='no' width='240' height='169' marginheight='10' marginwidth='10' src='http://maps.google.co.in/maps?hl=en&amp;q=adding+google+map+to+website&amp;ie=UTF8&amp;showlabs=1&amp;ll=18.516825,73.842092&amp;spn=0.043989,0.063605&amp;output=embed'></iframe></td></tr>"+
