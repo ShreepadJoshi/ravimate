@@ -11,26 +11,22 @@ import javax.ejb.RemoveException;
 public class AdviseHome implements EJBHome{
 
 	@Override
-	public EJBMetaData getEJBMetaData() throws RemoteException {
-		// TODO Auto-generated method stub
+	public EJBMetaData getEJBMetaData() throws RemoteException {		
 		return null;
 	}
 
 	@Override
-	public HomeHandle getHomeHandle() throws RemoteException {
-		// TODO Auto-generated method stub
+	public HomeHandle getHomeHandle() throws RemoteException {		
 		return null;
 	}
 
 	@Override
-	public void remove(Handle arg0) throws RemoteException, RemoveException {
-		// TODO Auto-generated method stub
+	public void remove(Handle arg0) throws RemoteException, RemoveException {		
 		
 	}
 
 	@Override
-	public void remove(Object arg0) throws RemoteException, RemoveException {
-		// TODO Auto-generated method stub
+	public void remove(Object arg0) throws RemoteException, RemoveException {		
 		
 	}
 
