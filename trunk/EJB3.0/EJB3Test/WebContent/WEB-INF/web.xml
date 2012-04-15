@@ -19,4 +19,16 @@
     <servlet-name>EJBTester</servlet-name>
     <url-pattern>/EJBTester</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>MDBTester</display-name>
+    <servlet-name>MDBTester</servlet-name>
+    <servlet-class>com.MDBTester</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MDBTester</servlet-name>
+    <url-pattern>/MDBTester</url-pattern>
+  </servlet-mapping>
 </web-app>
