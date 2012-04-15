@@ -2,13 +2,8 @@ package com;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Properties;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,48 +11,25 @@ import javax.servlet.http.HttpServletResponse;
 
 public class EJBTester extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
-	@EJB(beanInterface=AdviseRemote.class,mappedName = "Advise/remote")
+
+	@EJB(beanInterface = AdviseRemote.class, mappedName = "Advise/remote")
 	private AdviseRemote remote;
-	Context context;
+	
+	
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
-		out.println("In servlet");
-		out.print((new StringBuilder("Google===>")).append(remote.getAdvise()).toString());
-		  
-		/*
-		
-
-		try {
-			Properties properties = new Properties();
-			properties.put("java.naming.factory.initial" ,"org.jnp.interfaces.NamingContextFactory");
-			properties.put("java.naming.factory.url.pkgs","=org.jboss.naming:org.jnp.interfaces");
-			properties.put("java.naming.provider.url","localhost:1099");
-			context = new InitialContext(properties);
-			
-			String jndiName = Advise.class.getSimpleName() + "/remote";
-			
-			AdviseRemote adviseBeanRemote = (AdviseRemote) context
-					.lookup(jndiName);
-			out.print("Advice by EJB 3.0" + adviseBeanRemote.getAdvise());
-
-		} catch (NamingException e) {			
-			e.printStackTrace();
-		}
-		
-		*/
-		
+		out.println("In servlet, Calling EJB <Br>");
+		String message4mEJB = remote.getAdvise().toString();
+		out.print("Message 4m EJB is ===>" + message4mEJB);
 
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		out.print("In servlet");
+		doGet(request, response);
 	}
 
 }
