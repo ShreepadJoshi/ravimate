@@ -1,4 +1,4 @@
-package TestJPA;
+package com;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

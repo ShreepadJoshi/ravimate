@@ -1,4 +1,4 @@
-package TestJPA;
+package com;
 
 public class TestMain {
 
