@@ -21,6 +21,10 @@ public class PaymentBean implements PaymentRemote {
 			.createEntityManagerFactory("netjpa");
 	EntityManager em = emf.createEntityManager();
 	
+	
+	//@PersistenceContext(unitName="netjpa")
+	//EntityManager em;
+	
 	@Override
 	public void transferMoneyWithECS() {
 		
