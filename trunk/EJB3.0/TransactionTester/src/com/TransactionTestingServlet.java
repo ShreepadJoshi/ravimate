@@ -31,6 +31,7 @@ public class TransactionTestingServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		paymentRemote.transferMoneyWithECS();
+		response.getWriter().print(("Done"));
 	}
 
 }
