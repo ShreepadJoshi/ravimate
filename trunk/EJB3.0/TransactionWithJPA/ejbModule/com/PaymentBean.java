@@ -1,7 +1,5 @@
 package com;
 
-import java.util.Date;
-
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
@@ -14,11 +12,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import bean.TransactionHistoryBean;
 import bean.TransactionHistoryBeanLocal;
 
 import com.pojo.Account;
-import com.pojo.TransactionHistory;
 
 /**
  * Session Bean implementation class Payment
