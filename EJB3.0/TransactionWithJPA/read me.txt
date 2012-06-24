@@ -1,0 +1,3 @@
+cp $JBOSS_HOME/docs/examples/jca/mysql-ds.xml $JBOSS_HOME/server/default/deploy/
+# change user-name and password elements in mysql-ds.xml
+cp $HOME/downloads/mysql-connector-java-5.1.15-bin.jar $JBOSS_HOME/server/default/lib/
