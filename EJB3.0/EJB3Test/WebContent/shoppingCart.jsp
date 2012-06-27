@@ -42,7 +42,7 @@
 
 <table align=center border=1 cellspacing=0 cellpadding=10 width=100
 	height=0 bgcolor=#faebd7>
-<tr>
+	<tr>
 		<td>Add Book/s</td>
 		<td><input type="radio" name="action" value="add"></td>
 		
@@ -56,6 +56,10 @@
 	<tr>
 		<td>Show Me the Cart Items: </td>
 		<td><input type="radio" name="action" value="show"></td>
+	</tr>
+	<tr>
+		<td>Exit..</td>
+		<td><input type="radio" name="action" value="exit"></td>
 	</tr>
 	<tr ><td colspan="2"><input type=submit name="Update Cart" ></td>
 	</tr>
