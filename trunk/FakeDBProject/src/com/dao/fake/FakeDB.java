@@ -18,7 +18,7 @@ public class FakeDB implements Serializable {
 	private List<Book> booksTable = new ArrayList<Book>();
 
 	
-	public static FakeDB getObject() {
+	public static FakeDB getInstance() {
 		return fakeDB;
 	}
 
