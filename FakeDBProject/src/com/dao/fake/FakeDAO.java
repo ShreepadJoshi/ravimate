@@ -14,17 +14,17 @@ public class FakeDAO implements Idao {
 
 	@Override
 	public List<Book> getBooks() {
-		return FakeDB.getObject().getBooksTable();
+		return FakeDB.getInstance().getBooksTable();
 	}
 
 	@Override
 	public void addBook(Book book) {
-		FakeDB.getObject().getBooksTable().add(book);
+		FakeDB.getInstance().getBooksTable().add(book);
 	}
 
-	public static void UnLoadDB() {
+	public static void serializeDB() {
 		try {
-			FakeDB fakeDB = FakeDB.getObject();
+			FakeDB fakeDB = FakeDB.getInstance();
 			System.out.println("fakeDB: " + fakeDB);
 			FileOutputStream fos = new FileOutputStream("serial");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -38,22 +38,19 @@ public class FakeDAO implements Idao {
 
 	}
 
-	public static void loadDB() {
+	public static void deserializeDB() {
 		FileInputStream fis;
 		try {
 			fis = new FileInputStream("serial");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			FakeDB db = (FakeDB)ois.readObject();
+			FakeDB db = (FakeDB) ois.readObject();
 			System.out.println(db.getBooksTable());
-			
-			FakeDB.getObject().setBooksTable(db.getBooksTable());			
+
+			FakeDB.getInstance().setBooksTable(db.getBooksTable());
 			ois.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
-
 	}
 
 }

@@ -16,14 +16,14 @@ public class FakeDAOTest {
 
 	@Test
 	public void testLoadDB() {
-		FakeDAO.loadDB();
-		List<Book> books = FakeDB.getObject().getBooksTable();		
+		FakeDAO.deserializeDB();
+		List<Book> books = FakeDB.getInstance().getBooksTable();
 		assertNull(books);
 	}
 	
 	@Test
 	public void testUnLoadDB() {
-		FakeDAO.UnLoadDB();
+		FakeDAO.serializeDB();
 	}
 
 	@Test
@@ -42,13 +42,13 @@ public class FakeDAOTest {
 
 		List<Book> booksBeforesave = fakeDAO.getBooks();
 		System.out.println(booksBeforesave);
-		FakeDAO.UnLoadDB();
+		FakeDAO.serializeDB();
 
 	}
 	
 	@Test
 	public void testAddBookToDB() {
-		FakeDAO.loadDB();
+		FakeDAO.deserializeDB();
 		
 		Book javaBook = new Book();
 		javaBook.setId(3);
@@ -57,7 +57,7 @@ public class FakeDAOTest {
 		FakeDAO fakeDAO = new FakeDAO();
 		fakeDAO.addBook(javaBook);
 		
-		FakeDAO.UnLoadDB();
+		FakeDAO.serializeDB();
 	}
 
 }
