@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NASAImage</string>
+    <string name="test_image_title">Loading image title..</string>
+    <string name="test_image_date">Loading time and date...</string>
+    
+    
+    
+    <string name="test_image_description">loading description.....</string>
+    
+    <string name="refresh">refresh</string>
+    
+    <string name="setwallpaper">Set Wallpaper</string>
+    
+
+</resources>
