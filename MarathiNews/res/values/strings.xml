@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MarathiNews</string>
+    <string name="title">title of news</string>
+    <string name="newsDate">Date of news</string>
+
+</resources>
