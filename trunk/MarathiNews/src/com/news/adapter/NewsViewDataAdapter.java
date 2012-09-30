@@ -14,29 +14,30 @@ import android.widget.TextView;
 import com.news.R;
 import com.news.bean.NewsBean;
 import com.news.parser.SaxFeedParser;
+import com.news.util.RSSNewsCleaner;
 
 public class NewsViewDataAdapter extends BaseAdapter {
 
-	private List<NewsBean> list = new ArrayList<NewsBean>();
-	AssetManager asset; 
+	private List<NewsBean> newsList = new ArrayList<NewsBean>();
+	AssetManager asset;
 
-	public NewsViewDataAdapter(AssetManager assetManager ) {
+	public NewsViewDataAdapter(AssetManager assetManager) {
 		asset = assetManager;
-		SaxFeedParser saxFeedParser = new SaxFeedParser("http://online2.esakal.com/esakal/RSS/LatestNews.xml");
-		list = saxFeedParser.parse();
-		System.out.println(list);
-		
+		SaxFeedParser saxFeedParser = new SaxFeedParser(
+				"http://online2.esakal.com/esakal/RSS/LatestNews.xml");
+		newsList = saxFeedParser.parse();
+		newsList = RSSNewsCleaner.removeDuplicateNews(newsList);
+
 	}
-		
 
 	@Override
 	public int getCount() {
-		return list.size();
+		return newsList.size();
 	}
 
 	@Override
 	public Object getItem(int index) {
-		return list.get(index);
+		return newsList.get(index);
 	}
 
 	@Override
@@ -51,22 +52,36 @@ public class NewsViewDataAdapter extends BaseAdapter {
 			view = inflater.inflate(R.layout.news_list_view, parent, false);
 
 		}
+		NewsBean news = newsList.get(index);
 
-		NewsBean news = list.get(index);
+		Typeface marathiFont = getMarathiFont();
+
 		TextView timeTextView = (TextView) view.findViewById(R.id.newsTitle);
-		timeTextView.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/mangal.ttf")); 
+		timeTextView.setTypeface(getMarathiFont());
 		timeTextView.setText(news.getTitle());
 
 		TextView notesView = (TextView) view.findViewById(R.id.newsDate);
-		notesView.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/mangal.ttf")); 
-		notesView.setText(news.getDate());
+		notesView.setTypeface(marathiFont);
+		notesView.setText(news.getDate().toLocaleString());
+
+		TextView descriptionView = (TextView) view
+				.findViewById(R.id.newsDescription);
+		descriptionView.setTypeface(marathiFont);
+		String description = RSSNewsCleaner.getDescriptionFromHTML(news.getDescription());
+		descriptionView.setText(description);
 
 		return view;
 	}
 
+	/**
+	 * Load Marathi font
+	 * @return
+	 */
+	private Typeface getMarathiFont() {
+		return Typeface.createFromAsset(getAssets(), "fonts/mangal.ttf");
+	}
 
-	private AssetManager getAssets() {
-		// TODO Auto-generated method stub
+	private AssetManager getAssets() {		
 		return asset;
 	}
 
