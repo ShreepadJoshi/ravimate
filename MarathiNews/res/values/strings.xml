@@ -4,5 +4,10 @@
     <string name="app_name">MarathiNews</string>
     <string name="title">title of news</string>
     <string name="newsDate">Date of news</string>
+    <string name="description">description of news</string>
+    
+    <string name="TAG">MarathiNews : </string>
+    
+
 
 </resources>

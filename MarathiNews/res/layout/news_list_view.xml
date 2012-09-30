@@ -17,4 +17,11 @@
         android:layout_height="wrap_content"
         android:text="@string/newsDate" />
 
+    <TextView
+        android:id="@+id/newsDescription"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </LinearLayout>
