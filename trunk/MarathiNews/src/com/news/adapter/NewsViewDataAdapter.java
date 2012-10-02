@@ -7,6 +7,7 @@ import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
@@ -52,11 +53,19 @@ public class NewsViewDataAdapter extends BaseAdapter {
 			view = inflater.inflate(R.layout.news_list_view, parent, false);
 
 		}
-		NewsBean news = newsList.get(index);
+		final NewsBean news = newsList.get(index);
 
 		Typeface marathiFont = getMarathiFont();
 
 		TextView timeTextView = (TextView) view.findViewById(R.id.newsTitle);
+		//timeTextView.setClickable(true);
+		timeTextView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				System.out.println("ON Touch.." + news.getTitle() + v);
+			}
+		});
+
 		timeTextView.setTypeface(getMarathiFont());
 		timeTextView.setText(news.getTitle());
 
@@ -67,7 +76,8 @@ public class NewsViewDataAdapter extends BaseAdapter {
 		TextView descriptionView = (TextView) view
 				.findViewById(R.id.newsDescription);
 		descriptionView.setTypeface(marathiFont);
-		String description = RSSNewsCleaner.getDescriptionFromHTML(news.getDescription());
+		String description = RSSNewsCleaner.getDescriptionFromHTML(news
+				.getDescription());
 		descriptionView.setText(description);
 
 		return view;
@@ -75,13 +85,14 @@ public class NewsViewDataAdapter extends BaseAdapter {
 
 	/**
 	 * Load Marathi font
+	 * 
 	 * @return
 	 */
 	private Typeface getMarathiFont() {
 		return Typeface.createFromAsset(getAssets(), "fonts/mangal.ttf");
 	}
 
-	private AssetManager getAssets() {		
+	private AssetManager getAssets() {
 		return asset;
 	}
 
