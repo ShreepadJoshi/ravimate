@@ -15,9 +15,12 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.news.bean.NewsBean;
+import com.news.esakal.ReadESakal;
 import com.news.util.MarathiFontUtil;
 
 public class NewsDetailActivity extends Activity {
+
+	TextView detailView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +36,23 @@ public class NewsDetailActivity extends Activity {
 		titleView.setTypeface(marathiFont);
 		titleView.setText(news.getTitle());
 
-		TextView detailView = (TextView) findViewById(R.id.detailPage_detail);
+		detailView = (TextView) findViewById(R.id.detailPage_detail);
 		detailView.setTypeface(marathiFont);
-		detailView.setText(news.getDescription());
+		// detailView.setText(news.getDescription());
+
+		readNewsFromWebPage(news);
 
 	}
 
-	public void readWebpage(NewsBean news) {
+	public void readNewsFromWebPage(NewsBean news) {
 		DownloadWebPageTask task = new DownloadWebPageTask();
 		task.execute(new String[] { news.getLink().toString() });
 	}
 
 	private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
 		@Override
-		protected String doInBackground(String ... urls) {
-			String response = "";
+		protected String doInBackground(String... urls) {
+			String responseInHTML = "";
 			for (String url : urls) {
 				DefaultHttpClient client = new DefaultHttpClient();
 				HttpGet httpGet = new HttpGet(url);
@@ -59,19 +64,21 @@ public class NewsDetailActivity extends Activity {
 							new InputStreamReader(content));
 					String s = "";
 					while ((s = buffer.readLine()) != null) {
-						response += s;
+						responseInHTML += s;
 					}
 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-			return response;
+
+			return ReadESakal.extractNewsFromHTML(new StringBuilder(
+					responseInHTML));
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
-			// textView.setText(result);
+			detailView.setText(result);
 		}
 	}
 

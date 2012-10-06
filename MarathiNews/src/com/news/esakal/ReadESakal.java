@@ -51,6 +51,7 @@ public class ReadESakal {
 		if (newsStartTagIndex  != -1 && newsEndTagIndex != -1) {
 			String divTagOfnews = newsHTML.substring(newsStartTagIndex, newsEndTagIndex);
 			divTagOfnews = divTagOfnews.replaceAll("<br>", "");
+			divTagOfnews = divTagOfnews.replaceAll("&npsp", "");
 			
 			int beginIndex = divTagOfnews.lastIndexOf(">") + 1;
 			return divTagOfnews.substring(beginIndex, divTagOfnews.length());			
