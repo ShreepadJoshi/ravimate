@@ -3,8 +3,10 @@ package com.news.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.sax.StartElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.news.MarathiNewsActivity;
+import com.news.NewsDetailActivity;
 import com.news.R;
 import com.news.bean.NewsBean;
 import com.news.parser.SaxFeedParser;
@@ -47,7 +51,7 @@ public class NewsViewDataAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int index, View view, ViewGroup parent) {
+	public View getView(int index, View view, final ViewGroup parent) {
 		if (view == null) {
 			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 			view = inflater.inflate(R.layout.news_list_view, parent, false);
@@ -59,12 +63,16 @@ public class NewsViewDataAdapter extends BaseAdapter {
 
 		TextView timeTextView = (TextView) view.findViewById(R.id.newsTitle);
 		//timeTextView.setClickable(true);
+		/*
 		timeTextView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				System.out.println("ON Touch.." + news.getTitle() + v);
+				
+				
 			}
 		});
+		*/
 
 		timeTextView.setTypeface(getMarathiFont());
 		timeTextView.setText(news.getTitle());
