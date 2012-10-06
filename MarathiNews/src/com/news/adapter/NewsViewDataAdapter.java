@@ -3,19 +3,14 @@ package com.news.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
-import android.sax.StartElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.news.MarathiNewsActivity;
-import com.news.NewsDetailActivity;
 import com.news.R;
 import com.news.bean.NewsBean;
 import com.news.parser.SaxFeedParser;
