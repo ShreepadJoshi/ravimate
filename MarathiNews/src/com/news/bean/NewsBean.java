@@ -1,12 +1,17 @@
 package com.news.bean;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class NewsBean {
+public class NewsBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static SimpleDateFormat FORMATTER = new SimpleDateFormat(
 			"EEE,dd MMM yyyy HH:mm:ss Z");
 	private String title;
