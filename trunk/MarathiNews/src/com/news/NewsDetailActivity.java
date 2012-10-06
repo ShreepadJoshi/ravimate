@@ -1,13 +1,5 @@
 package com.news;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -52,8 +44,12 @@ public class NewsDetailActivity extends Activity {
 	private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
-			String responseInHTML = "";
+			StringBuilder responseInHTML = new StringBuilder("");
+			
+			
 			for (String url : urls) {
+				
+				/*
 				DefaultHttpClient client = new DefaultHttpClient();
 				HttpGet httpGet = new HttpGet(url);
 				try {
@@ -61,19 +57,20 @@ public class NewsDetailActivity extends Activity {
 					InputStream content = execute.getEntity().getContent();
 
 					BufferedReader buffer = new BufferedReader(
-							new InputStreamReader(content));
+							new InputStreamReader(content));					
 					String s = "";
 					while ((s = buffer.readLine()) != null) {
-						responseInHTML += s;
+						responseInHTML.append(s);
 					}
 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				*/
+				
+				responseInHTML = ReadESakal.readHTMLPageOfNews(url);
 			}
-
-			return ReadESakal.extractNewsFromHTML(new StringBuilder(
-					responseInHTML));
+			return ReadESakal.extractNewsFromHTML(responseInHTML);
 		}
 
 		@Override
