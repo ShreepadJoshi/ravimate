@@ -12,14 +12,14 @@
             android:id="@+id/detailPage_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Large Text"
+            android:text="@string/title"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/detailPage_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medium Text"
+            android:text="@string/lading_News_detale"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
