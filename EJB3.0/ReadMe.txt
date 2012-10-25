@@ -37,3 +37,56 @@ copying .SVN folder will set the SVN also
 
 
 --Shripad
+
+
+add this in new java project.
+.
+import java.util.Properties;
+
+import javax.jms.Queue;
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.QueueSender;
+import javax.jms.QueueSession;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
+
+public class TestMDB {
+
+	/**
+	 * @param args
+	 * @throws Exception 
+	 */
+	public static void main(String[] args) throws Exception {
+	      Properties props = new Properties();
+	      props.setProperty(Context.INITIAL_CONTEXT_FACTORY,"org.jnp.interfaces.NamingContextFactory");
+	      props.setProperty(Context.URL_PKG_PREFIXES, "org.jboss.naming:org.jnp.interfaces");
+	      props.setProperty(Context.PROVIDER_URL, "jnp://localhost:1099");
+	      props.setProperty("j2ee.clientName", "MessageClient");
+	      
+	      InitialContext initialContext = new InitialContext(props);
+	      QueueConnectionFactory queueConnectionFactory = 
+	          (QueueConnectionFactory) initialContext.lookup("ConnectionFactory");
+
+	      
+	      System.out.println("QueueConnectionFactory " + queueConnectionFactory);
+	      Queue queue = (Queue) initialContext.lookup("queue/MyMessageDrivenBean");
+	      
+	      System.out.println("Queue " + queue);
+
+	      QueueConnection queueConnection = queueConnectionFactory.createQueueConnection();
+	      QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+	      QueueSender queueSender = queueSession.createSender(queue);
+
+	      
+	      TextMessage textMessage = queueSession.createTextMessage();
+	      textMessage.setText("Message from Main Method...");
+
+	      queueSender.send(textMessage);
+
+	}
+
+}
