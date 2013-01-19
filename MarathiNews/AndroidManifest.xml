@@ -23,7 +23,7 @@
         
         <activity
             android:name=".NewsDetailActivity"
-            android:label="@string/News_in_detale" >
+            android:label="@string/News_in_detail" >
 
         </activity>
     </application>

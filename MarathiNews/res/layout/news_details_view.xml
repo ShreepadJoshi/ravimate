@@ -21,8 +21,10 @@
             android:id="@+id/detailPage_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lading_News_detale"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="@string/lading_News_detail"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20sp" />
+
     </LinearLayout>
 
 </ScrollView>
