@@ -1,0 +1,4 @@
+1. MarathiNewsActicity extends ListActivity
+2. Using AsyncTask
+3. Using HttpCLient
+4. XMLPoolParser :-)

@@ -92,7 +92,11 @@ public class NewsViewDataAdapter extends BaseAdapter {
 	 * @return
 	 */
 	private Typeface getMarathiFont() {
-		return Typeface.createFromAsset(getAssets(), "fonts/mangal.ttf");
+//		return Typeface.createFromAsset(getAssets(), "fonts/mangal.ttf");
+//		return Typeface.createFromAsset(getAssets(), "fonts/487DVGN0BTT.TTF");
+//		return Typeface.createFromAsset(getAssets(), "fonts/k010___0.ttf");
+		return Typeface.createFromAsset(getAssets(), "fonts/484DVGH0ITT.TTF");
+		
 	}
 
 	private AssetManager getAssets() {
