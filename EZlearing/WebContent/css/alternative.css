@@ -1,0 +1,160 @@
+/* alternative styles */
+table.its thead tr {
+	background-color: #69c;
+}
+
+table.its tr.even {
+	background-color: #def;
+}
+
+table.mars thead tr {
+	background-color: #9c9;
+}
+
+table.mars tr.even {
+	background-color: #ccb;
+}
+
+table.mars tr.odd {
+	background-color: #eec;
+}
+
+table.simple thead tr th {
+	background-color: #eee;
+}
+
+table.simple tr.even {
+	background-color: #fff;
+}
+
+table.simple {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+
+table.simple td,table.simple th {
+	border: 1px solid #ccc;
+}
+
+table.nocol tbody td,table.nocol tbody th {
+	border-left: none;
+	border-right: none;
+}
+
+table.report td,table.report th {
+	font: menu;
+}
+
+table.report th {
+	background: buttonface;
+	border-width: 1px;
+	border-style: solid;
+	border-color: threedhighlight threedshadow threedshadow threedhighlight;
+	cursor: hand;
+}
+
+table.report idcol {
+	background: buttonface;
+}
+
+table.report tr.even {
+	background-color: #399;
+}
+
+table.report tbody {
+	height: 100px;
+	overflow: auto;
+}
+
+table.report {
+	height: 120px;
+	overflow: auto;
+}
+
+table.report tbody tr {
+	height: 10px;
+}
+
+table.mark td.tableCellError {
+	background-color: #d00;
+	color: #fff;
+}
+
+table.simple td.textRed {
+	color: #b11;
+}
+/*
+#navigation a
+{
+color: #9ECAFB;
+background: #9ECAFB url(../images/service_bg.png) left top no-repeat;
+text-decoration: none;
+padding-left: 30px;
+float:left;
+width:690;
+height:800;
+              
+}
+
+#navigation a span
+{
+background: url(../images/service_bg.png) right top no-repeat;
+padding-right: 30px;
+float:left;
+width:690;
+height:800;
+}
+
+#navigation a, #navigation a span
+{
+display: block;
+float: left;
+}
+
+/*
+#navigation a, #navigation a span
+{
+float: left;
+}*/
+/* End hide */
+/*
+#navigation a:hover
+{
+color: #9ECAFB;
+background: #9ECAFB url(../images/service_bg.png) left top no-repeat;
+padding-left: 30px;
+float:left;
+}
+
+#navigation a:hover span
+{
+background: url(../images/service_bg.png) right top no-repeat;
+padding-right: 30px;
+}
+
+#navigation ul
+{
+list-style: none;
+padding: 0;
+margin: 0
+}
+
+#navigation li
+{
+float: left;
+margin: 0;
+}
+*/
+
+/* menu */
+.menu_nav { padding:4px 0 0 4px; float:left; width:auto; font-size:11px; font-family:cursive; color:#fff; }
+.menu_nav ul { list-style:none; padding:4px 4px 0 0;}
+.menu_nav ul li { margin:0; padding:0 4px 0 0; float:left; background: url(../images/backImage.jpg) no-repeat right top;  }
+.menu_nav ul li a { display:block; margin:0; padding:4px 4px; color:#fff; text-decoration:none; text-transform:uppercase;}
+.menu_nav ul li.active a, .menu_nav ul li a:hover { color:#c00;}
+
+.clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+
+
+
+

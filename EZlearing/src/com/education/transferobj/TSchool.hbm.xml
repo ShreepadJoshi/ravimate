@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 13, 2010 1:24:59 PM by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.education.transferobj.TSchool" table="t_school" catalog="db_education_n">
+        <id name="schoolId" type="int">
+            <column name="schoolId" />
+            <generator class="assigned" />
+        </id>
+        <property name="schoolName" type="string">
+            <column name="schoolName" length="100" not-null="true" />
+        </property>
+        <property name="schoolBoard" type="string">
+            <column name="schoolBoard" length="100" not-null="true" />
+        </property>
+        <property name="schoolState" type="string">
+            <column name="schoolState" length="30" not-null="true" />
+        </property>
+        <property name="schoolDistrict" type="string">
+            <column name="schoolDistrict" length="30" />
+        </property>
+        <property name="schoolPostalAddr" type="string">
+            <column name="schoolPostalAddr" />
+        </property>
+        <property name="schoolPinCode" type="string">
+            <column name="schoolPinCode" length="15" />
+        </property>
+        <property name="schoolPhoneNo" type="string">
+            <column name="schoolPhoneNo" length="14" />
+        </property>
+        <property name="schoolOffice" type="string">
+            <column name="schoolOffice" />
+        </property>
+        <property name="schoolEmail" type="string">
+            <column name="schoolEmail" length="30" />
+        </property>
+        <property name="schoolWebsite" type="string">
+            <column name="schoolWebsite" />
+        </property>
+        <property name="yearoffoundation" type="java.lang.Integer">
+            <column name="yearoffoundation" />
+        </property>
+        <property name="principalName" type="string">
+            <column name="principalName" />
+        </property>
+        <property name="schoolStatus" type="string">
+            <column name="schoolStatus" length="100" />
+        </property>
+        <property name="trustName" type="string">
+            <column name="trustName" />
+        </property>
+        <property name="schoolCategory" type="string">
+            <column name="schoolCategory" length="50" />
+        </property>
+        <property name="mediumofInstruction" type="string">
+            <column name="MediumofInstruction" length="20" />
+        </property>
+        <property name="schoolType" type="string">
+            <column name="schoolType" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>
