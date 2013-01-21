@@ -14,6 +14,12 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd" >
 
     <beans:import resource="applicationContext.xml" />
 
+    <!--
+To run ..> run configurations ..> select Java Application and add
+mainClass as "org.springframework.batch.core.launch.support.CommandLineJobRunner" 
+args as "readWriteJob.xml readWriteJob"
+    -->
+
     <job
         id="readWriteJob"
         xmlns="http://www.springframework.org/schema/batch" >
@@ -69,11 +75,5 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd" >
         id="writer"
         class="com.writer.fileWriter.FileWriter" >
     </beans:bean>
-
-    <!--
-To run the job from the command line type the following:
-mainClass=org.springframework.batch.core.launch.support.CommandLineJobRunner 
-args readWriteJob.xml readWriteJob
-    -->
 
 </beans:beans>
