@@ -1,0 +1,202 @@
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1813fac: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1813fac]; startup date [Sat Jan 19 20:43:17 IST 2013]; root of context hierarchy
+Loading XML bean definitions from class path resource [readWriteJob.xml]
+Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+Loading schema mappings from [META-INF/spring.schemas]
+Loaded schema mappings: {http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/batch/spring-batch-2.0.xsd=/org/springframework/batch/core/configuration/xml/spring-batch-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd}
+Found XML schema [http://www.springframework.org/schema/beans/spring-beans-2.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-2.0.xsd
+Found XML schema [http://www.springframework.org/schema/batch/spring-batch-2.0.xsd] in classpath: /org/springframework/batch/core/configuration/xml/spring-batch-2.0.xsd
+Loading bean definitions
+Loading XML bean definitions from class path resource [applicationContext.xml]
+Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+Found XML schema [http://www.springframework.org/schema/beans/spring-beans-2.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-2.0.xsd
+Loading bean definitions
+Imported 3 bean definitions from relative location [applicationContext.xml]
+Loaded mappings [{http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/batch=org.springframework.batch.core.configuration.xml.CoreNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}]
+Overriding bean definition for bean 'readWriteJob': replacing [Generic bean: class [org.springframework.batch.core.job.flow.support.SimpleFlow]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Generic bean: class [org.springframework.batch.core.job.flow.FlowJob]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+Neither XML 'id' nor 'name' specified - using generated bean name [org.springframework.batch.item.file.transform.DelimitedLineTokenizer#1a33d48]
+Neither XML 'id' nor 'name' specified - using generated bean name [com.mapper.UserFieldSetMapper#c68c3]
+Neither XML 'id' nor 'name' specified - using generated bean name [org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f]
+Loaded 9 bean definitions from location pattern [readWriteJob.xml]
+Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1813fac]: org.springframework.beans.factory.support.DefaultListableBeanFactory@2a4983
+9 beans defined in org.springframework.context.support.ClassPathXmlApplicationContext@1813fac: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1813fac]; startup date [Sat Jan 19 20:43:17 IST 2013]; root of context hierarchy
+Creating shared instance of singleton bean 'org.springframework.batch.core.scope.internalStepScope'
+Creating instance of bean 'org.springframework.batch.core.scope.internalStepScope'
+Eagerly caching bean 'org.springframework.batch.core.scope.internalStepScope' to allow for resolving potential circular references
+Finished creating instance of bean 'org.springframework.batch.core.scope.internalStepScope'
+Creating shared instance of singleton bean 'org.springframework.beans.factory.config.CustomEditorConfigurer'
+Creating instance of bean 'org.springframework.beans.factory.config.CustomEditorConfigurer'
+Eagerly caching bean 'org.springframework.beans.factory.config.CustomEditorConfigurer' to allow for resolving potential circular references
+Finished creating instance of bean 'org.springframework.beans.factory.config.CustomEditorConfigurer'
+Overriding bean definition for bean 'reader': replacing [Generic bean: class [org.springframework.batch.item.file.FlatFileItemReader]; scope=step; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=false; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [readWriteJob.xml]] with [Root bean: class [org.springframework.batch.core.scope.util.PlaceholderProxyFactoryBean]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in BeanDefinition defined in class path resource [readWriteJob.xml]]
+Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@198a455]
+Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@76e369]
+Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2a4983: defining beans [jobRepository,jobLauncher,transactionManager,org.springframework.batch.core.scope.internalStepScope,org.springframework.beans.factory.config.CustomEditorConfigurer,readWriteProducts,readWriteJob,reader,writer,lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f,org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f,lazyBindingProxy.reader]; root of factory hierarchy
+Creating shared instance of singleton bean 'jobRepository'
+Creating instance of bean 'jobRepository'
+Eagerly caching bean 'jobRepository' to allow for resolving potential circular references
+Creating shared instance of singleton bean 'transactionManager'
+Creating instance of bean 'transactionManager'
+Eagerly caching bean 'transactionManager' to allow for resolving potential circular references
+Finished creating instance of bean 'transactionManager'
+Invoking afterPropertiesSet() on bean with name 'jobRepository'
+Adding transactional method [*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+Adding transactional method [create*] with attribute [PROPAGATION_REQUIRES_NEW,ISOLATION_SERIALIZABLE]
+Adding transactional method [getLastJobExecution*] with attribute [PROPAGATION_REQUIRES_NEW,ISOLATION_SERIALIZABLE]
+Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [java.util.HashSet@ec4a87]
+Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [java.util.HashMap@ba8602]
+Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [java.util.HashMap@1016632]
+Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [java.util.HashMap@dc6a77]
+Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [java.util.HashMap@ff057f]
+Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [java.util.HashMap@c1f10e]
+Finished creating instance of bean 'jobRepository'
+Creating shared instance of singleton bean 'jobLauncher'
+Creating instance of bean 'jobLauncher'
+Eagerly caching bean 'jobLauncher' to allow for resolving potential circular references
+Returning cached instance of singleton bean 'jobRepository'
+Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [org.springframework.batch.core.repository.support.SimpleJobRepository@10a6ae2]
+Invoking afterPropertiesSet() on bean with name 'jobLauncher'
+No TaskExecutor has been set, defaulting to synchronous executor.
+Finished creating instance of bean 'jobLauncher'
+Returning cached instance of singleton bean 'transactionManager'
+Returning cached instance of singleton bean 'org.springframework.batch.core.scope.internalStepScope'
+Returning cached instance of singleton bean 'org.springframework.beans.factory.config.CustomEditorConfigurer'
+Creating shared instance of singleton bean 'readWriteProducts'
+Creating instance of bean 'readWriteProducts'
+Eagerly caching bean 'readWriteProducts' to allow for resolving potential circular references
+Creating shared instance of singleton bean 'reader'
+Creating instance of bean 'reader'
+Eagerly caching bean 'reader' to allow for resolving potential circular references
+Creating JDK dynamic proxy: target source is PlaceholderTargetSource for target bean 'lazyBindingProxy.reader'
+Finished creating instance of bean 'reader'
+Creating shared instance of singleton bean 'writer'
+Creating instance of bean 'writer'
+Eagerly caching bean 'writer' to allow for resolving potential circular references
+Finished creating instance of bean 'writer'
+Returning cached instance of singleton bean 'jobRepository'
+Returning cached instance of singleton bean 'transactionManager'
+Finished creating instance of bean 'readWriteProducts'
+Creating shared instance of singleton bean 'readWriteJob'
+Creating instance of bean 'readWriteJob'
+Eagerly caching bean 'readWriteJob' to allow for resolving potential circular references
+Returning cached instance of singleton bean 'jobRepository'
+Creating instance of bean '(inner bean)'
+Creating instance of bean '(inner bean)'
+Creating instance of bean '(inner bean)'
+Returning cached instance of singleton bean 'readWriteProducts'
+Finished creating instance of bean '(inner bean)'
+Finished creating instance of bean '(inner bean)'
+Creating instance of bean '(inner bean)#1'
+Creating instance of bean '(inner bean)#1'
+Finished creating instance of bean '(inner bean)#1'
+Finished creating instance of bean '(inner bean)#1'
+Creating instance of bean '(inner bean)#2'
+Creating instance of bean '(inner bean)#2'
+Returning cached instance of singleton bean 'readWriteProducts'
+Finished creating instance of bean '(inner bean)#2'
+Finished creating instance of bean '(inner bean)#2'
+Creating instance of bean '(inner bean)#3'
+Creating instance of bean '(inner bean)#3'
+Finished creating instance of bean '(inner bean)#3'
+Finished creating instance of bean '(inner bean)#3'
+Invoking afterPropertiesSet() on bean with name '(inner bean)'
+Finished creating instance of bean '(inner bean)'
+Invoking afterPropertiesSet() on bean with name 'readWriteJob'
+Finished creating instance of bean 'readWriteJob'
+Returning cached instance of singleton bean 'reader'
+Returning cached instance of singleton bean 'writer'
+Creating shared instance of singleton bean 'org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f'
+Creating instance of bean 'org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f'
+Eagerly caching bean 'org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f' to allow for resolving potential circular references
+Creating JDK dynamic proxy: target source is PlaceholderTargetSource for target bean 'lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f'
+Finished creating instance of bean 'org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f'
+Returning cached instance of singleton bean 'jobLauncher'
+Autowiring by type from bean name 'org.springframework.batch.core.launch.support.CommandLineJobRunner' via property 'launcher' to bean named 'jobLauncher'
+Returning cached instance of singleton bean 'readWriteJob'
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.getLastJobExecution]: PROPAGATION_REQUIRES_NEW,ISOLATION_SERIALIZABLE
+Initiating transaction commit
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.createJobExecution]: PROPAGATION_REQUIRES_NEW,ISOLATION_SERIALIZABLE
+Initiating transaction commit
+Job: [FlowJob: [name=readWriteJob]] launched with the following parameters: [{}]
+Job execution starting: JobExecution: id=0, startTime=null, endTime=null, lastUpdated=Sat Jan 19 20:43:17 IST 2013, status=STARTING, exitStatus=exitCode=UNKNOWN;exitDescription=, job=[JobInstance: id=0, JobParameters=[{}], Job=[readWriteJob]]
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.update]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Resuming state=readWriteProducts with status=UNKNOWN
+Handling state=readWriteProducts
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.getLastStepExecution]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.getStepExecutionCount]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.add]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [java.util.HashMap@186c730]
+Initiating transaction commit
+Executing step: [TaskletStep: [name=readWriteProducts]]
+Executing: id=0
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.update]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Rehydrating scoped target: [lazyBindingProxy.reader]
+Creating object in scope=step, name=lazyBindingProxy.reader#sysinit
+Creating instance of bean 'lazyBindingProxy.reader#sysinit'
+Creating instance of bean 'org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f'
+Creating JDK dynamic proxy: target source is PlaceholderTargetSource for target bean 'lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f'
+Finished creating instance of bean 'org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f'
+Invoking afterPropertiesSet() on bean with name 'lazyBindingProxy.reader#sysinit'
+Finished creating instance of bean 'lazyBindingProxy.reader#sysinit'
+Retrieved dependent beans for bean 'org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f': [lazyBindingProxy.reader#sysinit]
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.updateExecutionContext]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Starting repeat context.
+Repeat operation about to start at count=0
+Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Starting repeat context.
+Repeat operation about to start at count=0
+Rehydrating scoped target: [lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f]
+Creating object in scope=step, name=lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f#execution#0
+Creating instance of bean 'lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f#execution#0'
+Creating instance of bean 'org.springframework.batch.item.file.transform.DelimitedLineTokenizer#1a33d48'
+Finished creating instance of bean 'org.springframework.batch.item.file.transform.DelimitedLineTokenizer#1a33d48'
+Creating instance of bean 'com.mapper.UserFieldSetMapper#c68c3'
+Finished creating instance of bean 'com.mapper.UserFieldSetMapper#c68c3'
+Invoking afterPropertiesSet() on bean with name 'lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f#execution#0'
+Finished creating instance of bean 'lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f#execution#0'
+Retrieved dependent beans for bean 'org.springframework.batch.item.file.transform.DelimitedLineTokenizer#1a33d48': [lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f#execution#0]
+Repeat operation about to start at count=1
+Repeat is complete according to policy and result value.
+Applying contribution: [StepContribution: read=2, written=2, filtered=0, readSkips=0, writeSkips=0, processSkips=0, exitStatus=EXECUTING]
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.updateExecutionContext]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Resuming suspended transaction
+Initiating transaction commit
+Saving step execution after commit: StepExecution: id=0, name=readWriteProducts, status=STARTED, exitStatus=EXECUTING, readCount=2, filterCount=0, writeCount=2 readSkipCount=0, writeSkipCount=0, commitCount=1, rollbackCount=0, exitDescription=
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.update]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Repeat operation about to start at count=1
+Creating new transaction with name [null]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Starting repeat context.
+Repeat operation about to start at count=0
+Repeat is complete according to policy and result value.
+Applying contribution: [StepContribution: read=0, written=0, filtered=0, readSkips=0, writeSkips=0, processSkips=0, exitStatus=EXECUTING]
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.updateExecutionContext]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Resuming suspended transaction
+Initiating transaction commit
+Saving step execution after commit: StepExecution: id=0, name=readWriteProducts, status=STARTED, exitStatus=EXECUTING, readCount=2, filterCount=0, writeCount=2 readSkipCount=0, writeSkipCount=0, commitCount=2, rollbackCount=0, exitDescription=
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.update]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Repeat is complete according to policy and result value.
+Step execution success: id=0
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.updateExecutionContext]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.update]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Step execution complete: StepExecution: id=0, name=readWriteProducts, status=COMPLETED, exitStatus=COMPLETED, readCount=2, filterCount=0, writeCount=2 readSkipCount=0, writeSkipCount=0, commitCount=2, rollbackCount=0
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.updateExecutionContext]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Completed state=readWriteProducts with status=COMPLETED
+Handling state=end1
+Completed state=end1 with status=COMPLETED
+Job execution complete: JobExecution: id=0, startTime=Sat Jan 19 20:43:17 IST 2013, endTime=null, lastUpdated=Sat Jan 19 20:43:17 IST 2013, status=COMPLETED, exitStatus=exitCode=COMPLETED;exitDescription=, job=[JobInstance: id=0, JobParameters=[{}], Job=[readWriteJob]]
+Creating new transaction with name [org.springframework.batch.core.repository.JobRepository.update]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Initiating transaction commit
+Job: [FlowJob: [name=readWriteJob]] completed with the following parameters: [{}] and the following status: [COMPLETED]
+Closing org.springframework.context.support.ClassPathXmlApplicationContext@1813fac: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1813fac]; startup date [Sat Jan 19 20:43:17 IST 2013]; root of context hierarchy
+Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2a4983: defining beans [jobRepository,jobLauncher,transactionManager,org.springframework.batch.core.scope.internalStepScope,org.springframework.beans.factory.config.CustomEditorConfigurer,readWriteProducts,readWriteJob,reader,writer,lazyBindingProxy.org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f,org.springframework.batch.item.file.mapping.DefaultLineMapper#b2002f,lazyBindingProxy.reader]; root of factory hierarchy
