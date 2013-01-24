@@ -17,11 +17,11 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd" >
     <!--
 To run ..> run configurations ..> select Java Application and add
 mainClass as "org.springframework.batch.core.launch.support.CommandLineJobRunner" 
-args as "readWriteJob.xml readWriteJob"
+args as "readFixSizeTxt_and_WriteToConsole_Job.xml readFixSizeTxt_and_WriteToConsole_Job"
     -->
 
     <job
-        id="readWriteJob"
+        id="readFixSizeTxt_and_WriteToConsole_Job"
         xmlns="http://www.springframework.org/schema/batch" >
 
         <step id="readWriteProducts" >
@@ -43,11 +43,11 @@ args as "readWriteJob.xml readWriteJob"
 
         <beans:property
             name="resource"
-            value="input.txt" />
+            value="FixSize_input.txt" />
 
         <beans:property
             name="linesToSkip"
-            value="1" />
+            value="4" />
 
         <beans:property name="lineMapper" >
 
@@ -55,17 +55,21 @@ args as "readWriteJob.xml readWriteJob"
 
                 <beans:property name="lineTokenizer" >
 
-                    <beans:bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer" >
+                    <beans:bean class="org.springframework.batch.item.file.transform.FixedLengthTokenizer" >
+
+                        <beans:property
+                            name="columns"
+                            value="1-10, 11-52, 53-62, 71-80, 88-98, 108-118, 127-136" />
 
                         <beans:property
                             name="names"
-                            value="USER_ID,USER_NAME,USER_LASTNAME" />
+                            value="DATE,NARRATION,CHQ_REF_NO,VALUE_DT,WITHDRAWAL_AMT,DEPOSIT_AMT,CLOSING_BALANCE" />
                     </beans:bean>
                 </beans:property>
 
                 <beans:property name="fieldSetMapper" >
 
-                    <beans:bean class="com.mapper.UserFieldSetMapper" />
+                    <beans:bean class="com.mapper.StatementOfAccFieldSetMapper" />
                 </beans:property>
             </beans:bean>
         </beans:property>
@@ -73,7 +77,7 @@ args as "readWriteJob.xml readWriteJob"
 
     <beans:bean
         id="writer"
-        class="com.writer.fileWriter.FileWriter" >
+        class="com.writer.fileWriter.ConsoleWriterForStatementOfAccount" >
     </beans:bean>
 
 </beans:beans>
