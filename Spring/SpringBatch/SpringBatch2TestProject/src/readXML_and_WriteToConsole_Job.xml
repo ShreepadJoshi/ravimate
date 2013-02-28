@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="
+ 
+http://www.springframework.org/schema/beans
+ 
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+ 
+http://www.springframework.org/schema/batch
+ 
+http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
+
+	<beans:import resource="applicationContext.xml" />
+
+	<!-- To run ..> run configurations ..> select Java Application and add mainClass 
+		as "org.springframework.batch.core.launch.support.CommandLineJobRunner" args 
+		as "readFixSizeTxt_and_WriteToConsole_Job.xml readFixSizeTxt_and_WriteToConsole_Job" -->
+
+	<job id="readXML_and_WriteToConsole_Job" xmlns="http://www.springframework.org/schema/batch">
+
+		<step id="readWriteProducts">
+
+			<tasklet>
+
+				<chunk commit-interval="2" reader="reader" writer="writer" />
+			</tasklet>
+		</step>
+	</job>
+
+	<beans:bean id="reader"
+		class="org.springframework.batch.item.xml.StaxEventItemReader" scope="step">
+
+		<beans:property name="resource" value="user_Input.xml" />
+
+		<beans:property name="fragmentRootElementName" value="USERS" />
+
+		<beans:property name="unmarshaller" ref="userUnmarshaller" />
+
+	</beans:bean>
+
+	<beans:bean id="userUnmarshaller"
+		class="org.springframework.oxm.castor.CastorMarshaller">
+		<beans:property name="mappingLocation" value="userMapping.xml" />
+	</beans:bean>
+
+
+
+
+	<beans:bean id="writer"
+		class="com.writer.fileWriter.ConsoleWriterForStatementOfAccount">
+	</beans:bean>
+
+</beans:beans>

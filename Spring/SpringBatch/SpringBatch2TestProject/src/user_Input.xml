@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<USERS>
+
+    <User>
+        <id>1</id>
+        <name>Shripad</name>
+        <lastname>Joshi</lastname>
+    </User>
+    
+    <User>
+        <id>2</id>
+        <name>Prafulla</name>
+        <lastname>Joshi</lastname>
+    </User>
+
+</USERS>
