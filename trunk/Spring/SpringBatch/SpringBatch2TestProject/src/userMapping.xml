@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapping>
+  <class name="com.bean.User">
+       <map-to xml="user"/>
+       
+    <field name="id" type="java.lang.String">
+      <bind-xml name="id" node="element"/>
+    </field>
+    <field name="name" type="java.lang.String">
+      <bind-xml name="name" node="element"/>
+    </field>
+    <field name="lastNmae" type="java.lang.String">
+      <bind-xml name="lastName" node="element"/>
+    </field>   
+  </class>
+</mapping>
+
+
+
