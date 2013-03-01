@@ -27,7 +27,6 @@ args as "readFixSizeTxt_and_WriteToConsole_Job.xml readFixSizeTxt_and_WriteToCon
         <step id="readWriteProducts" >
 
             <tasklet>
-
                 <chunk
                     commit-interval="2"
                     reader="reader"
@@ -43,7 +42,7 @@ args as "readFixSizeTxt_and_WriteToConsole_Job.xml readFixSizeTxt_and_WriteToCon
 
         <beans:property
             name="resource"
-            value="./resources/FixSize_input.txt" />
+            value="classpath:FixSize_input.txt" />
 
         <beans:property
             name="linesToSkip"
