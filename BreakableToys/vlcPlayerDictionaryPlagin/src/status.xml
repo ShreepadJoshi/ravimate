@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+
+	<fullscreen>
+		false
+	</fullscreen>
+
+	<aspectratio>
+		default
+	</aspectratio>
+
+	<audiodelay>
+		0
+	</audiodelay>
+
+	<apiversion>
+		3
+	</apiversion>
+
+	<time>
+		71
+	</time>
+
+	<volume>
+		230
+	</volume>
+
+	<length>
+		165
+	</length>
+
+	<random>
+		false
+	</random>
+
+	<audiofilters>
+
+		<filter_0 />
+	</audiofilters>
+
+	<rate>
+		1
+	</rate>
+
+	<videoeffects>
+
+		<hue>
+			0
+		</hue>
+
+		<saturation>
+			1
+		</saturation>
+
+		<contrast>
+			1
+		</contrast>
+
+		<brightness>
+			1.05
+		</brightness>
+
+		<gamma>
+			1
+		</gamma>
+	</videoeffects>
+
+	<state>
+		playing
+	</state>
+
+	<loop>
+		false
+	</loop>
+
+	<version>
+		2.0.5 Twoflower
+	</version>
+
+	<position>
+		0.43265670537949
+	</position>
+
+	<repeat>
+		false
+	</repeat>
+
+	<subtitledelay>
+		0
+	</subtitledelay>
+
+	<equalizer />
+
+	<information>
+
+		<category name="meta">
+
+			<info name="Requirements">
+				QuickTime 6.0 or greater
+			</info>
+
+			<info name="encoded_by">
+				vlc 2.0.5 stream output
+			</info>
+
+			<info name="filename">
+				Long Drive pe chal-Khiladi 786 .mp4
+			</info>
+		</category>
+
+		<category name="Stream 0">
+
+			<info name="Type">
+				Video
+			</info>
+
+			<info name="Frame rate">
+				29.971864
+			</info>
+
+			<info name="Decoded format">
+				Planar 4:2:0 YUV
+			</info>
+
+			<info name="Codec">
+				H264 - MPEG-4 AVC (part 10) (avc1)
+			</info>
+
+			<info name="Language">
+				English
+			</info>
+
+			<info name="Resolution">
+				1280x544
+			</info>
+		</category>
+
+		<category name="Stream 1">
+
+			<info name="Type">
+				Audio
+			</info>
+
+			<info name="Channels">
+				Stereo
+			</info>
+
+			<info name="Sample rate">
+				48000 Hz
+			</info>
+
+			<info name="Language">
+				English
+			</info>
+
+			<info name="Codec">
+				MPEG AAC Audio (mp4a)
+			</info>
+		</category>
+	</information>
+
+	<stats>
+
+		<lostabuffers>
+			1
+		</lostabuffers>
+
+		<readpackets>
+			1325
+		</readpackets>
+
+		<lostpictures>
+			58
+		</lostpictures>
+
+		<demuxreadbytes>
+			8344666
+		</demuxreadbytes>
+
+		<demuxbitrate>
+			0.12861673533916
+		</demuxbitrate>
+
+		<playedabuffers>
+			3346
+		</playedabuffers>
+
+		<demuxcorrupted>
+			0
+		</demuxcorrupted>
+
+		<sendbitrate>
+			0
+		</sendbitrate>
+
+		<sentbytes>
+			0
+		</sentbytes>
+
+		<displayedpictures>
+			2203
+		</displayedpictures>
+
+		<demuxreadpackets>
+			0
+		</demuxreadpackets>
+
+		<sentpackets>
+			0
+		</sentpackets>
+
+		<inputbitrate>
+			0.12120958417654
+		</inputbitrate>
+
+		<demuxdiscontinuity>
+			0
+		</demuxdiscontinuity>
+
+		<averagedemuxbitrate>
+			0
+		</averagedemuxbitrate>
+
+		<decodedvideo>
+			2140
+		</decodedvideo>
+
+		<averageinputbitrate>
+			0
+		</averageinputbitrate>
+
+		<readbytes>
+			8937070
+		</readbytes>
+
+		<decodedaudio>
+			3346
+		</decodedaudio>
+	</stats>
+
+</root>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rootnode id="1" name="Undefined" ro="rw">
+
+	<node id="2" name="Playlist" ro="ro">
+
+		<leaf id="4" name="Long Drive pe chal-Khiladi 786 .mp4" duration="165"
+			ro="rw"
+			uri="file:///media/shripad/Songs/V%20song/Long%20Drive%20pe%20chal-Khiladi%20786%20.mp4" />
+
+		<leaf id="5" name="O balMa-Khiladi 786 2012 Hindi 720p.mp4"
+			duration="223" ro="rw"
+			uri="file:///media/shripad/Movies/hindi/Khiladi%20786%202012%20Hindi%20720p%20HDrip%20x264...Hon3y/O%20balMa-Khiladi%20786%202012%20Hindi%20720p.mp4" />
+
+		<leaf id="6" name="12 Angry Men[1957]DvDrip[Eng]-Stealthmaster.avi"
+			current="current" duration="5773" ro="rw"
+			uri="file:///media/shripad/Movies/english/12%20Angry%20Men%5B1957%5DDvDrip%5BEng%5D-Stealthmaster.avi" />
+	</node>
+
+	<node id="3" name="Media Library" ro="ro">
+	</node>
+
+</rootnode>
