@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "rootNode")
+@XmlRootElement(name = "node")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RootNode {
 
@@ -26,7 +26,7 @@ public class RootNode {
 	private String ro = "";
 
 	// XmLElementWrapper generates a wrapper element around XML representation
-	@XmlElementWrapper(name = "node")
+	//@XmlElementWrapper(name = "node")
 	// XmlElement sets the name of the entities
 	@XmlElement(name = "node")
 	private ArrayList<Node> nodeList;
@@ -35,24 +35,24 @@ public class RootNode {
 
 		RootNode rootNode = new RootNode();
 		rootNode.setId("1");
-		rootNode.setName("testName");
-		rootNode.setRo("roro");
+		rootNode.setName("test1Name");
+		rootNode.setRo("ro1ro");
 		ArrayList<Node> nodeListLocal = new ArrayList<Node>();
 		Node node = new Node();
 		node.setId("1");
 		node.setRo("ro");
-		node.setName("name dx");
+		node.setName("name1 dx");
 		nodeListLocal.add(node);
 		rootNode.setNodeList(nodeListLocal);
 
 		try {
 
 			File file = new File("playlist.xml");
-			JAXBContext jaxbContext = JAXBContext.newInstance(Node.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(RootNode.class);
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			//rootNode = (RootNode) jaxbUnmarshaller.unmarshal(file);
-			//System.out.println(rootNode);
+			RootNode rootNodetemp = (RootNode) jaxbUnmarshaller.unmarshal(file);
+			System.out.println(rootNodetemp);
 
 			// create JAXB context and instantiate marshaller
 			JAXBContext context = JAXBContext.newInstance(RootNode.class);
@@ -60,7 +60,7 @@ public class RootNode {
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
 			//Write to System.out
-			 m.marshal(rootNode, System.out);
+			// m.marshal(rootNode, System.out);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
@@ -68,10 +68,15 @@ public class RootNode {
 
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Node [id=" + id + ", name=" + name + ", ro=" + ro + "]";
+		return "RootNode [id=" + id + ", name=" + name + ", ro=" + ro
+				+ ", nodeList=" + nodeList + "]";
 	}
+
+
 
 	public String getId() {
 		return id;

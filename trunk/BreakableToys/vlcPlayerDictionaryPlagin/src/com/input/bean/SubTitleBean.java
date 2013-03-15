@@ -1,8 +1,8 @@
 package com.input.bean;
 
-public class SubTitleBean {
+import static com.util.Constants.NEW_LINE;;
 
-	String NEW_LINE = System.getProperty("line.separator");
+public class SubTitleBean {
 
 	private String id;
 	private String timeString;

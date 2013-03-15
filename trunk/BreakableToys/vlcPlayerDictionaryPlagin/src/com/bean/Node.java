@@ -1,16 +1,12 @@
 package com.bean;
 
-import java.io.File;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "node")
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Node {
 
@@ -23,9 +19,14 @@ public class Node {
 	@XmlAttribute
 	private String ro = "";
 
+	@XmlElement
+	private Leaf leaf;
+
+	
 	@Override
 	public String toString() {
-		return "Node [id=" + id + ", name=" + name + ", ro=" + ro + "]";
+		return "Node [id=" + id + ", name=" + name + ", ro=" + ro + ", leaf="
+				+ leaf + "]";
 	}
 
 	public String getId() {
@@ -52,21 +53,12 @@ public class Node {
 		this.ro = ro;
 	}
 
-	public static void main(String[] args) {
+	public Leaf getLeaf() {
+		return leaf;
+	}
 
-		try {
-
-			File file = new File("playlist.xml");
-			JAXBContext jaxbContext = JAXBContext.newInstance(Node.class);
-
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			Node node = (Node) jaxbUnmarshaller.unmarshal(file);
-			System.out.println(node);
-
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}
-
+	public void setLeaf(Leaf leaf) {
+		this.leaf = leaf;
 	}
 
 }
