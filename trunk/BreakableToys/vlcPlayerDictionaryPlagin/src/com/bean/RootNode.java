@@ -26,7 +26,7 @@ public class RootNode {
 	private String ro = "";
 
 	// XmLElementWrapper generates a wrapper element around XML representation
-	//@XmlElementWrapper(name = "node")
+	// @XmlElementWrapper(name = "node")
 	// XmlElement sets the name of the entities
 	@XmlElement(name = "node")
 	private ArrayList<Node> nodeList;
@@ -55,11 +55,11 @@ public class RootNode {
 			System.out.println(rootNodetemp);
 
 			// create JAXB context and instantiate marshaller
-			JAXBContext context = JAXBContext.newInstance(RootNode.class);
-			Marshaller m = context.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+			// JAXBContext context = JAXBContext.newInstance(RootNode.class);
+			// Marshaller m = context.createMarshaller();
+			// m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-			//Write to System.out
+			// Write to System.out
 			// m.marshal(rootNode, System.out);
 
 		} catch (JAXBException e) {
@@ -68,15 +68,11 @@ public class RootNode {
 
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "RootNode [id=" + id + ", name=" + name + ", ro=" + ro
 				+ ", nodeList=" + nodeList + "]";
 	}
-
-
 
 	public String getId() {
 		return id;

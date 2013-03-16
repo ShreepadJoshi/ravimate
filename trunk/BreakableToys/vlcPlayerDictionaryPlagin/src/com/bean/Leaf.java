@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-
+import static com.util.Constants.NEW_LINE;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Leaf {
@@ -24,7 +24,7 @@ public class Leaf {
 
 	@Override
 	public String toString() {
-		return "Leaf [ro=" + ro + ", name=" + name + ", id=" + id
+		return NEW_LINE + "Leaf [ro=" + ro + ", name=" + name + ", id=" + id
 				+ ", duration=" + duration + ", uri=" + uri + ", current="
 				+ current + "]";
 	}
