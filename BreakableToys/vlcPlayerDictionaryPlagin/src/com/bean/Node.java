@@ -1,12 +1,14 @@
 package com.bean;
 
 import javax.xml.bind.annotation.XmlAccessType;
+
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import static com.util.Constants.NEW_LINE;
 
-@XmlRootElement
+@XmlRootElement(name = "Node")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Node {
 
@@ -22,11 +24,10 @@ public class Node {
 	@XmlElement
 	private Leaf leaf;
 
-	
 	@Override
 	public String toString() {
-		return "Node [id=" + id + ", name=" + name + ", ro=" + ro + ", leaf="
-				+ leaf + "]";
+		return NEW_LINE + "Node [id=" + id + ", name=" + name + ", ro=" + ro
+				+ ", leaf=" + leaf + "]";
 	}
 
 	public String getId() {
