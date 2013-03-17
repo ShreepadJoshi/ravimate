@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<root>
+
+<fullscreen>false</fullscreen>
+<aspectratio>default</aspectratio>
+<audiodelay>0</audiodelay>
+<apiversion>3</apiversion>
+<time>2</time>
+<volume>481</volume>
+<length>171</length>
+<random>false</random>
+<audiofilters>
+  <filter_0></filter_0></audiofilters>
+<rate>1</rate>
+<videoeffects>
+  <hue>0</hue>
+  <saturation>1</saturation>
+  <contrast>1</contrast>
+  <brightness>1.05</brightness>
+  <gamma>1</gamma></videoeffects>
+<state>playing</state>
+<loop>false</loop>
+<version>2.0.5 Twoflower</version>
+<position>0.015721522271633</position>
+<repeat>false</repeat>
+<subtitledelay>0</subtitledelay>
+<equalizer></equalizer><information>
+    <category name="meta">
+    <info name='filename'>Vicky Donor - Pani Da Rung Dheekh k.mkv</info>    </category>
+  <category name='Stream 0'><info name='Type'>Video</info><info name='Frame rate'>24.000384</info><info name='Decoded format'>Planar 4:2:0 YUV</info><info name='Codec'>H264 - MPEG-4 AVC (part 10) (avc1)</info><info name='Language'>English</info><info name='Resolution'>1280x544</info></category><category name='Stream 1'><info name='Bitrate'>1536 kb/s</info><info name='Type'>Audio</info><info name='Channels'>3F2R/LFE</info><info name='Sample rate'>48000 Hz</info><info name='Language'>Hindi</info><info name='Codec'>DTS Audio (dts )</info></category>  </information>
+  <stats>
+  <lostabuffers>3</lostabuffers>
+<readpackets>1354</readpackets>
+<lostpictures>0</lostpictures>
+<demuxreadbytes>5301035</demuxreadbytes>
+<demuxbitrate>2.1063990592957</demuxbitrate>
+<playedabuffers>291</playedabuffers>
+<demuxcorrupted>0</demuxcorrupted>
+<sendbitrate>0</sendbitrate>
+<sentbytes>0</sentbytes>
+<displayedpictures>56</displayedpictures>
+<demuxreadpackets>0</demuxreadpackets>
+<sentpackets>0</sentpackets>
+<inputbitrate>1.9525679349899</inputbitrate>
+<demuxdiscontinuity>0</demuxdiscontinuity>
+<averagedemuxbitrate>0</averagedemuxbitrate>
+<decodedvideo>72</decodedvideo>
+<averageinputbitrate>0</averageinputbitrate>
+<readbytes>10236824</readbytes>
+<decodedaudio>291</decodedaudio>
+  </stats>
+</root>

@@ -8,15 +8,13 @@ public class VlcTime {
 	int minutes;
 	int seconds;
 	final DecimalFormat decimalFormat = new DecimalFormat("00");
-	private String time;
+	private long timeInLong = 0;
 
-	public VlcTime(String time) {
-		this.time = time;		
-		int timeInLong = Integer.parseInt(time);
+	public VlcTime(String time) {				
+		this.timeInLong = Long.parseLong(time);
+		seconds = (int)timeInLong % 60;
 
-		seconds = timeInLong % 60;
-
-		minutes = timeInLong / 60;
+		minutes = (int)timeInLong / 60;
 		if (minutes > 60) {
 			hours = minutes / 60;
 			minutes = minutes % 60;
@@ -32,18 +30,12 @@ public class VlcTime {
 				+ decimalFormat.format(seconds);
 	}
 	
-	public String getNextSeconds(){		
-		int timeInLong = Integer.parseInt(time);
-		timeInLong = timeInLong + 1;
-		VlcTime vlcTime = new VlcTime("" + timeInLong);
-		return vlcTime.toString();		
+	public VlcTime getNextSeconds(){		
+		return new VlcTime("" + (timeInLong + 1));		
 	}
 	
-	public String getPreviousSeconds(){		
-		int timeInLong = Integer.parseInt(time);
-		timeInLong = timeInLong - 1;
-		VlcTime vlcTime = new VlcTime("" + timeInLong);
-		return vlcTime.toString();		
+	public VlcTime getPreviousSeconds(){		
+		return new VlcTime("" + (timeInLong - 1));		
 	}
 
 }

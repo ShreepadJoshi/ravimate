@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 
-<Node ro="rw" name="Undefined" id="1">
+<node ro="rw" name="Undefined" id="1">
 	<node ro="ro" name="Playlist" id="2">
 		<leaf ro="rw" name="Vicky Donor - Pani Da Rung Dheekh k.mkv" id="4"
 			duration="171"
@@ -8,4 +8,4 @@
 			current="current" />
 	</node>
 	<node ro="ro" name="Media Library" id="3"></node>
-</Node>
+</node>

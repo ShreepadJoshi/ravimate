@@ -6,24 +6,27 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.input.bean.SubTitleBean;
 import com.input.bean.VlcTime;
 
 public class SubTitleReader {
-	
+
 	String NEW_LINE = System.getProperty("line.separator");
 
 	private String path;
 	private VlcTime time;
+	Map<String, SubTitleBean> timeSubTitleMap = new HashMap<String, SubTitleBean>();
 
 	public SubTitleReader(String path, VlcTime time) {
 		this.path = path;
 		this.time = time;
 	}
 
-	public String getSubTitle() {
+	public Map<String, SubTitleBean> loadSubTitles() {
 		String pathOfSubTitle = getPathOfSubTitle();
 
 		File file = new File(pathOfSubTitle);
@@ -32,25 +35,27 @@ public class SubTitleReader {
 
 		try {
 
-			String currentLine;
+			// List<SubTitleBean> subTitleBeans = new ArrayList<SubTitleBean>();
 
+			String currentLine;
 			bufferedReader = new BufferedReader(new FileReader(file));
-			
-			List<SubTitleBean> subTitleBeans = new ArrayList<SubTitleBean>();
 			SubTitleBean subTitleBean = new SubTitleBean();
+
 			while ((currentLine = bufferedReader.readLine()) != null) {
-				System.out.println(currentLine);
+				// System.out.println(currentLine);
 
 				if (isOnlyNumberInLine(currentLine)) {
 					subTitleBean.setId(currentLine);
 				} else if (currentLine.indexOf("-->") != -1) {
-					subTitleBean.setTimeString(currentLine);
+					String time = getTimeFromRowLine(currentLine);
+					subTitleBean.setTimeString(time);
 				} else if (currentLine.equals("")) {
-					subTitleBeans.add(subTitleBean);
+					timeSubTitleMap.put(subTitleBean.getTimeString(),
+							subTitleBean);
+					// subTitleBeans.add(subTitleBean);
 					subTitleBean = new SubTitleBean();
-				}
-				else {
-					subTitleBean.setTest(currentLine);
+				} else {
+					subTitleBean.setSubTitleText(currentLine);
 				}
 
 			}
@@ -68,7 +73,12 @@ public class SubTitleReader {
 
 		System.out.println(file);
 
-		return pathOfSubTitle;
+		return timeSubTitleMap;
+	}
+
+	private String getTimeFromRowLine(String currentLine) {
+		int endIndex = currentLine.indexOf(",");
+		return currentLine.substring(0, endIndex);
 	}
 
 	private boolean isOnlyNumberInLine(String currentLine) {
@@ -108,5 +118,25 @@ public class SubTitleReader {
 					.substring(beginIndex, pathOfSubTitle.length());
 		}
 		return pathOfSubTitle;
+	}
+
+	public SubTitleBean getSubTitle(VlcTime vlcTime) {
+		SubTitleBean subTitleBean = new SubTitleBean();
+
+		if (timeSubTitleMap.containsKey(vlcTime.toString())) {
+			subTitleBean = timeSubTitleMap.get(vlcTime.toString());
+		} else {
+			VlcTime lastVlcTime = vlcTime.getPreviousSeconds();
+			String lastTime = lastVlcTime.toString();
+			
+			while (timeSubTitleMap.containsKey(lastTime) == false) {
+				lastVlcTime = lastVlcTime.getPreviousSeconds();
+				lastTime = lastVlcTime.toString();
+				System.out.println("Trying " + lastTime );				
+			}
+			subTitleBean = timeSubTitleMap.get(lastTime);
+		}
+
+		return subTitleBean;
 	}
 }
