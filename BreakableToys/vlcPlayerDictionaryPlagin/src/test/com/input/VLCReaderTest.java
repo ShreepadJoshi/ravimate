@@ -1,19 +1,18 @@
 package test.com.input;
 
-import static org.junit.Assert.*;
-
-import java.net.URL;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import com.input.VLCReader;
+import com.input.VLCPlayerStatusReader;
 import com.input.bean.VLCPlayerStatusBean;
 
 public class VLCReaderTest {
 
 	@Test
 	public void testGetStatusOfVLCPlayer() {
-		VLCReader vlcReader = new VLCReader();
+		VLCPlayerStatusReader vlcReader = new VLCPlayerStatusReader();
 		VLCPlayerStatusBean vlcPlayerStatusBean = vlcReader.getStatusOfVLCPlayer();
 		assertNotNull(vlcPlayerStatusBean);		
 	}

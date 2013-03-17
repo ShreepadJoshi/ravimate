@@ -6,7 +6,13 @@ public class SubTitleBean {
 
 	private String id;
 	private String timeString;
-	private String test = "";
+	private String subTitleText = "";
+
+	@Override
+	public String toString() {
+		return "SubTitleBean [id=" + id + ", timeString=" + timeString
+				+ ", test=" + NEW_LINE + subTitleText + "]";
+	}
 
 	public String getId() {
 		return id;
@@ -24,15 +30,15 @@ public class SubTitleBean {
 		this.timeString = timeString;
 	}
 
-	public String getTest() {
-		return test;
+	public String getSubTitleText() {
+		return subTitleText;
 	}
 
-	public void setTest(String test) {
-		if (this.test.length() == 0) {
-			this.test = test;
+	public void setSubTitleText(String test) {
+		if (this.subTitleText.length() == 0) {
+			this.subTitleText = test;
 		} else {
-			this.test = this.test + NEW_LINE + test;
+			this.subTitleText = this.subTitleText + NEW_LINE + test;
 		}
 
 	}

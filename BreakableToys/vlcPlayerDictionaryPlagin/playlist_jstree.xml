@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+
+    <item
+        id="plid_2"
+        name="Playlist"
+        ro="ro">
+
+        <content>
+
+            <name>
+Playlist
+            </name>
+        </content>
+
+        <item
+            id="plid_4"
+            name="Vicky Donor - Pani Da Rung Dheekh k.mkv"
+            current="current"
+            duration="171"
+            ro="rw"
+            uri="file:///media/shripad/Songs/V%20song/Vicky%20Donor%20-%20Pani%20Da%20Rung%20Dheekh%20k.mkv">
+
+            <content>
+
+                <name>
+Vicky Donor - Pani Da Rung Dheekh k.mkv
+                </name>
+            </content>
+        </item>
+    </item>
+
+    <item
+        id="plid_3"
+        name="Media Library"
+        ro="ro">
+
+        <content>
+
+            <name>
+Media Library
+            </name>
+        </content>
+    </item>
+
+</root>

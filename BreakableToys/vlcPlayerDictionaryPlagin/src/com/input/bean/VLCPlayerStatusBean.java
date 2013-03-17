@@ -1,14 +1,19 @@
 package com.input.bean;
 
+/**
+ * Class to hold data read from VLC player, only which is need and in proper
+ * format.
+ * 
+ * @author shripad
+ * 
+ */
 public class VLCPlayerStatusBean {
-	
+
 	private VlcTime currentPositionInTime;
-	
+
 	private String pathOfPlayingFile;
-	
+
 	private String nameOfFile;
-	
-	
 
 	public String getNameOfFile() {
 		return nameOfFile;
@@ -40,8 +45,5 @@ public class VLCPlayerStatusBean {
 				+ currentPositionInTime + ", pathOfPlayingFile="
 				+ pathOfPlayingFile + "]";
 	}
-
-	
-	
 
 }
