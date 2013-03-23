@@ -33,22 +33,27 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
 
 		<beans:property name="resource" value="user_Input.xml" />
 
-		<beans:property name="fragmentRootElementName" value="USERS" />
+		<beans:property name="fragmentRootElementName" value="Users" />
 
 		<beans:property name="unmarshaller" ref="userUnmarshaller" />
 
 	</beans:bean>
 
 	<beans:bean id="userUnmarshaller"
-		class="org.springframework.oxm.castor.CastorMarshaller">
-		<beans:property name="mappingLocation" value="userMapping.xml" />
+		class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<beans:property name="classesToBeBound">
+			<beans:list>
+				<beans:value>com.bean.User</beans:value>
+				<beans:value>com.bean.Users</beans:value>
+			</beans:list>
+		</beans:property>
 	</beans:bean>
 
 
 
 
 	<beans:bean id="writer"
-		class="com.writer.fileWriter.ConsoleWriterForStatementOfAccount">
+		class="com.writer.console.UsersConsoleWriter">
 	</beans:bean>
 
 </beans:beans>
