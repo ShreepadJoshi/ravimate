@@ -31,7 +31,7 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
 	<beans:bean id="reader"
 		class="org.springframework.batch.item.xml.StaxEventItemReader" scope="step">
 
-		<beans:property name="resource" value="user_Input.xml" />
+		<beans:property name="resource" value="classpath:user_Input.xml" />
 
 		<beans:property name="fragmentRootElementName" value="Users" />
 
