@@ -42,7 +42,7 @@ args as "readFixSizeTxt_and_WriteToConsole_Job.xml readFixSizeTxt_and_WriteToCon
 
         <beans:property
             name="resource"
-            value="classpath:FixSize_input.txt" />
+            value="classpath:classpathResources/FixSize_input.txt" />
 
         <beans:property
             name="linesToSkip"

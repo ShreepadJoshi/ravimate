@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://www.springframework.org/schema/batch"
-    xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="
  
 http://www.springframework.org/schema/beans
  
@@ -10,70 +9,66 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
  
 http://www.springframework.org/schema/batch
  
-http://www.springframework.org/schema/batch/spring-batch-2.0.xsd" >
+http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
 
-    <beans:import resource="applicationContext.xml" />
+	<beans:import resource="applicationContext.xml" />
 
-    <!--
-To run ..> run configurations ..> select Java Application and add
-mainClass as "org.springframework.batch.core.launch.support.CommandLineJobRunner" 
-args as "readCommaSeparatedTxt_and_WriteToConsole_Job.xml readCommaSeparatedTxt_and_WriteToConsole_Job"
-    -->
+	<!-- To run ..> run configurations ..> select Java Application and add mainClass 
+		as "org.springframework.batch.core.launch.support.CommandLineJobRunner" args 
+		as "readCommaSeparatedTxt_and_WriteToConsole_Job.xml readCommaSeparatedTxt_and_WriteToConsole_Job" -->
 
-    <job
-        id="readCommaSeparatedTxt_and_WriteToConsole_Job"
-        xmlns="http://www.springframework.org/schema/batch" >
+	<job id="readFilesInFolder_and_WriteToConsole_Job" xmlns="http://www.springframework.org/schema/batch">
 
-        <step id="readWriteProducts" >
+		<step id="readWriteProducts">
 
-            <tasklet>
+			<tasklet>
 
-                <chunk
-                    commit-interval="2"
-                    reader="reader"
-                    writer="writer" />
-            </tasklet>
-        </step>
-    </job>
+				<chunk commit-interval="2" reader="reader" writer="writer" />
+			</tasklet>
+		</step>
+	</job>
 
-    <beans:bean
-        id="reader"
-        class="org.springframework.batch.item.file.FlatFileItemReader"
-        scope="step" >
+	<beans:bean id="reader"
+	class="org.springframework.batch.item.file.MultiResourceItemReader"
+	scope="step">
 
-        <beans:property
-            name="resource"
-            value="classpath:CommaSeparated_Input.txt" />
+		<beans:property name="resources"
+			value="classpath:classpathResources/CommaSeparated_Input*.txt" />
+			
+		<beans:property name="delegate" ref="flatFileReader" />
 
-        <beans:property
-            name="linesToSkip"
-            value="1" />
+	</beans:bean>
 
-        <beans:property name="lineMapper" >
+	<beans:bean id="flatFileReader"
+		class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
 
-            <beans:bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper" >
+		<beans:property name="linesToSkip" value="1" />
 
-                <beans:property name="lineTokenizer" >
+		<beans:property name="lineMapper">
 
-                    <beans:bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer" >
+			<beans:bean
+				class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 
-                        <beans:property
-                            name="names"
-                            value="USER_ID,USER_NAME,USER_LASTNAME" />
-                    </beans:bean>
-                </beans:property>
+				<beans:property name="lineTokenizer">
 
-                <beans:property name="fieldSetMapper" >
+					<beans:bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
 
-                    <beans:bean class="com.mapper.UserFieldSetMapper" />
-                </beans:property>
-            </beans:bean>
-        </beans:property>
-    </beans:bean>
+						<beans:property name="names"
+							value="USER_ID,USER_NAME,USER_LASTNAME" />
+					</beans:bean>
+				</beans:property>
 
-    <beans:bean
-        id="writer"
-        class="com.writer.fileWriter.FileWriter" >
-    </beans:bean>
+				<beans:property name="fieldSetMapper">
+
+					<beans:bean class="com.mapper.UserFieldSetMapper" />
+				</beans:property>
+			</beans:bean>
+		</beans:property>
+	</beans:bean>
+
+
+	<beans:bean id="writer" class="com.writer.console.UsersConsoleWriter">
+	</beans:bean>
 
 </beans:beans>

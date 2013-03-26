@@ -43,7 +43,7 @@ args as "readCommaSeparatedTxt_and_WriteToConsole_Job.xml readCommaSeparatedTxt_
 
         <beans:property
             name="resource"
-            value="classpath:CommaSeparated_Input.txt" />
+            value="classpath:classpathResources/CommaSeparated_Input.txt" />
 
         <beans:property
             name="linesToSkip"
