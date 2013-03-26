@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="
+ 
+http://www.springframework.org/schema/beans
+ 
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+ 
+http://www.springframework.org/schema/batch
+ 
+http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
+
+	<beans:import resource="applicationContext.xml" />
+
+	<!-- To run ..> run configurations ..> select Java Application and add mainClass 
+		as "org.springframework.batch.core.launch.support.CommandLineJobRunner" args 
+		as "readRowOfTableFromDBUsingSQL_and_WriteToConsole_Job.xml readRowOfTableFromDBUsingSQL_and_WriteToConsole_Job" -->
+
+	<job id="readRowOfTableFromDBUsingSQL_and_WriteToConsole_Job" xmlns="http://www.springframework.org/schema/batch">
+
+		<step id="readWriteProducts">
+
+			<tasklet>
+
+				<chunk commit-interval="2" reader="reader" writer="writer" />
+			</tasklet>
+		</step>
+	</job>
+
+	<beans:bean id="reader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader" scope="step">
+
+		<beans:property name="dataSource" ref="dataSource" />
+
+		<beans:property name="sql" value="Users" />
+
+		<beans:property name="rowMapper" ref="rowMapper" />
+
+	</beans:bean>
+
+   <!-- Initialization for data source -->
+   <bean id="dataSource" 
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost:3306/TEST"/>
+      <property name="username" value="root"/>
+      <property name="password" value="root"/>
+   </bean>
+	
+	
+	<beans:bean id="rowMapper"
+		class="com.mapper.UserRowMapper">		
+	</beans:bean>
+
+
+
+
+	<beans:bean id="writer"
+		class="com.writer.console.UsersConsoleWriter">
+	</beans:bean>
+
+</beans:beans>
