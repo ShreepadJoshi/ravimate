@@ -5,6 +5,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import static com.util.Constants.NEW_LINE;;
+
 @XmlRootElement(name = "User")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class User {
@@ -20,8 +22,8 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName
-				+ "]";
+		return NEW_LINE + "User [id=" + id + ", name=" + name + ", lastName=" + lastName
+				+ "]"  ;
 	}
 	
 	
