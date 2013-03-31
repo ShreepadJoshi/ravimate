@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="
+ 
+http://www.springframework.org/schema/beans
+ 
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+ 
+http://www.springframework.org/schema/batch
+ 
+http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
+
+	<beans:import resource="applicationContext.xml" />
+
+	<!-- To run ..> run configurations ..> select Java Application and add mainClass 
+		as "org.springframework.batch.core.launch.support.CommandLineJobRunner" args 
+		as "readDataFromStoredProcedure_and_WriteToConsole_Job.xml readDataFromStoredProcedure_and_WriteToConsole_Job" -->
+
+	<!-- 
+			CREATE TABLE t_user (
+			id INT NOT NULL,
+			first_name VARCHAR(45) NOT NULL,
+			last_name VARCHAR(45) NOT NULL,
+			PRIMARY KEY (id)
+		) ENGINE=InnoDB;
+	 -->
+		
+		
+	<!-- insert into `t_user` (`id`, `first_name`, `last_name`) values(1, 'Yip', 'Man') 
+		 insert into `t_user` (`id`, `first_name`, `last_name`) values(2, 'Bruce','Lee')
+		 insert into `t_user` (`id`, `first_name`, `last_name`) values(3, 'Jackie','Chan')
+		  -->
+
+<!--
+		drop procedure `jpa`.`GetAllUsers`;
+		
+		DELIMITER //
+		CREATE PROCEDURE GetAllUsers(IN firstName VARCHAR(255))
+		BEGIN
+			IF (firstName = '*') THEN
+				SELECT * FROM t_user ;
+			ELSE
+				SELECT * FROM t_user WHERE first_Name = firstName;
+		    END IF;
+		END //
+		DELIMITER ; 
+ -->
+ 
+ 
+ <!--
+CALL GetAllUsers();
+ -->
+
+	<job id="readDataFromStoredProcedure_and_WriteToConsole_Job"
+		xmlns="http://www.springframework.org/schema/batch">
+
+		<step id="readWriteProducts">
+
+			<tasklet>
+
+				<chunk commit-interval="2" reader="reader" writer="writer" />
+			</tasklet>
+		</step>
+	</job>
+
+	<beans:bean id="reader"
+		class="org.springframework.batch.item.database.StoredProcedureItemReader"
+		scope="step">
+
+		<beans:property name="dataSource" ref="dataSource" />
+
+		<beans:property name="procedureName" value="GetAllUsers" />
+
+		<beans:property name="rowMapper" ref="rowMapper" />
+
+	</beans:bean>
+
+	<!-- Initialization for data source -->
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/jpa" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="root" />
+	</beans:bean>
+
+
+	<beans:bean id="rowMapper" class="com.mapper.UserRowMapper">
+	</beans:bean>
+
+
+
+
+	<beans:bean id="writer" class="com.writer.console.UsersConsoleWriter">
+	</beans:bean>
+
+</beans:beans>
