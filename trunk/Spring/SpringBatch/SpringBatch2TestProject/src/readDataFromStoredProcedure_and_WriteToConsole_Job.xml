@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/batch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns="http://www.springframework.org/schema/batch"
 	xsi:schemaLocation="
  
 http://www.springframework.org/schema/beans
- 
 http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+
+
+http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util-2.0.xsd
  
-http://www.springframework.org/schema/batch
- 
+http://www.springframework.org/schema/batch 
 http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
 
 	<beans:import resource="applicationContext.xml" />
@@ -17,43 +21,23 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
 		as "org.springframework.batch.core.launch.support.CommandLineJobRunner" args 
 		as "readDataFromStoredProcedure_and_WriteToConsole_Job.xml readDataFromStoredProcedure_and_WriteToConsole_Job" -->
 
-	<!-- 
-			CREATE TABLE t_user (
-			id INT NOT NULL,
-			first_name VARCHAR(45) NOT NULL,
-			last_name VARCHAR(45) NOT NULL,
-			PRIMARY KEY (id)
-		) ENGINE=InnoDB;
-	 -->
-		
-		
-	<!-- insert into `t_user` (`id`, `first_name`, `last_name`) values(1, 'Yip', 'Man') 
-		 insert into `t_user` (`id`, `first_name`, `last_name`) values(2, 'Bruce','Lee')
-		 insert into `t_user` (`id`, `first_name`, `last_name`) values(3, 'Jackie','Chan')
-		  -->
+	<!-- CREATE TABLE t_user ( id INT NOT NULL, first_name VARCHAR(45) NOT NULL, 
+		last_name VARCHAR(45) NOT NULL, PRIMARY KEY (id) ) ENGINE=InnoDB; -->
 
-<!--
-		drop procedure `jpa`.`GetAllUsers`;
-		
-		DELIMITER //
-		CREATE PROCEDURE GetAllUsers(IN firstName VARCHAR(255))
-		BEGIN
-			IF (firstName = '*') THEN
-				SELECT * FROM t_user ;
-			ELSE
-				SELECT * FROM t_user WHERE first_Name = firstName;
-		    END IF;
-		END //
-		DELIMITER ; 
- -->
- 
- 
- <!--
-CALL GetAllUsers();
- -->
 
-	<job id="readDataFromStoredProcedure_and_WriteToConsole_Job"
-		xmlns="http://www.springframework.org/schema/batch">
+	<!-- insert into `t_user` (`id`, `first_name`, `last_name`) values(1, 'Yip', 
+		'Man') insert into `t_user` (`id`, `first_name`, `last_name`) values(2, 'Bruce','Lee') 
+		insert into `t_user` (`id`, `first_name`, `last_name`) values(3, 'Jackie','Chan') -->
+
+	<!-- drop procedure `jpa`.`GetAllUsers`; DELIMITER // CREATE PROCEDURE GetAllUsers(IN 
+		firstName VARCHAR(255)) BEGIN IF (firstName = '*') THEN SELECT * FROM t_user 
+		; ELSE SELECT * FROM t_user WHERE first_Name = firstName; END IF; END // 
+		DELIMITER ; -->
+
+
+	<!-- CALL GetAllUsers(); -->
+
+	<job id="readDataFromStoredProcedure_and_WriteToConsole_Job" xmlns="http://www.springframework.org/schema/batch">
 
 		<step id="readWriteProducts">
 
@@ -74,7 +58,21 @@ CALL GetAllUsers();
 
 		<beans:property name="rowMapper" ref="rowMapper" />
 
+		<beans:property name="parameters">
+
+			<beans:list>
+				<beans:bean class="org.springframework.jdbc.core.SqlParameter">
+					<beans:constructor-arg index="0" value="Yip" />
+					<beans:constructor-arg index="1">
+						<util:constant static-field="java.sql.Types.VARCHAR" />
+					</beans:constructor-arg>
+				</beans:bean>
+			</beans:list>
+			
+		</beans:property>
 	</beans:bean>
+	
+	
 
 	<!-- Initialization for data source -->
 	<beans:bean id="dataSource"
@@ -85,12 +83,8 @@ CALL GetAllUsers();
 		<beans:property name="password" value="root" />
 	</beans:bean>
 
-
 	<beans:bean id="rowMapper" class="com.mapper.UserRowMapper">
 	</beans:bean>
-
-
-
 
 	<beans:bean id="writer" class="com.writer.console.UsersConsoleWriter">
 	</beans:bean>
