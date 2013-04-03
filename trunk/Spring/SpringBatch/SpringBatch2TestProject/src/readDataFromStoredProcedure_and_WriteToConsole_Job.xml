@@ -57,19 +57,20 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
 		<beans:property name="procedureName" value="GetAllUsers" />
 
 		<beans:property name="rowMapper" ref="rowMapper" />
-
+		
+		<!-- 
 		<beans:property name="parameters">
-
 			<beans:list>
 				<beans:bean class="org.springframework.jdbc.core.SqlParameter">
 					<beans:constructor-arg index="0" value="Yip" />
 					<beans:constructor-arg index="1">
-						<util:constant static-field="java.sql.Types.VARCHAR" />
+						<util:constant static-field="java.sql.Types.CHAR" />
 					</beans:constructor-arg>
 				</beans:bean>
-			</beans:list>
-			
+			</beans:list>			
 		</beans:property>
+		 -->
+		 
 	</beans:bean>
 	
 	
