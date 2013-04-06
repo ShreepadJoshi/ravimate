@@ -14,6 +14,7 @@ import javax.xml.bind.Unmarshaller;
 
 import com.input.bean.VLCPlayerStatusBean;
 import com.input.bean.VlcTime;
+import com.ui.log.UILogger;
 import com.vlc.xml.bean.Node;
 import com.vlc.xml.bean.RootNode;
 import com.vlc.xml.bean.StatusBean;
@@ -30,6 +31,10 @@ public class VLCPlayerStatusReader {
 	final static String PLAYLIST_PAGE = "/requests/playlist.xml";
 
 	VLCPlayerStatusBean vlcPlayerStatusBean = new VLCPlayerStatusBean();
+	
+	public VLCPlayerStatusBean reloadPlayerStatusBean(){		
+		return getStatusOfVLCPlayerFromXMLs();
+	}
 
 	public VLCPlayerStatusBean getStatusOfVLCPlayerFromXMLs() {
 
@@ -102,7 +107,7 @@ public class VLCPlayerStatusReader {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			StatusBean statusBean = (StatusBean) jaxbUnmarshaller
 					.unmarshal(urlOfXml);
-			System.out.println(statusBean);
+			UILogger.log(statusBean);
 			return statusBean;
 
 		} catch (JAXBException e) {
@@ -121,7 +126,7 @@ public class VLCPlayerStatusReader {
 			JAXBContext jaxbContext = JAXBContext.newInstance(RootNode.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			rootNode = (RootNode) jaxbUnmarshaller.unmarshal(urlOfXml);
-			System.out.println(rootNode);
+			UILogger.log(rootNode);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
@@ -146,9 +151,9 @@ public class VLCPlayerStatusReader {
 		StringBuilder buffer = readAsHTMLPage(url);
 		String currentPosition = getValueByNode(buffer, "time");
 		VlcTime currentTime = new VlcTime(currentPosition);
-		System.out.println(currentTime.getPreviousSeconds());
-		System.out.println(currentTime);
-		System.out.println(currentTime.getNextSeconds());
+		UILogger.log(currentTime.getPreviousSeconds());
+		UILogger.log(currentTime);
+		UILogger.log(currentTime.getNextSeconds());
 
 		vlcPlayerStatusBean.setCurrentPositionInTime(currentTime);
 
@@ -165,7 +170,7 @@ public class VLCPlayerStatusReader {
 		String path = playListPageBuffer.substring(startIndexOfUrl,
 				endIndexOfUrl);
 		vlcPlayerStatusBean.setPathOfPlayingFile(path);
-		System.out.println(path);
+		UILogger.log(path);
 
 		return vlcPlayerStatusBean;
 
@@ -187,7 +192,7 @@ public class VLCPlayerStatusReader {
 	 * @return newsAsHTML
 	 */
 	private StringBuilder readAsHTMLPage(URL url) {
-		System.out.println("Reading --> " + url);
+		UILogger.log("Reading --> " + url);
 		StringBuilder buffer = new StringBuilder();
 		try {
 
@@ -207,7 +212,7 @@ public class VLCPlayerStatusReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Done");
+		UILogger.log("Done");
 		return new StringBuilder("Error reading HTMP page from given URL");
 
 	}
