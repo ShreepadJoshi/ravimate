@@ -6,6 +6,7 @@ import com.input.bean.SubTitleBean;
 import com.input.bean.VLCPlayerStatusBean;
 import com.input.bean.VlcTime;
 import com.ui.MainFrame;
+import com.ui.log.UILogger;
 
 public class Main {
 
@@ -32,25 +33,52 @@ public class Main {
 		subTitleReader.loadSubTitles();
 		SubTitleBean subTitleBean = subTitleReader.getSubTitle(time);
 
-		System.out.println("");
-		System.out.println("");
-		System.out.println("subTitle " + subTitleBean);
+		UILogger.log("");
+		UILogger.log("subTitle " + subTitleBean);
+		UILogger.log("");
+
 		mainFrame = new MainFrame(this);
 		mainFrame.loadUI();
 		mainFrame.setSubTitles(subTitleBean);
 		mainFrame.repaint();
 	}
 
-	public void performReloadSubTitleEvent() {
-		VLCPlayerStatusBean vlcPlayerStatusBean = vlcPlayerStatusReader
-				.reloadCurrentPositionInTime();
+	public void performReloadSubTitleEvent() {		
+
+		if (isFileBeingPlayedChanged()) {
+			String newFilePath = vlcPlayerStatusBean.getPathOfPlayingFile();
+			subTitleReader.reLoadSubTitles(newFilePath);
+		}
+
 		VlcTime time = vlcPlayerStatusBean.getCurrentPositionInTime();
 		SubTitleBean subTitleBean = subTitleReader.getSubTitle(time);
-		System.out.println("subTitle " + subTitleBean);
+		UILogger.log("subTitle " + subTitleBean);
 		mainFrame.setSubTitles(subTitleBean);
 		mainFrame.repaint();
 		mainFrame.revalidate();
 
+	}
+
+	/**
+	 * if oldFilePath is NOT equals to currentFilePath then file being played
+	 * changed
+	 * 
+	 * @param oldFilePath
+	 * @param currentFilePath
+	 * @return isFileBeingPlayedChanged OR not
+	 */
+	private boolean isFileBeingPlayedChanged() {
+
+		String oldFilePath = vlcPlayerStatusBean.getPathOfPlayingFile();
+
+		vlcPlayerStatusBean = vlcPlayerStatusReader.reloadPlayerStatusBean();
+
+		String currentFilePath = vlcPlayerStatusBean.getPathOfPlayingFile();
+
+		if (oldFilePath.equals(currentFilePath)) {
+			return false;
+		}
+		return true;
 	}
 
 	public SubTitleReader getSubTitleReader() {
