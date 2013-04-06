@@ -5,25 +5,28 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.input.bean.SubTitleBean;
 import com.input.bean.VlcTime;
+import com.ui.log.UILogger;
 
 public class SubTitleReader {
 
 	String NEW_LINE = System.getProperty("line.separator");
 
 	private String path;
-	private VlcTime time;
+	
 	Map<String, SubTitleBean> timeSubTitleMap = new HashMap<String, SubTitleBean>();
 
 	public SubTitleReader(String path, VlcTime time) {
-		this.path = path;
-		this.time = time;
+		this.path = path;		
+	}
+
+	public Map<String, SubTitleBean> reLoadSubTitles(String newFilePath) {
+		this.path = newFilePath;	
+		return loadSubTitles();
 	}
 
 	public Map<String, SubTitleBean> loadSubTitles() {
@@ -42,7 +45,7 @@ public class SubTitleReader {
 			SubTitleBean subTitleBean = new SubTitleBean();
 
 			while ((currentLine = bufferedReader.readLine()) != null) {
-				// System.out.println(currentLine);
+				// Logger.log(currentLine);
 
 				if (isOnlyNumberInLine(currentLine)) {
 					subTitleBean.setId(currentLine);
@@ -61,7 +64,7 @@ public class SubTitleReader {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			UILogger.log(e);
 		} finally {
 			try {
 				if (bufferedReader != null)
@@ -71,7 +74,7 @@ public class SubTitleReader {
 			}
 		}
 
-		System.out.println(file);
+		UILogger.log(file);
 
 		return timeSubTitleMap;
 	}
@@ -100,7 +103,7 @@ public class SubTitleReader {
 		try {
 			pathOfSubTitle = java.net.URLDecoder.decode(pathOfSubTitle,
 					"ISO-8859-1");
-			System.out.println(pathOfSubTitle);
+			UILogger.log(pathOfSubTitle);
 
 			pathOfSubTitle = removeNotNeedTags(pathOfSubTitle);
 		} catch (UnsupportedEncodingException e1) {
@@ -128,11 +131,11 @@ public class SubTitleReader {
 		} else {
 			VlcTime lastVlcTime = vlcTime.getPreviousSeconds();
 			String lastTime = lastVlcTime.toString();
-			
+
 			while (timeSubTitleMap.containsKey(lastTime) == false) {
 				lastVlcTime = lastVlcTime.getPreviousSeconds();
 				lastTime = lastVlcTime.toString();
-				System.out.println("Trying " + lastTime );				
+				UILogger.log("Trying " + lastTime);
 			}
 			subTitleBean = timeSubTitleMap.get(lastTime);
 		}

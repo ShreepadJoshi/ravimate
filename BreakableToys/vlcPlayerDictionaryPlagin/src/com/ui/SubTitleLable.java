@@ -53,25 +53,25 @@ public class SubTitleLable extends JLabel implements MouseInputListener {
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// System.out.println("mousePressed");
+		// Logger.log("mousePressed");
 
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// System.out.println("mouseReleased");
+		// Logger.log("mouseReleased");
 
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		// System.out.println("mouseDragged");
+		// Logger.log("mouseDragged");
 
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
-		// System.out.println("mouseMoved");
+		// Logger.log("mouseMoved");
 	}
 
 	/**
