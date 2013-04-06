@@ -12,6 +12,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.ui.log.UILogger;
+
 @XmlRootElement(name = "node")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RootNode {
@@ -50,7 +52,7 @@ public class RootNode {
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			RootNode rootNodetemp = (RootNode) jaxbUnmarshaller.unmarshal(file);
-			System.out.println(rootNodetemp);
+			UILogger.log(rootNodetemp);
 
 			// create JAXB context and instantiate marshaller
 			// JAXBContext context = JAXBContext.newInstance(RootNode.class);
