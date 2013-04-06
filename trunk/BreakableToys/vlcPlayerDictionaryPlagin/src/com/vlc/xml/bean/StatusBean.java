@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.ui.log.UILogger;
+
 @XmlRootElement(name = "root")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class StatusBean {
@@ -26,7 +28,7 @@ public class StatusBean {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			StatusBean statusBean = (StatusBean) jaxbUnmarshaller
 					.unmarshal(file);
-			System.out.println(statusBean);
+			UILogger.log(statusBean);
 			
 		} catch (JAXBException e) {
 			e.printStackTrace();
