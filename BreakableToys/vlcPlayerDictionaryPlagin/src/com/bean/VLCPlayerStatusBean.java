@@ -1,6 +1,6 @@
 package com.bean;
 
-import com.reader.VlcTime;
+import com.reader.vlc.VlcTime;
 
 /**
  * Class to hold data read from VLC player. (only which is need and in proper
