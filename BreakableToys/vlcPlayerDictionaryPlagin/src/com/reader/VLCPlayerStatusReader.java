@@ -11,9 +11,9 @@ import javax.xml.bind.Unmarshaller;
 
 import com.bean.VLCPlayerStatusBean;
 import com.log.UILogger;
-import com.vlc.xml.bean.Node;
-import com.vlc.xml.bean.RootNode;
-import com.vlc.xml.bean.StatusBean;
+import com.vlc.xml.Node;
+import com.vlc.xml.RootNode;
+import com.vlc.xml.StatusBean;
 
 /**
  * Class Reads status of VLC player.

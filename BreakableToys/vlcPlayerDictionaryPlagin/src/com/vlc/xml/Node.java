@@ -1,4 +1,4 @@
-package com.vlc.xml.bean;
+package com.vlc.xml;
 
 import javax.xml.bind.annotation.XmlAccessType;
 
