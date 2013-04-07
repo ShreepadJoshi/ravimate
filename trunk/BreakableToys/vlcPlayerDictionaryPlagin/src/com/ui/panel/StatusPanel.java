@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import com.bean.VLCPlayerStatusBean;
 import com.ui.MainFrame;
+import com.ui.fields.ReloadButton;
 
 public class StatusPanel extends JPanel implements ActionListener {
 
