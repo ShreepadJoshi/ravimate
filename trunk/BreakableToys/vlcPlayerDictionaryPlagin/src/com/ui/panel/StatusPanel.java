@@ -64,8 +64,7 @@ public class StatusPanel extends JPanel implements ActionListener {
 	public void setStatus(VLCPlayerStatusBean statusBean) {
 		runningOnServerTxt.setText(statusBean.getServerURLOfHttpInterface());
 		playingFileTxt.setText(statusBean.getPathOfPlayingFile());
-		subTitlePathTxt.setText("");
-
+		subTitlePathTxt.setText(statusBean.getPathOfSubTitleFile());
 	}
 
 	@Override

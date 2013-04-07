@@ -60,7 +60,7 @@ public class MainFrame extends JFrame {
 
 	
 	public void actionPerformed(ActionEvent e) {
-		this.main.performReloadSubTitleEvent();
+		this.main.performReloadEvent();
 	}
 
 	/**

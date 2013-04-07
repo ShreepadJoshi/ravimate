@@ -2,9 +2,9 @@ package com.reader.subtitle;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,67 +14,75 @@ import com.reader.vlc.VlcTime;
 
 public class SubTitleReader {
 
-	String NEW_LINE = System.getProperty("line.separator");
+	private Map<String, SubTitleBean> timeSubTitleMap = new HashMap<String, SubTitleBean>();
 
-	private String path;
-	
-	Map<String, SubTitleBean> timeSubTitleMap = new HashMap<String, SubTitleBean>();
+	private File subTitleFile;
 
-	public SubTitleReader(String path, VlcTime time) {
-		this.path = path;		
+	public SubTitleReader(String pathOfSubTitle, VlcTime time) {
+		this.subTitleFile = new File(pathOfSubTitle);
 	}
 
-	public Map<String, SubTitleBean> reLoadSubTitles(String newFilePath) {
-		this.path = newFilePath;	
-		return loadSubTitles();
+	/**
+	 * @param newFilePath
+	 * @return
+	 */
+	public Map<String, SubTitleBean> reLoadSubTitles(String newPathOfSubTitle) {
+		this.subTitleFile = new File(newPathOfSubTitle);
+		if (subTitleAvailable()) {
+			this.timeSubTitleMap = loadSubTitles();
+		} else {
+			this.timeSubTitleMap = new HashMap<String, SubTitleBean>();
+		}
+		return timeSubTitleMap;
 	}
 
 	public Map<String, SubTitleBean> loadSubTitles() {
-		String pathOfSubTitle = getPathOfSubTitle();
 
-		File file = new File(pathOfSubTitle);
+		if (subTitleAvailable()) {
 
-		BufferedReader bufferedReader = null;
+			BufferedReader bufferedReader = null;
+			try {
 
-		try {
+				String currentLine;
+				bufferedReader = new BufferedReader(
+						new FileReader(subTitleFile));
 
-			// List<SubTitleBean> subTitleBeans = new ArrayList<SubTitleBean>();
+				SubTitleBean subTitleBean = new SubTitleBean();
 
-			String currentLine;
-			bufferedReader = new BufferedReader(new FileReader(file));
-			SubTitleBean subTitleBean = new SubTitleBean();
+				while ((currentLine = bufferedReader.readLine()) != null) {
 
-			while ((currentLine = bufferedReader.readLine()) != null) {
-				// Logger.log(currentLine);
+					if (isOnlyNumberInLine(currentLine)) {
+						subTitleBean.setId(currentLine);
+					} else if (currentLine.indexOf("-->") != -1) {
+						String time = getTimeFromRowLine(currentLine);
+						subTitleBean.setTimeString(time);
+					} else if (currentLine.equals("")) {
+						timeSubTitleMap.put(subTitleBean.getTimeString(),
+								subTitleBean);
+						// subTitleBeans.add(subTitleBean);
+						subTitleBean = new SubTitleBean();
+					} else {
+						subTitleBean.setSubTitleText(currentLine);
+					}
 
-				if (isOnlyNumberInLine(currentLine)) {
-					subTitleBean.setId(currentLine);
-				} else if (currentLine.indexOf("-->") != -1) {
-					String time = getTimeFromRowLine(currentLine);
-					subTitleBean.setTimeString(time);
-				} else if (currentLine.equals("")) {
-					timeSubTitleMap.put(subTitleBean.getTimeString(),
-							subTitleBean);
-					// subTitleBeans.add(subTitleBean);
-					subTitleBean = new SubTitleBean();
-				} else {
-					subTitleBean.setSubTitleText(currentLine);
 				}
 
-			}
-
-		} catch (IOException e) {
-			UILogger.log(e);
-		} finally {
-			try {
-				if (bufferedReader != null)
-					bufferedReader.close();
-			} catch (IOException ex) {
-				ex.printStackTrace();
+			} catch (FileNotFoundException fileNotFoundException) {
+				UILogger.logError("SubTitle not available..."
+						+ fileNotFoundException);
+			} catch (IOException e) {
+				UILogger.log(e);
+			} finally {
+				try {
+					if (bufferedReader != null)
+						bufferedReader.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 			}
 		}
 
-		UILogger.log(file);
+		UILogger.log(subTitleFile);
 
 		return timeSubTitleMap;
 	}
@@ -92,35 +100,6 @@ public class SubTitleReader {
 		} catch (NumberFormatException exception) {
 			return false;
 		}
-	}
-
-	private String getPathOfSubTitle() {
-		// added .srt
-		int indexOfDot = path.lastIndexOf(".");
-		String pathOfSubTitle = path.substring(0, indexOfDot) + ".srt";
-
-		// decode url (remove 20%)
-		try {
-			pathOfSubTitle = java.net.URLDecoder.decode(pathOfSubTitle,
-					"ISO-8859-1");
-			UILogger.log(pathOfSubTitle);
-
-			pathOfSubTitle = removeNotNeedTags(pathOfSubTitle);
-		} catch (UnsupportedEncodingException e1) {
-			// TODO change this
-			e1.printStackTrace();
-		}
-		return pathOfSubTitle;
-	}
-
-	private String removeNotNeedTags(String pathOfSubTitle) {
-		int index = pathOfSubTitle.indexOf("file://");
-		if (index > -1) {
-			int beginIndex = index + "file://".length();
-			return pathOfSubTitle
-					.substring(beginIndex, pathOfSubTitle.length());
-		}
-		return pathOfSubTitle;
 	}
 
 	public SubTitleBean getSubTitle(VlcTime vlcTime) {
@@ -141,5 +120,13 @@ public class SubTitleReader {
 		}
 
 		return subTitleBean;
+	}
+
+	public boolean isSubTitleAvailable() {
+		return subTitleAvailable();
+	}
+
+	private boolean subTitleAvailable() {
+		return subTitleFile.exists();
 	}
 }

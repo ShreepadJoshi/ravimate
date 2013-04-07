@@ -1,11 +1,13 @@
 package com.bean;
 
-import static com.util.Constants.NEW_LINE;;
+import static com.util.Constants.NEW_LINE;
+
+;
 
 public class SubTitleBean {
 
-	private String id;
-	private String timeString;
+	private String id = "";
+	private String timeString = "";
 	private String subTitleText = "";
 
 	@Override
@@ -41,6 +43,10 @@ public class SubTitleBean {
 			this.subTitleText = this.subTitleText + NEW_LINE + test;
 		}
 
+	}
+
+	public void setSubtitleNotAvailable() {
+		subTitleText = "subTitle not Available";
 	}
 
 }

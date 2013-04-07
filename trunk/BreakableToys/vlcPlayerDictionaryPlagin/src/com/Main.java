@@ -17,46 +17,55 @@ public class Main {
 
 	public static void main(String argv[]) {
 		Main main = new Main();
+		main.mainFrame = new MainFrame(main);
+		main.mainFrame.loadUI();
+
+		main.vlcPlayerStatusReader = new VLCPlayerStatusReader();
 		main.reLoadAll();
 
 	}
 
 	void reLoadAll() {
-		vlcPlayerStatusReader = new VLCPlayerStatusReader();
+
 		vlcPlayerStatusBean = vlcPlayerStatusReader
 				.getStatusOfVLCPlayerFromXMLs();
 
-		String path = vlcPlayerStatusBean.getPathOfPlayingFile();
+		String pathForSubtitles = vlcPlayerStatusBean.getPathOfSubTitleFile();
 		VlcTime time = vlcPlayerStatusBean.getCurrentPositionInTime();
 
-		subTitleReader = new SubTitleReader(path, time);
-		subTitleReader.loadSubTitles();
-		SubTitleBean subTitleBean = subTitleReader.getSubTitle(time);
+		subTitleReader = new SubTitleReader(pathForSubtitles, time);
 
-		UILogger.log("");
-		UILogger.log("subTitle " + subTitleBean);
-		UILogger.log("");
+		if (subTitleReader.isSubTitleAvailable()) {
+			subTitleReader.loadSubTitles();
+			SubTitleBean subTitleBean = subTitleReader.getSubTitle(time);
+			mainFrame.setSubTitles(subTitleBean);
+			UILogger.log("");
+			UILogger.log("subTitle " + subTitleBean);
+			UILogger.log("");
 
-		mainFrame = new MainFrame(this);
-		mainFrame.loadUI();
-		mainFrame.setSubTitles(subTitleBean);
-		mainFrame.setStatus(vlcPlayerStatusBean);
-		mainFrame.repaint();
-	}
-
-	public void performReloadSubTitleEvent() {		
-
-		if (isFileBeingPlayedChanged()) {
-			String newFilePath = vlcPlayerStatusBean.getPathOfPlayingFile();
-			subTitleReader.reLoadSubTitles(newFilePath);
+		} else {
+			SubTitleBean subTitleBean = new SubTitleBean();
+			subTitleBean.setSubtitleNotAvailable();
+			mainFrame.setSubTitles(subTitleBean);
 		}
 
-		VlcTime time = vlcPlayerStatusBean.getCurrentPositionInTime();
-		SubTitleBean subTitleBean = subTitleReader.getSubTitle(time);
-		UILogger.log("subTitle " + subTitleBean);
-		mainFrame.setSubTitles(subTitleBean);
+		mainFrame.setStatus(vlcPlayerStatusBean);
 		mainFrame.repaint();
 		mainFrame.revalidate();
+	}
+
+	public void performReloadEvent() {
+
+		if (isFileBeingPlayedChanged()) {			
+			reLoadAll();			
+		} else {
+			VlcTime time = vlcPlayerStatusBean.getCurrentPositionInTime();
+			SubTitleBean subTitleBean = subTitleReader.getSubTitle(time);
+			UILogger.log("subTitle " + subTitleBean);
+			mainFrame.setSubTitles(subTitleBean);
+			mainFrame.repaint();
+			mainFrame.revalidate();
+		}
 
 	}
 
