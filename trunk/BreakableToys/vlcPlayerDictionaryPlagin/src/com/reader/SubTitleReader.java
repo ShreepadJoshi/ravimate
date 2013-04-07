@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.bean.SubTitleBean;
-import com.log.UILogger;
+import com.logger.UILogger;
 
 public class SubTitleReader {
 

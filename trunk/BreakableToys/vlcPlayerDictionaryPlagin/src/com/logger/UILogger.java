@@ -1,4 +1,4 @@
-package com.log;
+package com.logger;
 
 import com.ui.panel.LogPlanel;
 
