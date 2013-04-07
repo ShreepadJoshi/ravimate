@@ -1,12 +1,12 @@
 package com;
 
-import com.input.SubTitleReader;
-import com.input.VLCPlayerStatusReader;
-import com.input.bean.SubTitleBean;
-import com.input.bean.VLCPlayerStatusBean;
-import com.input.bean.VlcTime;
+import com.bean.SubTitleBean;
+import com.bean.VLCPlayerStatusBean;
+import com.log.UILogger;
+import com.reader.SubTitleReader;
+import com.reader.VLCPlayerStatusReader;
+import com.reader.VlcTime;
 import com.ui.MainFrame;
-import com.ui.log.UILogger;
 
 public class Main {
 
@@ -40,6 +40,7 @@ public class Main {
 		mainFrame = new MainFrame(this);
 		mainFrame.loadUI();
 		mainFrame.setSubTitles(subTitleBean);
+		mainFrame.setStatus(vlcPlayerStatusBean);
 		mainFrame.repaint();
 	}
 
