@@ -11,9 +11,9 @@ import javax.xml.bind.Unmarshaller;
 
 import com.bean.VLCPlayerStatusBean;
 import com.logger.UILogger;
-import com.vlc.xml.Node;
-import com.vlc.xml.RootNode;
-import com.vlc.xml.StatusBean;
+import com.reader.vlc.xml.Node;
+import com.reader.vlc.xml.RootNode;
+import com.reader.vlc.xml.Status;
 
 /**
  * Class Reads status of VLC player.
@@ -67,7 +67,7 @@ public class VLCPlayerStatusReader {
 
 	private void readStatusXMLandFatchCurrentPositionInTime(URL urlOfXml) {
 		// read status
-		StatusBean statusBean = readStatusXML(urlOfXml);
+		Status statusBean = readStatusXML(urlOfXml);
 		String time = statusBean.getTime();
 		VlcTime currentPositionInTime = new VlcTime(time);
 		this.vlcPlayerStatusBean
@@ -100,12 +100,12 @@ public class VLCPlayerStatusReader {
 		return this.vlcPlayerStatusBean;
 	}
 
-	private StatusBean readStatusXML(URL urlOfXml) {
+	private Status readStatusXML(URL urlOfXml) {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(StatusBean.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(Status.class);
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			StatusBean statusBean = (StatusBean) jaxbUnmarshaller
+			Status statusBean = (Status) jaxbUnmarshaller
 					.unmarshal(urlOfXml);
 			UILogger.log(statusBean);
 			return statusBean;
@@ -115,7 +115,7 @@ public class VLCPlayerStatusReader {
 			e.printStackTrace();
 
 		}
-		return new StatusBean();
+		return new Status();
 	}
 
 	private RootNode readPlaylistXML() {
