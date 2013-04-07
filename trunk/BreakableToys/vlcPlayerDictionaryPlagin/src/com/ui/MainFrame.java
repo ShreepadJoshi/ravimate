@@ -3,18 +3,17 @@ package com.ui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
 import com.Main;
-import com.input.bean.SubTitleBean;
-import com.ui.panel.ButtonPanel;
+import com.bean.SubTitleBean;
+import com.bean.VLCPlayerStatusBean;
 import com.ui.panel.LogPlanel;
-import com.ui.panel.ReloadButton;
+import com.ui.panel.StatusPanel;
 import com.ui.panel.SubTitlePanal;
 
-public class MainFrame extends JFrame implements ActionListener {
+public class MainFrame extends JFrame {
 
 	Main main;
 
@@ -22,7 +21,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.main = main;
 	}
 
-	ButtonPanel buttonPanel = new ButtonPanel();
+	StatusPanel statusPanel = new StatusPanel(this);
 	SubTitlePanal subTitlePanal = new SubTitlePanal();
 	LogPlanel logPlanel = LogPlanel.getInstance();
 	int width = 1024;
@@ -40,11 +39,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		Container contentPane = this.getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
-		contentPane.add(buttonPanel, BorderLayout.NORTH);
-		buttonPanel.loadPanel();
-		ReloadButton reloadButton = new ReloadButton();
-		reloadButton.addActionListener(this);
-		buttonPanel.add(reloadButton);
+		contentPane.add(statusPanel, BorderLayout.NORTH);
+		statusPanel.loadPanel();		
 
 		contentPane.add(subTitlePanal, BorderLayout.CENTER);
 		subTitlePanal.loadPanel();
@@ -53,12 +49,16 @@ public class MainFrame extends JFrame implements ActionListener {
 		logPlanel.loadPanel();
 
 	}
+	
+	public void setStatus(VLCPlayerStatusBean statusBean) {
+		statusPanel.setStatus(statusBean);
+	}
 
 	public void setSubTitles(SubTitleBean subTitleBean) {
 		subTitlePanal.setSubTitles(subTitleBean);
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		this.main.performReloadSubTitleEvent();
 	}

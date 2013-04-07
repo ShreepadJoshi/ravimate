@@ -1,18 +1,22 @@
 package com.ui.panel;
 
+import static com.util.Constants.NEW_LINE;
+
 import java.awt.Color;
 import java.util.StringTokenizer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import com.input.bean.SubTitleBean;
+import com.bean.SubTitleBean;
+import com.ui.MainFrame;
 import com.ui.SubTitleLable;
-import static com.util.Constants.NEW_LINE;
 
 ;
 
 public class SubTitlePanal extends JPanel {
+
+	
 
 	public void loadPanel() {
 		this.setBorder(BorderFactory.createLineBorder(Color.darkGray, 3));
