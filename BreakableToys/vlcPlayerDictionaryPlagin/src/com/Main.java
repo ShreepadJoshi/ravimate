@@ -3,9 +3,9 @@ package com;
 import com.bean.SubTitleBean;
 import com.bean.VLCPlayerStatusBean;
 import com.logger.UILogger;
-import com.reader.SubTitleReader;
-import com.reader.VLCPlayerStatusReader;
-import com.reader.VlcTime;
+import com.reader.subtitle.SubTitleReader;
+import com.reader.vlc.VLCPlayerStatusReader;
+import com.reader.vlc.VlcTime;
 import com.ui.MainFrame;
 
 public class Main {
