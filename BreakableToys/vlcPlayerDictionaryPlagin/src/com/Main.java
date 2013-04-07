@@ -2,7 +2,7 @@ package com;
 
 import com.bean.SubTitleBean;
 import com.bean.VLCPlayerStatusBean;
-import com.log.UILogger;
+import com.logger.UILogger;
 import com.reader.SubTitleReader;
 import com.reader.VLCPlayerStatusReader;
 import com.reader.VlcTime;

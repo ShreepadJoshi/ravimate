@@ -10,7 +10,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import com.bean.VLCPlayerStatusBean;
-import com.log.UILogger;
+import com.logger.UILogger;
 import com.vlc.xml.Node;
 import com.vlc.xml.RootNode;
 import com.vlc.xml.StatusBean;
