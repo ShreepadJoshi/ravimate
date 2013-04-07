@@ -13,4 +13,8 @@ public class UILogger {
 		log(log.toString());
 	}
 
+	public static void logError(Object log) {
+		log(log); //TODO changes this ...
+	}
+
 }

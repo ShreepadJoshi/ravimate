@@ -13,11 +13,13 @@ public class VLCPlayerStatusBean {
 
 	private String serverURLOfHttpInterface;
 
-	private VlcTime currentPositionInTime;
-
 	private String pathOfPlayingFile;
 
 	private String nameOfFile;
+	
+	private VlcTime currentPositionInTime;
+	
+	private String pathOfSubTitleFile;
 
 	public String getNameOfFile() {
 		return nameOfFile;
@@ -49,6 +51,14 @@ public class VLCPlayerStatusBean {
 
 	public void setServerURLOfHttpInterface(String serverURLOfHttpInterface) {
 		this.serverURLOfHttpInterface = serverURLOfHttpInterface;
+	}
+
+	public String getPathOfSubTitleFile() {
+		return pathOfSubTitleFile;
+	}
+
+	public void setPathOfSubTitleFile(String pathOfSubTitleFile) {
+		this.pathOfSubTitleFile = pathOfSubTitleFile;
 	}
 
 	@Override

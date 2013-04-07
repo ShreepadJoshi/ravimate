@@ -62,6 +62,10 @@ public class VLCPlayerStatusReader {
 		String pathOfPlayingFile = fatchPathOfRunningFile(rootNodeBean);
 		vlcPlayerStatusBean.setPathOfPlayingFile(pathOfPlayingFile);
 
+		
+		String pathOfSubTitle = getPathOfSubTitle(pathOfPlayingFile);
+		vlcPlayerStatusBean.setPathOfSubTitleFile(pathOfSubTitle);
+		
 		return vlcPlayerStatusBean;
 	}
 
@@ -105,8 +109,7 @@ public class VLCPlayerStatusReader {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Status.class);
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			Status statusBean = (Status) jaxbUnmarshaller
-					.unmarshal(urlOfXml);
+			Status statusBean = (Status) jaxbUnmarshaller.unmarshal(urlOfXml);
 			UILogger.log(statusBean);
 			return statusBean;
 
@@ -135,6 +138,36 @@ public class VLCPlayerStatusReader {
 
 		}
 		return rootNode;
+	}
+
+	private String getPathOfSubTitle(String pathOfPlayingFile) {
+		// added .srt
+		int indexOfDot = pathOfPlayingFile.lastIndexOf(".");
+		String pathOfSubTitle = pathOfPlayingFile.substring(0, indexOfDot)
+				+ ".srt";
+
+		// decode url (remove 20%)
+		try {
+			pathOfSubTitle = java.net.URLDecoder.decode(pathOfSubTitle,
+					"ISO-8859-1");
+			UILogger.log(pathOfSubTitle);
+
+			pathOfSubTitle = removeNotNeedTags(pathOfSubTitle);
+		} catch (UnsupportedEncodingException e1) {
+			// TODO change this
+			e1.printStackTrace();
+		}
+		return pathOfSubTitle;
+	}
+
+	private String removeNotNeedTags(String pathOfSubTitle) {
+		int index = pathOfSubTitle.indexOf("file://");
+		if (index > -1) {
+			int beginIndex = index + "file://".length();
+			return pathOfSubTitle
+					.substring(beginIndex, pathOfSubTitle.length());
+		}
+		return pathOfSubTitle;
 	}
 
 }
