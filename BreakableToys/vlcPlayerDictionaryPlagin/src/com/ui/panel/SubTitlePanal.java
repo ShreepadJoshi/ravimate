@@ -9,7 +9,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import com.bean.SubTitleBean;
-import com.ui.MainFrame;
 import com.ui.fields.SubTitleLable;
 
 ;
