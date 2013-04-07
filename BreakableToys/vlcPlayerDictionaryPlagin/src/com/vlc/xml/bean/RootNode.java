@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.ui.log.UILogger;
+import com.log.UILogger;
 
 @XmlRootElement(name = "node")
 @XmlAccessorType(XmlAccessType.FIELD)
