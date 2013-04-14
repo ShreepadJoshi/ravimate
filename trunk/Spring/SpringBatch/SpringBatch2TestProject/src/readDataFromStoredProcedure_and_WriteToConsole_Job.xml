@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
 	xmlns="http://www.springframework.org/schema/batch"
 	xsi:schemaLocation="
  
@@ -21,13 +20,15 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
 		as "org.springframework.batch.core.launch.support.CommandLineJobRunner" args 
 		as "readDataFromStoredProcedure_and_WriteToConsole_Job.xml readDataFromStoredProcedure_and_WriteToConsole_Job" -->
 
-	<!-- CREATE TABLE t_user ( id INT NOT NULL, first_name VARCHAR(45) NOT NULL, 
-		last_name VARCHAR(45) NOT NULL, PRIMARY KEY (id) ) ENGINE=InnoDB; -->
+	<!-- CREATE TABLE t_user ( id INT NOT NULL AUTO_INCREMENT, first_name VARCHAR(45) 
+		NOT NULL, last_name VARCHAR(45) NOT NULL, PRIMARY KEY (id) ) ENGINE=InnoDB; -->
 
 
-	<!-- insert into `t_user` (`id`, `first_name`, `last_name`) values(1, 'Yip', 
-		'Man') insert into `t_user` (`id`, `first_name`, `last_name`) values(2, 'Bruce','Lee') 
-		insert into `t_user` (`id`, `first_name`, `last_name`) values(3, 'Jackie','Chan') -->
+	<!--
+		insert into `t_user` (`first_name`, `last_name`) values('Yip', 'Man'); 
+		insert into `t_user` (`first_name`, `last_name`) values('Bruce','Lee');
+		insert into `t_user` (`first_name`, `last_name`) values('Jackie','Chan') 
+	-->
 
 	<!-- drop procedure `jpa`.`GetAllUsers`; DELIMITER // CREATE PROCEDURE GetAllUsers(IN 
 		firstName VARCHAR(255)) BEGIN IF (firstName = '*') THEN SELECT * FROM t_user 
@@ -57,23 +58,15 @@ http://www.springframework.org/schema/batch/spring-batch-2.0.xsd">
 		<beans:property name="procedureName" value="GetAllUsers" />
 
 		<beans:property name="rowMapper" ref="rowMapper" />
-		
-		<!-- 
-		<beans:property name="parameters">
-			<beans:list>
-				<beans:bean class="org.springframework.jdbc.core.SqlParameter">
-					<beans:constructor-arg index="0" value="Yip" />
-					<beans:constructor-arg index="1">
-						<util:constant static-field="java.sql.Types.CHAR" />
-					</beans:constructor-arg>
-				</beans:bean>
-			</beans:list>			
-		</beans:property>
-		 -->
-		 
+
+		<!-- <beans:property name="parameters"> <beans:list> <beans:bean class="org.springframework.jdbc.core.SqlParameter"> 
+			<beans:constructor-arg index="0" value="Yip" /> <beans:constructor-arg index="1"> 
+			<util:constant static-field="java.sql.Types.CHAR" /> </beans:constructor-arg> 
+			</beans:bean> </beans:list> </beans:property> -->
+
 	</beans:bean>
-	
-	
+
+
 
 	<!-- Initialization for data source -->
 	<beans:bean id="dataSource"
