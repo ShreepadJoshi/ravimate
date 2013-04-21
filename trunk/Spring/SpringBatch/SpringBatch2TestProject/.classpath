@@ -2,15 +2,6 @@
 <classpath>
 	<classpathentry excluding="resources/|classpath_resources/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.core-2.0.0.RELEASE-javadoc.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.core-2.0.0.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.core-2.0.0.RELEASE.jar" sourcepath="lib/SpringBatch/org.springframework.batch.core-2.0.0.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.infrastructure-2.0.0.RELEASE-javadoc.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.infrastructure-2.0.0.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.infrastructure-2.0.0.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.test-2.0.0.RELEASE-javadoc.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.test-2.0.0.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.test-2.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/SpringCore/org.springframework.context-2.5.6.A.jar"/>
 	<classpathentry kind="lib" path="lib/SpringCore/org.springframework.beans-2.5.6.A.jar"/>
 	<classpathentry kind="lib" path="lib/SpringCore/org.springframework.core-2.5.6.A.jar"/>
@@ -64,6 +55,32 @@
 	<classpathentry kind="lib" path="lib/SpringBatch/spring-batch-core-2.1.9.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/SpringBatch/spring-batch-core-2.1.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/SpringBatch/spring-batch-infrastructure-2.1.9.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/SpringBatch/spring-batch-infrastructure-2.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/SpringBatch/spring-batch-infrastructure-2.1.9.RELEASE.jar" sourcepath="/media/shripad/RND/Shreejava/Springbatch/org.springframework.batch-2.0.0.RELEASE/sources"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-orm-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-aop-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-aspects-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-beans-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-build-src-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-context-3.2.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-context-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-context-support-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-core-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-expression-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-instrument-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-instrument-tomcat-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-jdbc-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-jms-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-oxm-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-struts-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-test-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-tx-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-web-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-webmvc-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring_core_3.2.2/spring-webmvc-portlet-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.core-2.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.infrastructure-2.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/SpringBatch/org.springframework.batch.test-2.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/SpringBatch/spring-batch-test-2.1.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/SpringBatch/spring-batch-test-2.1.9.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
