@@ -33,7 +33,7 @@ public class Main {
 		String pathForSubtitles = vlcPlayerStatusBean.getPathOfSubTitleFile();
 		VlcTime time = vlcPlayerStatusBean.getCurrentPositionInTime();
 
-		subTitleReader = new SubTitleReader(pathForSubtitles, time);
+		subTitleReader = new SubTitleReader(pathForSubtitles);
 
 		if (subTitleReader.isSubTitleAvailable()) {
 			subTitleReader.loadSubTitles();

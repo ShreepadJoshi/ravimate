@@ -2,9 +2,11 @@ package com.reader.subtitle;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +20,7 @@ public class SubTitleReader {
 
 	private File subTitleFile;
 
-	public SubTitleReader(String pathOfSubTitle, VlcTime time) {
+	public SubTitleReader(String pathOfSubTitle) {
 		this.subTitleFile = new File(pathOfSubTitle);
 	}
 
@@ -44,8 +46,8 @@ public class SubTitleReader {
 			try {
 
 				String currentLine;
-				bufferedReader = new BufferedReader(
-						new FileReader(subTitleFile));
+				//bufferedReader = new BufferedReader(new FileReader(subTitleFile));
+				bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(subTitleFile), Charset.forName("UTF-8")));
 
 				SubTitleBean subTitleBean = new SubTitleBean();
 
