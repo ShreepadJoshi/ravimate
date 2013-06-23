@@ -17,7 +17,9 @@ public class SubTitleLable extends JLabel implements MouseInputListener {
 	public SubTitleLable(String word) {
 		super(word);
 		wordInSubTitle = word;
-		setText(wordInSubTitle);
+		//setText(wordInSubTitle);
+		setText("<html>" + wordInSubTitle + "</html>");
+		
 		this.addMouseListener(this);
 	}
 
