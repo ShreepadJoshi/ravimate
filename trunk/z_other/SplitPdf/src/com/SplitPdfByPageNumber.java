@@ -7,7 +7,7 @@ import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
 
-public class SplitPDFFile {
+public class SplitPdfByPageNumber {
 
 	static int startPage = 61;
 	static int endPage = 78;
