@@ -29,7 +29,7 @@ public class MergeMultipleFilesToOne {
 			list.add(new FileInputStream(new File("How to_12.pdf")));
 
 			
-			OutputStream out = new FileOutputStream(new File("Merged.pdf"));
+			OutputStream out = new FileOutputStream(new File(outPutFileName));
 
 			doMerge(list, out);
 
