@@ -1,19 +1,29 @@
 package com.reader.vlc;
 
+import static com.util.Constants.PASSWORD;
+import static com.util.Constants.USER_NAME;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.commons.codec.binary.Base64;
+
 import com.bean.VLCPlayerStatusBean;
 import com.logger.UILogger;
 import com.reader.vlc.xml.Node;
 import com.reader.vlc.xml.RootNode;
 import com.reader.vlc.xml.Status;
+
+;
 
 /**
  * Class Reads status of VLC player.
@@ -62,10 +72,9 @@ public class VLCPlayerStatusReader {
 		String pathOfPlayingFile = fatchPathOfRunningFile(rootNodeBean);
 		vlcPlayerStatusBean.setPathOfPlayingFile(pathOfPlayingFile);
 
-		
 		String pathOfSubTitle = getPathOfSubTitle(pathOfPlayingFile);
 		vlcPlayerStatusBean.setPathOfSubTitleFile(pathOfSubTitle);
-		
+
 		return vlcPlayerStatusBean;
 	}
 
@@ -104,7 +113,7 @@ public class VLCPlayerStatusReader {
 		return this.vlcPlayerStatusBean;
 	}
 
-	private Status readStatusXML(URL urlOfXml) {
+	private Status readStatusXML1(URL urlOfXml) {
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Status.class);
 
@@ -121,15 +130,72 @@ public class VLCPlayerStatusReader {
 		return new Status();
 	}
 
+	/**
+	 * To get the InputStream of given Base64 encode URL.
+	 * 
+	 * @param urlOfXml
+	 *            to be open
+	 * @return InputStream of given Base64 encode URL
+	 */
+	private InputStream getInputStreamOfEncodedConnection(final URL urlOfXml) {
+		URLConnection connection = null;
+		InputStream inputStream = null;
+		String userPassword = USER_NAME + ":" + PASSWORD;
+
+		byte[] authEncBytes = Base64.encodeBase64(userPassword.getBytes());
+		String encoding = new String(authEncBytes);
+		try {
+			connection = urlOfXml.openConnection();
+			connection.setRequestProperty("Authorization", "Basic " + encoding);
+			connection.connect();
+			inputStream = connection.getInputStream();
+
+		} catch (IOException e) {
+			UILogger.log("getBase64EncodedConnectionForURl --  " + e);
+			e.printStackTrace();
+		}
+		return inputStream;
+	}
+
+	/**
+	 * To read the status xml
+	 * 
+	 * @param urlOfXml
+	 * @return
+	 */
+	private Status readStatusXML(URL urlOfXml) {
+
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(Status.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
+			InputStream inputStream = getInputStreamOfEncodedConnection(urlOfXml);
+
+			Status statusBean = (Status) jaxbUnmarshaller
+					.unmarshal(inputStream);
+
+			UILogger.log(statusBean);
+			return statusBean;
+
+		} catch (JAXBException ex) {
+			System.out.println(ex);
+			UILogger.log(ex);
+			ex.printStackTrace();
+
+		}
+		return new Status();
+	}
+
 	private RootNode readPlaylistXML() {
 		RootNode rootNode = new RootNode();
 		URL urlOfXml = getUrlForVLCPlayerRunningLocally(PLAYLIST_PAGE);
 
 		try {
+			InputStream inputStream = getInputStreamOfEncodedConnection(urlOfXml);
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(RootNode.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			rootNode = (RootNode) jaxbUnmarshaller.unmarshal(urlOfXml);
+			rootNode = (RootNode) jaxbUnmarshaller.unmarshal(inputStream);
 			UILogger.log(rootNode);
 
 		} catch (JAXBException e) {
