@@ -9,8 +9,8 @@ import com.lowagie.text.pdf.PdfReader;
 
 public class SplitPdfByPageNumber {
 
-	static int startPage = 61;
-	static int endPage = 78;
+	static int startPage = 0;
+	static int endPage = 3;
 
 	/**
 	 * @param args
@@ -19,7 +19,7 @@ public class SplitPdfByPageNumber {
 
 		try {
 			// String inFile = args[0].toLowerCase();
-			String inFile = "Head First Android Development.pdf";
+			String inFile = "input/Deputation Letter .pdf";
 			System.out.println("Reading " + inFile);
 			PdfReader reader = new PdfReader(inFile);			
 			
