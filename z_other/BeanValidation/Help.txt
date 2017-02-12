@@ -1,0 +1,5 @@
+http://localhost:8080/BeanValidation/reverser/jsonbasedreverser/shripad
+http://localhost:8080/BeanValidation/reverser/jsonbasedreverser/123456
+
+
+https://afsinka.wordpress.com/2015/12/27/restful-web-service-example-with-jersey-2-and-tomcat-8/
