@@ -16,5 +16,29 @@
 		<td>second column</td>
 	</tr>
 </table>
+	
+<%
+
+//response.sendRedirect(getUpdatedURl());
+		String uri = request.getScheme() + "://" +   // "http" + "://
+        request.getServerName() +       // "myhost"
+        ":" +                           // ":"
+        request.getLocalPort() +       // "8080"
+        request.getRequestURI() +       // "/people"
+        "?" +                           // "?"
+        request.getQueryString();       // "lastname=Fox&age=30"
+
+        
+        out.print(uri);
+%>
+
+<%!
+    String getUpdatedURl()
+    {
+      return "http://localhost:8081/WebTest/index.jsp";
+    }
+%>	
+	
+	
 </body>
 </html>
